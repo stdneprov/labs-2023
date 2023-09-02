@@ -1,0 +1,121 @@
+npabwa@Ubuntu:/$ whoami
+npabwa
+npabwa@Ubuntu:/$ who -a
+           system boot  2023-09-02 22:14
+           run-level 5  2023-09-02 22:14
+npabwa   + tty2         2023-09-02 22:15 00:36        1345 (tty2)
+npabwa@Ubuntu:/$ pwd
+/
+npabwa@Ubuntu:/$ cd ~/Desktop/labs-2023/lab2/
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ pwd
+/home/npabwa/Desktop/labs-2023/lab2
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ ls
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ touch file.txt
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ ls
+file.txt
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ cat > file.txt
+вот я файлик сделал
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ cat < file.txt
+вот я файлик сделал
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ cat >> file.txt
+вот я в него дозаписал
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ cat < file.txt
+вот я файлик сделал
+вот я в него дозаписал
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ cp file.txt filecopy.txt
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ ls
+filecopy.txt  file.txt
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ ls -la
+total 16
+drwxrwxr-x 2 npabwa npabwa 4096 сен  2 22:54 .
+drwxrwxr-x 4 npabwa npabwa 4096 сен  2 22:25 ..
+-rw-rw-r-- 1 npabwa npabwa   77 сен  2 22:54 filecopy.txt
+-rw-rw-r-- 1 npabwa npabwa   77 сен  2 22:53 file.txt
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ cd ..
+npabwa@Ubuntu:~/Desktop/labs-2023$ ls
+ codestyle.txt   lab11.txt   lab15.txt          lab3.txt   lab8.txt
+ kp3.txt         lab12.txt   lab2               lab5.txt  '#lab9.txt#'
+ kp4.txt         lab13.txt   lab2-example.txt   lab6.txt   lab9.txt
+ lab10.txt       lab14.txt   lab2.txt           lab7.txt   README.md
+npabwa@Ubuntu:~/Desktop/labs-2023$ cp -r lab2 lab2copy
+npabwa@Ubuntu:~/Desktop/labs-2023$ ls
+ codestyle.txt   lab12.txt   lab2copy           lab6.txt      README.md
+ kp3.txt         lab13.txt   lab2-example.txt   lab7.txt
+ kp4.txt         lab14.txt   lab2.txt           lab8.txt
+ lab10.txt       lab15.txt   lab3.txt          '#lab9.txt#'
+ lab11.txt       lab2        lab5.txt           lab9.txt
+npabwa@Ubuntu:~/Desktop/labs-2023$ cd lab2copy/
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2copy$ ls
+filecopy.txt  file.txt
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2copy$ cat < file.txt
+вот я файлик сделал
+вот я в него дозаписал
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2copy$ cd ..
+npabwa@Ubuntu:~/Desktop/labs-2023$ rm -r lab2copy/
+npabwa@Ubuntu:~/Desktop/labs-2023$ ls
+ codestyle.txt   lab11.txt   lab15.txt          lab3.txt   lab8.txt
+ kp3.txt         lab12.txt   lab2               lab5.txt  '#lab9.txt#'
+ kp4.txt         lab13.txt   lab2-example.txt   lab6.txt   lab9.txt
+ lab10.txt       lab14.txt   lab2.txt           lab7.txt   README.md
+npabwa@Ubuntu:~/Desktop/labs-2023$ cd lab2/
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ ls
+filecopy.txt  file.txt
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ rm filecopy
+rm: cannot remove 'filecopy': No such file or directory
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ rm filecopy.txt
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ ls
+file.txt
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ mv file.txt renamedfile.txt
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ ls
+renamedfile.txt
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ mkdir somedir
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ ls
+renamedfile.txt  somedir
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ mv renamedfile.txt somedir/renamedfile.txt
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ ls
+somedir
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ cd somedir/
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2/somedir$ ls
+renamedfile.txt
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2/somedir$ mv renamedfile.txt ../f1.txt
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2/somedir$ cd ..
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ ls
+f1.txt  somedir
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ cat > f2.txt
+еще текст
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ cat f1.txt f2.txt > f3.txt 
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ cat < f3.txt 
+вот я файлик сделал
+вот я в него дозаписал
+еще текст
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ grep "вот" f3.txt 
+вот я файлик сделал
+вот я в него дозаписал
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ cd ..
+npabwa@Ubuntu:~/Desktop/labs-2023$ grep -r "вот" lab2/
+lab2/f3.txt:вот я файлик сделал
+lab2/f3.txt:вот я в него дозаписал
+lab2/f1.txt:вот я файлик сделал
+lab2/f1.txt:вот я в него дозаписал
+npabwa@Ubuntu:~/Desktop/labs-2023$ cd lab2/
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ ls
+f1.txt  f2.txt  f3.txt  somedir
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ ls | sort -r
+somedir
+f3.txt
+f2.txt
+f1.txt
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ ps
+    PID TTY          TIME CMD
+   1981 pts/0    00:00:00 bash
+   4016 pts/0    00:00:00 ps
+npabwa@Ubuntu:~/Desktop/labs-2023/lab2$ cd ../..
+npabwa@Ubuntu:~/Desktop$ ls labs-2023/ | grep -E "^lab[1-2]{2}+"
+lab11.txt
+lab12.txt
+npabwa@Ubuntu:~/Desktop$ cd labs-2023/
+npabwa@Ubuntu:~/Desktop/labs-2023$ rm -r lab2/
+npabwa@Ubuntu:~/Desktop/labs-2023$ mkdir lab2/
+npabwa@Ubuntu:~/Desktop/labs-2023$ cat > lab2/prot
+сюда короче протокол запишу
+спасибо за внимание
