@@ -1,0 +1,177 @@
+vboxuser@Ubuntu:~/test/labs-2023$ pwd
+/home/vboxuser/test/labs-2023
+vboxuser@Ubuntu:~/test/labs-2023$ cd lab2
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ pwd
+/home/vboxuser/test/labs-2023/lab2
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cd ..
+vboxuser@Ubuntu:~/test/labs-2023$ pwd
+/home/vboxuser/test/labs-2023
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ ls 
+report2.txt
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ touch lab2.txt
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ ls -l
+итого 0
+-rw-rw-r-- 1 vboxuser vboxuser 0 сен  3 20:34 lab2.txt
+-rw-rw-r-- 1 vboxuser vboxuser 0 сен  3 20:27 report2.txt
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ 
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ who
+vboxuser tty2         2023-09-03 20:21 (tty2)
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ whoami
+vboxuser
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ sudo whoami
+[sudo] пароль для vboxuser: 
+root
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cat > lab2.txt 
+Просто лютый и жесткий текст
+^C
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cat lab2.txt 
+Просто лютый и жесткий текст
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ touch test.txt
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cat > test.txt
+i'll revolt
+^C
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cat test.txt 
+i'll revolt
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cat test.txt >> lab2.txt 
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cat lab2.txt 
+Просто лютый и жесткий текст
+i'll revolt
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ 
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ ls -a
+.  ..  lab2.txt  report2.txt  test.txt
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ mkdir test_dir
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cp report2.txt /test_dir
+cp: невозможно создать обычный файл '/test_dir': Отказано в доступе
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cp report2.txt test_dir/report2.txt
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cd test_dir/
+vboxuser@Ubuntu:~/test/labs-2023/lab2/test_dir$ ls
+report2.txt
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cd cp_test_dir/
+vboxuser@Ubuntu:~/test/labs-2023/lab2/cp_test_dir$ touch test_cp.txt
+vboxuser@Ubuntu:~/test/labs-2023/lab2/cp_test_dir$ cd ..
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cp cp_test_dir/ test_dir/
+cp: не указан -r; пропускается каталог 'cp_test_dir/'
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cp -r cp_test_dir/ test_dir/
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cd test_dir/
+vboxuser@Ubuntu:~/test/labs-2023/lab2/test_dir$ ls
+cp_test_dir  report2.txt
+vboxuser@Ubuntu:~/test/labs-2023/lab2/test_dir$ cd ..
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ ls
+cp_test_dir  lab2.txt  report2.txt  test_dir  test.txt
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ mv test.txt test_dir/
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ ls
+cp_test_dir  lab2.txt  report2.txt  test_dir
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cd test_dir/
+vboxuser@Ubuntu:~/test/labs-2023/lab2/test_dir$ ls
+cp_test_dir  report2.txt  test.txt
+vboxuser@Ubuntu:~/test/labs-2023/lab2/test_dir$ 
+vboxuser@Ubuntu:~/test/labs-2023/lab2/test_dir$ cd ..
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ ls
+cp_test_dir  lab2.txt  report2.txt  test_dir
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ mv lab2.txt lab2_test.txt
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ ls
+cp_test_dir  lab2_test.txt  report2.txt  test_dir
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cp lab2_test.txt lab2_test_cp.txt
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ ls
+cp_test_dir  lab2_test_cp.txt  lab2_test.txt  report2.txt  test_dir
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cat lab2_test.txt 
+Просто лютый и жесткий текст
+i'll revolt
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cat lab2_test_cp.txt 
+Просто лютый и жесткий текст
+i'll revolt
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ ls
+cp_test_dir  lab2_test_cp.txt  lab2_test.txt  report2.txt  test_dir
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ rm -r cp_test_dir/
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ ls
+lab2_test_cp.txt  lab2_test.txt  report2.txt  test_dir
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ rm lab2_test_cp.txt 
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ ls
+lab2_test.txt  report2.txt  test_dir
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ ps
+    PID TTY          TIME CMD
+   4075 pts/0    00:00:00 bash
+  18423 pts/0    00:00:00 ps
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ touch test1.txt
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ touch test2.txt
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ touch test3.txt
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ ls -l
+итого 12
+-rw-rw-r-- 1 vboxuser vboxuser   65 сен  3 21:12 lab2_test.txt
+-rw-rw-r-- 1 vboxuser vboxuser 3779 сен  3 21:29 report2.txt
+-rw-rw-r-- 1 vboxuser vboxuser    0 сен  3 21:36 test1.txt
+-rw-rw-r-- 1 vboxuser vboxuser    0 сен  3 21:36 test2.txt
+-rw-rw-r-- 1 vboxuser vboxuser    0 сен  3 21:36 test3.txt
+drwxrwxr-x 3 vboxuser vboxuser 4096 сен  3 21:21 test_dir
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cat > test1.txt
+МАИ МАИ МАИ МАИ
+^C
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cat > test2.txt 
+Гусь гусыня гусак
+^C
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cat > test3.txt 
+киборг1230 оптимус прайм мегатрон
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cd ..
+vboxuser@Ubuntu:~/test/labs-2023$ grep -r 'МАИ' lab2
+lab2/test1.txt:МАИ МАИ МАИ МАИ
+vboxuser@Ubuntu:~/test/labs-2023$ grep -r 'оптимус' lab2
+lab2/test3.txt:киборг1230 оптимус прайм мегатрон
+vboxuser@Ubuntu:~/test/labs-2023$ grep -lr 'оптимус' lab2
+lab2/test3.txt
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ grep -rw 'Гусь'
+test2.txt:Гусь гусыня гусак
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cat >> test1.txt 
+МАИ МАИ
+Боба Биба
+^C
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cat test1.txt 
+МАИ МАИ МАИ МАИ
+МАИ МАИ
+Боба Биба
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ grep -c 'МАИ' test1.txt 
+2
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ grep -v 'МАИ' test1.txt 
+Боба Биба
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ sort test1.txt 
+Боба Биба
+МАИ МАИ
+МАИ МАИ МАИ МАИ
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cat test1.txt 
+МАИ МАИ МАИ МАИ
+МАИ МАИ
+Боба Биба
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ ls | sort -r
+test_dir
+test3.txt
+test2.txt
+test1.txt
+report2.txt
+lab2_test.txt
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ ls
+lab2_test.txt  report2.txt  test1.txt  test2.txt  test3.txt  test_dir
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ mv *.txt test_dir/
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ ls
+test_dir
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ cd test_dir/
+vboxuser@Ubuntu:~/test/labs-2023/lab2/test_dir$ ls
+cp_test_dir    report2.txt  test2.txt  test.txt
+lab2_test.txt  test1.txt    test3.txt
+vboxuser@Ubuntu:~/test/labs-2023/lab2/test_dir$ mv *.txt ..
+vboxuser@Ubuntu:~/test/labs-2023/lab2/test_dir$ ls
+cp_test_dir
+vboxuser@Ubuntu:~/test/labs-2023/lab2/test_dir$ cd ..
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ ls
+lab2_test.txt  report2.txt  test1.txt  test2.txt  test3.txt  test_dir  test.txt
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ ls
+famefox  lab2_test.txt  test1.txt  test3.txt  test.txt
+firefox  report2.txt    test2.txt  test_dir
+vboxuser@Ubuntu:~/test/labs-2023/lab2$ ls | grep f..efox
+famefox
+firefox
+
+
+
+
+
+
+
