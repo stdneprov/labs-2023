@@ -96,4 +96,53 @@ fedor@fedor-VirtualBox:~$ rm -r course
 fedor@fedor-VirtualBox:~$ ls
  example     mega   Видео       Загрузки      Музыка         'Рабочий стол'
  labs-2023   snap   Документы   Изображения   Общедоступные   Шаблоны
+fedor@fedor-VirtualBox:~$ ls grep_test
+dd.txt  hh.txt  l1.txt  l2.txt  l3.txt  l4.txt  l5.txt  l6.txt  ll.txt
+fedor@fedor-VirtualBox:~$ grep -r "лаб" grep_test
+grep_test/l2.txt:лаба ла ла 
+grep_test/l2.txt:лаб . . .
+grep_test/l1.txt:делаю лабу
+grep_test/l3.txt:лабирит   лабиринт
+grep_test/l6.txt:лаб .
+grep_test/l6.txt:лабиринт.
+fedor@fedor-VirtualBox:~$ grep -lr "лаб" grep_test
+grep_test/l2.txt
+grep_test/l1.txt
+grep_test/l3.txt
+grep_test/l6.txt
+fedor@fedor-VirtualBox:~/grep_test$ grep -c "лаб" l3.txt
+1
+fedor@fedor-VirtualBox:~/grep_test$ grep -c "лаб" l2.txt
+2
+fedor@fedor-VirtualBox:~/grep_test$ grep -v "лаб" l1.txt
+fedor@fedor-VirtualBox:~/grep_test$ grep -v "лаб" l5.txt
+тут ничего нет
+fedor@fedor-VirtualBox:~/grep_test$ grep -v "лаб" l4.txt
+...
+ о о ю
+лллл
+fedor@fedor-VirtualBox:~/grep_test$ ls | grep -E "^l"
+l1.txt
+l2.txt
+l3.txt
+l4.txt
+l5.txt
+l6.txt
+ll.txt
+fedor@fedor-VirtualBox:~/grep_test$ ls | grep -E "^h"
+hh.txt
+fedor@fedor-VirtualBox:~/grep_test$ ls | grep -E "^l[2-4]+"
+l2.txt
+l3.txt
+l4.txt
+fedor@fedor-VirtualBox:~/grep_test$ ls | grep -E "[a-z]"
+dd.txt
+hh.txt
+l1.txt
+l2.txt
+l3.txt
+l4.txt
+l5.txt
+l6.txt
+ll.txt
 fedor@fedor-VirtualBox:~$
