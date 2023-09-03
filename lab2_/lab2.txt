@@ -1,0 +1,430 @@
+
+eva@DESKTOP-O21PU22 MINGW64 ~
+$ mkdir dir
+
+eva@DESKTOP-O21PU22 MINGW64 ~
+$ ls
+'3D Objects'/
+ AppData/
+'Application Data'@
+ Contacts/
+ Cookies@
+ Desktop/
+ Documents/
+ Downloads/
+ Favorites/
+ Links/
+'Local Settings'@
+ Music/
+ NTUSER.DAT
+ NTUSER.DAT{6bad4110-3853-11ee-b00c-40b89a7ea2b4}.TxR.0.regtrans-ms
+ NTUSER.DAT{6bad4110-3853-11ee-b00c-40b89a7ea2b4}.TxR.1.regtrans-ms
+ NTUSER.DAT{6bad4110-3853-11ee-b00c-40b89a7ea2b4}.TxR.2.regtrans-ms
+ NTUSER.DAT{6bad4110-3853-11ee-b00c-40b89a7ea2b4}.TxR.blf
+ NTUSER.DAT{6bad4111-3853-11ee-b00c-40b89a7ea2b4}.TM.blf
+ NTUSER.DAT{6bad4111-3853-11ee-b00c-40b89a7ea2b4}.TMContainer00000000000000000001.regtrans-ms
+ NTUSER.DAT{6bad4111-3853-11ee-b00c-40b89a7ea2b4}.TMContainer00000000000000000002.regtrans-ms
+ NetHood@
+ OneDrive/
+ Pictures/
+ PrintHood@
+ Recent@
+'Saved Games'/
+ Searches/
+ SendTo@
+ Videos/
+'VirtualBox VMs'/
+ dir/
+ example/
+ f1.txt
+ lab1/
+ labs-2023/
+ ntuser.dat.LOG1
+ ntuser.dat.LOG2
+ ntuser.ini
+'Мои документы'@
+ Шаблоны@
+'главное меню'@
+
+eva@DESKTOP-O21PU22 MINGW64 ~
+$ cd dir
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ ls
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ touch f1.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ ls
+f1.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ ls -l total 0
+ls: cannot access 'total': No such file or directory
+ls: cannot access '0': No such file or directory
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ ls -l
+total 0
+-rw-r--r-- 1 eva 197609 0 Sep  3 21:26 f1.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ ls -a
+./  ../  f1.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ ls -al
+total 12
+drwxr-xr-x 1 eva 197609 0 Sep  3 21:26 ./
+drwxr-xr-x 1 eva 197609 0 Sep  3 21:25 ../
+-rw-r--r-- 1 eva 197609 0 Sep  3 21:26 f1.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cat f1.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cat > f1.txt
+meow
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cat f1.txt
+meow
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cat >> f1.txt
+MEOW
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cat f1.txt
+meow
+MEOW
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ touch f2.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ ls
+f1.txt  f2.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cat f1.txt > f2.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cat f2. txt
+cat: f2.: No such file or directory
+cat: txt: No such file or directory
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cat f2.txt
+meow
+MEOW
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cat f1.txt >> f2.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cat f2.txt
+meow
+MEOW
+meow
+MEOW
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cat f1.txt
+meow
+MEOW
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cat
+klsadkf
+klsadkf
+alsd
+alsd
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ rm f2.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ ls
+f1.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ touch f2.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ ls
+f1.txt  f2.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cat > f2.txt
+lol
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cat f2.txt
+lol
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cat >> f1.txt
+lkasjkasdjfoisjdgiojeriugjoasksdjfoijgf
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cat f1.txt f2.txt
+meow
+MEOW
+lkasjkasdjfoisjdgiojeriugjoasksdjfoijgf
+lol
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cat f1.txt f2.txt >
+bash: syntax error near unexpected token `newline'
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cat <f1.txt>f2.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cat f1.txt f2.txt
+meow
+MEOW
+lkasjkasdjfoisjdgiojeriugjoasksdjfoijgf
+meow
+MEOW
+lkasjkasdjfoisjdgiojeriugjoasksdjfoijgf
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ mkdir papka
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ ls
+f1.txt  f2.txt  papka/
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ touch papka/file
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ ls
+f1.txt  f2.txt  papka/
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cd papka
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/papka
+$ ls
+file
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/papka
+$ cd ..
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ ls
+f1.txt  f2.txt  papka/
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ rmdir papka
+rmdir: failed to remove 'papka': Directory not empty
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ rm -r papka
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ mkdir empty
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ ls
+empty/  f1.txt  f2.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ rmdir empty
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ ls
+f1.txt  f2.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ mv f1.txt example.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ ls
+example.txt  f2.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ mkdir pp
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ mv f2.txt pp/f3.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ ls
+example.txt  pp/
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cd pp
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ ls
+f3.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ pwd
+/c/Users/zaito/dir/pp
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ cd ..
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ pwd
+/c/Users/zaito/dir
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ ls
+example.txt  pp/
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cp example.txt pp/example.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ ls
+example.txt  pp/
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cd pp
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ ls
+example.txt  f3.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ cd..
+bash: cd..: command not found
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ cd ..
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ who
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ whoami
+eva
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ sudo whoami
+bash: sudo: command not found
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ touch seanses.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ who > seanses.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ ls
+example.txt  pp/  seanses.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cat seanses.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ ps
+      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
+     1823    1822    1823      14248  pty0      197609 21:24:21 /usr/bin/bash
+     2126    1823    2126       1600  pty0      197609 21:35:03 /usr/bin/ps
+     1822       1    1822      14084  ?         197609 21:24:21 /usr/bin/mintty
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ man grep
+bash: man: command not found
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ grep 'meow' example.txt
+meow
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ ls
+example.txt  pp/  seanses.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir
+$ cd pp
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ grep 'meow'
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ ls
+example.txt  f3.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ grep 'meow' f3.txt
+meow
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ grep -c
+Usage: grep [OPTION]... PATTERN [FILE]...
+Try 'grep --help' for more information.
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ grep -c 'meow'
+0
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ grep -c 'meow' f3.txt
+1
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ grep -rw 'meow' f3.txt
+meow
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ grep -v 'meow' f3.txt
+MEOW
+lkasjkasdjfoisjdgiojeriugjoasksdjfoijgf
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ touch f4.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ toich f22.txt
+bash: toich: command not found
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ touch f22.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ touch f45.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ ls
+example.txt  f22.txt  f3.txt  f4.txt  f45.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ ls | grep -E '^f[1-9]+'
+f22.txt
+f3.txt
+f4.txt
+f45.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ ls | grep -E '^f[1-9]{2}'
+f22.txt
+f45.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ ls | grep -E '^f[1-9]{1}'
+f22.txt
+f3.txt
+f4.txt
+f45.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ ls | grep -E '^f[1-9]{1}.txt'
+f3.txt
+f4.txt
+
+eva@DESKTOP-O21PU22 MINGW64 ~/dir/pp
+$ ls -l
+total 2
+-rw-r--r-- 1 eva 197609 51 Sep  3 14:33 example.txt
+-rw-r--r-- 1 eva 197609  0 Sep  3 14:38 f22.txt
+-rw-r--r-- 1 eva 197609 51 Sep  3 14:30 f3.txt
+-rw-r--r-- 1 eva 197609  0 Sep  3 14:37 f4.txt
+-rw-r--r-- 1 eva 197609  0 Sep  3 14:38 f45.txt
