@@ -1,0 +1,131 @@
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+vik@aaa:~$ cd labs-2023
+vik@aaa:~/labs-2023$ mkdir lab2
+vik@aaa:~/labs-2023$ cd lab2
+vik@aaa:~/labs-2023/lab2$ touch f1.txt
+vik@aaa:~/labs-2023/lab2$ cat > f1.txt
+1234
+^C
+vik@aaa:~/labs-2023/lab2$ cat f1.txt > f2.txt
+vik@aaa:~/labs-2023/lab2$ cat f1.txt f2.txt > f3.txt
+vik@aaa:~/labs-2023/lab2$ cat f3.txt
+1234
+1234
+vik@aaa:~/labs-2023/lab2$ cat > f3.txt
+5678
+^C
+vik@aaa:~/labs-2023/lab2$ cat f3.txt
+5678
+vik@aaa:~/labs-2023/lab2$ cat >> f3.txt
+0000
+^C
+vik@aaa:~/labs-2023/lab2$ cat f3.txt
+5678
+0000
+vik@aaa:~/labs-2023/lab2$ ls
+f1.txt  f2.txt  f3.txt
+vik@aaa:~/labs-2023/lab2$ mv f3.txt f4.txt
+vik@aaa:~/labs-2023/lab2$ ls
+f1.txt  f2.txt  f4.txt
+vik@aaa:~/labs-2023/lab2$ mkdir folder
+vik@aaa:~/labs-2023/lab2$ mv f4.txt ./folder/f4.txt
+vik@aaa:~/labs-2023/lab2$ ls
+f1.txt  f2.txt  folder
+vik@aaa:~/labs-2023/lab2$ cd folder
+vik@aaa:~/labs-2023/lab2/folder$ ls
+f4.txt
+vik@aaa:~/labs-2023/lab2/folder$ cd ..
+vik@aaa:~/labs-2023/lab2$ mkdir folder2
+vik@aaa:~/labs-2023/lab2$ pwd
+/home/vik/labs-2023/lab2
+vik@aaa:~/labs-2023/lab2$ mv folder2  /home/vik/labs-2023/lab2/folder/
+vik@aaa:~/labs-2023/lab2$ cd folder
+vik@aaa:~/labs-2023/lab2/folder$ ls
+f4.txt  folder2
+vik@aaa:~/labs-2023/lab2/folder$ cd ..
+vik@aaa:~/labs-2023/lab2$ mv ./folder ./folder1
+vik@aaa:~/labs-2023/lab2$ ls ./folder1
+f4.txt  folder2
+vik@aaa:~/labs-2023/lab2$ cat > f3.txt
+Hello, world!
+^C
+vik@aaa:~/labs-2023/lab2$ cp f3.txt f5.txt
+vik@aaa:~/labs-2023/lab2$ cat f5.txt
+Hello, world!
+vik@aaa:~/labs-2023/lab2$ cp f3.txt ./folder1/
+vik@aaa:~/labs-2023/lab2$ ls ./folder1
+f3.txt  f4.txt  folder2
+vik@aaa:~/labs-2023/lab2$ cd folder1
+vik@aaa:~/labs-2023/lab2/folder1$ cd folder2
+vik@aaa:~/labs-2023/lab2/folder1/folder2$ touch f6.txt
+vik@aaa:~/labs-2023/lab2/folder1/folder2$ touch f7.txt
+vik@aaa:~/labs-2023/lab2/folder1/folder2$ cd ..
+vik@aaa:~/labs-2023/lab2/folder1$ cp ./folder2 ./folder3
+cp: -r not specified; omitting directory './folder2'
+vik@aaa:~/labs-2023/lab2/folder1$ cp -r ./folder2 ./folder3
+vik@aaa:~/labs-2023/lab2/folder1$ ls
+f3.txt  f4.txt  folder2  folder3
+vik@aaa:~/labs-2023/lab2/folder1$ ls folder3
+f6.txt  f7.txt
+vik@aaa:~/labs-2023/lab2/folder1$ rm ./folder3/f7.txt
+vik@aaa:~/labs-2023/lab2/folder1$ ls folder3
+f6.txt
+vik@aaa:~/labs-2023/lab2/folder1$ rm -r ./folder3
+vik@aaa:~/labs-2023/lab2/folder1$ ls
+f3.txt  f4.txt  folder2
+vik@aaa:~/labs-2023/lab2/folder1$ cd ..
+vik@aaa:~/labs-2023/lab2$ ls | sort -r
+folder1
+f5.txt
+f3.txt
+f2.txt
+f1.txt
+vik@aaa:~/labs-2023/lab2$ cat > f10.txt
+1234
+4567
+2916
+^C
+vik@aaa:~/labs-2023/lab2$ grep "1" f10.txt
+1234
+2916
+vik@aaa:~/labs-2023/lab2$ grep -lr "1" .
+./f2.txt
+./f1.txt
+./f10.txt
+vik@aaa:~/labs-2023/lab2$ grep -lr "H" .
+./f3.txt
+./f5.txt
+./folder1/f3.txt
+vik@aaa:~/labs-2023/lab2$ grep -c "1" f10.txt
+2
+vik@aaa:~/labs-2023/lab2$ ls | grep "f[1-3].txt"
+f1.txt
+f2.txt
+f3.txt
+vik@aaa:~/labs-2023/lab2$ grep -v "1" f10.txt
+4567
+vik@aaa:~/labs-2023/lab2$ who
+vik      tty2         2023-09-03 12:26 (tty2)
+vik@aaa:~/labs-2023/lab2$ whoami
+vik
+vik@aaa:~/labs-2023/lab2$ ps
+    PID TTY          TIME CMD
+   1962 pts/0    00:00:00 bash
+   3652 pts/0    00:00:00 ps
+vik@aaa:~/labs-2023/lab2$ ls -l
+total 24
+-rw-rw-r-- 1 vik vik   15 Sep  3 13:24 f10.txt
+-rw-rw-r-- 1 vik vik    5 Sep  3 12:30 f1.txt
+-rw-rw-r-- 1 vik vik    5 Sep  3 12:33 f2.txt
+-rw-rw-r-- 1 vik vik   14 Sep  3 13:10 f3.txt
+-rw-rw-r-- 1 vik vik   14 Sep  3 13:11 f5.txt
+drwxrwxr-x 3 vik vik 4096 Sep  3 13:17 folder1
+vik@aaa:~/labs-2023/lab2$ cat > scr.h
+echo 123
+^C
+vik@aaa:~/labs-2023/lab2$ chmod u+x scr.h
+vik@aaa:~/labs-2023/lab2$ ./scr.h
+123
+vik@aaa:~/labs-2023/lab2$ 
