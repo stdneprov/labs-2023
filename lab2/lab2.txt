@@ -1,0 +1,246 @@
+
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~ (master)
+$ touch f1.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~ (master)
+$ touch f2.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~ (master)
+$ mkdir pap.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~ (master)
+$ mkdir pap2.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~ (master)
+$ cat >> f1.txt
+просто текст
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~ (master)
+$ cat >> f2.txt
+какой-то текст
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~ (master)
+$ cat f1.txt f2.txt
+просто текст
+какой-то текст
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~ (master)
+$ mv f1.txt pap.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~ (master)
+$ ls pap.txt
+f1.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~ (master)
+$ mv f2.txt pap.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~ (master)
+$ ls pap.txt
+f1.txt  f2.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~ (master)
+$ cp -r pap2.txt pap.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~ (master)
+$ ls pap.txt
+f1.txt  f2.txt  pap2.txt/
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~ (master)
+$ cd pap.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ ls
+f1.txt  f2.txt  pap2.txt/
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ who
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ whoami
+79374
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ pwd
+/c/Users/79374/pap.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ mv f1.txt f2.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ cat f2.txt
+просто текст
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ touch f3.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ touch f4.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ cp f3.txt f4.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ ls
+f2.txt  f3.txt  f4.txt  pap2.txt/
+
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ rm f3.txt f4.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ ls
+f2.txt  pap2.txt/
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ rm -r pap3.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ ls
+f2.txt  pap2.txt/
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ ps
+      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
+      587     586     587       9016  pty0      197609 13:12:12 /usr/bin/bash
+      586       1     586       2692  ?         197609 13:12:12 /usr/bin/mintty
+      844     587     844       9664  pty0      197609 13:23:01 /usr/bin/ps
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ mv f2.txt file.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ ls
+file.txt  pap2.txt/
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ touch file1.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ touch file2.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ cat >> file1.txt
+арбуз
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ cat >> file2.txt
+персик
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ cat file1.txt > file2.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ ls
+file.txt  file1.txt  file2.txt  pap2.txt/
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ cat file2.txt
+арбуз
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ cat > file1.txt < file2.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ cat file1.txt
+арбуз
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ ls | sort -r
+pap2.txt/
+file2.txt
+file1.txt
+file.txt
+
+ 79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ grep "МАИ" file2.txt
+МАИ МАИ МАИ МАИ
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ grep -r "МАИ" .
+./file2.txt:МАИ МАИ МАИ МАИ
+
+ 79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ grep -lr "МАИ" .
+./file2.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ grep -rw "МАИ" .
+./file2.txt:МАИ МАИ МАИ МАИ
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ cat >> file2.txt
+МАИ МАИ МАИ МАИ
+В
+А
+
+В
+Ы
+В
+АМ
+
+В
+В
+Ы
+Ы
+В
+12345678
+2345
+5
+5
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ grep -v "МАИ" file2.txt
+арбуз
+в
+а
+ы
+ф
+
+ррр
+ааа
+ввв
+ыыы
+и
+
+
+в
+1123466788
+766544
+6вмаак34567
+В
+А
+
+В
+Ы
+В
+АМ
+
+В
+В
+Ы
+Ы
+В
+12345678
+2345
+5
+5
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ ls
+file.txt  file1.txt  file2.txt  pap2.txt/
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ ls | grep "file[1-3].txt"
+file1.txt
+file2.txt
+
+79374@LAPTOP-3AEAJ856 MINGW64 ~/pap.txt (master)
+$ grep -c "1" file2.txt
+2
+
+
+
+
+
+
