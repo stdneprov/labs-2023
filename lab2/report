@@ -1,0 +1,225 @@
+openonevm@openonevm:~$ cd labs-2023
+openonevm@openonevm:~/labs-2023$ git branch lab2
+fatal: A branch named 'lab2' already exists.
+openonevm@openonevm:~/labs-2023$ git checkout lab2
+Already on 'lab2'
+openonevm@openonevm:~/labs-2023$ ls
+ codestyle.txt   lab11.txt   lab15.txt          lab3.txt   lab8.txt
+ kp3.txt         lab12.txt   lab2               lab5.txt  '#lab9.txt#'
+ kp4.txt         lab13.txt   lab2-example.txt   lab6.txt   lab9.txt
+ lab10.txt       lab14.txt   lab2.txt           lab7.txt   README.md
+openonevm@openonevm:~/labs-2023$ who
+openonevm :0           2023-09-03 21:51 (:0)
+penonevm@openonevm:~/labs-2023$ whoami
+openonevm
+openonevm@openonevm:~/labs-2023$ pwd
+/home/openonevm/labs-2023
+openonevm@openonevm:~/labs-2023$ touch lab2.txt
+openonevm@openonevm:~/labs-2023$ ls
+ codestyle.txt   lab11.txt   lab15.txt          lab3.txt   lab8.txt
+ kp3.txt         lab12.txt   lab2               lab5.txt  '#lab9.txt#'
+ kp4.txt         lab13.txt   lab2-example.txt   lab6.txt   lab9.txt
+ lab10.txt       lab14.txt   lab2.txt           lab7.txt   README.md
+openonevm@openonevm:~/labs-2023$ ls -l
+total 92
+-rw-rw-r-- 1 openonevm openonevm 1208 Sep  3 21:36  codestyle.txt
+-rw-rw-r-- 1 openonevm openonevm  443 Sep  3 21:36  kp3.txt
+-rw-rw-r-- 1 openonevm openonevm  280 Sep  3 21:36  kp4.txt
+-rw-rw-r-- 1 openonevm openonevm  170 Sep  3 21:36  lab10.txt
+-rw-rw-r-- 1 openonevm openonevm 1201 Sep  3 21:36  lab11.txt
+-rw-rw-r-- 1 openonevm openonevm  681 Sep  3 21:36  lab12.txt
+-rw-rw-r-- 1 openonevm openonevm  777 Sep  3 21:36  lab13.txt
+-rw-rw-r-- 1 openonevm openonevm  491 Sep  3 21:36  lab14.txt
+-rw-rw-r-- 1 openonevm openonevm  628 Sep  3 21:36  lab15.txt
+drwxrwxr-x 2 openonevm openonevm 4096 Sep  3 22:02  lab2
+-rw-rw-r-- 1 openonevm openonevm 1568 Sep  3 21:36  lab2-example.txt
+-rw-rw-r-- 1 openonevm openonevm    1 Sep  3 22:15  lab2.txt
+-rw-rw-r-- 1 openonevm openonevm 6417 Sep  3 21:36  lab3.txt
+-rw-rw-r-- 1 openonevm openonevm 2946 Sep  3 21:36  lab5.txt
+-rw-rw-r-- 1 openonevm openonevm  635 Sep  3 21:36  lab6.txt
+-rw-rw-r-- 1 openonevm openonevm  194 Sep  3 21:36  lab7.txt
+-rw-rw-r-- 1 openonevm openonevm  318 Sep  3 21:36  lab8.txt
+-rw-rw-r-- 1 openonevm openonevm  513 Sep  3 21:36 '#lab9.txt#'
+-rw-rw-r-- 1 openonevm openonevm  570 Sep  3 21:36  lab9.txt
+-rw-rw-r-- 1 openonevm openonevm 8431 Sep  3 21:36  README.md
+openonevm@openonevm:~/labs-2023$ ls -a
+ .               kp3.txt     lab13.txt          lab2.txt   lab8.txt
+ ..              kp4.txt     lab14.txt          lab3.txt  '#lab9.txt#'
+ codestyle.txt   lab10.txt   lab15.txt          lab5.txt   lab9.txt
+ .git            lab11.txt   lab2               lab6.txt   README.md
+ .gitignore      lab12.txt   lab2-example.txt   lab7.txt
+openonevm@openonevm:~/labs-2023$ cd lab2
+openonevm@openonevm:~/labs-2023/lab2$ touch lab2.txt
+openonevm@openonevm:~/labs-2023/lab2$ ls
+lab2.txt
+openonevm@openonevm:~/labs-2023/lab2$ touch report2.txt
+openonevm@openonevm:~/labs-2023/lab2$ ls
+lab2.txt  report2.txt
+openonevm@openonevm:~/labs-2023/lab2$ ls -l
+total 0
+-rw-rw-r-- 1 openonevm openonevm 0 Sep  3 22:32 lab2.txt
+-rw-rw-r-- 1 openonevm openonevm 0 Sep  3 22:37 report2.txt
+openonevm@openonevm:~/labs-2023/lab2$ ls -a
+.  ..  lab2.txt  report2.txt
+openonevm@openonevm:~/labs-2023/lab2$ mkdir test
+openonevm@openonevm:~/labs-2023/lab2$ ls
+lab2.txt  report2.txt  test
+openonevm@openonevm:~/labs-2023/lab2$ touch test1 test2
+openonevm@openonevm:~/labs-2023/lab2$ ls
+lab2.txt  report2.txt  test  test1  test2
+openonevm@openonevm:~/labs-2023/lab2$ cat > test2
+cats conquer the world
+^C
+openonevm@openonevm:~/labs-2023/lab2$ ls
+lab2.txt  report2.txt  test  test1  test2
+openonevm@openonevm:~/labs-2023/lab2$ cat test2
+cats conquer the world
+openonevm@openonevm:~/labs-2023/lab2$ ps
+    PID TTY          TIME CMD
+   1370 pts/0    00:00:00 bash
+   2546 pts/0    00:00:00 ps
+openonevm@openonevm:~/labs-2023/lab2$ grep -r "cats"
+test2:cats conquer the world
+openonevm@openonevm:~/labs-2023/lab2$ grep -1r "cats"
+test2:cats conquer the world
+openonevm@openonevm:~/labs-2023/lab2$ grep -1r "cats" test
+openonevm@openonevm:~/labs-2023/lab2$ grep -rw "cats"
+test2:cats conquer the world
+openonevm@openonevm:~/labs-2023/lab2$ grep -rw "conquer" test
+openonevm@openonevm:~/labs-2023/lab2$ grep -c "cats" test2
+1
+openonevm@openonevm:~/labs-2023/lab2$ grep -v "cats" test1
+openonevm@openonevm:~/labs-2023/lab2$ ls -l
+total 8
+-rw-rw-r-- 1 openonevm openonevm    0 Sep  3 22:32 lab2.txt
+-rw-rw-r-- 1 openonevm openonevm    0 Sep  3 22:37 report2.txt
+drwxrwxr-x 2 openonevm openonevm 4096 Sep  3 22:52 test
+-rw-rw-r-- 1 openonevm openonevm    0 Sep  3 23:03 test1
+-rw-rw-r-- 1 openonevm openonevm   23 Sep  3 23:05 test2
+openonevm@openonevm:~/labs-2023/lab2$ ls -a
+.  ..  lab2.txt  report2.txt  test  test1  test2
+openonevm@openonevm:~/labs-2023/lab2$ cat > test1
+r u justifier
+^C
+openonevm@openonevm:~/labs-2023/lab2$ cat test1
+r u justifier
+openonevm@openonevm:~/labs-2023/lab2$ ls
+lab2.txt  report2.txt  test  test1  test2
+openonevm@openonevm:~/labs-2023/lab2$ cat test1 > test2
+openonevm@openonevm:~/labs-2023/lab2$ cat test1
+r u justifier
+openonevm@openonevm:~/labs-2023/lab2$ cat test2
+r u justifier
+openonevm@openonevm:~/labs-2023/lab2$ cat > test2 
+cats conquer the world
+^C
+openonevm@openonevm:~/labs-2023/lab2$ cat > test2 < test1
+openonevm@openonevm:~/labs-2023/lab2$ cat test2
+r u justifier
+openonevm@openonevm:~/labs-2023/lab2$ cat test1
+r u justifier
+openonevm@openonevm:~/labs-2023/lab2$ cat test2
+r u justifier
+openonevm@openonevm:~/labs-2023/lab2$ cat > test2
+cats conquer
+^C
+openonevm@openonevm:~/labs-2023/lab2$ cat test1 >> test2
+openonevm@openonevm:~/labs-2023/lab2$ cat test1
+r u justifier
+openonevm@openonevm:~/labs-2023/lab2$ cat test2
+cats conquer
+r u justifier
+openonevm@openonevm:~/labs-2023/lab2$ cd test
+openonevm@openonevm:~/labs-2023/lab2/test$ ls
+openonevm@openonevm:~/labs-2023/lab2/test$ touch mehehe
+openonevm@openonevm:~/labs-2023/lab2/test$ ls
+mehehe
+openonevm@openonevm:~/labs-2023/lab2/test$ cd ..
+openonevm@openonevm:~/labs-2023/lab2$ cp lab2.txt test/lab2.txt
+openonevm@openonevm:~/labs-2023/lab2$ ls
+lab2.txt  report2.txt  test  test1  test2
+openonevm@openonevm:~/labs-2023/lab2$ cd test
+openonevm@openonevm:~/labs-2023/lab2/test$ ls
+lab2.txt  mehehe
+openonevm@openonevm:~/labs-2023/lab2$ cp -r test lab2
+openonevm@openonevm:~/labs-2023/lab2$ ls
+lab2  lab2.txt  report2.txt  test  test1  test2
+openonevm@openonevm:~/labs-2023/lab2$ mv lab2 lab2.0
+openonevm@openonevm:~/labs-2023/lab2$ ls
+lab2.0  lab2.txt  report2.txt  test  test1  test2
+openonevm@openonevm:~/labs-2023/lab2$ mv test lab2.0/test
+openonevm@openonevm:~/labs-2023/lab2$ ls
+lab2.0  lab2.txt  report2.txt  test1  test2
+openonevm@openonevm:~/labs-2023/lab2$ rm test1
+openonevm@openonevm:~/labs-2023/lab2$ ls
+lab2.0  lab2.txt  report2.txt  test2
+openonevm@openonevm:~/labs-2023/lab2$ rm -r test2
+openonevm@openonevm:~/labs-2023/lab2$ ls
+lab2.0  lab2.txt  report2.txt
+openonevm@openonevm:~/labs-2023/lab2$ mkdir test
+openonevm@openonevm:~/labs-2023/lab2$ cd test
+openonevm@openonevm:~/labs-2023/lab2/test$ mkdir test2
+openonevm@openonevm:~/labs-2023/lab2/test$ cd ../..
+openonevm@openonevm:~/labs-2023$ cd lab2
+openonevm@openonevm:~/labs-2023/lab2$ ls
+lab2.0  lab2.txt  report2.txt  test
+openonevm@openonevm:~/labs-2023/lab2$ cd test
+openonevm@openonevm:~/labs-2023/lab2/test$ ls
+test2
+openonevm@openonevm:~/labs-2023/lab2/test$ touch tests
+openonevm@openonevm:~/labs-2023/lab2/test$ touch onemore
+openonevm@openonevm:~/labs-2023/lab2/test$ rm -f
+openonevm@openonevm:~/labs-2023/lab2/test$ ls
+onemore  test2  tests
+openonevm@openonevm:~/labs-2023/lab2/test$ rm -f tests
+openonevm@openonevm:~/labs-2023/lab2/test$ ls
+onemore  test2
+openonevm@openonevm:~/labs-2023/lab2/test$ rm onemore
+openonevm@openonevm:~/labs-2023/lab2/test$ ls
+test2
+openonevm@openonevm:~/labs-2023/lab2/test$ cd ..
+openonevm@openonevm:~/labs-2023/lab2$ ls | sort -r
+test
+report2.txt
+lab2.txt
+lab2.0
+openonevm@openonevm:~/labs-2023/lab2$ ls | grep -E "^test[1-9]+"
+openonevm@openonevm:~/labs-2023/lab2$ ls
+lab2.0  lab2.txt  report2.txt  test
+openonevm@openonevm:~/labs-2023/lab2$  mkdir test6
+openonevm@openonevm:~/labs-2023/lab2$ ls | grep -E "^test[1-9]+"
+test6
+openonevm@openonevm:~/labs-2023/lab2$ ls
+lab2.0  lab2.txt  report2.txt  test  test6
+openonevm@openonevm:~/labs-2023/lab2$ touch test
+openonevm@openonevm:~/labs-2023/lab2$ ls
+lab2.0  lab2.txt  report2.txt  test  test6
+openonevm@openonevm:~/labs-2023/lab2$ mv *.txt
+openonevm@openonevm:~/labs-2023/lab2$ ls
+lab2.0  report2.txt  test  test6
+openonevm@openonevm:~/labs-2023/lab2$ mv *.txt test
+openonevm@openonevm:~/labs-2023/lab2$ ls
+lab2.0  test  test6
+openonevm@openonevm:~/labs-2023/lab2$ cd test
+openonevm@openonevm:~/labs-2023/lab2/test$ ls
+report2.txt  test2
+openonevm@openonevm:~/labs-2023/lab2$ touch test.txt
+openonevm@openonevm:~/labs-2023/lab2$ ls
+lab2.0  test  test0  test6  test.txt
+openonevm@openonevm:~/labs-2023/lab2$ mv *.txt ..
+openonevm@openonevm:~/labs-2023/lab2$ ls
+lab2.0  test  test0  test6
+openonevm@openonevm:~/labs-2023/lab2$ cd ..
+openonevm@openonevm:~/labs-2023$ ls
+ codestyle.txt   lab12.txt   lab2-example.txt   lab7.txt      test.txt
+ kp3.txt         lab13.txt   lab2.txt           lab8.txt
+ kp4.txt         lab14.txt   lab3.txt          '#lab9.txt#'
+ lab10.txt       lab15.txt   lab5.txt           lab9.txt
+ lab11.txt       lab2        lab6.txt           README.md
+openonevm@openonevm:~/labs-2023$ cd lab2
+openonevm@openonevm:~/labs-2023/lab2$ ls
+lab2.0  test  test0  test6
+openonevm@openonevm:~/labs-2023/lab2$ cd test
+openonevm@openonevm:~/labs-2023/lab2/test$ ls
+report2.txt  test2
+
