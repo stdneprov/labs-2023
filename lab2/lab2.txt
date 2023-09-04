@@ -3,6 +3,10 @@ zggff@zggff-utm:~$ pwd
 zggff@zggff-utm:~$ who
 zggff    tty2         2023-09-03 16:44 (tty2)
 zggff    pts/2        2023-09-03 17:25
+zggff@zggff-utm:~/lab2$ ps
+    PID TTY          TIME CMD
+   2183 pts/0    00:00:00 bash
+   2464 pts/0    00:00:00 ps
 zggff@zggff-utm:~$ whoami
 zggff
 zggff@zggff-utm:~$ mkdir lab2
@@ -76,4 +80,14 @@ zggff@zggff-utm:~/lab2$ grep -r "Hello" .
 ./t1.txt:Hello, World
 zggff@zggff-utm:~/lab2$ grep -c "World" t_combined.txt 
 2
-zggff@zggff-utm:~/lab2$ 
+zggff@zggff-utm:~/lab2$ rm t_combined.txt
+zggff@zggff-utm:~/lab2$ ls
+scripts  t1.txt  t2.txt
+zggff@zggff-utm:~/lab2$ rm -r scripts/
+zggff@zggff-utm:~/lab2$ ls
+t1.txt  t2.txt
+zggff@zggff-utm:~/lab2$ rm *
+zggff@zggff-utm:~/lab2$ ls
+zggff@zggff-utm:~/lab2$ cd ..
+zggff@zggff-utm:~$ rmdir lab2/
+zggff@zggff-utm:~$
