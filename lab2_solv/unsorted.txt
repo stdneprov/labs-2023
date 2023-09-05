@@ -1,0 +1,4 @@
+session.txt
+mamaBIG.txt
+mama2.txt
+mama1.txt

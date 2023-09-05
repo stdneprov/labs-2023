@@ -1,0 +1,182 @@
+Last login: Tue Sep  5 21:26:02 on ttys000
+daniilkutugin@MacBook-Air-Daniil ~ % ls
+Applications	Documents	Library		Movies		Pictures	labs-2023
+Desktop		Downloads	MAI-course-1	Music		Public
+daniilkutugin@MacBook-Air-Daniil ~ % cd labs-2023 
+daniilkutugin@MacBook-Air-Daniil labs-2023 % pwd
+/Users/daniilkutugin/labs-2023
+daniilkutugin@MacBook-Air-Daniil labs-2023 % ls
+#lab9.txt#		lab10.txt		lab15.txt		lab5.txt
+README.md		lab11.txt		lab2-example.txt	lab6.txt
+codestyle.txt		lab12.txt		lab2.txt		lab7.txt
+kp3.txt			lab13.txt		lab2_solv		lab8.txt
+kp4.txt			lab14.txt		lab3.txt		lab9.txt
+daniilkutugin@MacBook-Air-Daniil labs-2023 % cd lab2_solv 
+daniilkutugin@MacBook-Air-Daniil lab2_solv % PWD
+/Users/daniilkutugin/labs-2023/lab2_solv
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls 
+session.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % rm session.txt 
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls
+daniilkutugin@MacBook-Air-Daniil lab2_solv % touch session.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls
+session.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % cat > session.txt 
+123
+456
+^C
+daniilkutugin@MacBook-Air-Daniil lab2_solv % cat session.txt 
+123
+456
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls
+session.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % who
+daniilkutugin console  Sep  2 12:04 
+daniilkutugin ttys000  Sep  5 22:10 
+daniilkutugin@MacBook-Air-Daniil lab2_solv % whoami
+daniilkutugin
+daniilkutugin@MacBook-Air-Daniil lab2_solv % cat session.txt > test.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls
+session.txt	test.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % cat test.txt 
+123
+456
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls
+session.txt	test.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % rm test.txt 
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls
+session.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % mkdir test
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls
+session.txt	test
+daniilkutugin@MacBook-Air-Daniil lab2_solv % cp session.txt test 
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls test 
+session.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % cat test/session.txt 
+123
+456
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls
+session.txt	test
+daniilkutugin@MacBook-Air-Daniil lab2_solv % rm -r test 
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls
+session.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % mkdir test1
+daniilkutugin@MacBook-Air-Daniil lab2_solv % touch test1/ltl.bebra
+daniilkutugin@MacBook-Air-Daniil lab2_solv % cp test1 test2
+cp: test1 is a directory (not copied).
+daniilkutugin@MacBook-Air-Daniil lab2_solv % cp -r test1 test2
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls                   
+session.txt	test1		test2
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls test2 
+ltl.bebra
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls test1
+ltl.bebra
+daniilkutugin@MacBook-Air-Daniil lab2_solv % cd test1
+daniilkutugin@MacBook-Air-Daniil test1 % ls
+ltl.bebra
+daniilkutugin@MacBook-Air-Daniil test1 % mv ltl.bebra new_file.txt 
+daniilkutugin@MacBook-Air-Daniil test1 % ls
+new_file.txt
+daniilkutugin@MacBook-Air-Daniil test1 % cd ..
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls
+session.txt	test1		test2
+daniilkutugin@MacBook-Air-Daniil lab2_solv % mv test1 test2/
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls
+session.txt	test2
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls test2 
+ltl.bebra	test1
+daniilkutugin@MacBook-Air-Daniil lab2_solv % rm -r test2 
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls
+session.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ps
+  PID TTY           TIME CMD
+32920 ttys000    0:00.22 -zsh
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls
+session.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ps
+  PID TTY           TIME CMD
+32920 ttys000    0:00.22 -zsh
+daniilkutugin@MacBook-Air-Daniil lab2_solv % who | cat > session.txt 
+daniilkutugin@MacBook-Air-Daniil lab2_solv % cat session.txt 
+daniilkutugin console  Sep  2 12:04 
+daniilkutugin ttys000  Sep  5 22:10 
+daniilkutugin@MacBook-Air-Daniil lab2_solv % cat > mama1.txt
+MAMA
+^C
+daniilkutugin@MacBook-Air-Daniil lab2_solv % cat > mama2.txt
+MAMA1
+^C
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls
+mama1.txt	mama2.txt	session.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % grep -l "MAMA"
+^C
+daniilkutugin@MacBook-Air-Daniil lab2_solv % grep -rl "MAMA"
+./mama1.txt
+./mama2.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % grep -rlw "MAMA"
+./mama1.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % grep -c "MAMA"  
+^C
+daniilkutugin@MacBook-Air-Daniil lab2_solv % grep -rc "MAMA" mama1.txt
+mama1.txt:1
+daniilkutugin@MacBook-Air-Daniil lab2_solv % grep -rc "MAMA" mama2.txt
+mama2.txt:1
+daniilkutugin@MacBook-Air-Daniil lab2_solv % grep -lr . | cat > session.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls                            
+mama1.txt	mama2.txt	session.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % cat session.txt 
+./mama1.txt
+./mama2.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls | grep "*.txt"   
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls | grep -E "*.txt"
+grep: repetition-operator operand invalid
+daniilkutugin@MacBook-Air-Daniil lab2_solv % touch mamaBIG.txt   
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls | grep -E "mama[0-9]+"
+mama1.txt
+mama2.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls | grep -E "mama[0-9]2"
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls | grep -E "mama[0-9]1"
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls | grep -E "mama[0-9]" 
+mama1.txt
+mama2.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls 
+mama1.txt	mama2.txt	mamaBIG.txt	session.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls | sort -r
+session.txt
+mamaBIG.txt
+mama2.txt
+mama1.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls | sort
+mama1.txt
+mama2.txt
+mamaBIG.txt
+session.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls | sort | cat > session.txt 
+daniilkutugin@MacBook-Air-Daniil lab2_solv % cat session.txt 
+mama1.txt
+mama2.txt
+mamaBIG.txt
+session.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % mv session.txt sorted_files.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % cat sorted_files.txt 
+mama1.txt
+mama2.txt
+mamaBIG.txt
+session.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % cat sorted_files.txt | sort | cat > insorted.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % ls
+insorted.txt		mama2.txt		sorted_files.txt
+mama1.txt		mamaBIG.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % mv insorted.txt unsorted.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % cat unsorted.txt 
+mama1.txt
+mama2.txt
+mamaBIG.txt
+session.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % cat sorted_files.txt | sort -r | cat > unsorted.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % cat unsorted.txt 
+session.txt
+mamaBIG.txt
+mama2.txt
+mama1.txt
+daniilkutugin@MacBook-Air-Daniil lab2_solv % 
