@@ -1,0 +1,223 @@
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~
+$ cd labs-2023
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023 (lab.2)
+$ mkdir lab.2
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023 (lab.2)
+$ cd lab.2
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ cd ..
+
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023 (lab.2)
+$ ls
+'#lab9.txt#'     kp3.txt   lab10.txt   lab13.txt   lab2-example.txt   lab5.txt   lab8.txt
+ README.md       kp4.txt   lab11.txt   lab14.txt   lab2.txt           lab6.txt   lab9.txt
+ codestyle.txt   lab.2/    lab12.txt   lab15.txt   lab3.txt           lab7.txt
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023 (lab.2)
+$ cd lab.2
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ touch 1.txt 2.txt 3.txt
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ ls
+1.txt  2.txt  3.txt
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ cat 1.txt
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ cat > 1.txt
+Хэмингуэй окрасил потолок в медь
+
+[1]+  Stopped                 cat > 1.txt
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ cat 1.txt
+Хэмингуэй окрасил потолок в медь
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ echo "В прошлый раз этот способ не сработал" > 2.txt
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ cat 2.txt
+В прошлый раз этот способ не сработал
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ cat > 3.txt
+Странно
+
+[2]+  Stopped                 cat > 3.txt
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ cat 1.txt > 2.txt
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ cat 1.txt
+Хэмингуэй окрасил потолок в медь
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ cat 2.txt
+Хэмингуэй окрасил потолок в медь
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ cat 1.txt >> 3.txt
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ cat 1.txt
+Хэмингуэй окрасил потолок в медь
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ cat 3.txt
+Странно
+Хэмингуэй окрасил потолок в медь
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ cat > 1.txt < 3.txt
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ cat 1.txt
+Странно
+Хэмингуэй окрасил потолок в медь
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ cat 3.txt
+Странно
+Хэмингуэй окрасил потолок в медь
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ who
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ whoami
+DarkTheme
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ ps
+      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
+S    1482    1420    1482        492  pty0      197609 19:21:48 /usr/bin/cat
+     1561    1420    1561      12244  pty0      197609 19:46:45 /usr/bin/ps
+     1420    1419    1420       3968  pty0      197609 19:19:34 /usr/bin/bash
+     1419       1    1419       3520  ?         197609 19:19:34 /usr/bin/mintty
+S    1501    1420    1501      10980  pty0      197609 19:24:57 /usr/bin/cat
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ mv 1.txt ./lab644/1.txt
+mv: cannot move '1.txt' to './lab644/1.txt': No such file or directory
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ mv 1.txx ./lab.2/1.txt
+mv: cannot stat '1.txx': No such file or directory
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ mv 1.txt ./lab.2/1.txt
+mv: cannot move '1.txt' to './lab.2/1.txt': No such file or directory
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ mkdir lab2
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ mkdir lab2.0
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ mv 1/txt lab2
+mv: cannot stat '1/txt': No such file or directory
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ mv 1.txt lab2
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ ls
+2.txt  3.txt  lab2/  lab2.0/
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ mv lab2 lab2.0
+mv: cannot move 'lab2' to 'lab2.0/lab2': Permission denied
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ ls
+2.txt  3.txt  lab2/  lab2.0/
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ ls -l
+total 2
+-rw-r--r-- 1 DarkTheme 197121 61 Sep  6 19:43 2.txt
+-rw-r--r-- 1 DarkTheme 197121 76 Sep  6 19:44 3.txt
+drwxr-xr-x 1 DarkTheme 197121  0 Sep  6 19:49 lab2/
+drwxr-xr-x 1 DarkTheme 197121  0 Sep  6 19:48 lab2.0/
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ ls
+2.txt  3.txt  lab2/  lab2.0/
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ rm -rf lab2.0
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ rm -rf lab2
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ ls
+2.txt  3.txt
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ pwd
+/c/Users/DarkTheme/labs-2023/lab.2
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ ps
+      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
+     1645    1420    1645      10224  pty0      197609 19:55:13 /usr/bin/ps
+S    1482    1420    1482        492  pty0      197609 19:21:48 /usr/bin/cat
+     1420    1419    1420       3968  pty0      197609 19:19:34 /usr/bin/bash
+     1419       1    1419       3520  ?         197609 19:19:34 /usr/bin/mintty
+S    1501    1420    1501      10980  pty0      197609 19:24:57 /usr/bin/cat
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ ps -x
+ps: unknown option -- x
+Try `ps --help' for more information.
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ ps -a
+      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
+S    1482    1420    1482        492  pty0      197609 19:21:48 /usr/bin/cat
+     1655    1420    1655       3632  pty0      197609 19:55:31 /usr/bin/ps
+     1420    1419    1420       3968  pty0      197609 19:19:34 /usr/bin/bash
+     1419       1    1419       3520  ?         197609 19:19:34 /usr/bin/mintty
+S    1501    1420    1501      10980  pty0      197609 19:24:57 /usr/bin/cat
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ grep -r "Х"
+2.txt:Хэмингуэй окрасил потолок в медь
+3.txt:Хэмингуэй окрасил потолок в медь
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ grep -lr "С"
+3.txt
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ grep -c "т"
+
+[3]+  Stopped                 grep -c "т"
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ grep -rw "Х"
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ ды
+bash: ды: command not found
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ ls
+2.txt  3.txt
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ rm -rf 2.txt 3.txt
+
+DarkTheme@DESKTOP-FT3HVSI MINGW64 ~/labs-2023/lab.2 (lab.2)
+$ touch main.txt
