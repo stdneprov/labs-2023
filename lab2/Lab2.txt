@@ -1,0 +1,108 @@
+artem@artem-VirtualBox:~$ who
+artem    :0           2023-09-08 21:40 (:0)
+artem@artem-VirtualBox:~$ whoami
+artem
+artem@artem-VirtualBox:~$ ps
+    PID TTY          TIME CMD
+   1503 pts/0    00:00:00 bash
+   1617 pts/0    00:00:00 ps
+artem@artem-VirtualBox:~$ ls
+ Видео       Загрузки      Музыка         'Рабочий стол'
+ Документы   Изображения   Общедоступные   Шаблоны
+artem@artem-VirtualBox:~$ mkdir test
+artem@artem-VirtualBox:~$ ls
+ test    Документы   Изображения   Общедоступные   Шаблоны
+ Видео   Загрузки    Музыка       'Рабочий стол'
+artem@artem-VirtualBox:~$ pwd
+/home/artem
+artem@artem-VirtualBox:~$ cd test
+artem@artem-VirtualBox:~/test$ pwd
+/home/artem/test
+artem@artem-VirtualBox:~/test$ touch f1.txt
+artem@artem-VirtualBox:~/test$ ls
+f1.txt
+artem@artem-VirtualBox:~/test$ cat f1.txt
+artem@artem-VirtualBox:~/test$ cat > f1.txt
+Hello
+^C
+artem@artem-VirtualBox:~/test$ cat f1.txt
+Hello
+artem@artem-VirtualBox:~/test$ cat >> f1.txt
+Mark
+^C
+artem@artem-VirtualBox:~/test$ cat f1.txt
+Hello
+Mark
+artem@artem-VirtualBox:~/test$ ls
+f1.txt
+artem@artem-VirtualBox:~/test$ cp f1.txt f1_copy.txt
+artem@artem-VirtualBox:~/test$ ls
+f1_copy.txt  f1.txt
+artem@artem-VirtualBox:~/test$ mkdir new_test
+artem@artem-VirtualBox:~/test$ touch /home/artem/test/new_test/f_new.txt
+artem@artem-VirtualBox:~/test$ ls new_test
+f_new.txt
+artem@artem-VirtualBox:~/test$ cp -r ~/test/new_test/ new_test_copy
+artem@artem-VirtualBox:~/test$ ls
+f1_copy.txt  f1.txt  f_new.txt  new_test  new_test_copy
+artem@artem-VirtualBox:~/test$ ls new_test_copy
+f_new.txt
+artem@artem-VirtualBox:~/test$ mv  new_test_copy new_test
+artem@artem-VirtualBox:~/test$ ls
+f1_copy.txt  f1.txt  f_new.txt  new_test
+artem@artem-VirtualBox:~/test$ ls new_test
+f_new.txt  new_test_copy
+artem@artem-VirtualBox:~/test$ cd new_test
+artem@artem-VirtualBox:~/test/new_test$ cat >> f_new.txt 
+Goodbye
+Mark
+^C
+artem@artem-VirtualBox:~/test/new_test$ mv f_new.txt goodbye.txt
+artem@artem-VirtualBox:~/test/new_test$ ls
+goodbye.txt  new_test_copy
+artem@artem-VirtualBox:~/test/new_test$ cat goodbye.txt
+Goodbye
+Mark
+artem@artem-VirtualBox:~/test/new_test$ cp goodbye.txt goodbye2.txt
+artem@artem-VirtualBox:~/test/new_test$ ls
+goodbye2.txt  goodbye.txt  new_test_copy
+artem@artem-VirtualBox:~/test/new_test$ rm goodbye2.txt
+artem@artem-VirtualBox:~/test/new_test$ ls
+goodbye.txt  new_test_copy
+artem@artem-VirtualBox:~/test/new_test$ cp -r  new_test_copy folder
+artem@artem-VirtualBox:~/test/new_test$ ls
+folder  goodbye.txt  new_test_copy
+artem@artem-VirtualBox:~/test/new_test$ ls -l folder
+итого 0
+-rw-rw-r-- 1 artem artem 0 сен  8 22:03 f_new.txt
+artem@artem-VirtualBox:~/test/new_test$ rm -r folder
+artem@artem-VirtualBox:~/test/new_test$ ls
+goodbye.txt  new_test_copy
+artem@artem-VirtualBox:~/test/new_test$ cd ..
+artem@artem-VirtualBox:~/test$ ls
+f1_copy.txt  f1.txt  f_new.txt  new_test
+artem@artem-VirtualBox:~/test$ ls | sort -r
+new_test
+f_new.txt
+f1.txt
+f1_copy.txt
+artem@artem-VirtualBox:~/test$ grep -r Hello .
+./f1_copy.txt:Hello
+./f1.txt:Hello
+artem@artem-VirtualBox:~/test$ grep -r Goodbye .
+./new_test/goodbye.txt:Goodbye
+artem@artem-VirtualBox:~/test$ grep -cr Hello .
+./f1_copy.txt:1
+./new_test/goodbye.txt:0
+./new_test/new_test_copy/f_new.txt:0
+./f1.txt:1
+./f_new.txt:0
+artem@artem-VirtualBox:~/test$  grep -v "Hello" f1.txt
+Mark
+artem@artem-VirtualBox:~/test$ ls | grep -E "^f1"
+f1_copy.txt
+f1.txt
+artem@artem-VirtualBox:~/test$ ls | grep -E "new"
+f_new.txt
+new_test
+
