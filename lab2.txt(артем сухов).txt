@@ -1,0 +1,134 @@
+Vovas@DESKTOP-OB74NP7 MINGW64 ~ (lab2)
+$ mkdir labs
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~ (lab2)
+$ cd labs
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ pwd
+/c/Users/Vovas/labs
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ ls
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ mkdir lab2
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ ls
+lab2/
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ touch 1.txt
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ touch 2.txt
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ ls
+1.txt  2.txt  lab2/
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ cat 1.txt
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ echo "какой то текст" > 1.txt
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ ls
+1.txt  2.txt  lab2/
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ cat 1.txt
+какой то текст
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ echo "продолжение текста" > 2.txt
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ cat 2.txt
+продолжение текста
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ cat 2.txt >> 1.txt
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ cat 1.txt
+какой то текст
+продолжение текста
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ mv 1.txt ./lab2/1.txt
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ ls
+2.txt  lab2/
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ ls lab2
+1.txt
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ cp 2.txt lab2/2.txt
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ ls
+2.txt  lab2/
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ ls lab2
+1.txt  2.txt
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ ls -l
+total 1
+-rw-r--r-- 1 Vovas 197609 36 Sep 13 21:15 2.txt
+drwxr-xr-x 1 Vovas 197609  0 Sep 13 21:23 lab2/
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ ls -l lab2
+total 2
+-rw-r--r-- 1 Vovas 197609 63 Sep 13 21:16 1.txt
+-rw-r--r-- 1 Vovas 197609 36 Sep 13 21:23 2.txt
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ rm ./lab2/2.txt
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ ls lab2
+1.txt
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ rm -rf lab2
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ ls
+2.txt
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ who
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ whoami
+Vovas
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ ps
+      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
+     1254       1    1254      12892  ?         197609 21:09:23 /usr/bin/mintty
+     1255    1254    1255       5128  pty0      197609 21:09:23 /usr/bin/bash
+     1428    1255    1428       6388  pty0      197609 21:27:58 /usr/bin/ps
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ ps -x
+ps: unknown option -- x
+Try `ps --help' for more information.
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~/labs (lab2)
+$ ps -a
+      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
+     1438    1255    1438      10224  pty0      197609 21:31:11 /usr/bin/ps
+     1254       1    1254      12892  ?         197609 21:09:23 /usr/bin/mintty
+     1255    1254    1255       5128  pty0      197609 21:09:23 /usr/bin/bash
+
+
