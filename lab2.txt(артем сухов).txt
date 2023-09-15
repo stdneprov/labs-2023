@@ -131,4 +131,28 @@ $ ps -a
      1254       1    1254      12892  ?         197609 21:09:23 /usr/bin/mintty
      1255    1254    1255       5128  pty0      197609 21:09:23 /usr/bin/bash
 
+Vovas@DESKTOP-OB74NP7 MINGW64 ~ (lab2)
+$ grep -r текст
+.bash_history:echo "какой то текст" > 1.txt
+.bash_history:echo "какой то текст" > 1.txt
+.bash_history:echo "продолжение текста" > 2.txt
+.bash_history:grep -r текст
 
+Vovas@DESKTOP-OB74NP7 MINGW64 ~ (lab2)
+$ grep -lr mods
+.bash_history
+AppData/Local/BeamNG.drive/0.27/beamng.1.log
+AppData/Local/BeamNG.drive/0.27/beamng.2.log
+AppData/Local/BeamNG.drive/0.27/beamng.log
+AppData/Local/BeamNG.drive/0.27/mods/db.json
+AppData/Local/BeamNG.drive/0.27/temp/crashReports/e4b86925-ac88-43c0-8b3e-97435f96317b/beamng.2.log
+
+Vovas@DESKTOP-OB74NP7 MINGW64 ~ (lab2)
+$ grep -rw артем
+.bash_history:grep -rw "артем
+grep: AppData/Local/Comms/UnistoreDB/store.jfm: Device or resource busy
+grep: AppData/Local/Comms/UnistoreDB/store.vol: Device or resource busy
+grep: AppData/Local/Comms/UnistoreDB/tmp.edb: Device or resource busy
+grep: AppData/Local/Comms/UnistoreDB/USS.jtx: Device or resource busy
+Binary file AppData/Local/ConnectedDevicesPlatform/2b0b44dc1371ba64/ActivitiesCache.db matches
+Binary file AppData/Local/ConnectedDevicesPlatform/2b0b44dc1371ba64/ActivitiesCache.db-wal matches
