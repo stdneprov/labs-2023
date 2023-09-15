@@ -116,4 +116,17 @@ igrok@Gebezul:~/labs-2023$ grep -c "ботать" ./*
 ./f3:1
 grep: ./laba2: Is a directory
 ./laba2:0
-
+igrok@Gebezul:~/labs-2023$ mkdir papka
+igrok@Gebezul:~/labs-2023$ cd papka
+igrok@Gebezul:~/labs-2023/papka$ cat > pr1.txt
+текст
+igrok@Gebezul:~/labs-2023/papka$ cat > pr2.txt
+текстыыы
+igrok@Gebezul:~/labs-2023/papka$ ls
+pr1.txt  pr2.txt
+igrok@Gebezul:~/labs-2023/papka$ cd ..
+igrok@Gebezul:~/labs-2023$ rm -r papka
+igrok@Gebezul:~/labs-2023$ ls
+'#lab9.txt#'     kp3.txt     lab11.txt   lab14.txt          lab2.txt   lab6.txt   lab9.txt
+ README.md       kp4.txt     lab12.txt   lab15.txt          lab3.txt   lab7.txt   papka_laba2
+ codestyle.txt   lab10.txt   lab13.txt   lab2-example.txt   lab5.txt   lab8.txt
