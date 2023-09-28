@@ -1,0 +1,162 @@
+migermanenko@MacBook-Pro-Matvej labs-2023 % mkdir lab2
+migermanenko@MacBook-Pro-Matvej labs-2023 % ls
+#lab9.txt#		lab12.txt		lab3.txt
+README.md		lab13.txt		lab5.txt
+codestyle.txt		lab14.txt		lab6.txt
+kp3.txt			lab15.txt		lab7.txt
+kp4.txt			lab2			lab8.txt
+lab10.txt		lab2-example.txt	lab9.txt
+lab11.txt		lab2.txt
+migermanenko@MacBook-Pro-Matvej labs-2023 % pwd
+/Users/migermanenko/labs-2023
+migermanenko@MacBook-Pro-Matvej labs-2023 % cd lab 2
+cd: no such file or directory: /Users/migermanenko/2s-2023
+migermanenko@MacBook-Pro-Matvej labs-2023 % cd lab2
+migermanenko@MacBook-Pro-Matvej lab2 % pwd
+/Users/migermanenko/labs-2023/lab2
+migermanenko@MacBook-Pro-Matvej lab2 % ls
+migermanenko@MacBook-Pro-Matvej lab2 % touch test.txt
+migermanenko@MacBook-Pro-Matvej lab2 % ls
+test.txt
+migermanenko@MacBook-Pro-Matvej lab2 % cat > test.txt
+ввожу данные в файл с помощью команды cat 
+^C
+migermanenko@MacBook-Pro-Matvej lab2 % rm test.txt
+migermanenko@MacBook-Pro-Matvej lab2 % ls
+migermanenko@MacBook-Pro-Matvej lab2 % mkdir lab2.0
+migermanenko@MacBook-Pro-Matvej lab2 % ls
+lab2.0
+migermanenko@MacBook-Pro-Matvej lab2 % rm -r lab2.0
+migermanenko@MacBook-Pro-Matvej lab2 % ls
+migermanenko@MacBook-Pro-Matvej lab2 % who
+migermanenko console  Sep  4 22:21 
+_mbsetupuser console  Jan  1 03:03 
+migermanenko ttys000  Sep  5 11:47 
+migermanenko@MacBook-Pro-Matvej lab2 % whoami
+migermanenko
+migermanenko@MacBook-Pro-Matvej lab2 % touch l1.txt
+migermanenko@MacBook-Pro-Matvej lab2 % touch l2.txt
+migermanenko@MacBook-Pro-Matvej lab2 % ls
+l1.txt	l2.txt
+migermanenko@MacBook-Pro-Matvej lab2 % cat > l1.txt
+содержимое первого файла
+^C
+migermanenko@MacBook-Pro-Matvej lab2 % cat > l2.txt
+содержимое второго файла
+^C
+migermanenko@MacBook-Pro-Matvej lab2 % cat l1.txt
+содержимое первого файла
+migermanenko@MacBook-Pro-Matvej lab2 % cat l2.txt
+содержимое второго файла
+migermanenko@MacBook-Pro-Matvej lab2 % cat l1.txt > l2.txt
+migermanenko@MacBook-Pro-Matvej lab2 % cat l1.txt
+содержимое первого файла
+migermanenko@MacBook-Pro-Matvej lab2 % cat l2.txt
+содержимое первого файла
+migermanenko@MacBook-Pro-Matvej lab2 % touch l3.txt
+migermanenko@MacBook-Pro-Matvej lab2 % ls
+l1.txt	l2.txt	l3.txt
+migermanenko@MacBook-Pro-Matvej lab2 % cat > l3.txt
+содержимое третьего файла
+^C
+migermanenko@MacBook-Pro-Matvej lab2 % cat l3.txt
+содержимое третьего файла
+migermanenko@MacBook-Pro-Matvej lab2 % cat l1.txt
+содержимое первого файла
+migermanenko@MacBook-Pro-Matvej lab2 % cat l1.txt >> l3.txt
+migermanenko@MacBook-Pro-Matvej lab2 % cat l3.txt
+содержимое третьего файла
+содержимое первого файла
+migermanenko@MacBook-Pro-Matvej lab2 % cat > l3.txt < l1.txt
+migermanenko@MacBook-Pro-Matvej lab2 % cat l3.txt
+содержимое первого файла
+migermanenko@MacBook-Pro-Matvej lab2 % cat l1.txt
+содержимое первого файла
+migermanenko@MacBook-Pro-Matvej lab2 % mkdir lab2.1
+migermanenko@MacBook-Pro-Matvej lab2 % ls
+l1.txt	l2.txt	l3.txt	lab2.1
+migermanenko@MacBook-Pro-Matvej lab2 % cp l1.txt lab2.1/l1.txt
+migermanenko@MacBook-Pro-Matvej lab2 % cd lab2.1
+migermanenko@MacBook-Pro-Matvej lab2.1 % pwd
+/Users/migermanenko/labs-2023/lab2/lab2.1
+migermanenko@MacBook-Pro-Matvej lab2.1 % ls
+l1.txt
+migermanenko@MacBook-Pro-Matvej lab2.1 % cd lab2
+cd: no such file or directory: lab2
+migermanenko@MacBook-Pro-Matvej lab2.1 % cd ..
+migermanenko@MacBook-Pro-Matvej lab2 % pwd
+/Users/migermanenko/labs-2023/lab2
+migermanenko@MacBook-Pro-Matvej lab2 % mkdir lab2.2
+migermanenko@MacBook-Pro-Matvej lab2 % ls
+l1.txt	l2.txt	l3.txt	lab2.1	lab2.2
+migermanenko@MacBook-Pro-Matvej lab2 % cp -r lab2.2 lab2.1/lab2.2
+migermanenko@MacBook-Pro-Matvej lab2 % cd lab2.1
+migermanenko@MacBook-Pro-Matvej lab2.1 % ls
+l1.txt	lab2.2
+migermanenko@MacBook-Pro-Matvej lab2.1 % cd ..
+migermanenko@MacBook-Pro-Matvej lab2 % ls
+l1.txt	l2.txt	l3.txt	lab2.1	lab2.2
+migermanenko@MacBook-Pro-Matvej lab2 % mv l1.txt l2.txt
+migermanenko@MacBook-Pro-Matvej lab2 % ls
+l2.txt	l3.txt	lab2.1	lab2.2
+migermanenko@MacBook-Pro-Matvej lab2 % ps
+  PID TTY           TIME CMD
+ 4184 ttys000    0:00.28 -zsh
+migermanenko@MacBook-Pro-Matvej lab2 % ls | sort -r
+lab2.2
+lab2.1
+l3.txt
+l2.txt
+migermanenko@MacBook-Pro-Matvej lab2 % cat l2.txt
+содержимое первого файла
+migermanenko@MacBook-Pro-Matvej lab2 % cat l3.txt
+содержимое первого файла
+migermanenko@MacBook-Pro-Matvej lab2 % cat > l2.txt
+второй файл
+^C
+migermanenko@MacBook-Pro-Matvej lab2 % cat > l3.txt
+третий файл
+^C
+migermanenko@MacBook-Pro-Matvej lab2 % cat l2.txt
+второй файл
+migermanenko@MacBook-Pro-Matvej lab2 % cat l3.txt
+третий файл
+migermanenko@MacBook-Pro-Matvej lab2 % cat l2.txt >> l3.txt
+migermanenko@MacBook-Pro-Matvej lab2 % cat l3.txt
+третий файл
+второй файл
+migermanenko@MacBook-Pro-Matvej lab2 % cat > l2.txt
+первая строка
+вторая строка
+третья строка
+^C
+migermanenko@MacBook-Pro-Matvej lab2 % cat l2.txt
+первая строка
+вторая строка
+третья строка
+migermanenko@MacBook-Pro-Matvej lab2 % cat l3.txt
+третий файл
+второй файл
+migermanenko@MacBook-Pro-Matvej lab2 % grep "вторая" l2.txt
+вторая строка
+migermanenko@MacBook-Pro-Matvej lab2 % grep "трет" l3.txt
+третий файл
+migermanenko@MacBook-Pro-Matvej lab2 % grep -v "вторая" l2.txt
+
+первая строка
+третья строка
+migermanenko@MacBook-Pro-Matvej lab2 % grep -cv "вторая" l2.txt
+2
+migermanenko@MacBook-Pro-Matvej lab2 % ls -l
+total 16
+-rw-r--r--  1 migermanenko  staff   78  5 сен 12:11 l2.txt
+-rw-r--r--  1 migermanenko  staff   44  5 сен 12:10 l3.txt
+drwxr-xr-x  4 migermanenko  staff  128  5 сен 12:07 lab2.1
+drwxr-xr-x  2 migermanenko  staff   64  5 сен 12:07 lab2.2
+migermanenko@MacBook-Pro-Matvej lab2 % chmod u+x l2.txt
+migermanenko@MacBook-Pro-Matvej lab2 % ls -l
+total 16
+-rwxr--r--  1 migermanenko  staff   78  5 сен 12:11 l2.txt
+-rw-r--r--  1 migermanenko  staff   44  5 сен 12:10 l3.txt
+drwxr-xr-x  4 migermanenko  staff  128  5 сен 12:07 lab2.1
+drwxr-xr-x  2 migermanenko  staff   64  5 сен 12:07 lab2.2
