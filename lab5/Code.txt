@@ -138,7 +138,7 @@ finish_MI2,M,>,finish_MI3
 finish_MI3, ,#,finish#
 
 
-found_IV,V,<,found_IV
+found_IV,I,<,found_IV
 found_IV, ,>,finish_IV
 finish_IV,I,>,finish_IV
 finish_IV, ,>,finish_IV2
@@ -147,45 +147,45 @@ finish_IV2,V,>,finish_IV3
 finish_IV3, ,#,finish#
 
 
-found_IX,X,>,found_IX
+found_IX,I,>,found_IX
 found_IX, ,>,finish_IX
-finish_IX,I,>,finish_IX
+finish_IX,X,>,finish_IX
 finish_IX, ,>,finish_IX2
 finish_IX2, ,X,finish_IX2
 finish_IX2,X,>,finish_IX3
 finish_IX3, ,#,finish#
 
 
-found_IL,L,>,found_IL
+found_IL,I,>,found_IL
 found_IL, ,>,finish_IL
-finish_IL,I,>,finish_IL
+finish_IL,L,>,finish_IL
 finish_IL, ,>,finish_IL2
 finish_IL2, ,L,finish_IL2
 finish_IL2,L,>,finish_IL3
 finish_IL3, ,#,finish#
 
 
-found_IC,C,>,found_IC
+found_IC,I,>,found_IC
 found_IC, ,>,finish_IC
-finish_IC,I,>,finish_IC
+finish_IC,C,>,finish_IC
 finish_IC, ,>,finish_IC2
 finish_IC2, ,C,finish_IC2
 finish_IC2,C,>,finish_IC3
 finish_IC3, ,#,finish#
 
 
-found_ID,D,>,found_ID
+found_ID,I,>,found_ID
 found_ID, ,>,finish_ID
-finish_ID,I,>,finish_ID
+finish_ID,D,>,finish_ID
 finish_ID, ,>,finish_ID2
 finish_ID2, ,D,finish_ID2
 finish_ID2,D,>,finish_ID3
 finish_ID3, ,#,finish#
 
 
-found_IM,M,>,found_IM
+found_IM,I,>,found_IM
 found_IM, ,>,finish_IM
-finish_IM,I,>,finish_IM
+finish_IM,M,>,finish_IM
 finish_IM, ,>,finish_IM2
 finish_IM2, ,M,finish_IM2
 finish_IM2,M,>,finish_IM3
@@ -642,7 +642,7 @@ answer50,L,>,answer501
 answer501, ,#,finish#
 
 answer25, ,X,answer25
-answer25,X,>,answer25
+answer25,X,>,answer251
 answer251, ,X,answer251
 answer251,X,>,answer252
 answer252, ,V,answer252
