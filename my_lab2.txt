@@ -1,0 +1,107 @@
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~$ pwd
+/home/aleksandr
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~$ ls
+Desktop  Documents  Downloads  Music  Pictures  Public  snap  Templates  Videos
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~$ mkdir lab2
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~$ ls
+Desktop  Documents  Downloads  lab2  Music  Pictures  Public  snap  Templates  Videos
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~$ cd lab2
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ ls
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ mkdir papka1
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ ls
+papka1
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ cd papka1
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2/papka1$ ls
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2/papka1$ touch file1.txt file2.txt
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2/papka1$ ls
+file1.txt  file2.txt
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2/papka1$ cat file1.txt
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2/papka1$ cat > file1.txt
+Hello,
+^C
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2/papka1$ cat file1.txt
+Hello,
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2/papka1$ cat > file2.txt
+World
+^C
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2/papka1$ cat file2.txt >> file1.txt
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2/papka1$ cat file1.txt
+Hello,
+World
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2/papka1$ cat file2.txt > file1.txt
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2/papka1$ cat file1.txt
+World
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2/papka1$ cd ..
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ mkdir papka2
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ ls
+papka1  papka2
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ cp -r papka1 papka2
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ ls
+papka1  papka2
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ cd papka2
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2/papka2$ ls
+papka1
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2/papka2$ cd ..
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ ls
+papka1  papka2
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ touch some.txt
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ ls
+papka1  papka2  some.txt
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ mv some.txt papka1
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ cd papka1
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2/papka1$ ls
+file1.txt  file2.txt  some.txt
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2/papka1$ cd ..
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ ls
+papka1  papka2
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ rm -rf papka1 papka2
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ ls
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ who
+aleksandr tty2         2023-10-12 16:38 (tty2)
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ whoami
+aleksandr
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ ps
+    PID TTY          TIME CMD
+  12440 pts/0    00:00:01 bash
+  21166 pts/0    00:00:00 ps
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ touch hello.txt
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ ls -a
+.  ..  hello.txt
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ ls -l
+total 0
+-rw-rw-r-- 1 aleksandr aleksandr 0 окт 12 21:34 hello.txt
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ chmod u+x hello.txt
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ ls -l
+total 0
+-rwxrw-r-- 1 aleksandr aleksandr 0 окт 12 21:34 hello.txt
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ cat > hello.txt
+1
+2
+3
+test1
+test2
+test3
+testABC
+^C
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ cat hello.txt 
+1
+2
+3
+test1
+test2
+test3
+testABC
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ ls | sort -r hello.txt 
+testABC
+test3
+test2
+test1
+3
+2
+1
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ grep test hello.txt
+test1
+test2
+test3
+testABC
+aleksandr@aleksandr-Vivobook-ASUSLaptop-M3401QA-M3401QA:~/lab2$ 
