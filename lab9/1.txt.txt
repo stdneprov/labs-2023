@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int i = 11, j = 13, l = 10;
+    int k;
+    
+    for (k = 0; k < 50; k++) {
+        // Рекуррентные соотношения
+        int new_i = abs(k - 15) - fmin(j / 3, (j + l) % 10) - 20;
+        int new_j = -(j + k) / 5 + abs(j * l % 8);
+        int new_l = fmax((i + k) % 15, l % 14);
+        
+        // Переопределение координат
+        i = new_i;
+        j = new_j;
+        l = new_l;
+        
+        // Проверка на попадание в заданную область
+        if (i >= 5 && i <= 15 && j >= -15 && j <= -5) {
+            printf("Попадание на шаге %d. Время: %d, Координаты: (%d, %d), l: %d\n", k, k + 1, i, j, l);
+            break;
+        }
+    }
+    
+    if (k == 50) {
+        printf("Промах. Время окончания: %d, Координаты: (%d, %d), l: %d\n", k, i, j, l);
+    }
+    
+    return 0;
+}
