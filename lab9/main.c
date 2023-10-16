@@ -5,7 +5,6 @@
 #define START_MOTION_PARAM_L -9
 
 long long Max(long long a, long long b){
-
     if (a > b){
         return a;
     }
@@ -15,7 +14,6 @@ long long Max(long long a, long long b){
 }
 
 long long Min(long long a, long long b){
-
     if (a < b){
         return a;
     } else {
@@ -24,7 +22,6 @@ long long Min(long long a, long long b){
 }
 
 // void BuildGraph(FILE *gnupipe){
-
 //     fprintf(gnupipe, "reset\n");
 //     fprintf(gnupipe, "set title \"Graph\"\n");
 //     fprintf(gnupipe, "set parametric\n");
@@ -45,7 +42,6 @@ int Sign(long long a){
 
 
 int main(){
-
     long long i = START_POS_X, j = START_POS_Y, l = START_MOTION_PARAM_L;    
     long long prevI, prevJ, prevL;
 

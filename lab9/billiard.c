@@ -2,7 +2,6 @@
 #include <math.h>
 
 // void BuildGraph(FILE *gnupipe, unsigned long long int m, unsigned long long int n){
-
 //     fprintf(gnupipe, "reset\n");
 //     fprintf(gnupipe, "set title \"Graph\"\n");
 //     fprintf(gnupipe, "set parametric\n");
@@ -13,7 +12,6 @@
 // }
 
 int main(){
-
     // FILE *bdt = NULL;
     // FILE *gn = NULL;
 
@@ -24,7 +22,6 @@ int main(){
     int k;
     
     while (scanf("%Lu %Lu %Lu %Lu %i", &m, &n, &i, &j, &k) != EOF){
-
         unsigned long long int posX = i, posY = j, count = 0;
         int dir = k;
         int f = 1;
