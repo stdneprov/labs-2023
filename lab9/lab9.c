@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 int Max(int a, int b) {
     return a > b ? a : b;
@@ -16,12 +17,22 @@ int Cube(int a) {
     return a * a * a;
 }
 
+int Square(int a) {
+    return a * a;
+}
+
+bool CheckEllipse(int i, int j) {
+    // (i - center_i)^2 / radius_i^2 + (j - center_j) ^ 2 / radius_j^2 <= 1
+    // (i - 20)^2 / 10^2 + (j - 0)^2 / radius_j^2 <= 1
+    // (i - 20)^2 / 100 + 4*j^2 / 100 <= 1
+    // (i - 20)^2  + 4*j^2 <= 100
+    return Square(i - 20) + 4 * Square(j) <= 100;
+}
+
 int main(void) {
     int i = -10;
     int j = -10;
     int l = 6;
-    int res = 0;
-
     for (int k = 1; k <= 50; k++) {
         int i1 =
             Abs(Max(Mod(Min(i + j, i + l), 30), Mod(Max(i + l, j + k), 25)));
@@ -31,20 +42,10 @@ int main(void) {
         i = i1;
         j = j1;
         l = l1;
-        if (i == 10 && j == 0) {
-            res |= 0x000f;
-        }
-        if (i == 30 && j == 0) {
-            res |= 0x00f0;
-        }
-        if (i == 20 && j == 5) {
-            res |= 0x0f00;
-        }
-        if (i == 20 && j == -5) {
-            res |= 0xf000;
-        }
-        if (res == 0xffff) {
+
+        if (CheckEllipse(i, j)) {
             printf("YES %d\n", k);
+            printf("i=%d\tj=%d\tl=%d\n", i, j, l);
             return 0;
         }
     }
