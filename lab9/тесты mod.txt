@@ -1,0 +1,27 @@
+printf("%d", first_mod(17, 3));
+printf("%d", mod(17, 3));
+printf("\n");
+
+printf("%d", first_mod(17, -3));
+printf("%d", mod(17, -3));
+printf("\n");
+
+printf("%d", first_mod(-17, 3));
+printf("%d", mod(-17, 3));
+printf("\n");
+
+printf("%d", first_mod(-17, -3));
+printf("%d", mod(-17, -3));
+printf("\n");
+
+printf("%d", first_mod(15, -1));
+printf("%d", mod(15, -1));
+printf("\n");
+
+printf("%d", first_mod(-15, -1));
+printf("%d", mod(-15, -1));
+printf("\n");
+
+printf("%d", first_mod(-15, 1));
+printf("%d", mod(-15, 1));
+printf("\n");
