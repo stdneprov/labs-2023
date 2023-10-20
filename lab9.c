@@ -23,7 +23,7 @@ int main() {
         j = j_new;
     }
     if (flag == -1) {
-        printf("Miss, i = %d, j = %d, l = %d\n", flag, i, j, l);
+        printf("Miss, i = %d, j = %d, l = %d\n", i, j, l);
     }
     else {
         printf("Getting into the area at step %d, i = %d, j = %d, l = %d\n", flag, i, j, l);
