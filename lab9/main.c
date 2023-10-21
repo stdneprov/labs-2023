@@ -15,20 +15,11 @@
 // }
 
 long long Max(long long a, long long b){
-    if (a > b){
-        return a;
-    }
-    else {
-        return b;
-    }
+    return a >= b ? a : b;
 }
 
 long long Min(long long a, long long b){
-    if (a < b){
-        return a;
-    } else {
-        return b;
-    }
+    return a < b ? a : b;
 }
 
 long long Mod(long long a, long long b){
@@ -55,11 +46,7 @@ long long Mod(long long a, long long b){
 }
 
 int Sign(long long a){
-    if (a >= 0) {
-        return 1;
-    } else {
-        return -1;
-    }
+    return a >= 0 ? 1 : -1;
 }
 
 int main(){
