@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
 
 int Mod(int x, int y) {
     int k = ((x % y) + y) % y;
