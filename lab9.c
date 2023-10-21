@@ -14,7 +14,7 @@ int main() {
         i = newI;
         j = newJ;
         l = newL;
-        if (((pow(i+10, 2) + pow(j+10, 2)) <= 100) && ((pow(i+20, 2) + pow(j+20, 2)) <= 100)){
+        if (((pow(i + 10, 2) + pow(j + 10, 2)) <= 100) && ((pow(i + 20, 2) + pow(j + 20, 2)) <= 100)){
             printf("Шаг: %d, Время: %d, Координаты: (%d, %d), l: %d\n", k, k + 1, i, j, l);   
             break;         
         }
