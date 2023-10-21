@@ -2,7 +2,7 @@
 #include <math.h>
 
 
-int define_sgn(int val) {
+int defineSgn(int val) {
     if(val > 0){
         return 1;
     }
@@ -27,13 +27,13 @@ int main() {
     int k;
 
     for (k = 0; k < 50; k++) {
-        int new_i = Mod((i + j + l) * (k + l), 25) - Mod(i * j * l * (k + 2), 10) + 10;
-        int new_j = fmin(Mod((i + j + l) * (k + 3), 25), Mod(i * j * l * (k + 4), 25)) + 10;
-        int new_l = 2 * define_sgn(l) * abs(Mod((i + j + l) * (k + 5), 10) - Mod(i * j * l * (k + 6), 25));
+        int newI = Mod((i + j + l) * (k + l), 25) - Mod(i * j * l * (k + 2), 10) + 10;
+        int newJ = fmin(Mod((i + j + l) * (k + 3), 25), Mod(i * j * l * (k + 4), 25)) + 10;
+        int newL = 2 * defineSgn(l) * abs(Mod((i + j + l) * (k + 5), 10) - Mod(i * j * l * (k + 6), 25));
         
-        i = new_i;
-        j = new_j;
-        l = new_l;
+        i = newI;
+        j = newJ;
+        l = newL;
 
         if (i >= 5 && i <= 15 && j >= -15 && j <= -5) {
             printf("Попадание на шаге %d. Время: %d, Координаты: (%d, %d), l: %d\n", k, k + 1, i, j, l);
