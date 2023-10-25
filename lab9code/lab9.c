@@ -30,35 +30,28 @@ int main() {
 
     // Итеративный цикл
     int k;
-    int steps = 0;
     for (k = 0; k < 51; k++) {
         // Обновление координат и параметра движения
-        int new_i = Min(Mod(l, 5), Mod(i * k, 5)) + j + k/3;
-        int new_j = Max((-3) * i, 2 * j) / 5 - Abs(j - l);
-        int new_l = j + Mod(l, 7) + Mod(k * Sign(i), 10);
+        int newI = Min(Mod(l, 5), Mod(i * k, 5)) + j + k/3;
+        int newJ = Max((-3) * i, 2 * j) / 5 - Abs(j - l);
+        int newL = j + Mod(l, 7) + Mod(k * Sign(i), 10);
 
         // Проверка попадания в область
         if (i >= 5 && i <= 15 && j >= -15 && j <= -5) {
-            printf("Yes, step: %d\n", k);
+            printf("Yes %d\n", k);
             break;
         }
 
         // Обновление переменных для следующей итерации
-        i = new_i;
-        j = new_j;
-        l = new_l;
-
-        steps = k; // Запоминаем номер шага для вывода времени попадания
+        i = newI;
+        j = newJ;
+        l = newL;
     }
 
     if (k == 51) {
         // Если точка не достигла заданной области в течение 50 шагов
-        printf("No\n");
+        printf("No %d\n", k);
     }
-
-    // Вывод итоговых координат и параметра движения
-    printf("Final coordinates: (i, j) = (%d, %d), l = %d\n", i, j, l);
-    printf("Movement end time: %d\n", steps);
 
     return 0;
 }
