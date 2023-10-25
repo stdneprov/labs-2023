@@ -8,19 +8,18 @@
 
 int Mod(int x, int y) {
     int k = ((x % y) + y) % y; //остаток от деления //
-    return k;
+    return ((x % y) + y) % y;
 }
 
-int Max(int a, int b){
+int Max(int a, int b) {
     return a > b ? a : b; //поиск максимального
 }
 
-int Min(int a, int b){
+int Min(int a, int b) {
     return a < b ? a : b; //поиск минимального
-
 }
 
-int main(){
+int main() {
     int i = I0, j = J0, l = L0; //начальные значения
     int flag = 0;
 
@@ -35,7 +34,7 @@ int main(){
         l = lNew;
 
         //проверка на попадание в область
-        if (i >= -10 && (j >= i + 10) && (j <= -i + 10)){
+        if (i >= -10 && (j >= i + 10) && (j <= -i + 10)) {
             printf("YES %d\n", k);
             flag = 1;
             break;
@@ -44,7 +43,7 @@ int main(){
 
     }
 
-    if (flag == 0){
+    if (!flag) {
         printf("NO\n");
 
     }
