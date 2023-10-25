@@ -38,16 +38,16 @@ double Distance(int x1, int y1, int x2, int y2) {
     return ans;
 }
 
-int Check_frst_circle(int x, int y) {
+int CheckFrstCircle(int x, int y) {
     return Distance(x, y, -10, -10) < 10.0;
 }
 
-int Check_scnd_circle(int x, int y) {
+int CheckScndCircle(int x, int y) {
     return Distance(x, y, -20, -20) < 10.0;
 }
 
-int Check_point(int x, int y) {
-    return (Check_frst_circle(x, y) && Check_scnd_circle(x, y));
+int CheckPoint(int x, int y) {
+    return (CheckFrstCircle(x, y) && CheckScndCircle(x, y));
 }
 
 int main() {
@@ -60,7 +60,7 @@ int main() {
         i = Mod(Max(Mod(47 * i, 25), Min(Mod(47 * j, 30), Mod(47 * l, 30))) - (k - 1), 15);
         j = Mod(Min(Max(Mod(47 * oldX, 25), Mod(47 * oldY, 25)), Mod(47 * oldL, 30)) + (k - 1), 5);
         l = Mod(47 * oldX * oldY * oldL, 25) + Mod((k - 1), 5);
-        if (Check_point(i, j)) {
+        if (CheckPoint(i, j)) {
             printf("YES %d, x = %d, y = %d, l = %d\n", k, i, j, l);
             return 0;
         }
