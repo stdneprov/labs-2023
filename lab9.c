@@ -3,8 +3,8 @@
 #include <stdlib.h> 
 
 #define I0 29
-#define J0 15
-#define L0 10
+#define J0 -6
+#define L0 1
 
 int Mod(int x, int y) {
     int k = ((x % y) + y) % y; //остаток от деления //
