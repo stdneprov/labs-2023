@@ -1,31 +1,75 @@
-@ ->.
-#1 -> 1#
-#0 -> 0#
-#2 -> 2#
-#<01 -> #<1
-#<02 -> #<2
-#<00 -> #<0
-#<0  -> <0
-#<1 -> <1
-#<2 -> <2
-'1 -> 1'
-'2 -> 2'
-'0 -> 0'
-'< -> <*
-*0 -> |*
-*1 -> |*
-*2 -> |*
-|* -> |!
-|! -> !|
-<!| -> |
-| -> 0/
-0/ -> /0
-1/ -> /1
-2/ -> /2
-/1 -> 
-/2 -> 
-/0 -> 
-"0 -> "
-"'#" -> @
+#include <stdio.h>
+#include <math.h>
 
- -> "'#
+int sign(int m) {
+    int result;
+    if (m >= 0) {
+        result = m;
+    }
+    else {
+        result = -1;
+    }
+    return result;
+}
+int max(int m, int n) {
+    int result;
+    if (n > m) {
+        result = n;
+    }
+    else {
+        result = m;
+    }
+    return result;
+}
+int min(int m, int n) {
+    int result;
+    if (n > m) {
+        result = m;
+    }
+    else {
+        result = n;
+    }
+    return result;
+}
+int modul(int m) {
+    int result;
+    if (m < 0) {
+        result = -m; 
+    }
+    else {
+        result = m;
+    }
+    return result;
+}
+int line1(int m, int n) {
+    int result;
+    if (m + n == -20) {
+        result = n;
+    }
+    return result;
+}
+int line2(int m, int n) {
+    int result;
+    if (m + n == -10) {
+        result = n;
+    }
+    return result;
+}
+ 
+int main() {
+    int i = 13;
+    int j = 19;
+    int l = 14;
+    for (int k = 1; k <= 50; ++k) {
+        int i_next = sign(i + 1) * modul(modul(k - j) - modul(i - l));
+        int j_next = fmod(j, 20) + max(fmod(i, 20), min((j - k), (l - k))) - 10;
+        int l_next = fmod((k * (i + 1) * (j + 2) * (l + 3)), 20);
+        if (j_next > line1(i_next, j_next) && j_next < line2(i_next, j_next)) {
+            printf("%s\n", "yes");
+        }
+        else {
+            printf("%s\n", "no");
+        }
+    }
+
+}
