@@ -1,75 +1,40 @@
 #include <stdio.h>
-#include <math.h>
+#include <string.h>
 
-int sign(int m) {
-    int result;
-    if (m >= 0) {
-        result = m;
+int count_words_increasing_order(char* sentence) {
+    int count = 0;
+    char* word = strtok(sentence, " ");
+    
+    while (word != NULL) {
+        int len = strlen(word);
+        int is_increasing = 1;
+        
+        for (int i = 0; i < len - 1; i++) {
+            if (word[i] >= word[i + 1]) {
+                is_increasing = 0;
+                break;
+            }
+        }
+        
+        if (is_increasing) {
+            count++;
+        }
+        
+        word = strtok(NULL, " ");
     }
-    else {
-        result = -1;
-    }
-    return result;
+    
+    return count;
 }
-int max(int m, int n) {
-    int result;
-    if (n > m) {
-        result = n;
-    }
-    else {
-        result = m;
-    }
-    return result;
-}
-int min(int m, int n) {
-    int result;
-    if (n > m) {
-        result = m;
-    }
-    else {
-        result = n;
-    }
-    return result;
-}
-int modul(int m) {
-    int result;
-    if (m < 0) {
-        result = -m; 
-    }
-    else {
-        result = m;
-    }
-    return result;
-}
-int line1(int m, int n) {
-    int result;
-    if (m + n == -20) {
-        result = n;
-    }
-    return result;
-}
-int line2(int m, int n) {
-    int result;
-    if (m + n == -10) {
-        result = n;
-    }
-    return result;
-}
- 
+
 int main() {
-    int i = 13;
-    int j = 19;
-    int l = 14;
-    for (int k = 1; k <= 50; ++k) {
-        int i_next = sign(i + 1) * modul(modul(k - j) - modul(i - l));
-        int j_next = fmod(j, 20) + max(fmod(i, 20), min((j - k), (l - k))) - 10;
-        int l_next = fmod((k * (i + 1) * (j + 2) * (l + 3)), 20);
-        if (j_next > line1(i_next, j_next) && j_next < line2(i_next, j_next)) {
-            printf("%s\n", "yes");
-        }
-        else {
-            printf("%s\n", "no");
-        }
-    }
-
+    char input[100];
+    printf("Введите строку: ");
+    fgets(input, sizeof(input), stdin);
+    
+    input[strcspn(input, "\n")] = '\0'; // Удаляем символ новой строки
+    
+    int word_count = count_words_increasing_order(input);
+    printf("Количество слов с возрастающим порядком букв: %d\n", word_count);
+    
+    return 0;
 }
