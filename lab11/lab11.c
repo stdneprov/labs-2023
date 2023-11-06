@@ -5,17 +5,32 @@ int IsSeparator(char c) {
     return (c == ' ') || (c == ',') || (c == '\n') || (c == EOF) || (c == '\t');
 }
 
+bool CheckIsCharValid(int s) {
+    return (s >= '0' && s <= '9') || (s >= 'a' && s <= 'f') ||
+           (s >= 'A' && s <= 'F');
+}
+
+int GetValueOfChar(int s) {
+    if (s >= '0' && s <= '9') {
+        return s - '0';
+    } else if (s >= 'a' && s <= 'z') {
+        return 10 + (s - 'a');
+    } else {
+        return GetValueOfChar(s + ('a' - 'A'));
+    }
+}
+
 int main() {
     bool goodNumber = 1;
     bool numStarted = 0;
     long long container = 0;
-    long long currentNum = -1;
-    long long previousNum = -1;
+    long long currentNum = -1e9;
+    long long previousNum = -1e9;
     int sign = 1;
     while (1) {
         int c = getchar();
         if (IsSeparator(c)) {
-            if (goodNumber) {
+            if (goodNumber && numStarted) {
                 previousNum = currentNum;
                 currentNum = container * sign;
             };
@@ -24,18 +39,13 @@ int main() {
             numStarted = 0;
             sign = 1;
         } else {
-            if ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') ||
-                (c >= 'A' && c <= 'F') || (c == '-' && (!numStarted))) {
-                numStarted = 1;
+            if (CheckIsCharValid(c) || (c == '-' && (!numStarted))) {
                 if (c == '-') {
                     sign = -1;
-                } else if (c >= 'a' && c <= 'f') {
-                    container = container * 16 + (10 + (c - 'a'));
-                } else if (c >= 'A' && c <= 'F') {
-                    container = container * 16 + (10 + (c - 'A'));
-                } else {
-                    container = container * 16 + (c - '0');
+                    continue;
                 }
+                numStarted = 1;
+                container = container * 16 + GetValueOfChar(c);
             } else {
                 goodNumber = 0;
             }
@@ -44,13 +54,13 @@ int main() {
             break;
         }
     }
-    if (previousNum == -1) {
+    if (previousNum == -1e9) {
         printf("NO");
     } else {
         if (previousNum < 0) {
             printf("-%x", abs(previousNum));
         } else {
-            printf("%x", abs(previousNum));
+            printf("%x", previousNum);
         }
     }
 }
