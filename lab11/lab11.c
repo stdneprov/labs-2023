@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-bool isSeparator(char c) {
+bool IsSeparator(char c) {
     return c == ' ' || c == '\t' || c == '\n' || c == ',' || c == '.' ||
            c == EOF;
 }
@@ -14,7 +14,7 @@ int main(void) {
     int res = 0;
     while (true) {
         c = getchar();
-        if (isSeparator(c)) {
+        if (IsSeparator(c)) {
             res += is_lower && is_word;
             is_lower = true;
             is_word = false;
