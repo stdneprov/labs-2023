@@ -14,8 +14,8 @@ int isOctDig(int c) {
 
 int main() {
     int isOctNum = 1;
-    int curNum = 0;
-    int counter = 0;
+    long long curNum = 0;
+    long long counter = 0;
 
     while (1) {
         int c = getchar();
@@ -47,7 +47,7 @@ int main() {
         }
     }
 
-    printf("%i\n", counter);
+    printf("%lli\n", counter);
     
     return 0;
 }
