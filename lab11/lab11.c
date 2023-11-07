@@ -1,4 +1,4 @@
-// подсчет количества не пустых слов
+
 #include <stdio.h>
 #include <stdbool.h>
 
