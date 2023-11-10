@@ -16,23 +16,19 @@ int main() {
     int sepBefore = 1;
     int sepOrMinusBefore = 1;
     while (1) {
-        
         int c = getchar();
-        if (IsDigit(c) && sepOrMinusBefore) {
+        if (IsDigit(c) && (sepOrMinusBefore || numberStarted)) {
             numberStarted = 1;
-            summa = c - '0';
-        } else if (IsDigit(c) && numberStarted) {
             summa = summa + c - '0';
-        } else if (IsSeparator(c)) {
-            if (numberStarted) {
-                numberStarted = 0;
-                summa2 = summa1;
-                summa1 = summa;
-            }
+        } else if (IsSeparator(c) && numberStarted) {
+            numberStarted = 0;
+            summa2 = summa1;
+            summa1 = summa;
         } else if (!IsDigit(c)) {
             numberStarted = 0;
+            summa = 0;
         }
-        sepOrMinusBefore = (IsSeparator(c) || (c = '-' && sepBefore));
+        sepOrMinusBefore = (IsSeparator(c) || (c == '-' && sepBefore));
         sepBefore = IsSeparator(c);
         if (c == EOF) {
             break;
