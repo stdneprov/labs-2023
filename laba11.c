@@ -8,13 +8,10 @@ int IsSeparator(char c) {
 int Comprassion(char a, char b){
     if (a >= '0' && a <= '9' && b == 'A'){
         return 1;
-    }
-    else if (a >= '0' && a <= '9' && b >= '0' && b <= '9'){
+    } else if (a >= '0' && a <= '9' && b >= '0' && b <= '9'){
         return b > a;
     }
-    else{
-        return 0;
-    }
+    return 0;
 }
 
 void Output(long long x){
@@ -26,8 +23,7 @@ void Output(long long x){
         Output(x / 11);
         if (x % 11 != 10){
             printf("%lld", x % 11);
-        }
-        else{
+        } else{
             printf("%c", 'A');
         }
     }
@@ -47,24 +43,20 @@ int main() {
             if (isWordStarted == 0 && c == '-'){
                 sign = -1;
                 c = '0';
-            }
-            else if (!((((c >= '0' && c <= '9') || c == 'A') && Comprassion(previous, c) ) || (previous == '0' && c == '0'))){
+            } else if (!((((c >= '0' && c <= '9') || c == 'A') && Comprassion(previous, c) ) || (previous == '0' && c == '0'))){
                 correct = 0;
-            }
-            else{
+                //printf("%c", previous);
+            } else{
                 if (buffer == 0){
                     if (c != 'A'){
                         buffer = c - '0';
-                    }
-                    else{
+                    } else{
                         buffer = 10;
                     }
-                }
-                else{
+                } else{
                     if (c != 'A'){
                         buffer = buffer * 11 + (c - '0');
-                    }
-                    else{
+                    } else{
                         buffer = buffer * 11 + 10;
                     }
                 }
@@ -75,8 +67,7 @@ int main() {
                 if (buffer == 0){
                     printf("%d", 0);
                     printf("%c", ' ');
-                }
-                else{
+                } else{
                     Output(buffer * sign);
                     printf("%c", ' ');
                 }
@@ -86,6 +77,8 @@ int main() {
             c = '0';
             correct = 1;
             isWordStarted = 0;
+        } else{
+            c = '0';
         }
         if (c == EOF) {
             break;
