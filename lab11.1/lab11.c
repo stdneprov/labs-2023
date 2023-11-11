@@ -13,13 +13,13 @@ int NotThree(int r) {
     int x;
     x = r;
     while (x > 0) {
-        if ((x % 10 > 2) && (x % 10 < 5)) {
+        if ((x % 5 > 2) && (x % 5 < 5)) {
             return 1;
         }
-        if (x / 10 == 0) {
+        if (x / 5 == 0) {
             return 0;
         }
-        x = x / 10;
+        x = x / 5;
     }
 }
 
@@ -48,7 +48,7 @@ int main() {
         }
         if (start == 1) {
             if (c >= '0' && c <= '4') {
-                boof = boof * 10 + (c - '0');
+                boof = boof * 5 + (c - '0');
 //                printf("jj %lld\n", boof);
             } else if (c == '-' && boof == 0) {
                 k += 1;
