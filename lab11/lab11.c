@@ -39,17 +39,17 @@ int main() {
             isWordStarted = 0;
             isNum = 1;
         }
-        if ((c == '\n') || (c == EOF)) {
+        if (c == '\n') {
+            if (numCounter > 0) {
+                printf("%d\n", goodNumCount);
+            }
+            else {
+                printf("NO");
+            }
+            goodNumCount = 0;
+        } else if (c == EOF) {
             break;
         }
     }
-
-    if (numCounter > 0) {
-        printf("%d\n", goodNumCount);
-    }
-    else {
-        printf("NO");
-    }
-
     return 0;
 }
