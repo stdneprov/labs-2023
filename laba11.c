@@ -45,7 +45,6 @@ int main() {
                 c = '0';
             } else if (!((((c >= '0' && c <= '9') || c == 'A') && Comprassion(previous, c) ) || (previous == '0' && c == '0'))){
                 correct = 0;
-                //printf("%c", previous);
             } else{
                 if (buffer == 0){
                     if (c != 'A'){
