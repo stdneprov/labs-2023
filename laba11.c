@@ -17,7 +17,7 @@ int Comprassion(char a, char b){
     }
 }
 
-int Output(long long x){
+void Output(long long x){
     if (x < 0){
         printf("%c", '-');
         x = -x;
@@ -48,7 +48,7 @@ int main() {
                 sign = -1;
                 c = '0';
             }
-            else if (!(((c >= '0' && c <= '9' || c == 'A') && Comprassion(previous, c) )|| previous == '0' && c == '0')){
+            else if (!((((c >= '0' && c <= '9') || c == 'A') && Comprassion(previous, c) ) || (previous == '0' && c == '0'))){
                 correct = 0;
             }
             else{
