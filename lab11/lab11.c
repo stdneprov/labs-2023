@@ -1,4 +1,3 @@
-#include <ctype.h>
 #include <stdio.h>
 #include <stdbool.h>
 
@@ -18,7 +17,7 @@ int main(void) {
             res += is_lower && is_word;
             is_lower = true;
             is_word = false;
-        } else if (islower(c))
+        } else if ('a' <= c && c <= 'z')
             is_word = true;
         else
             is_lower = false;
