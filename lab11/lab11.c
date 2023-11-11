@@ -15,8 +15,7 @@ int main() {
         if (c == '/' && countSlash < 2){
             countSlash ++;
             continue;
-        }
-        else if (c != '/' && countSlash == 1){
+        } else if (c != '/' && countSlash == 1){
             countSlash = 0;
         }
         else{
