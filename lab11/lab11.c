@@ -24,8 +24,9 @@ int main() {
     bool goodNumber = 1;
     bool numStarted = 0;
     long long container = 0;
-    long long currentNum = -1e9;
-    long long previousNum = -1e9;
+    long long currentNum = 0;
+    long long previousNum = 0;
+    long long counter = 0;
     int sign = 1;
     while (1) {
         int c = getchar();
@@ -33,6 +34,7 @@ int main() {
             if (goodNumber && numStarted) {
                 previousNum = currentNum;
                 currentNum = container * sign;
+                counter += 1;
             };
             container = 0;
             goodNumber = 1;
@@ -54,13 +56,13 @@ int main() {
             break;
         }
     }
-    if (previousNum == -1e9) {
+    if (counter < 2) {
         printf("NO");
     } else {
         if (previousNum < 0) {
-            printf("-%x", abs(previousNum));
+            printf("-%llx", -(previousNum));
         } else {
-            printf("%x", previousNum);
+            printf("%llx", (previousNum));
         }
     }
 }
