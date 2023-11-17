@@ -13,13 +13,11 @@ int Mod(int a, int b) {
 }
 
 int Sign(int a) {
-    if (a>0) {
+    if (a > 0) {
         return 1;
-    }
-    if (a<0) {
+    } if (a < 0) {
         return -1;
-    }
-    else {
+    } else {
         return 0;
     }
 }
@@ -38,8 +36,7 @@ int main() {
         if (k == 51) {
             printf("NO\n");
             break;
-        }
-        else {
+        } else {
             if (((Sqr(i + 10) + Sqr(j + 10)) <= 100) && ((Sqr(i + 20) + Sqr(j + 20)) <= 100)) {
                 printf("YES %d\n", k);
                 break;
