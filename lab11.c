@@ -20,11 +20,9 @@ int main(){
             isNumberStarted = 1;
             countDigitBeforeCurrentEl += 1;
             buffer = buffer * 2 + (c - '0');
-            printf("%lld %lld\n", numberCounter,buffer);
         }else if ((IsDigitForBCD(c) && (isNumberStarted == 1) && (countDigitBeforeCurrentEl < 4))){
             countDigitBeforeCurrentEl += 1;
             buffer = buffer * 2 + (c - '0');
-            printf("%lld %lld %d\n", numberCounter,buffer, countDigitBeforeCurrentEl);
         }else if (countDigitBeforeCurrentEl == 4){
             if (c == EOF){
                 printf("f");
@@ -34,13 +32,11 @@ int main(){
                 countDigitBeforeCurrentEl += 1;
                 buffer = 0;
                 buffer = buffer * 2 + (c - '0');
-                printf("%lld %lld %d\n", numberCounter, buffer, countDigitBeforeCurrentEl);
             }else if (IsSeparator(c) && (buffer <= 9)){
                 countDigitBeforeCurrentEl = 0;
                 isNumberStarted = 0;
                 buffer = 0;
                 numberCounter += 1;
-                printf("%lld %lld %d\n", numberCounter,buffer, countDigitBeforeCurrentEl);
             }else{
                 countDigitBeforeCurrentEl = 0;
                 isNumberStarted = 0;
