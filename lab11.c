@@ -19,6 +19,7 @@ void PrintTrinary(int a) {
     }
 
     PrintTrinaryR(a);
+    putchar('\n');
 }
 
 int IsSeparator(char c) {
@@ -34,12 +35,13 @@ int main() {
     int isWordNumber = 1;
     int isWasDigits = 0;
     long long buffer = 0;
+    int counter = 0;
     int sign = 1;
     while(1) {
         int c = getchar();
         if (!IsSeparator(c)) {
-            isWasDigits = isWasDigits || isDigit(c);
-            isWordNumber = isWordNumber && (isDigit(c) || (!isWordStarted && c == '-'));
+            isWasDigits = isWasDigits || IsDigit(c);
+            isWordNumber = isWordNumber && (IsDigit(c) || (!isWordStarted && c == '-'));
             isWordStarted = 1;
 
             if (c == '-') {
@@ -53,19 +55,22 @@ int main() {
             if (isWordStarted && isWordNumber && isWasDigits) {
                 if (buffer % 3 == 0) { 
                     PrintTrinary(buffer * sign);
-
+                    counter++;
                 }
 
 
             }
-
             isWordStarted = 0;
             isWordNumber = 1;
             isWasDigits = 0;
             buffer = 0;
             sign = 1;
-
-
+        }
+        if (c == EOF) {
+            if (counter == 0){
+                printf("NO");
+            }
+            break;
         }
     }
 
