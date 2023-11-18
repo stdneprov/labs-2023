@@ -24,9 +24,6 @@ int main(){
             countDigitBeforeCurrentEl += 1;
             buffer = buffer * 2 + (c - '0');
         }else if (countDigitBeforeCurrentEl == 4){
-            if (c == EOF){
-                printf("f");
-            }
             if (IsDigitForBCD(c) && (buffer <= 9)){
                 countDigitBeforeCurrentEl = 0;
                 countDigitBeforeCurrentEl += 1;
