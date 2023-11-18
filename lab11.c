@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int IsSeparator(char c){
-    return (c == ' ') || (c == EOF) || (c == '\n') || (c == ', ') || (c == '\t');
+    return (c == ' ') || (c == EOF) || (c == '\n') || (c == ',') || (c == '\t');
 }
 int IsDigitForBCD(char c){
     return (c == '0') || (c == '1');
@@ -53,6 +53,6 @@ int main(){
     } else {
         printf("not found\n");
     }
-    
+
     return 0;
 }
