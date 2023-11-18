@@ -30,8 +30,9 @@ int firstC(char c){
     else if (c == 'M'){
         return 7;
     }
+    else{
     return 8;
-
+    }
 }
 
 int main() {
@@ -40,37 +41,47 @@ int main() {
     int isWordIsRome = 1;
     int doblicateCounter = 0;
     int d = 0;
-    int isFlag = 1;
+    int isFlag = 0;
     while (1) {
         int c = getchar();
         if (IsSeparator(c)){
-            doblicateCounter = 0;
             if (isFlag){
                 wordCounter += 1;
-            }
-            else{
-                isFlag = 1;
+                isFlag = 0;
             }
         }
-        if (!IsSeparator(c)) {
+       if (!IsSeparator(c)){
             isWordStarted = 1;
-            isWordIsRome = isWordIsRome && IsRome(c);
-        }
+            isWordIsRome = isWordIsRome && IsRome(d);
+            }
+
         if (isWordStarted) {
             if (isWordIsRome){
-                if (!((firstC(c) < firstC(d)) && (doblicateCounter <= 3))){
-                    isFlag = 0;
+                if ((firstC(d) > firstC(c)) && (doblicateCounter <= 3)){
+                    isFlag = 1;
                     doblicateCounter = 0;
                 }
+                else if (doblicateCounter > 3){
+                    doblicateCounter = 0;
+                    isFlag = 0;
+                    isWordStarted = 0; 
+                }
                 else if (firstC(c) == firstC(d)){
-                    doblicateCounter = doblicateCounter + 1;
+                    if (firstC(c) == 2){
+                        doblicateCounter = 0;
+                        isFlag = 0;
+                        isWordStarted = 0;
+                    }
+                    else{
+                        doblicateCounter += 1;
+                    }
                 }
                 else{
                     doblicateCounter = 0;
+                    isFlag = 0;
+                    isWordStarted = 0;
                 }
             }
-            d = c;
-            isFlag = 0;
             isWordStarted = 0;
             isWordIsRome = 1;
         }
@@ -78,7 +89,8 @@ int main() {
         if (c == EOF) {
             break;
         }
+        d = c;
     }
-    printf("%lld\n", wordCounter - 1);
+    printf("%lld\n", wordCounter);
     return 0;
 }
