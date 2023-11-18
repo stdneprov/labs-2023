@@ -28,16 +28,15 @@ int Abs(long long r) {
 }
 
 int main() {
-    while(1) {
-        long long a;
-        scanf("%lld", &a);
+    long long a;
+    while(scanf("%lld", &a) == 1) {
         if (IsOkay(Abs(a))) {
             printf("%lld ", a);
         }
-        int c = getchar();
-        if (c == EOF) {
-            break;
-        }
+//        int c = getchar();
+//        if (c == EOF) {
+//            break;
+//        }
     }
 
     return 0;
