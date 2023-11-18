@@ -61,6 +61,10 @@ int main() {
                     isFlag = 1;
                     doblicateCounter = 0;
                 }
+                else if (((firstC(c) == 2) || (firstC(c) == 3)) && (firstC(d) == 1)){
+                    isFlag = 1;
+                    doblicateCounter = 0;
+                }
                 else if (doblicateCounter > 3){
                     doblicateCounter = 0;
                     isFlag = 0;
