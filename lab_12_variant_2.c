@@ -45,9 +45,15 @@ long long Res(long long number) {
 
 int main(void) {
     long long number;
+    int sign = 1;
+
     while(scanf("%lld", &number)) {
+        if(number < 0) {
+            sign = -1;
+        }
         if(Res(number) != 0) {
-            printf("%lld", Res(number));
+            long long result = sign * Res(number);
+            printf("%lld", result);
         }
     }
     return 0;
