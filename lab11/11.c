@@ -39,49 +39,54 @@ int main() {
     long long wordCounter = 0;
     int isWordStarted = 0;
     int isWordIsRome = 1;
-    int doblicateCounter = 0;
-    int d = 0;
+    int doblicateCounter = 1;
+    int d = ' ';
     int isFlag = 0;
     while (1) {
         int c = getchar();
         if (IsSeparator(c)){
+            doblicateCounter = 1;
             if (isFlag){
                 wordCounter += 1;
                 isFlag = 0;
             }
         }
-       if (!IsSeparator(c)){
+        if (!IsSeparator(c)){
             isWordStarted = 1;
-            isWordIsRome = isWordIsRome && IsRome(d);
-            }
+            isWordIsRome = isWordIsRome && IsRome(d);    
+        }
+
+        if ((IsRome(c)) && IsSeparator(d)){
+            isFlag = 1;
+        }
 
         if (isWordStarted) {
             if (isWordIsRome){
-                if ((firstC(d) > firstC(c)) && (doblicateCounter <= 3)){
+                if ((firstC(d) > firstC(c)) && (doblicateCounter < 3)){
                     isFlag = 1;
-                    doblicateCounter = 0;
+                    doblicateCounter = 1;
                 }
-                else if (((firstC(c) == 2) || (firstC(c) == 3)) && (firstC(d) == 1)){
+                else if ((((firstC(c) == 2) || (firstC(c) == 3)) && (firstC(d) == 1)) && (doblicateCounter < 2)){
                     isFlag = 1;
-                    doblicateCounter = 0;
+                    doblicateCounter = 1;
                 }
-                else if (doblicateCounter > 3){
-                    doblicateCounter = 0;
+                else if (doblicateCounter >= 3){
                     isFlag = 0;
                     isWordStarted = 0; 
                 }
                 else if (firstC(c) == firstC(d)){
-                    if (firstC(c) == 2){
-                        doblicateCounter = 0;
+                    if ((firstC(c) == 2) || (firstC(c) == 4) || (firstC(c) == 6)){
+                        doblicateCounter = 1;
                         isFlag = 0;
                         isWordStarted = 0;
                     }
                     else{
                         doblicateCounter += 1;
+                        isFlag = 1;
                     }
                 }
                 else{
-                    doblicateCounter = 0;
+                    doblicateCounter = 1;
                     isFlag = 0;
                     isWordStarted = 0;
                 }
@@ -89,7 +94,6 @@ int main() {
             isWordStarted = 0;
             isWordIsRome = 1;
         }
-
         if (c == EOF) {
             break;
         }
