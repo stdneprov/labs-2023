@@ -14,8 +14,10 @@ int main() {
             count += 1;
             if (chr >= 'A' && chr <= 'Z') {
                 new_chr = (chr - 'A' + count + 3) % 26 + 'A';
-            } else {
+            } else if (chr >= 'a' && chr <= 'z') {
                 new_chr = (chr - 'a' + count + 3) % 26 + 'a';
+            } else {
+                new_chr = chr;
             }
         printf("%c", new_chr);    
         } else {
@@ -24,7 +26,7 @@ int main() {
         }
         if (chr == EOF) {
             break;
-    }
+        }
     }
     return 0;
 }
