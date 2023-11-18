@@ -27,23 +27,27 @@ long long Iter(long long x) {
     return res;
 }
 
+long long Res(long long number) {
+    number = Abs(number);
+    long long discharge = Length(number);
+    long long iterator = Iter(discharge);
+    long long res = 0;
+    while(discharge > 0) {
+        if(discharge % 2 != 0) {
+            res *= 10;
+            res += (number / iterator) % 10;
+        }   
+        discharge--;
+        iterator /= 10;
+    }
+    return res;
+}
+
 int main(void) {
     long long number;
     while(scanf("%lld", &number)) {
-        number = Abs(number);
-        long long discharge = Length(number);
-        long long iterator = Iter(discharge);
-        long long res = 0;
-        while(discharge > 0) {
-            if(discharge % 2 != 0) {
-                res *= 10;
-                res += (number / iterator) % 10;
-            }   
-            discharge--;
-            iterator /= 10;
-        }
-        if(res != 0) {
-            printf("%lld", res);
+        if(Res(number) != 0) {
+            printf("%lld", Res(number));
         }
     }
     return 0;
