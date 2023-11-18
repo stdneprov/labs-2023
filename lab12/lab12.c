@@ -13,6 +13,9 @@ int NumLen(int x) {
 int main() {
     int a;
     scanf("%d", &a);
+    int sign = a > 0 ? 1 : -1;
+    a *= sign;
+
     int length = NumLen(a);
     int middle = length / 2;
     int ans = 0;
@@ -24,5 +27,5 @@ int main() {
         }
         a = a / 10;
     }
-    printf("%d\n", ans);
+    printf("%d\n", ans * sign);
 }
