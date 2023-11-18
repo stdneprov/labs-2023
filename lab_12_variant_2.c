@@ -3,7 +3,7 @@
 
 
 long long Abs(long long x) {
-    if (x < 0) {
+    if(x < 0) {
         return -x;
     }
     return x;
@@ -27,28 +27,24 @@ long long Iter(long long x) {
     return res;
 }
 
-
-int main() {
-    while(1) {
-        long long number;
-        while(scanf("%lld", &number)) {
-            number = Abs(number);
-            long long discharge = Length(number);
-            long long iterator = Iter(discharge);
-            long long res = 0;
-            while(discharge > 0) {
-                if(discharge % 2 != 0){
-                    res *= 10;
-                    res += (number / iterator) % 10;
-                }   
-                discharge--;
-                iterator /= 10;
-            }
-            if(res != 0) {
-                printf("%lld", res);
-            }
+int main(void) {
+    long long number;
+    while(scanf("%lld", &number)) {
+        number = Abs(number);
+        long long discharge = Length(number);
+        long long iterator = Iter(discharge);
+        long long res = 0;
+        while(discharge > 0) {
+            if(discharge % 2 != 0) {
+                res *= 10;
+                res += (number / iterator) % 10;
+            }   
+            discharge--;
+            iterator /= 10;
+        }
+        if(res != 0) {
+            printf("%lld", res);
         }
     }
-
     return 0;
 }
