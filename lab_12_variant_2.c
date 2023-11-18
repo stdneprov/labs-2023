@@ -2,10 +2,6 @@
 #include <stdbool.h>
 
 
-int IsSeparator(char c) {
-    return (c == ' ') || (c == ',') || (c == '\n') || (c == EOF) || (c == '\t');
-}
-
 long long Abs(long long x) {
     if (x < 0) {
         return -x;
@@ -35,26 +31,22 @@ long long Iter(long long x) {
 int main() {
     while(1) {
         long long number;
-        scanf("%lld", &number);
-        number = Abs(number);
-        long long discharge = Length(number);
-        long long iterator = Iter(discharge);
-        long long res = 0;
-        while(discharge > 0) {
-            if(discharge % 2 != 0){
-                res *= 10;
-                res += (number / iterator) % 10;
+        while(scanf("%lld", &number)) {
+            number = Abs(number);
+            long long discharge = Length(number);
+            long long iterator = Iter(discharge);
+            long long res = 0;
+            while(discharge > 0) {
+                if(discharge % 2 != 0){
+                    res *= 10;
+                    res += (number / iterator) % 10;
+                }   
+                discharge--;
+                iterator /= 10;
             }
-            discharge--;
-            iterator /= 10;
-        }
-        if(res != 0) {
-            printf("%lld", res);
-        }
-        
-        int c = getchar();
-        if (c == EOF) {
-            break;
+            if(res != 0) {
+                printf("%lld", res);
+            }
         }
     }
 
