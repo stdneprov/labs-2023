@@ -5,24 +5,25 @@ int IsSeparator(char c) {
 }
 
 int main() {
-    int sym_count = 0;
-    int new_chr = 0;
+    int NewChr = 0;
     long long count = 0;
     while (1) {
         int chr = getchar();
         if (!IsSeparator(chr)) {
             count += 1;
             if (chr >= 'A' && chr <= 'Z') {
-                new_chr = (chr - 'A' + count + 3) % 26 + 'A';
+                NewChr = (chr - 'A' + count + 3) % 26 + 'A';
             } else if (chr >= 'a' && chr <= 'z') {
-                new_chr = (chr - 'a' + count + 3) % 26 + 'a';
+                NewChr = (chr - 'a' + count + 3) % 26 + 'a';
             } else {
-                new_chr = chr;
+                NewChr = chr;
             }
-        printf("%c", new_chr);    
+        printf("%c", NewChr); 
         } else {
             count = 0;
-            printf("%c", chr);
+            if (chr != EOF) {
+                printf("%c", chr);
+            }
         }
         if (chr == EOF) {
             break;
