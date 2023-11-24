@@ -4,7 +4,7 @@
 
 #define ll long long int
 
-bool isSeparator(char c) {
+bool IsSeparator(char c) {
     return c == ' ' || c == '\t' || c == '\n' || c == ',' || c == '.' ||
            c == EOF;
 }
@@ -37,7 +37,7 @@ int main(void) {
         if (res == 1) {
             Print(num);
         } else {
-            while (!isSeparator(getchar())) continue;
+            while (!IsSeparator(getchar())) continue;
         }
     }
     return 0;
