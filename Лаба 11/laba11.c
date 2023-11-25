@@ -1,34 +1,31 @@
 #include <stdio.h>
-#include <string.h>
 #include <ctype.h>
 
-int CountNouns(const char *text) {
-    int count = 0;
-    int length = strlen(text);
+int count_nouns() {
+    int count = 0;    // Переменная для подсчета количества существительных
+    int isWord = 0;   // Флаг, указывающий, что мы считываем слово
 
-    for (int i = 0; i < length; i++) {
-        // Проверяем, начинается ли слово с заглавной буквы (потенциальное существительное)
-        if (isupper(text[i])) {
-            // Подсчитываем это слово как существительное
-            count++;
+    int currentChar = getchar();   // Считываем символы с помощью функции getchar()
 
-            // Пропускаем оставшуюся часть слова
-            while (i < length && isalpha(text[i])) {
-                i++;
-            }
+    while (currentChar != EOF && currentChar != '\n') {   // Пока не достигнут конец файла или символ новой строки
+        if (isalpha(currentChar)) {   // Проверяем, является ли символ буквой
+            isWord = 1;   // Устанавливаем флаг, что мы считываем слово
+        } else if (isWord) {   // Если прочитали слово
+            count++;   // Увеличиваем счетчик на 1
+            isWord = 0;   // Сбрасываем флаг слова
         }
+        
+        currentChar = getchar();   // Считываем следующий символ
     }
-    
+
     return count;
 }
 
 int main() {
-    // Пример текста на немецком языке
-    const char *germanText = "Das ist ein Beispieltext für die Programmieraufgabe. "
-                             "Es gibt viele Substantive in diesem Text.";
+    printf("Введите текст на немецком языке:\n");
 
-    // Подсчитываем количество существительных и выводим результат
-    int NounCount = CountNouns(germanText);
-    printf("Количество существительных в тексте: %d\n", NounCount);
+    int noun_count = count_nouns();
+    printf("Количество существительных в тексте: %d\n", noun_count);
+
     return 0;
 }
