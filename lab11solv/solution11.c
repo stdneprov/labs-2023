@@ -7,7 +7,9 @@ int IsSep(int s) {
 int WordCounter(void) {
     int a = getchar(), b = getchar(), inWord = 0, ans = 0;
     while (a != '*' || b != '/') {
-        if (IsSep(a) == 0) {
+        if (b == EOF) {
+            return 0;
+        } else if (IsSep(a) == 0) {
             inWord = 1;
         } else if (inWord == 1) {
             ans += 1;
@@ -35,4 +37,5 @@ int main(void) {
 
     }
     printf("%d\n", totalAnswer);
+    return 0;
 }
