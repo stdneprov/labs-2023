@@ -1,40 +1,44 @@
 #include <stdio.h>
-#include <string.h>
+#include <stdbool.h>
 
-int count_words_increasing_order(char* sentence) {
-    int count = 0;
-    char* word = strtok(sentence, " ");
-    
-    while (word != NULL) {
-        int len = strlen(word);
-        int is_increasing = 1;
-        
-        for (int i = 0; i < len - 1; i++) {
-            if (word[i] >= word[i + 1]) {
-                is_increasing = 0;
-                break;
-            }
+bool is_increasing(char* word) {
+    int i = 0;
+    while (word[i + 1] != '\0') { 
+        if (word[i] >= word[i + 1]) {
+            return false;
         }
-        
-        if (is_increasing) {
-            count++;
-        }
-        
-        word = strtok(NULL, " ");
+        i++;
     }
-    
-    return count;
+    return true;
 }
 
 int main() {
-    char input[100];
-    printf("Введите строку: ");
-    fgets(input, sizeof(input), stdin);
-    
-    input[strcspn(input, "\n")] = '\0'; // Удаляем символ новой строки
-    
-    int word_count = count_words_increasing_order(input);
-    printf("Количество слов с возрастающим порядком букв: %d\n", word_count);
-    
+    char sentence[100];
+    printf("Введите предложение: ");
+    fgets(sentence, sizeof(sentence), stdin);
+
+    int word_count = 0;
+    char* word = NULL;
+    bool in_word = false;
+
+    for (int i = 0; sentence[i] != '\0'; i++) {
+        if (sentence[i] != ' ' && sentence[i] != '\n') {
+            if (!in_word) {
+                in_word = true;
+                word = &sentence[i];
+            }
+        } else {
+            if (in_word) {
+                in_word = false;
+                sentence[i] = '\0';
+                if (is_increasing(word)) {
+                    word_count++;
+                }
+            }
+        }
+    }
+
+    printf("Количество слов с буквами в возрастающем лексикографическом порядке: %d\n", word_count);
+
     return 0;
 }
