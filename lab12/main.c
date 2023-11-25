@@ -8,18 +8,13 @@ int main() {
     
     while (scanf("%d", &num) != EOF) {
 
-        int counter[10] = {0};
-        int sum = 0;
+        int counter = 0;
 
         while (num != 0) {
 
-            if (!counter[num % 10]) {
-
-                counter[num % 10] = 1;
-                ++sum;
-            }
+            counter |= (1 << num % 10);
                             
-            if (sum > 9) {
+            if (counter >= 0b1111111111) {
             
                 printf("%d\n", 0);
                 break;
@@ -28,7 +23,7 @@ int main() {
             num /= 10;
         }
         
-        if (sum < 10) {
+        if (counter < 0b1111111111) {
 
             printf("%d\n", 1);
         }
