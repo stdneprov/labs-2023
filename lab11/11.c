@@ -80,7 +80,7 @@ int main() {
                         isFlag = 0;
                         isWordStarted = 0;
                     }
-                    else{
+                    else if (firstC(c) != 7){
                         doblicateCounter += 1;
                         isFlag = 1;
                     }
