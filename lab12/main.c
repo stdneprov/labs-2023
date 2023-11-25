@@ -14,7 +14,7 @@ int main() {
 
             counter |= (1 << num % 10);
                             
-            if (counter >= 0b1111111111) {
+            if (counter >= 1023) {
             
                 printf("%d\n", 0);
                 break;
@@ -23,7 +23,7 @@ int main() {
             num /= 10;
         }
         
-        if (counter < 0b1111111111) {
+        if (counter < 1023) {
 
             printf("%d\n", 1);
         }
