@@ -2,7 +2,7 @@
 #include <string.h>
 #include <ctype.h>
 
-int countNouns(const char *text) {
+int CountNouns(const char *text) {
     int count = 0;
     int length = strlen(text);
 
@@ -18,7 +18,7 @@ int countNouns(const char *text) {
             }
         }
     }
-
+    
     return count;
 }
 
@@ -28,8 +28,7 @@ int main() {
                              "Es gibt viele Substantive in diesem Text.";
 
     // Подсчитываем количество существительных и выводим результат
-    int nounCount = countNouns(germanText);
-    printf("Количество существительных в тексте: %d\n", nounCount);
-
+    int NounCount = CountNouns(germanText);
+    printf("Количество существительных в тексте: %d\n", NounCount);
     return 0;
 }
