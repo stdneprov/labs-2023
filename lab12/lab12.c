@@ -9,25 +9,18 @@ bool IsSeparator(char c) {
            c == EOF;
 }
 
-void PrintRec(ll num) {
-    if (num != 0) {
-        PrintRec(num / 10);
-        if (num % 2 != 0)
-            printf("%lld", num % 10);
+ll WithoutDivisableByTwo(ll num) {
+    ll res = 0;
+    int sign = num > 0 ? 1 : -1;
+    num *= sign;
+    ll digit = 1;
+    for (; num > 0; num /= 10) {
+        if (num % 2 != 0) {
+            res += (num % 10) * digit;
+            digit *= 10;
+        }
     }
-}
-
-void Print(ll num) {
-    if (num == 0) {
-        printf("0\n");
-        return;
-    }
-    if (num < 0) {
-        printf("-");
-        num *= -1;
-    }
-    PrintRec(num);
-    printf("\n");
+    return res * sign;
 }
 
 int main(void) {
@@ -35,7 +28,7 @@ int main(void) {
     int res;
     while ((res = scanf("%lld", &num)) != EOF) {
         if (res == 1) {
-            Print(num);
+            printf("%lld\n", WithoutDivisableByTwo(num));
         } else {
             while (!IsSeparator(getchar())) continue;
         }
