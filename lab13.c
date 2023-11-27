@@ -43,6 +43,9 @@ long long GetUnicode() {
     return code;
 }
 
+long long GetNumber (char *letter) {
+    return (((letter[0] & 31) << 6) | (letter[1] & 63)) - 1072; // 31 - 0001 1111, 63 - 0011 1111
+}
 
 int main() {
     setlocale(LC_ALL, "");
@@ -50,8 +53,8 @@ int main() {
     Set bitset = 0;
     int flag = 0;
 
-    Set vowels = (1u << 0)|(1u << 5)|(1u << 8)|(1u << 14)|(1u << 19)|(1u << 27)|(1u << 29)|(1u << 30)|(1u << 31);
-    Set voiced = (1u << 1)|(1u << 2)|(1u << 3)|(1u << 4)|(1u << 6)|(1u << 7)|(1u << 9)|(1u << 11)|(1u << 12)|(1u << 13)|(1u << 16);
+    Set vowels = (1u << GetNumber("а"))|(1u << GetNumber("е"))|(1u << GetNumber("и"))|(1u << GetNumber("о"))|(1u << GetNumber("у"))|(1u << GetNumber("ы"))|(1u << GetNumber("э"))|(1u << GetNumber("ю"))|(1u << GetNumber("я"));
+    Set voiced = (1u << GetNumber("б"))|(1u << GetNumber("в"))|(1u << GetNumber("г"))|(1u << GetNumber("д"))|(1u << GetNumber("ж"))|(1u << GetNumber("з"))|(1u << GetNumber("л"))|(1u << GetNumber("м"))|(1u << GetNumber("н"))|(1u << GetNumber("р"));
 
     while(1) {
         c = GetUnicode();
