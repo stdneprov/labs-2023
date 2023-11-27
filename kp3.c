@@ -17,18 +17,19 @@ int main() {
     long double item;
     long double summa;
     int k;
-    printf("  x  |             sum              |             func             | iter\n");
+    printf("|  x  |             sum              |             func             | iter|\n");
+    printf("|-----|------------------------------|------------------------------|-----|\n");
     for (long double i = A; i <= B + STEP; i += STEP) {
         item = -1.0l / 5.0l;
         summa = item;
         k = 0;
-        while ((k < 100) && (item < e)) {
+        while ((k < 200) && (item < e)) {
             item *= (2.0l * i) / 5.0l;
             summa += item;
             k++;
         }
         long double func = 1.0l / (2.0l * i - 5.0l);
-        printf("%.2Lf | %.25Lf | %.25Lf | %d \n", i, summa, func, k);
+        printf("|%.2Lf | %.25Lf | %.25Lf | %3d |\n", i, summa, func, k);
     }
     return 0;
 }
