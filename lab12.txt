@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <math.h>
+
+int Clipping(int a) {
+    int result;
+    int count = 0;
+    int number = a;
+    while (number > 0) {
+        number /= 10;
+        count++;
+    }
+    result = a % (int)(pow(10, count - 1));
+    result = (result - (a % 10)) / 10;
+    return result;
+}
+
+
+int main(void) {
+    int a;
+    while(scanf("%d", &a) == 1) {
+        printf("%d", Clipping(a));
+    }
+    return 0;
+}
+
+
