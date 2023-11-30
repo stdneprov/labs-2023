@@ -14,18 +14,20 @@ int main() {
     int a1;
     int a2;
     int itog;
-    scanf("%d", &chislo);
-    chislo2 = Abs(chislo);
-    a1 = chislo2 / 10;
-    a2 = chislo2 % 10;
-    while(chislo2 / 10 != 0) {
-        a2 = a2 * 10;
-        chislo2 = chislo2 / 10;
-    }
-    itog = a2 + a1;
-    if (chislo > 0) {
-        printf("%d", itog);
-    } else {
-        printf("%d", itog);
+    while (scanf("%d", &chislo) == 1) {
+        chislo2 = Abs(chislo);
+        a1 = chislo2 / 10;
+        a2 = chislo2 % 10;
+        while(chislo2 / 10 != 0) {
+            a2 = a2 * 10;
+            chislo2 = chislo2 / 10;
+        }
+        itog = a2 + a1;
+        if (chislo > 0) {
+            printf("%d", itog);
+        } else {
+            printf("%d", itog);
+        }
+        printf("\n");
     }
 }
