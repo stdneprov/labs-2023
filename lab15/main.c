@@ -1,69 +1,61 @@
 #include <stdio.h>
 #include <stdlib.h>
-const int maxn = 20;
+const int maxn = 400;
 
-/*  
-    прога очень чувствительна к формату ввода
-    числа в строке разделены ОДНИМ пробелом, лишних пробелов в начале и конце строк быть НЕ ДОЛЖНО
-    после последнего числа в строке идет ОДИН перенос строки
-    в конце и в начале НЕ ДОЛЖНО БЫТЬ пустых строк
-    то есть например:
+// я не понял как передавать в функции в качестве параметров массивы нефиксированных размеров
+// поэтому функции работают через указатель на первый элемент матрицы
 
-    11 12 13 14\n
-    21 22 23 24\n
-    31 32 33 34\n
-    41 42 43 44EOF
-
-    спасибо за понимание
-*/
-
-int ColumnSumm(int matrix[maxn][maxn], int x, int size) { // сумма всех элементов x-го столбца 
+int ColumnSumm(int *ptr, int x, int size) { // сумма всех элементов x-го столбца 
     int sum = 0;
     for (int y = 0; y < size; ++y) {
-        sum += matrix[y][x];
+        sum += *(ptr + y * size + x);
     }
     return sum;
 }
 
-void PrintMatrix(int matrix[maxn][maxn], int size) { // вывод матрицы
+void PrintMatrix(int *ptr, int size) { // вывод матрицы
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
-            printf("%d ", matrix[i][j]);
+            printf("%d ", *(ptr + i * size + j));
         }
-        printf("\n");
+        putchar('\n');
     }
 }
 
 int main() {
 
-    int matrix[maxn][maxn];
+    int elements[maxn];
     int min = 1e5;
 
-    char c = ' ';
-
-    int i, j;
-    i = 0;
-    while (c != EOF) { 
-        j = 0;
-        c = ' ';
-        while (c != '\n' && c != EOF) {
-            scanf("%d", &matrix[i][j]);
-            if (matrix[i][j] < min) {
-                min = matrix[i][j];
-            }
-            c = getchar();
-            ++j;
+    int size = 0; // количество элементов
+    int n = 0; // порядок матрицы
+    
+    while (scanf("%d", &elements[size]) != EOF) {
+        if (elements[size] < min) {
+            min = elements[size];
         }
-        ++i;
+        ++size;
+        if (n * n < size) {
+            ++n;
+        }
     }
-    // после ввода в переменной i остаётся количество строк матрицы (то есть её размер)
 
-    int modifiedMatrix[maxn][maxn];
+    int matrix[n][n];
+    int *matrixPtr = &matrix[0][0];
 
-    for (int x = 0; x < i; ++x) {
-        int cs = ColumnSumm(matrix, x, i);
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            matrix[i][j] = elements[i * n + j];
+        }
+    }
 
-        for (int y = 0; y < i; ++y) {
+    int modifiedMatrix[n][n];
+    int *modMatrixPtr = &modifiedMatrix[0][0];
+
+    for (int x = 0; x < n; ++x) {
+        int cs = ColumnSumm(matrixPtr, x, n);
+
+        for (int y = 0; y < n; ++y) {
 
             if (matrix[y][x] == min) {
                 modifiedMatrix[y][x] = cs;
@@ -73,7 +65,7 @@ int main() {
         }
     }
 
-    PrintMatrix(modifiedMatrix, i);
+    PrintMatrix(modMatrixPtr, n);
     
     return 0;
 }
