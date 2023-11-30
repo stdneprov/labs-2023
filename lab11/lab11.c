@@ -11,12 +11,16 @@ int Mod(int a, int b) {
 int main() {
     int count = 1;
     int count1 = 0;
+    char a = ' ';
     while (1) {
         int c = getchar();
+        if (c == '\n') {
+            count = 0;
+        }
         if (c == EOF) {
             break;
         }
-        if (IsSeparator(c)) {
+        if (IsSeparator(c) && (c != a)) {
             count += 1;
             count = Mod(count, 26);
             printf("%c", c);
@@ -36,6 +40,10 @@ int main() {
             }
         } else {
             printf("%c", c);
-        } 
+        }
+        a = c; 
+        if (c == '\n') {
+            a = ' ';
+        }
     }
 }
