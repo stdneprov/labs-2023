@@ -3,12 +3,17 @@
 #define MAXN 100
 
 int main() {
-    int n;
     int m[MAXN][MAXN];
-    scanf("%d", &n);
-    for (int i = 0; i < n; i++) 
-        for (int j = 0; j < n; j++) 
-            scanf("%d", &m[i][j]);
+    int s[MAXN * MAXN];
+    int k = 0;
+    while (scanf("%d", s + k) != EOF) k++;
+    int n = 0;
+    while (k > n * n) n++;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            m[i][j] = s[i * n + j];
+        }
+    }
     int i = 0;
     int j = n;
     for (int k = 1; k <= n; k++) {
@@ -31,6 +36,5 @@ int main() {
             printf("%d ", m[i][j]);
         }
     }
-    
     return 0;
 }
