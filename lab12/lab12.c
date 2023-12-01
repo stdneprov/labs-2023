@@ -16,20 +16,20 @@ int main() {
         while (number > 0){
             int digit = number % 10;
             number /= 10;
-            if (digit + null + dec == 0)
+            dec = dec * 10 + decrement(digit);
+            if (dec == 0)
                 null++;
-            else
-                dec = dec * 10 + decrement(digit);
         }
         while (dec > 0) {
             int digit = dec % 10;
             dec /= 10;
             result = result * 10 + digit;
         }
-        if (null == 0)
-            printf("%d ", result);
-        else
-            printf("%d0 ", result);
+        printf("%d", result);
+        for (int i=0; i < null; ++i) {
+            printf("0");
+        }
+        printf(" ");
         null = 0;
     }
     return 0;
