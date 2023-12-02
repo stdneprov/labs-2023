@@ -4,7 +4,8 @@ const int maxn = 7;
 
 int main(){
     int matrix[maxn * maxn];
-
+    int answer[maxn * maxn];
+    int indForAnswer = 0;
     int ind = 0;
     int toCorner = 0;
     int step = 1;
@@ -30,6 +31,8 @@ int main(){
             break;
         }
         printf("%d ", matrix[ind]);
+        answer[indForAnswer] = matrix[ind];
+        indForAnswer += 1;
         ind += step;
         if (stateDirection == 0){
             stateDirection = 1;
