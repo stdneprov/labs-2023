@@ -12,40 +12,57 @@ const int maxn = 400;
     v > > ^ ^ ^      > > > ^ |
     > > > > ^ |
 */
+typedef struct
+{
+    int *ptr;
+    int size;
+} matrix;
 
-int main() {
-
-    int elements[maxn];
-    int min = 1e5;
-
-    int size = 0; // количество элементов
-    int n = 0; // порядок матрицы
+matrix MatrixIn(int *ptr) {
     
-    while (scanf("%d", &elements[size]) != EOF) {
-        if (elements[size] < min) {
-            min = elements[size];
-        }
-        ++size;
-        if (n * n < size) {
+    int *writer = ptr;
+    int n = 0;
+    while (scanf("%d", writer++) != EOF) {
+
+        if (n*n < (writer - ptr)) {
             ++n;
         }
     }
 
-    int matrix[n][n];
+    matrix res = {ptr, n};
+    return res;
+}
 
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < n; ++j) {
-            matrix[i][j] = elements[i * n + j];
+int GetMatrixElem(matrix mx, int i, int j) {
+    return *(mx.ptr + i * mx.size + j);
+}
+
+void PutMatrixElem(matrix mx, int i, int j, int el) {
+    int *where = mx.ptr + i * mx.size + j;
+    *where = el;
+}
+
+void PrintMatrix(matrix mx) { // вывод матрицы
+    for (int i = 0; i < mx.size; ++i) {
+        for (int j = 0; j < mx.size; ++j) {
+            printf("%d ", GetMatrixElem(mx, i, j));
         }
+        putchar('\n');
     }
+}
 
-    for (int k = 1; k < (n + 1) / 2 + 1; ++k) { // номер "кольца", начиная с внешних
+int main() {
 
-        int y = n - k, x = n - k; // устанавливаем начальный элемент (правый нижний угол текущего кольца)
+    int elements[maxn]; 
+    matrix m = MatrixIn((int *)&elements);
+
+    for (int k = 1; k < (m.size + 1) / 2 + 1; ++k) { // номер "кольца", начиная с внешних
+
+        int y = m.size - k, x = m.size - k; // устанавливаем начальный элемент (правый нижний угол текущего кольца)
 
         while (y >= k - 1) { // принтим правую сторону снизу вверх, пока не уйдем за пределы
             
-            printf("%d ", matrix[y][x]);
+            printf("%d ", GetMatrixElem(m, y, x));
             --y;
         }
         ++y;
@@ -53,23 +70,23 @@ int main() {
 
         while (x >= k - 1) { // принтим верхнюю сторону справа налево
 
-            printf("%d ", matrix[y][x]);
+            printf("%d ", GetMatrixElem(m, y, x));
             --x;
         }
         ++x;
         ++y; // корректируем
 
-        while (y <= n - k) { // принтим левую сторону сверху вниз
+        while (y <= m.size - k) { // принтим левую сторону сверху вниз
 
-            printf("%d ", matrix[y][x]);
+            printf("%d ", GetMatrixElem(m, y, x));
             ++y;
         }
         --y;
         ++x; // корректируем
 
-        while (x < n - k) { // принтим нижнюю сторону, пока не упрёмся в начальный элемент
+        while (x < m.size - k) { // принтим нижнюю сторону, пока не упрёмся в начальный элемент
 
-            printf("%d ", matrix[y][x]);
+            printf("%d ", GetMatrixElem(m, y, x));
             ++x;
         }
     }
