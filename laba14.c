@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-const int maxn = 100;
+const int maxn = 7;
 
 int main(){
     int matrix[maxn * maxn];
