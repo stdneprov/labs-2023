@@ -13,8 +13,18 @@ bool IsIn(Set a, wchar_t c){
     return (a & ~(1 << (c - 'a'))) != a; 
 }
 
-bool IsVowel(wchar_t c){
-    return (wcschr(L"уеыаоэяиюУЕЫАОЭЯИЮ", c));
+bool IsVowel(wchar_t ch) {
+    Set russian_vowels[] = {L'а', L'е', L'и', L'о', L'у', L'ы', L'э', L'ю', L'я',
+                            L'А', L'Е', L'И', L'О', L'У', L'Ы', L'Э', L'Ю', L'Я'};
+    int length = sizeof(russian_vowels) / sizeof(russian_vowels[0]);
+
+    for (int i = 0; i < length; i++) {
+        if (ch == russian_vowels[i]) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 void Add(Set *a, wchar_t c){
