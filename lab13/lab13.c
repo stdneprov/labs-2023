@@ -1,32 +1,19 @@
 // Есть ли гласная входящая в состав всех слов
 #include <stdio.h>
-#include <locale.h>
 #include <stdbool.h>
-
-int vowels_u[] = L"AEIOUАЕЁИОУЫЭЮЯ";
-int vowels_l[] = L"aeiouаеёиоуыэюя";
-int vowels_cnt = sizeof(vowels_u) / (sizeof(vowels_u[0])) - 1;
 
 bool IsSeparator(int c) {
     return c == ' ' || c == '\t' || c == '\n' || c == ',' || c == '.' ||
            c == EOF;
 }
 
-int Mask(int c) {
+int Mask(int c, int *vowels_u, int *vowels_l) {
     int res = 0;
-    for (int i = 0; i < vowels_cnt; i++) {
+    for (int i = 0; i < 15; i++) {
         if (vowels_u[i] == c || vowels_l[i] == c) {
             res = res | 1 << i;
             break;
         }
-    }
-    return res;
-}
-
-int FullMask(void) {
-    int res = 0;
-    for (int i = 0; i < vowels_cnt; i++) {
-        res = res | 1 << i;
     }
     return res;
 }
@@ -56,8 +43,7 @@ int GetWChar(void) {
 }
 
 int main(void) {
-    setlocale(LC_ALL, "ru_RU.UTF-8");
-    int res = FullMask();
+    int res = 0xFFFF;
     int cur = 0;
     int c;
     bool is_word = true;
@@ -70,16 +56,14 @@ int main(void) {
             cur = 0;
         } else {
             is_word = true;
-            cur |= Mask(c);
+            cur |= Mask(c, L"AEIOUАЕЁИОУЫЭЮЯ", L"aeiouаеёиоуыэюя");
         }
         if (c == EOF)
             break;
     };
-    for (int i = 0; i < vowels_cnt; i++) {
-        if (res & (1 << i)) {
-            printf("%lc\n", vowels_u[i]);
-        }
-    }
+    if (res != 0)
+        printf("YES\n");
+    else
+        printf("NO\n");
     return 0;
 }
-
