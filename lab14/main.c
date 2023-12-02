@@ -18,7 +18,7 @@ typedef struct
     int size;
 } matrix;
 
-matrix MatrixIn(int *ptr) {
+matrix MatrixIn(int *ptr) { // ввод матрицы
     
     int *writer = ptr;
     int n = 0;
@@ -33,11 +33,11 @@ matrix MatrixIn(int *ptr) {
     return res;
 }
 
-int GetMatrixElem(matrix mx, int i, int j) {
+int GetMatrixElem(matrix mx, int i, int j) { // удобное получение элемента в 0-индексации
     return *(mx.ptr + i * mx.size + j);
 }
 
-void PutMatrixElem(matrix mx, int i, int j, int el) {
+void PutMatrixElem(matrix mx, int i, int j, int el) { // удобная запись элемента в 0-индексации
     int *where = mx.ptr + i * mx.size + j;
     *where = el;
 }
