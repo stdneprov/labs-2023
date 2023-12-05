@@ -14,16 +14,10 @@ bool IsIn(Set a, wchar_t c){
 }
 
 bool IsVowel(wchar_t ch) {
-    Set russian_vowels[] = {L'а', L'е', L'и', L'о', L'у', L'ы', L'э', L'ю', L'я',
-                            L'А', L'Е', L'И', L'О', L'У', L'Ы', L'Э', L'Ю', L'Я'};
-    int length = sizeof(russian_vowels) / sizeof(russian_vowels[0]);
-
-    for (int i = 0; i < length; i++) {
-        if (ch == russian_vowels[i]) {
-            return true;
-        }
+    if(ch == L'а' || ch == L'е' || ch == L'и' || ch == L'о' || ch == L'у' || ch == L'ы' || ch == L'э' || ch == L'ю' || ch == L'я'
+     || ch == L'А' || ch == L'Е' || ch == L'И' || ch == L'О' || ch == L'У' || ch == L'Ы' || ch == L'Э' || ch == L'Ю' || ch == L'Я') {
+        return true;
     }
-
     return false;
 }
 
