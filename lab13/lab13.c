@@ -38,7 +38,7 @@ int GlueByte(char a) {
         return a;
     } else if ((a & (1 << 5)) == 0) {
         newSym = (a & ~(-1 << 5));
-        newSym <<= 6;
+        newSym = newSym << 6;
         int c = getchar();
         newSym |= (c & ~(-1 << 6));
         return newSym;
