@@ -9,7 +9,8 @@ int main() {
             first = 0;
         }
         else if (c == '\n') {
-           first = 1;
+            putchar(' ');
+            first = 1;
         }
         putchar(c);
     }
