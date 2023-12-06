@@ -10,7 +10,6 @@ int IsDigit(char c) {
 }
 
 int main() {
-    long long wordCounter = 0;
     int isWodStarted = 0;
     int isWordIsNumber = 1;
     int isWasDigits = 0;
@@ -23,7 +22,6 @@ int main() {
     int OnlyOnce = 1;
     long long buffer = 0;
     int sign = 1;
-    long long max = 0;
     double doubledBuffer = 0;
     while (1) {
         int c = getchar();       
@@ -77,8 +75,8 @@ int main() {
             isWasIn = (StartofInch && c == 'n') || isWasIn;
             StartofInch = (c == 'i');
             isWasI = (StartofInch || isWasI) && !isWasIn;
-            isWasIni = isWasIn && c == 'i' || isWasIni;
-            isWordIsNumber = isWordIsNumber && (IsDigit(c) || (c == '-' && !isWodStarted)) || isWordIsMeasure || StartofInch;
+            isWasIni = (isWasIn && c == 'i') || isWasIni;
+            isWordIsNumber = (isWordIsNumber && (IsDigit(c) || (c == '-' && !isWodStarted))) || isWordIsMeasure || StartofInch;
             if (c == '-' && !isWodStarted) {
                 sign = -1;
             }
