@@ -14,11 +14,10 @@ bool IsIn(Set a, wchar_t c){
 }
 
 bool IsVowel(wchar_t ch) {
-    if(ch == L'а' || ch == L'е' || ch == L'и' || ch == L'о' || ch == L'у' || ch == L'ы' || ch == L'э' || ch == L'ю' || ch == L'я'
-     || ch == L'А' || ch == L'Е' || ch == L'И' || ch == L'О' || ch == L'У' || ch == L'Ы' || ch == L'Э' || ch == L'Ю' || ch == L'Я') {
-        return true;
-    }
-    return false;
+    return (ch == 1059) || (ch == 1091) || (ch == 1045) || (ch == 1077) || (ch == 1067) ||
+           (ch == 1099) || (ch == 1040) || (ch == 1072) || (ch == 1054) || (ch == 1086) ||
+           (ch == 1069) || (ch == 1101) || (ch == 1071) || (ch == 1103) || (ch == 1048) ||
+           (ch == 1080) || (ch == 1070) || (ch == 1102);
 }
 
 void Add(Set *a, wchar_t c){
@@ -32,18 +31,20 @@ int main(){
     Set a = 0;
     int res = 0;
     bool flag = false; 
-    while(1){ 
+    while(1) {
         wchar_t c = getwchar();
         if (IsVowel(c) && !IsIn(a, c)) {
             Add(&a, c);
             flag = true;
         } else if (IsIn(a, c)) {
             flag = false;
+            
         }
         if (IsSeparator(c)) {
             if (flag) {
                 res = 1;
             }
+            a = 0;
         } 
         if (c == WEOF) { 
             break; 
