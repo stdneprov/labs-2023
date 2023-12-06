@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 
 int IsSeparator(char c) {
@@ -33,7 +32,7 @@ int main() {
             }
 
             isWordIsMeasure = isWordIsNumber & StartofInch && c == 'n' && OnlyOnce;
-            if (isWodStarted && !isWordIsMeasure && isWordIsNumber && StartofInch && (!OnlyOnce || c == 'i')) {
+            if (isWodStarted && !isWordIsMeasure && isWordIsNumber && ((!OnlyOnce && c == 'i') || (OnlyOnce && StartofInch && c != 'n'))) {
                 if (sign == -1 && buffer == 0 && !isWasDigits) {
                     printf("-");
                 } else if (sign == -1) {
@@ -42,37 +41,40 @@ int main() {
                     printf("%lld", buffer);
                 }
 
-                if (isWasIni) {
-                    printf("ini");
+                if (isWasIn) {
+                    printf("in");
                 } else if (isWasI) {
                     printf("i");
                 }
 
+                putchar(c);
                 while (1) {
                     int c = getchar();
                     if (!IsSeparator(c)) {
                         putchar(c);
                     } else {
                         putchar(c);
+                        isWasMinusFirst = 0;
+                        isWodStarted = 0;
+                        isWordIsNumber = 1;
+                        isWasDigits = 0;
+                        StartofInch = 0;
+                        isWordIsMeasure = 0;
+                        buffer = 0;
+                        sign = 1;
+                        isWasIn = 0;
+                        isWasI = 0;
+                        OnlyOnce = 1;
+                        isWasIni = 0;
+                        break;
                     }
 
-                isWasMinusFirst = 0;
-                isWodStarted = 0;
-                isWordIsNumber = 1;
-                isWasDigits = 0;
-                StartofInch = 0;
-                isWordIsMeasure = 0;
-                buffer = 0;
-                sign = 1;
-                isWasIn = 0;
-                isWasI = 0;
-                OnlyOnce = 1;
-                isWasIni = 0;
-                break;
                 }
+
+                continue;
             }
 
-            isWasIn = (StartofInch && c == 'n') || isWasIn;
+            isWasIn = ((StartofInch && c == 'n') || isWasIn) && !isWasIni;
             StartofInch = (c == 'i');
             isWasI = (StartofInch || isWasI) && !isWasIn;
             isWasIni = (isWasIn && c == 'i') || isWasIni;
@@ -124,6 +126,7 @@ int main() {
                 } else if (isWasIni) {
                     printf("i");
                 }
+
                 putchar(c);
                 while (1) {
                     int c = getchar();
