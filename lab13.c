@@ -45,7 +45,7 @@ int main(){
                 res = 1;
             }
         } 
-        if (c == EOF) { 
+        if (c == WEOF) { 
             break; 
         } 
     }
