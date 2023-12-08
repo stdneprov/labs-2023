@@ -1,0 +1,29 @@
+#include <stdio.h>
+int main() {
+    int n;
+    scanf("%d", &n);
+    int matrix[8][8];
+    for (int i = 0; i < n; i++) { // заполняем матрицу
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+    int idx = 0;
+    for (int x = 0; x < n; x++) { // производим замену на главной диагонали
+        int maximum = matrix[x][idx];
+        for (int y = 0; y < n; y++) {
+            if (matrix[x][y] > maximum) {
+                maximum = matrix[x][y];
+            }
+        }
+        matrix[x][idx] = maximum;
+        idx += 1;
+    }
+    for (int i = 0; i < n; i++) { // выводим итоговую матрицу
+        for (int j = 0; j < n; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("%s", "\n");
+    }
+    return 0;
+}
