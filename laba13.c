@@ -9,44 +9,35 @@ int IsSeparator(wchar_t c) {
     return (c == ' ') || (c == ',') || (c == '\n') || (c == WEOF) || (c == '\t'); 
 } 
  
-bool IsConsonan(wchar_t c){ 
-    return (wcschr(L"ЙЦКНГШЩЗХФВПРЛДЖЧСМТБйцкнгшщзхфвпрлджчсмтб", c)); 
-} 
- 
-bool IsVowel(wchar_t c){ 
-    return (wcschr(L"УЕЫАОЭЯИЮуеаоэяию", c)); 
+bool IsConsonan(Set a, wchar_t c){ 
+    return (a & ~(1 << (c - L'а'))) != a; 
 } 
  
 void Add(Set *a, wchar_t c){ 
-    *a |= (1 << (c - 'a'));  
+    *a |= (1 << (c - L'а'));  
 }  
  
 int main(){  
     setlocale(LC_ALL, ""); 
- 
-    Set curVowel = 0; 
+    Set consonans = 66567902; 
     Set curConsonan = 0; 
-    Set prevVowel = 0; 
     Set prevConsonan = 0; 
  
     int answer = 0; 
     while(1){  
         wchar_t c = getwchar(); 
         if (IsSeparator(c)){ 
-            if (((curConsonan == prevConsonan) && (curConsonan != 0) ) || ((curVowel == prevVowel) && (curVowel != 0))){ 
+            if ((curConsonan == prevConsonan) && (curConsonan != 0)){ 
                 answer = 1; 
             } 
             prevConsonan = curConsonan; 
-            prevVowel = curVowel; 
             curConsonan = 0; 
-            curVowel = 0; 
+
         } else { 
-            if (IsVowel(c)) { 
-                Add(&curVowel, c); 
-            } else { 
+            if (IsConsonan(consonans, c)) { 
                 Add(&curConsonan, c); 
             } 
-        } 
+        }
         if (c == WEOF) {  
             break;  
         }  
