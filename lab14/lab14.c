@@ -1,29 +1,29 @@
 #include <stdio.h>
 
 void PrintMatrix(int n, int *matrix) {
-    int offset_x[4] = {1, 0, -1, 0};
-    int offset_y[4] = {0, 1, 0, -1};
-    int x_s = 0, x_e = n - 1, y_s = 0, y_e = n - 1;
-    int x = 0;
-    int y = 0;
-    int dir = 0;
-    for (int i = 0; i < n * n; i++) {
-        printf("%d ", matrix[y * n + x]);
-        if (x + offset_x[dir % 4] > x_e) {
-            dir++;
-            y_s++;
-        } else if (x + offset_x[dir % 4] < x_s) {
-            dir++;
-            y_e--;
-        } else if (y + offset_y[dir % 4] > y_e) {
-            dir++;
-            x_e--;
-        } else if (y + offset_y[dir % 4] < y_s) {
-            dir++;
-            x_s++;
+    int x0 = 0, x1 = n - 1, y0 = 0, y1 = n - 1;
+    int i = n * n;
+    while (i > 0) {
+        for (int x = x0; x <= x1; x++) {
+            printf("%d ", matrix[y0 * n + x]);
+            i--;
         }
-        x += offset_x[dir % 4];
-        y += offset_y[dir % 4];
+        y0++;
+        for (int y = y0; y <= y1; y++) {
+            printf("%d ", matrix[y * n + x1]);
+            i--;
+        }
+        x1--;
+        for (int x = x1; x >= x0; x--) {
+            printf("%d ", matrix[y1 * n + x]);
+            i--;
+        }
+        y1--;
+        for (int y = y1; y >= y0; y--) {
+            printf("%d ", matrix[y * n + x0]);
+            i--;
+        }
+        x0++;
     }
     printf("\n");
 }
