@@ -15,17 +15,17 @@ long long To_Unicode(){
     unsigned char c = getchar();
     if (((c & 128) == 0) || (c == 255)) {
         value = c;
-    }else if ((c >= 192) && (c <= 223)) {
+    } else if ((c >= 192) && (c <= 223)) {
         value |= ((c & 31) << 6);
         c = getchar();
         value |= (c & 63);
-    }else if ((c >= 224) && (c <= 239)) {
+    } else if ((c >= 224) && (c <= 239)) {
         value |= (c & 15) << 12;
         c = getchar();
         value |= (c & 63) << 6;
         c = getchar();
         value |= (c & 63);
-    }else if ((c >= 240) && (c <= 247)) {
+    } else if ((c >= 240) && (c <= 247)) {
         value |= (c & 7) << 18;
         c = getchar();
         value |= (c & 63) << 12;
