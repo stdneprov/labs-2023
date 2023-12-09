@@ -30,10 +30,10 @@ int main(){
     bool flag = false; 
     while(1) {
         wchar_t c = getwchar();
-        if (IsVowel(vowels, c) && !IsIn(a, c)) {
+        if (!IsIn(a, c)) {
             Add(&a, c);
             flag = true;
-        } else if (IsIn(a, c)) {
+        } else if (IsIn(a, c) && IsVowel(vowels, c)) {
             flag = false;
 
         }
