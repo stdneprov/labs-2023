@@ -66,10 +66,10 @@ void Clear(Set *a) {
 
 // Б, В, Г, Д, Ж, З, Й, К, Л, М, Н, П, Р, С, Т, Ф, Х, Ц, Ч, Ш, Щ.
 int main() {
-    Set consonant = ((1u << Get_Unicode("Б") - Get_Unicode("А")) | (1u << Get_Unicode("В")- Get_Unicode("А")) | (1u << Get_Unicode("Г") - Get_Unicode("А")) | (1u << Get_Unicode("Д") - Get_Unicode("А")) | (1u << Get_Unicode("З") - Get_Unicode("А"))
-    | (1u << Get_Unicode("Й") - Get_Unicode("А")) | (1u << Get_Unicode("К") - Get_Unicode("А")) | (1u << Get_Unicode("Л") - Get_Unicode("А")) | (1u << Get_Unicode("М") - Get_Unicode("А")) | (1u << Get_Unicode("Н") - Get_Unicode("А")) | (1u << Get_Unicode("П") - Get_Unicode("А"))
-    | (1u << Get_Unicode("Р") - Get_Unicode("А")) | (1u << Get_Unicode("С") - Get_Unicode("А")) | (1u << Get_Unicode("Т") - Get_Unicode("А")) | (1u << Get_Unicode("Ф") - Get_Unicode("А")) | (1u << Get_Unicode("Х") - Get_Unicode("А")) | (1u << Get_Unicode("Ц") - Get_Unicode("А")) 
-    | (1u << Get_Unicode("Ч") - Get_Unicode("А")) | (1u << Get_Unicode("Ш") - Get_Unicode("А")) | (1u << Get_Unicode("Щ") - Get_Unicode("А")));
+    Set consonant = ((1u << (Get_Unicode("Б") - Get_Unicode("А"))) | (1u << (Get_Unicode("В")- Get_Unicode("А"))) | (1u << (Get_Unicode("Г") - Get_Unicode("А"))) | (1u << (Get_Unicode("Д") - Get_Unicode("А"))) | (1u << (Get_Unicode("З") - Get_Unicode("А")))
+    | (1u << (Get_Unicode("Й") - Get_Unicode("А"))) | (1u << (Get_Unicode("К") - Get_Unicode("А"))) | (1u << (Get_Unicode("Л") - Get_Unicode("А"))) | (1u << (Get_Unicode("М") - Get_Unicode("А"))) | (1u << (Get_Unicode("Н") - Get_Unicode("А"))) | (1u << (Get_Unicode("П") - Get_Unicode("А")))
+    | (1u << (Get_Unicode("Р") - Get_Unicode("А"))) | (1u << (Get_Unicode("С") - Get_Unicode("А"))) | (1u << (Get_Unicode("Т") - Get_Unicode("А"))) | (1u << (Get_Unicode("Ф") - Get_Unicode("А"))) | (1u << (Get_Unicode("Х") - Get_Unicode("А"))) | (1u << (Get_Unicode("Ц") - Get_Unicode("А"))) 
+    | (1u << (Get_Unicode("Ч") - Get_Unicode("А"))) | (1u << (Get_Unicode("Ш") - Get_Unicode("А"))) | (1u << (Get_Unicode("Щ") - Get_Unicode("А"))));
 
     Set letters_previos;
     Set letters;
