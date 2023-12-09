@@ -6,7 +6,7 @@
 typedef long long Set; 
 
 int IsSeparator(wchar_t c) {
-    return (c == ' ') || (c == ',') || (c == '\n') || (c == WEOF) || (c == '\t');
+    return (c == ' ') || (c == ',') || (c == '\n') || (c == '\t');
 }
 
 bool IsVowel(Set a, wchar_t c) { 
@@ -27,21 +27,20 @@ int main(){
     Set a = 0;
     int res = 0;
     Set vowels = 8187822369;
-    bool flag = false; 
+    bool flag = true; 
     while(1) {
         wchar_t c = getwchar();
         if (!IsIn(a, c)) {
             Add(&a, c);
-            flag = true;
         } else if (IsIn(a, c) && IsVowel(vowels, c)) {
             flag = false;
-
         }
         if (IsSeparator(c)) {
             if (flag) {
                 res = 1;
             }
             a = 0;
+            flag = true;
         } 
         if (c == WEOF) { 
             break; 
