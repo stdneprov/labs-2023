@@ -10,7 +10,7 @@
 //для 4 байт зн 1ого &0000 0111(7)
 //для ост байт - &0011 1111(63)
 
-long long To_Unicode(){
+long long ToUnicode() {
     long long value = 0;
     unsigned char c = getchar();
     if (((c & 128) == 0) || (c == 255)) {
@@ -44,7 +44,7 @@ int IsSeparator(char c) {
 typedef long long Set;
 
 
-long long Get_Unicode(char *c) { //принимает два байта
+long long GetUnicode(char *c) { //принимает два байта
     long long value = 0;
     value |= ((c[0] & 31) << 6); //сдвиг первого байта
     value |= (c[1] & 63); //второй байт
