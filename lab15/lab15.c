@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 int main() {
     int n;
     scanf("%d", &n);
@@ -33,13 +32,13 @@ int main() {
         
     }
     printf("\n");
-    int change_max[n];
+    int changeMax[n];
     for (int a = 0; a < n; a++){
-        change_max[a] = matrix[max][a];
+        changeMax[a] = matrix[max][a];
         matrix[max][a] = matrix[min][a];
     }
     for (int b = 0; b < n; b++){
-        matrix[min][b] = change_max[b];
+        matrix[min][b] = changeMax[b];
     }  
     for(int ii = 0; ii < n; ii++){
         for(int jj = 0; jj < n; jj++){
