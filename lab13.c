@@ -33,7 +33,7 @@ int main(){
     while(1){  
         wchar_t c = getwchar(); //считываем символ
         if (IsSeparator(c)){ 
-            if ((((curSogl & ~notSogl) == (prevSogl & ~notSogl)) && (curSogl != 0) )) { //сравниваем буквы
+            if ((((curSogl & ~notSogl) == (prevSogl & ~notSogl)))) { //сравниваем буквы
                 answer = 1; 
             } 
             prevSogl = curSogl; //пересваиваем
@@ -48,3 +48,4 @@ int main(){
     printf("%d\n", answer);  
     return 0;  
 }
+
