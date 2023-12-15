@@ -12,9 +12,9 @@ int main() {
         }
     }
     long long x1;
-    long long x2 = 1e9 + 7;
-    long long max = -(1e9 + 7);
-    long long min = 1e9 + 7;  
+    long long x2 = a;
+    long long max = n[0][0];
+    long long min = n[0][0];  
     for (int i = 0; i != a; i++) {
         for (int j = 0; j != a; j++) {
             if (n[i][j] >= max) {
