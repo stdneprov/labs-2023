@@ -1,0 +1,99 @@
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023$ mkdir lab2
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023$ cd lab2
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ ls
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ pwd
+/home/artemdelgray/labs-2023/lab2
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ who
+artemdelgray tty2 2023-09-06 19:08 (tty2)
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ whoami
+artemdelgray
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ mkdir dir1 dir2
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ touch f1.txt
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ ls
+dir1 dir2 f1.txt
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ cat f1.txt
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ cat > f1.txt
+There is a text
+^C
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ cat f1.txt
+There is a text
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ cp f1.txt f2.txt
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ ls
+dir1 dir2 f1.txt f2.txt
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ cat f2.txt
+There is a text
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ cat f1.txt > f2.txt
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ cat f2.txt
+There is a text
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ cat f1.txt » f2.txt
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ cat f2.txt
+There is a text
+There is a text
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ cat f1.txt > f2.txt
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ cat f2.txt
+There is a text
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ mv f2.txt f0.txt
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ ls
+dir1 dir2 f0.txt f1.txt
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ mv f2.txt ~/labs-2023/lab2/dir1
+mv: не удалось выполнить stat для 'f2.txt': Нет такого файла или каталога
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ mv f0.txt ~/labs-2023/lab2/dir1
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ la
+dir1 dir2 f1.txt
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ cd dir1
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2/dir1$ ls
+f0.txt
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2/dir1$ cd ..
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ rm -r dir1
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ ls
+dir2 f1.txt
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ cat f1.txt
+There is a text
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ cat » f1.txt
+Text for you
+Text
+More text
+^C
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ cat f1.txt
+There is a text
+Text for you
+Text
+More text
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ grep "text" ~/labs-2023/lab2/f1.txt
+There is a text
+More text
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ grep -i "text" ~/labs-2023/lab2/f1.txt
+There is a text
+Text for you
+Text
+More text
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ ls | sort -r
+f1.txt
+dir2
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ ls | grep -E "^f[1-9]+"
+f1.txt
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ rm f1.txt
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ ls
+dir2
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ touch f1.txt
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ ls
+dir2 f1.txt
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ ls -l
+итого 4
+drwxrwxr-x 2 artemdelgray artemdelgray 4096 сен 6 19:33 dir2
+-rw-rw-r— 1 artemdelgray artemdelgray 0 сен 6 19:43 f1.txt
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ chmod u+x ~/labs-2023/lab2/f1.txt
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ ls -l
+итого 4
+drwxrwxr-x 2 artemdelgray artemdelgray 4096 сен 6 19:33 dir2
+-rwxrw-r— 1 artemdelgray artemdelgray 0 сен 6 19:43 f1.txt
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ chmod ugo-rwx ~/labs-2023/lab2/f1.txt
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ ls -l
+итого 4
+drwxrwxr-x 2 artemdelgray artemdelgray 4096 сен 6
+19:33 dir2
+--------— 1 artemdelgray artemdelgray 0 сен 6 19:43 f1.txt
+artemdelgray@artemdelgray-VirtualBox:~/labs-2023/lab2$ ps
+PID TTY TIME CMD
+1823 pts/0 00:00:00 bash
+2888 pts/0 00:00:00 ps
