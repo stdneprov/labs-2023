@@ -1,0 +1,55 @@
+#include <stdio.h>
+
+int NumLen(int x) {
+    int counter = 0;
+    while (x > 0) {
+        x = x / 10;
+        counter++;
+    }
+    return counter;
+}
+
+int main() {
+    int a, curr, mid, last, currS, temp;
+	int mxC, mxM, mxL, mxS;
+    printf("Put the numbers:\n");
+    while (scanf("%d", &a) != EOF) {
+        if (a < 0) {
+            a = -a;
+        }
+
+        int lenght = NumLen(a);
+        int user_a = a;
+        mxS = 0;
+
+        if (lenght < 3) {
+            printf(" \n");
+            break;
+        }
+        while (a > 0) {
+		    temp = a;
+
+            curr = temp % 10;
+            temp /= 10;
+
+            mid = temp % 10;
+            temp /= 10;
+
+            last = temp % 10;
+
+            currS = curr + mid + last;
+
+		    a /= 10;
+
+            if (currS > mxS) {
+                mxS = currS;
+                mxC = curr;
+                mxM = mid;
+                mxL = last;
+            }
+        }
+
+    printf("%d%d%d\n",mxL, mxM, mxC);
+    }
+    return 0;
+}
