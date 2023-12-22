@@ -12,6 +12,8 @@ int Reverse(int x) {
 
 int IncrEven(int x) {
     int ans = 0;
+    int sign = x > 0 ? 1 : -1;
+    x = x * sign;
     while (x > 0) {
         ans *= 10;
         if ((x % 10) % 2 == 0) {
@@ -21,7 +23,7 @@ int IncrEven(int x) {
         }
         x /= 10;
     }
-    return Reverse(ans);
+    return Reverse(ans) * sign;
 }
 
 int main(void) {
