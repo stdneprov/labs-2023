@@ -2,8 +2,7 @@
 
 const int maxn = 8;
 
-int main()
-{
+int main() {
     int m[maxn][maxn], n;
     scanf("%d", &n);
     for (int i = 0; i != n; ++i) {
