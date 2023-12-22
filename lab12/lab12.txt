@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int IsNegative(int num) {
+    return num > 0 ? 1 : -1;
+}
+
+int main() {
+    int num;
+    while (scanf("%d", &num) == 1) {
+        if (IsNegative(num) == 1) {
+            printf("%d", num);
+            break;
+        } else {
+            num *= -1;
+        }
+        int multiple = 1;
+        int new_num = 0;
+        while (num != 0) {
+            new_num += (9 - (num % 10)) * multiple;
+            multiple *= 10;
+            num /= 10;
+        }
+        printf("%d\n", new_num);
+    }
+    return 0;
+}
