@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-enum { maxn = 100 };
+#define maxn 100
 
 int main() {
     int m[maxn][maxn];
