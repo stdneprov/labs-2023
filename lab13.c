@@ -9,13 +9,12 @@ int IsSeparator(wchar_t c) {
     return (c == ' ') || (c == ',') || (c == '\n') || (c == '\t');
 }
 
-bool IsConsonant(Set a, wchar_t c) { 
-    return (a & ~(1 << (c - L'а'))) != a; 
+bool IsConsonant(Set a, wchar_t c) {
+    return (a & ~(1 << (c - L'а'))) != a;
 } 
 
 void AddToSet(Set *a, wchar_t c) {
     *a |= (1 << (c - 'a')); 
-
 } 
 
 bool IsInSet(Set a, wchar_t c) { 
@@ -30,13 +29,17 @@ int main(){
     bool uniqueconsonant = true; 
     while(1) {
         wchar_t c = getwchar();
-        if (!IsInSet(a, c)) {
+        if (!IsInSet(a, c) && IsConsonant(consonant, c) && !IsSeparator(c)) {
             AddToSet(&a, c);
         } else if (IsInSet(a, c) && IsConsonant(consonant, c)) {
             uniqueconsonant = false;
         }
 
         if (IsSeparator(c)) {
+            if (a == 0) {
+                uniqueconsonant = false;
+            }
+
             if (uniqueconsonant) {
                 res = 1;
             }
