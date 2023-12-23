@@ -17,6 +17,7 @@ bool IsIn(Set a, int c) {
     return (a & ~(1 << c )) != a;
 }
 
+
 int main() {
     int n;
     int matrix[MAX_N][MAX_N];
@@ -39,15 +40,21 @@ int main() {
             }
         }
     }
+    
+    int newMatrix[MAX_N][MAX_N];
+    int newMatrixRow = 0;
     for (int i = 0; i < n; i++) {
+        if (!IsIn(strings, i)) {
+            for (int j = 0; j < n; j++) {
+                newMatrix[newMatrixRow][j] = matrix[i][j];
+            }
+            newMatrixRow++;
+        }
+    }
+
+    for (int i = 0; i < newMatrixRow; i++) {
         for (int j = 0; j < n; j++) {
-            if (IsIn(strings, i) == 1) {
-                break;
-            }
-            else {
-                printf("%d ", matrix[i][j]);
-            }
-            
+            printf("%d ", newMatrix[i][j]);
         }
         printf("\n");
     }
