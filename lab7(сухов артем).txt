@@ -1,0 +1,67 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdbool.h>
+
+int sign(int m) 
+{
+    int result;
+    if (m >= 0) {
+        return m;
+    } else {
+        return -1;
+    }
+}
+
+int max(int m, int n) 
+{
+    int result;
+    if (n > m) {
+        return n;
+    } else {
+        return m;
+    }
+}
+
+int min(int m, int n) 
+{
+    int result;
+    if (n > m) {
+        return m;
+    } else {
+        return n;
+    }
+}
+
+int modul(int m) 
+{
+    int result;
+    if (m < 0) {
+        return -m; 
+    } else {
+        return m;
+    }
+}
+
+int mod(int m, int n)
+{
+    return ((m % n) + n) % n;
+}
+
+
+int main() {
+    int i = 13;
+    int j = 19;
+    int l = 14;
+    for (int k = 1; k <= 50; ++k) {
+        int i_next = sign(i + 1) * modul(modul(k - j) - modul(i - l));
+        int j_next = mod(j, 20) + max(mod(i, 20), min((j - k), (l - k))) - 10;
+        int l_next = mod((k * (i + 1) * (j + 2) * (l + 3)), 20);
+        if ((i_next + j_next + 10 == 0) && (i_next + j_next + 20 == 0)) {
+            printf("%s\n", "yes");
+        }
+        else {
+            printf("%s\n", "no");
+        }
+    }
+
+}
