@@ -1,0 +1,148 @@
+fedor@fedor-VirtualBox:~$ pwd
+/home/fedor
+fedor@fedor-VirtualBox:~$ sudo ruptime
+[sudo] пароль для fedor: 
+fedor-Virtua  up       0:12,     1 user,   load 0.05, 0.08, 0.03
+fedor@fedor-VirtualBox:~$ sudo rwho
+fedor    fedor-VirtualBox:tty2 Sep  3 16:46 :11
+fedor@fedor-VirtualBox:~$ whoami
+fedor
+fedor@fedor-VirtualBox:~$ tty
+/dev/pts/0
+fedor@fedor-VirtualBox:~$ hostname
+fedor-VirtualBox
+fedor@fedor-VirtualBox:~$ uname -a
+Linux fedor-VirtualBox 6.2.0-26-generic #26~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Thu Jul 13 16:27:29 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+fedor@fedor-VirtualBox:~$ finger `whoami`
+Login: fedor          			Name: Fedor
+Directory: /home/fedor              	Shell: /bin/bash
+On since Sun Sep  3 16:46 (MSK) on tty2 from tty2
+   17 minutes 14 seconds idle
+No mail.
+No Plan.
+fedor@fedor-VirtualBox:~$ who
+fedor    tty2         2023-09-03 16:46 (tty2)
+fedor@fedor-VirtualBox:~$ man ls
+fedor@fedor-VirtualBox:~$ cd /
+fedor@fedor-VirtualBox:/$ ls
+bin    dev   lib    libx32      mnt   root  snap      sys  var
+boot   etc   lib32  lost+found  opt   run   srv       tmp
+cdrom  home  lib64  media       proc  sbin  swapfile  usr
+fedor@fedor-VirtualBox:/$ cd /bin
+fedor@fedor-VirtualBox:/bin$ cd ..
+fedor@fedor-VirtualBox:/$ cd
+fedor@fedor-VirtualBox:~$ ls -l
+итого 48
+drwxrwxr-x 2 fedor fedor 4096 сен  2 14:49  example
+drwxrwxr-x 5 fedor fedor 4096 сен  3 12:11  labs-2023
+drwxrwxr-x 2 fedor fedor 4096 сен  2 13:41  mega
+drwx------ 5 fedor fedor 4096 сен  2 14:47  snap
+drwxr-xr-x 2 fedor fedor 4096 авг  7 16:13  Видео
+drwxr-xr-x 2 fedor fedor 4096 авг  7 16:13  Документы
+drwxr-xr-x 2 fedor fedor 4096 авг  7 16:13  Загрузки
+drwxr-xr-x 2 fedor fedor 4096 авг  7 16:13  Изображения
+drwxr-xr-x 2 fedor fedor 4096 авг  7 16:13  Музыка
+drwxr-xr-x 2 fedor fedor 4096 авг  7 16:13  Общедоступные
+drwxr-xr-x 2 fedor fedor 4096 авг  7 16:13 'Рабочий стол'
+drwxr-xr-x 2 fedor fedor 4096 авг  7 16:13  Шаблоны
+fedor@fedor-VirtualBox:~$ cat > f1.txt
+Лабараторная работа номер 2fedor@fedor-VirtualBox:~$ ls
+ example     mega    Документы     Музыка          Шаблоны
+ f1.txt      snap    Загрузки      Общедоступные
+ labs-2023   Видео   Изображения  'Рабочий стол'
+fedor@fedor-VirtualBox:~$ cat f1.txt
+Лабараторная работа номер 2fedor@fedor-VirtualBox:~$ emacs f1.txt
+fedor@fedor-VirtualBox:~$ cp f1.txt f2.txt
+fedor@fedor-VirtualBox:~$ ls
+ example   labs-2023   Видео       Изображения    'Рабочий стол'
+ f1.txt    mega        Документы   Музыка          Шаблоны
+ f2.txt    snap        Загрузки    Общедоступные
+fedor@fedor-VirtualBox:~$ cat f2.txt
+Лабараторная работа номер 2fedor@fedor-VirtualBox:~$ cat f1.txt f2.txt > f3.txt
+fedor@fedor-VirtualBox:~$ ls
+ example   f3.txt      snap        Загрузки      Общедоступные
+ f1.txt    labs-2023   Видео       Изображения  'Рабочий стол'
+ f2.txt    mega        Документы   Музыка        Шаблоны
+fedor@fedor-VirtualBox:~$ cat f3.txt
+Лабараторная работа номер 2Лабараторная работа номер 2fedor@fedor-VirtualBox:~$ 
+rm f2.txt f3.txt
+fedor@fedor-VirtualBox:~$ ls
+ example     mega    Документы     Музыка          Шаблоны
+ f1.txt      snap    Загрузки      Общедоступные
+ labs-2023   Видео   Изображения  'Рабочий стол'
+fedor@fedor-VirtualBox:~$ mkdir lab
+fedor@fedor-VirtualBox:~$ mkdir course
+fedor@fedor-VirtualBox:~$ ls
+ course    lab         snap        Загрузки      Общедоступные
+ example   labs-2023   Видео       Изображения  'Рабочий стол'
+ f1.txt    mega        Документы   Музыка        Шаблоны
+fedor@fedor-VirtualBox:~$ cp f1.txt lab/f1.txt
+fedor@fedor-VirtualBox:~$ cp f1.txt course/f1.txt
+fedor@fedor-VirtualBox:~$ rm f1.txt
+fedor@fedor-VirtualBox:~$ cd lab
+fedor@fedor-VirtualBox:~/lab$ ls
+f1.txt
+fedor@fedor-VirtualBox:~/lab$ rm f1.txt
+fedor@fedor-VirtualBox:~/lab$ ls
+fedor@fedor-VirtualBox:~/lab$ cd
+fedor@fedor-VirtualBox:~$ rmdir lab
+fedor@fedor-VirtualBox:~$ ls
+ course      mega    Документы     Музыка          Шаблоны
+ example     snap    Загрузки      Общедоступные
+ labs-2023   Видео   Изображения  'Рабочий стол'
+fedor@fedor-VirtualBox:~$ rmdir course
+rmdir: не удалось удалить 'course': Каталог не пуст
+fedor@fedor-VirtualBox:~$ rm -r course
+fedor@fedor-VirtualBox:~$ ls
+ example     mega   Видео       Загрузки      Музыка         'Рабочий стол'
+ labs-2023   snap   Документы   Изображения   Общедоступные   Шаблоны
+fedor@fedor-VirtualBox:~$ ls grep_test
+dd.txt  hh.txt  l1.txt  l2.txt  l3.txt  l4.txt  l5.txt  l6.txt  ll.txt
+fedor@fedor-VirtualBox:~$ grep -r "лаб" grep_test
+grep_test/l2.txt:лаба ла ла 
+grep_test/l2.txt:лаб . . .
+grep_test/l1.txt:делаю лабу
+grep_test/l3.txt:лабирит   лабиринт
+grep_test/l6.txt:лаб .
+grep_test/l6.txt:лабиринт.
+fedor@fedor-VirtualBox:~$ grep -lr "лаб" grep_test
+grep_test/l2.txt
+grep_test/l1.txt
+grep_test/l3.txt
+grep_test/l6.txt
+fedor@fedor-VirtualBox:~/grep_test$ grep -c "лаб" l3.txt
+1
+fedor@fedor-VirtualBox:~/grep_test$ grep -c "лаб" l2.txt
+2
+fedor@fedor-VirtualBox:~/grep_test$ grep -v "лаб" l1.txt
+fedor@fedor-VirtualBox:~/grep_test$ grep -v "лаб" l5.txt
+тут ничего нет
+fedor@fedor-VirtualBox:~/grep_test$ grep -v "лаб" l4.txt
+...
+ о о ю
+лллл
+fedor@fedor-VirtualBox:~/grep_test$ ls | grep -E "^l"
+l1.txt
+l2.txt
+l3.txt
+l4.txt
+l5.txt
+l6.txt
+ll.txt
+fedor@fedor-VirtualBox:~/grep_test$ ls | grep -E "^h"
+hh.txt
+fedor@fedor-VirtualBox:~/grep_test$ ls | grep -E "^l[2-4]+"
+l2.txt
+l3.txt
+l4.txt
+fedor@fedor-VirtualBox:~/grep_test$ ls | grep -E "[a-z]"
+dd.txt
+hh.txt
+l1.txt
+l2.txt
+l3.txt
+l4.txt
+l5.txt
+l6.txt
+ll.txt
+fedor@fedor-VirtualBox:~$
