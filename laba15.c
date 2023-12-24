@@ -1,27 +1,41 @@
 #include <stdio.h>
-
-#define MAXN 100
-#define SHIFT 13
-
-int Mod(int a, int b){
-    return ((a % b) + b) % b;
-}
+#include <stdlib.h>
+#define MAXN 10
 
 int main() {
-    int m [MAXN * MAXN];
-    int n;
+    int n; // размерность матрицы
     scanf("%d", &n);
-    for (int i = 0; i < n * n; i++) {
-        scanf("%d", m + i);
+
+    int matrix[MAXN][MAXN];
+    int flag = 1;
+    // Вводим значения элементов матрицы
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
     }
 
-    int ans [MAXN * MAXN];
-    for (int i = 0; i < n * n; i++) {
-        ans[Mod((i - SHIFT), (n * n))] = m[i];
+    // Проверяем кососимметричность матрицы и заменяем соответствующие элементы на нули
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (matrix[i][j] == -matrix[j][i]) {
+                matrix[i][j] = 0;
+                matrix[j][i] = 0;
+            }
+        }
     }
-    putchar('\n');
-    for (int i = 0; i < n * n; i++) {
-        printf("%d ", ans[i]);
-        if ((i + 1) % n == 0) putchar('\n');
+
+    // Выводим матрицу
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%d ", matrix[i][j]);
+            if (matrix[i][j] != 0){
+                flag = 0;
+            }
+        }
+        printf("\n");
     }
+
+    printf("%d\n", flag);
+    return 0;
 }
