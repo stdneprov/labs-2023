@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+int isSeparator(char c) {
+    return (c == ' ') || (c == ',') || (c == '\n') || (c == EOF) || (c == '\t');
+}
+
+int isAlpha(char c) {
+    return( c >= 'a' && c <= 'z');
+}
+
+int main() {
+    int flag = 0;
+    int wordCounter = 0;
+    bool iswordstarted = 0;
+    int letterCounter = 0;
+
+    while(1) {  
+        int c = getchar();
+        if (!isSeparator(c)) {
+            iswordstarted = 1;
+            if (isAlpha(c)) { 
+                letterCounter += 1;
+                if (letterCounter >= 3 && flag == 0) {
+                    wordCounter += 1;
+                    flag = 1;
+                }
+            }
+        } else {
+            iswordstarted = 0;
+            letterCounter = 0;
+            flag = 0;
+        }
+    
+        if (c == EOF) {
+            printf("%d\n", wordCounter);
+            break;
+        }
+    }
+}
