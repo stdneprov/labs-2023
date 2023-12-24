@@ -1,0 +1,132 @@
+igrok@Gebezul:~$ cd labs-2023
+igrok@Gebezul:~/labs-2023$ pwd
+/home/igrok/labs-2023
+igrok@Gebezul:~/labs-2023$ mkdir laba2 
+igrok@Gebezul:~/labs-2023$ cd laba2 
+igrok@Gebezul:~/labs-2023/laba2$ pwd 
+/home/igrok/labs-2023/laba2
+igrok@Gebezul:~/labs-2023/laba2$ ls 
+igrok@Gebezul:~/labs-2023/laba2$ mkdir test-dir
+igrok@Gebezul:~/labs-2023/laba2$ ls 
+test-dir
+igrok@Gebezul:~/labs-2023/laba2$ touch test-file 
+igrok@Gebezul:~/labs-2023/laba2$ ls 
+test-dir  test-file
+igrok@Gebezul:~/labs-2023/laba2$ touch test-file1 test-file2 
+igrok@Gebezul:~/labs-2023/laba2$ ls 
+test-dir  test-file  test-file1  test-file2
+igrok@Gebezul:~/labs-2023/laba2$ cat > test-file3
+очень оригинальный текст 
+igrok@Gebezul:~/labs-2023/laba2$ ls 
+test-dir  test-file  test-file1  test-file2  test-file3
+igrok@Gebezul:~/labs-2023/laba2$ cat test-file3
+очень оригинальный текст
+igrok@Gebezul:~/labs-2023/laba2$ cat test-file1
+igrok@Gebezul:~/labs-2023/laba2$ cat test-file2
+igrok@Gebezul:~/labs-2023/laba2$ cat test-file
+igrok@Gebezul:~/labs-2023/laba2$ who
+igrok@Gebezul:~/labs-2023/laba2$ whoami
+igrok
+igrok@Gebezul:~/labs-2023/laba2$ rm test-file2
+igrok@Gebezul:~/labs-2023/laba2$ ls
+test-dir  test-file  test-file1  test-file3
+igrok@Gebezul:~/labs-2023/laba2$ cp test-file3 test-file4
+igrok@Gebezul:~/labs-2023/laba2$ ls
+test-dir  test-file  test-file1  test-file3  test-file4
+igrok@Gebezul:~/labs-2023/laba2$ cat test-file3
+очень оригинальный текст
+igrok@Gebezul:~/labs-2023/laba2$ cat test-file4
+очень оригинальный текст
+igrok@Gebezul:~/labs-2023/laba2$ mv test-file3 test-dir/
+igrok@Gebezul:~/labs-2023/laba2$ ls
+test-dir  test-file  test-file1  test-file4
+igrok@Gebezul:~/labs-2023/laba2$ cd test-dir
+igrok@Gebezul:~/labs-2023/laba2/test-dir$ ls
+test-file3
+igrok@Gebezul:~/labs-2023/laba2/test-dir$ cd ..
+igrok@Gebezul:~/labs-2023/laba2$ mv test-file4 kapitoska
+igrok@Gebezul:~/labs-2023/laba2$ ls
+kapitoska  test-dir  test-file  test-file1
+igrok@Gebezul:~/labs-2023/laba2$ cat kapitoska
+очень оригинальный текст
+igrok@Gebezul:~/labs-2023/laba2$ ps
+  PID TTY          TIME CMD
+  120 tty1     00:00:00 bash
+  171 tty1     00:00:00 ps
+igrok@Gebezul:~/labs-2023/laba2$ cat kapitoska > test-file5
+igrok@Gebezul:~/labs-2023/laba2$ ls
+kapitoska  test-dir  test-file  test-file1  test-file5
+igrok@Gebezul:~/labs-2023/laba2$ cat test-file5
+очень оригинальный текст
+igrok@Gebezul:~/labs-2023/laba2$ cat > test-file6
+ботать нужно много!!
+igrok@Gebezul:~/labs-2023/laba2$ cat > test-file7  < test-file6
+igrok@Gebezul:~/labs-2023/laba2$ cat test-file7
+ботать нужно много!!
+igrok@Gebezul:~/labs-2023/laba2$ ls
+kapitoska  test-dir  test-file  test-file1  test-file5  test-file6  test-file7
+igrok@Gebezul:~/labs-2023/laba2$ cat test-file5 >> test-file7
+igrok@Gebezul:~/labs-2023/laba2$ cat test-file7
+ботать нужно много!!
+очень оригинальный текст
+igrok@Gebezul:~/labs-2023/laba2$ ls | sort -r
+test-file7
+test-file6
+test-file5
+test-file1
+test-file
+test-dir
+kapitoska
+igrok@Gebezul:~/labs-2023/laba2$ ls | sort
+kapitoska
+test-dir
+test-file
+test-file1
+test-file5
+test-file6
+test-file7
+igrok@Gebezul:~/labs-2023/laba2$ cd ..
+igrok@Gebezul:~/labs-2023$ cat > f1.txt
+ботать
+igrok@Gebezul:~/labs-2023$ cat f1.txt
+ботать
+igrok@Gebezul:~/labs-2023$ cat > f2
+blin
+igrok@Gebezul:~/labs-2023$ cat > f3
+ботать_не_надо
+igrok@Gebezul:~/labs-2023$ ls
+f1.txt  f2  f3  laba2
+igrok@Gebezul:~/labs-2023$ grep -r "ботать" ./*
+./f1.txt:ботать
+./f3:ботать_не_надо
+./laba2/test-file6:ботать нужно много!!
+./laba2/test-file7:ботать нужно много!!
+igrok@Gebezul:~/labs-2023$ grep -lr "ботать" ./*
+./f1.txt
+./f3
+./laba2/test-file6
+./laba2/test-file7
+igrok@Gebezul:~/labs-2023$ grep -rw "ботать" ./*
+./f1.txt:ботать
+./laba2/test-file6:ботать нужно много!!
+./laba2/test-file7:ботать нужно много!!
+igrok@Gebezul:~/labs-2023$ grep -c "ботать" ./*
+./f1.txt:1
+./f2:0
+./f3:1
+grep: ./laba2: Is a directory
+./laba2:0
+igrok@Gebezul:~/labs-2023$ mkdir papka
+igrok@Gebezul:~/labs-2023$ cd papka
+igrok@Gebezul:~/labs-2023/papka$ cat > pr1.txt
+текст
+igrok@Gebezul:~/labs-2023/papka$ cat > pr2.txt
+текстыыы
+igrok@Gebezul:~/labs-2023/papka$ ls
+pr1.txt  pr2.txt
+igrok@Gebezul:~/labs-2023/papka$ cd ..
+igrok@Gebezul:~/labs-2023$ rm -r papka
+igrok@Gebezul:~/labs-2023$ ls
+'#lab9.txt#'     kp3.txt     lab11.txt   lab14.txt          lab2.txt   lab6.txt   lab9.txt
+ README.md       kp4.txt     lab12.txt   lab15.txt          lab3.txt   lab7.txt   papka_laba2
+ codestyle.txt   lab10.txt   lab13.txt   lab2-example.txt   lab5.txt   lab8.txt
