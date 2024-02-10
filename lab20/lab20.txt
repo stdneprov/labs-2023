@@ -805,7 +805,3 @@ aleksandr@ubuntu:~/Desktop/labs$ echo -e вода\\nземля\\nземля\\nв
 воздух
 aleksandr@ubuntu:~$ find -name "1.txt"
 ./Desktop/labs/1.txt
-
-
-
-
