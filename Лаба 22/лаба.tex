@@ -1,0 +1,119 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+
+% подключаем русский
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage[margin=1in]{geometry}
+
+% подключаем математику
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\author{Мустафаев Алим. Группа М8О-113Б-23}
+\title{Лабораторная работа по теме \LaTeX{}}
+
+
+\begin{document}
+\maketitle
+\newpage
+\begin{center}
+Глава 3. \textit{Вычеты функций}
+\end{center}
+\noindent\rule{\textwidth}{1pt}
+\section{Теорема Коши о вычетах. Приложение вычетов к вычислению определенных интегралов. Суммирование некоторых рядов с помощью вычетов}
+\subsection{Теорема Коши о вычетах}
+\textbf{Теорема.} \textit{Если функция f(z) является аналитической на границе C области D и всюду внутри области, за исключением конечного числа особых точек $z_1, z_2,..., z_n$, то}
+\[ \int\limits_C f(z)dz = 2\pi i\sum_{k=1}^n res f(z_k).\]
+\textbf{Пример 1.} Вычислить интеграл
+
+\[\int\limits_{|z|=4} \frac{e^z - 1}{z^2 + z} dz.]\]
+
+\textit{\underline{Решение.}} В области |z| < 4 функция $f(z) = \frac{e^z-1}{z^2+z}$ аналитична всюду, кроме z = 0 и z = -1.
+
+По теореме Коши о вычетах
+\[\int\limits_|z|=4 \frac{e^z-1}{z^2+z} dz \approx 2\pi (res f(0) + res f(-1)) \]
+Точка z = 0 есть устранимая особая точка функции f(z), ибо
+\[\lim_{x \to 0} \frac{e^x - 1}{z(z+1)} = 1.\]
+Поэтому $res f(0) = 0$. Точка z = -1 -- полюс первого порядка,
+\[ resf(-1) = \lim_{x \to -1} 
+\left( \frac{e^z - 1}{z(z + 1)} (z+1) \right) = 1 - e^{-1}\]
+Таким образом,
+\[ \int\limits_{|z|=4} \frac{e^z-1}{z^2+z} dz = 2\pi i(1-e^{-1}).\]
+
+\textbf{Пример 2.} Вычислить интеграл
+\[ \int\limits_{|z|=2} \tg zdz.\]
+
+\textit{\underline{Решение}}. В области D: |z| < 2 функция $f(z) = \tg z $ аналитична всюду, кроме точек $z = \frac{\pi}{2}$ и $z = -\frac{\pi}{2}$, являющихся простыми полюсами. Все другие
+\newpage
+\begin{center}
+\S11. \textit{Теорема Коши о вычетах}
+\end{center}
+\noindent\rule{\textwidth}{1pt}
+особые точки $z_k = \frac{\pi}{2} + k\pi $ функции $f(z) = \tg z$ лежат вне области D и поэтому не учитваются.
+
+Имеем
+\[ res f\left(\frac{\pi}{2} \right) = \left.\frac{\sin z}{(\cos z)} \right|_{z = \pi/2} = -1, res f\left(-\frac{\pi}{2} \right) = \left.\frac{\sin z}{(\cos z)'} \right|_{z = -\pi/2} = -1.\]
+Поэтому
+\[ \int\limits_{|z|=2} \tg z dz = -4\pi i.\]
+
+\textbf{Пример 3.} Вычислить интеграл
+\[ \int\limits_{x-i=3/2} \frac{e^{1/z^2}}{z^2+1} dz.\]
+
+\underline{\textit{Решение}}. В области D: $|z-i| < \frac{3}{2}$ функция $f(z) = \frac{e^{1/z^2}}{z^2+1}$ имеет две особые точка: z = i -- после первого порядка и z = 0 --  существенно особая точка.
+
+По формуле (5) из \S 9 имеем 
+\[ \left.res f(i) = \frac{e^{1/z^2}}{2z}\right|_{z=i} = \frac{e^{-1}}{2i}\]
+Для нахождения вычета точки $z = 0$ необходимо иметь лорановское разложение функции f(z) в окрестности точка $z = 0$. Однако в данном случае искать ряд Лорана нет необходимости: функция f(z) четная, и поэтому можно заранее сказать, что в ее лорановском разложении будут содержаться только четные степени z и $\frac{1}{z}$. Так что $c_{-1} = 0$ и, следовательно,
+\[ resf(0) = 0\]
+По теореме Коши о вычетах 
+\[ \int\limits_{|x-i|=3/2} \frac{e^{1/z^2}}{z^2 + 1} dz = \frac{\pi}{e  }.\]
+
+\textbf{Пример 4.} Вычислить интеграл
+\[\int\limits_{|z| = 2} \frac{1}{z-1} \sin \frac{1}{z} dz.\]
+
+\underline{\textit{Решение}}. В круге $|z| \leq 2$ подынтегральная функция имеет две особые точки $z = 1$ и $z = 0$. Легко установить, что $z = 1$ есть простой полюс, поэтому 
+\[ res_{z=1} \left(\frac{1}{z-1} \sin \frac{1}{z} \right) = \left. \frac{\sin \frac{1}{z}}{(z-1)'}\right|_{z=1} = \sin 1.\]
+
+Для установления характера особой точки $z = 0$ напишем ряд Лорана для функции $\frac{1}{z-1} \sin\frac{1}{z}$ в окрестности этой точки. Имеем
+\[\frac{1}{z-1} \sin \frac{1}{z} = -\frac{1}{1-z} \sin \frac{1}{z} = (-1+z+z^2+...)\left(\frac{1}{z} - \frac{1}{3!z^3} + \frac{1}{5!z^5}-...\right)\]
+\[ = -\left(1 - \frac{1}{3} + \frac{1}{5!} - ...\right) \frac{1}{z} + \frac{c_{-2}}{z^2} + \frac{c_{-3}}{z^3}+...+\]
+\[c_{-k} \neq 0, k = 2,3,... .\]
+Так как ряд Лорана содержит бесконечное множество членов с отрицательными степенями z, то точка $z = 0$ является существенно особой. Вычет подынтегральной функции в этой точке равен
+\[ res_{z=0} \frac{\sin \frac{1}{z}}{z-1} = c_{-1} = -\left(1 - \frac{1}{3!} + \frac{1}{5!} - ...\right) = - \sin 1.\]
+Следовательно,
+\[ \int\limits_{|z|=2} \frac{1}{z-1} \sin \frac{1}{z} dz = 2\pi i(\sin 1 - \sin 1) = 0.\]
+\subsection*{\textbf{\large Задачи для самостоятельного решения}}
+\noindent\rule{\textwidth}{1pt}
+Вычислить интегралы:\\[0.33cm]
+\textbf{347.} $\int\limits_{|z|=1} z \tan\pi z dz.$
+\hspace{0.7cm}
+\textbf{348.} $\int\limits_{C} \frac{z dz}{(z-1)^2(z+2)}$, \hspace{1cm} где $C: x^{2/3} + y^{2/3}=3^{2/3}$.\\[0.7cm]
+\textbf{349.} $\int\limits_{|z|=2} \frac{e^x dz}{z^3(z+1)}$.
+\hspace{1.4cm}
+\textbf{350.} $\int\limits_{|z-i|=3} \frac{e^{x^2}-1}{x^3-iz^2}dz$.
+\hspace{0.6cm}
+\textbf{351.} $\int\limits_{|z|=1/2}z^2\sin\frac{1}{z}dz$
+\\[0.7cm]
+\textbf{352.} $\int\limits_{|z|=\sqrt{3}}\frac{\sin\pi z}{z^2-z}dz$.
+\hspace{1.07cm}
+\textbf{353.} $\int\limits_{|z+1|=4}\frac{z dz}{e^x+3}$.
+\hspace{1.2cm}
+\textbf{354.} $\int\limits_{|z|=1}\frac{z^2dz}{\sin ^3z\cos z}$.\\[0.7cm]
+\textbf{355.} $\int\limits_{|x-i|=1}\frac{e^zdz}{z^4+2z^2+1}$.
+\hspace{0.79cm}
+\textbf{356.} $\int\limits_{|z|=4}\frac{e^{iz}dz}{(z-\pi)^3}$.\\[0.7cm]
+\textbf{357.} $\int\limits_{C}\frac{\cos\frac{z}{2}}{z^2-4}dz$,
+\hspace{0.7cm}
+$C: \frac{x^2}{4}+y^2=1$.
+\hspace{0.35cm}
+\textbf{358.} $\int\limits_{C}\frac{e^{2z}}{z^3-1}dz$,
+\hspace{0.3cm}
+$C: x^2+y^2-2x=0$.\\[0.7cm]
+\textbf{359.} $\int\limits_{C}\frac{\sin\pi z}{(z^2-1)^2}dz$,
+\hspace{0.3cm}
+$C: \frac{x^2}{4}+y^2=1$.
+\hspace{0.2cm}
+\textbf{360.} $\int\limits_{C}\frac{z+1}{z^2+2z-3}dz$,
+\hspace{0.3cm}
+$C: x^2+y^2=16.$
+\end{document}
