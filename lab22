@@ -1,0 +1,151 @@
+\documentclass[oneside]{book}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\usepackage{graphicx} % Required for inserting images
+
+\DeclareMathOperator*\lowlim{\underline{lim}}
+\DeclareMathOperator*\uplim{\overline{lim}}
+
+
+\begin{document}
+
+\newpage
+\textbf{121}. Построить пример числовой последовательности, имеющей в качестве своих частичных пределов данные числа \[a_1, a_2, ..., a_p.\]
+
+\textbf{122}. Построить пример числовой последовательности, для которой все члены данной числовой последовательности \[a_1, a_2, ..., a_n, ...\]
+являются ее частичными пределами. Какие еще частичные пределы имеет построенная последовательность?
+
+\textbf{123}. Построить пример последовательности:
+
+\hspace{0,5cm}а) не имеющей конечных частичных пределов;
+
+\hspace{0,5cm}б) имеющей единственный конечный частичный предел, но не являвляющейся сходящейся;
+
+\hspace{0,5cm}в) имеющей бесконечное множество частичных пределов;
+
+\hspace{0,5cm}г) имеющей в качестве своего частичного предела каждое вещественное число.
+
+\textbf{124}. Доказать, что последовательности $x_n$ и $y_n = x_n \sqrt[n]{n} (n=1, 2, ...)$ имеют одни и те же частичные пределы.
+
+\textbf{125}. Доказать, что из огранченной последовательности $x_n (n=1, 2, ...)$ всегда можно выделить сходящуюся подпоследовательность $x_{n_p} (n=1, 2, ...)$.
+
+\textbf{126}. Доказать, что если последовательность $x_n (n=1, 2, ...)$ не ограничена, то существует подпоследовательность $x_{p_n}$ такая, что \[
+\lim\limits_{n \to \infty} x_{p_n} = \infty.\]
+
+\textbf{127}. Пусть последовательность $x_n (n=1, 2, ...)$ сходится, а последовательность  $y_n (n=1, 2, ...)$ расходится. Что можно утверждать о сходимости последовательностей: 
+
+\hspace{0,5cm} a) $x_n+y_n$; \hspace{3cm} б) $x_ny_n$?
+\documentclass[oneside]{book}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\usepackage{graphicx} % Required for inserting images
+
+\DeclareMathOperator*\lowlim{\underline{lim}}
+\DeclareMathOperator*\uplim{\overline{lim}}
+
+
+\begin{document}
+
+\newpage
+\textbf{121}. Построить пример числовой последовательности, имеющей в качестве своих частичных пределов данные числа \[a_1, a_2, ..., a_p.\]
+
+\textbf{122}. Построить пример числовой последовательности, для которой все члены данной числовой последовательности \[a_1, a_2, ..., a_n, ...\]
+являются ее частичными пределами. Какие еще частичные пределы имеет построенная последовательность?
+
+\textbf{123}. Построить пример последовательности:
+
+\hspace{0,5cm}а) не имеющей конечных частичных пределов;
+
+\hspace{0,5cm}б) имеющей единственный конечный частичный предел, но не являвляющейся сходящейся;
+
+\hspace{0,5cm}в) имеющей бесконечное множество частичных пределов;
+
+\hspace{0,5cm}г) имеющей в качестве своего частичного предела каждое вещественное число.
+
+\textbf{124}. Доказать, что последовательности $x_n$ и $y_n = x_n \sqrt[n]{n} (n=1, 2, ...)$ имеют одни и те же частичные пределы.
+
+\textbf{125}. Доказать, что из огранченной последовательности $x_n (n=1, 2, ...)$ всегда можно выделить сходящуюся подпоследовательность $x_{n_p} (n=1, 2, ...)$.
+
+\textbf{126}. Доказать, что если последовательность $x_n (n=1, 2, ...)$ не ограничена, то существует подпоследовательность $x_{p_n}$ такая, что \[
+\lim\limits_{n \to \infty} x_{p_n} = \infty.\]
+
+\textbf{127}. Пусть последовательность $x_n (n=1, 2, ...)$ сходится, а последовательность  $y_n (n=1, 2, ...)$ расходится. Что можно утверждать о сходимости последовательностей: 
+
+\hspace{0,5cm} a) $x_n+y_n$; \hspace{3cm} б) $x_ny_n$?
+
+Привести соответствующие примеры.
+
+\textbf{128}. Пусть последовательности $x_n$ и $y_n (n=1, 2, ...)$ расходятся. Можно ли утверждать, что последовательности?
+
+\hspace{0,5cm} a) $x_n+y_n$; \hspace{3cm} б) $x_ny_n$
+
+также расходятся?
+
+\textbf{129}. Пусть $\lim\limits_{n \to \infty} x_n = 0$ и $y_n (m=1, 2, ...)$ -- произвольная последовательность. Можно ли утверждать, что $\lim\limits_{n \to \infty} x_ny_n = 0$?
+
+Привести соответствующие примеры.
+
+\newpage
+
+\textbf{130}. Пусть \[\lim\limits_{n \to \infty} x_ny_n = 0.\] Следует ли отсюда, что либо $\lim\limits_{n \to \infty} x_n = 0$, либо $\lim\limits_{n \to \infty} y_n = 0$?
+
+Расссмотреть пример: $x_n=\frac{1+(-1)^n}{2}$, $y_n=\frac{1-(-1)^n}{2}$ $(n=1, 2, ...).$
+
+\textbf{131}. Доказать, что: \[a)\lowlim_{n \to \infty} x_n + \lowlim_{n \to \infty} y_n \leq \lowlim_{n \to \infty} (x_n+y_n) \leq \lowlim_{n \to \infty} x_n + \uplim_{n \to \infty} y_n; \]
+\[b)\lowlim_{n \to \infty} x_n + \uplim_{n \to \infty} y_n \leq \uplim_{n \to \infty} (x_n+y_n) \leq \uplim_{n \to \infty} x_n + \uplim_{n \to \infty} y_n.\]
+
+Построить примеры,, когда в этих соотношениях имеют место строгие неравенства.
+
+\textbf{132}. Пусть $x_n \geq 0$ и $y_n \geq 0 (n=1, 2, ...).$ Доказать, что:\[a)\lowlim_{n \to \infty} x_n \cdot \lowlim_{n \to \infty} y_n \leq \lowlim_{n \to \infty} (x_ny_n) \leq \lowlim_{n \to \infty} x_n \cdot \uplim_{n \to \infty} y_n; \]
+\[b)\lowlim_{n \to \infty} x_n \cdot \uplim_{n \to \infty} y_n \leq \uplim_{n \to \infty} (x_ny_n) \leq \uplim_{n \to \infty} x_n \cdot \uplim_{n \to \infty} y_n. \]
+
+Построить примеры, когда в этих соотношениях имеют место строгие неравенства.
+
+\textbf{133}. Доказать, что если $\lim\limits_{n \to \infty} x_n$ существует, то какова бы ни была последовательность $y_n (n=1, 2, ...),$ имеем: \[a)\uplim_{n \to \infty} (x_n+y_n)=\lim\limits_{n \to \infty} x_n + \uplim_{n \to \infty} y_n;\]
+
+\[b)\uplim_{n \to \infty} x_ny_n +=\lim\limits_{n \to \infty} x_n \cdot \uplim_{n \to \infty} y_n (x_n \geq 0).\]
+
+\textbf{134}. Доказать, что если для некоторой последовательности $x_n (n=1, 2, ...,)$ какова бы ни была последовательность $y_n (n=1, 2, ...,)$ имеет место по меньшей мере одно из неравенст: \[a)\uplim_{n \to \infty} (x_n+y_n)=\uplim_{n \to \infty} x_n + \uplim_{n \to \infty} y_n\]
+
+или \[b)\uplim_{n \to \infty} (x_ny_n)=\uplim_{n \to \infty} x_n \cdot \uplim_{n \to \infty} y_n  (x_n \geq 0),\]
+
+то последовательность $x_n$ -- сходящаяся.
+
+\textbf{135}. Доказать, что если $x_n > 0 (n=1, 2, ...)$ и \[\uplim_{n \to \infty} \cdot \uplim_{n \to \infty} \frac{1}{x_n} = 1,\]
+
+то последовательность $x_n$ -- сходящаяся.
+
+\newpage
+\textbf{136}. Доказать, что если последовательность $x_n (n=1 ,2, ...)$ ограничена и  \[\lowlim_{n \to \infty} x_n, \hspace{1cm} L = \uplim_{n \to \infty} x_n,\]
+
+т.е. любое число из отрезка $[l,L]$ является частичным пределом данной последовательности.
+
+\textbf{137}. Пусть числовая последовательность $x_1, x_2, ..., x_n, ...$ удовлетворяет условию \[0 \leq x_{m+n} \leq x_m + x_n (m,n=1, 2, ...).\]
+
+Доказать, что $\lim\limits_{n \to \infty} \frac{x_n}{n}$ существует.
+
+\textbf{138}. Доказать, что если последовательность $x_n (n=1, 2, ...)$ сходится, то последовательность средних арифметических \[\xi_n = \frac{1}{n} (x_1+x_2+...+x_n) (n=1, 2, ...)\]
+
+также сходится и \[\lim\limits_{n \to \infty} \frac{x_1+x_2+...+x_n}{n}=\lim\limits_{n \to \infty} x_n.\]
+
+Обратное утверждение неверно: построить пример.
+
+\textbf{139}. Доказать, что если \[\lim\limits_{n \to \infty} x_n = +\infty,\]
+
+то \[\lim\limits_{n \to \infty}\frac{x_1+x_2+...+x_n}{n}=+\infty.\]
+
+\textbf{140}. Доказать, что если последовательность $x_n (n=1, 2, ...)$ сходится и $x_n > 0$, то \[\lim\limits_{n \to \infty} \sqrt[n]{x_n} = \lim\limits_{n \to \infty}x_n.\]
+
+\textbf{141}. Доказать, что если $x_n > 0 (n=1, 2, ...)$, то \[\lim\limits_{n \to \infty} \sqrt[n]{x_n}=\lim\limits_{n \to \infty} \frac{x_{n+1}}{x_n},\]
+
+предполагая, что предел, стоящий в правой части последнего равенства, существует.
+
+
+
+\end{document}
