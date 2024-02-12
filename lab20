@@ -1,0 +1,342 @@
+openonevm@openonevm:~$ man cmp
+openonevm@openonevm:~$ man cmp
+openonevm@openonevm:~$ cd
+openonevm@openonevm:~$ touch lab20.txt
+openonevm@openonevm:~$ cd lab20.txt
+bash: cd: lab20.txt: Not a directory
+openonevm@openonevm:~$ cd labs
+bash: cd: labs: No such file or directory
+openonevm@openonevm:~$ cd labs/
+bash: cd: labs/: No such file or directory
+openonevm@openonevm:~$ ls
+Desktop  Documents  Downloads  lab20.txt  labs-2023  Music  Pictures  Public  Templates  Videos
+openonevm@openonevm:~$ mkdir labs
+openonevm@openonevm:~$ cd labs/
+openonevm@openonevm:~/labs$ touch lab20.txt
+openonevm@openonevm:~/labs$ ls
+lab20.txt
+openonevm@openonevm:~/labs$ cd labs20.txt
+bash: cd: labs20.txt: No such file or directory
+openonevm@openonevm:~/labs$ cat labs20.txt
+cat: labs20.txt: No such file or directory
+openonevm@openonevm:~/labs$ cat >  lab1 
+Approximately, just German and Korean nations take care about nature.     
+
+^Z
+[1]+  Stopped                 cat > lab1
+openonevm@openonevm:~/labs$ cat lab1
+Approximately, just German and Korean nations take care about nature.
+
+openonevm@openonevm:~/labs$ rm lab1
+openonevm@openonevm:~/labs$ rm labs20.txt
+rm: cannot remove 'labs20.txt': No such file or directory
+openonevm@openonevm:~/labs$ ls
+lab20.txt
+openonevm@openonevm:~/labs$ rm lab20.txt
+openonevm@openonevm:~/labs$ ls
+openonevm@openonevm:~/labs$ cat > lab1.txt
+Approximately, only German and Korean nations take care about nature.
+^Z
+[2]+  Stopped                 cat > lab1.txt
+openonevm@openonevm:~/labs$ cat > lab1.1.txt
+Approximately, only German and Korean nations take care about nature.
+They recycle garbage and keep streets clean.\
+^Z
+[3]+  Stopped                 cat > lab1.1.txt
+openonevm@openonevm:~/labs$ cmp lab1.txt lab1.1.txt
+cmp: EOF on lab1.txt after byte 70, line 1
+openonevm@openonevm:~/labs$ cmp -b lab1.txt lab1.1.txt
+cmp: EOF on lab1.txt after byte 70, line 1
+openonevm@openonevm:~/labs$ cmp lab1.txt lab1.1.txt -b
+cmp: EOF on lab1.txt after byte 70, line 1
+openonevm@openonevm:~/labs$ cmp lab1.txt lab1.1.txt -i
+cmp: option requires an argument -- 'i'
+cmp: Try 'cmp --help' for more information.
+openonevm@openonevm:~/labs$ cmp lab1.txt lab1.1.txt -l
+cmp: EOF on lab1.txt after byte 70
+openonevm@openonevm:~/labs$ cat lab1.txt
+Approximately, only German and Korean nations take care about nature.
+openonevm@openonevm:~/labs$ cat > lab1.1.txt
+Appoximately, these sentences are false
+^C
+openonevm@openonevm:~/labs$ ls
+lab1.1.txt  lab1.txt
+openonevm@openonevm:~/labs$ lab1.txt
+lab1.txt: command not found
+openonevm@openonevm:~/labs$ cat lab1.1.txt
+Appoximately, these sentences are false
+openonevm@openonevm:~/labs$ cmp lab1.txt lab1.1.txt
+lab1.txt lab1.1.txt differ: byte 4, line 1
+openonevm@openonevm:~/labs$ cmp lab1.txt lab1.1.txt -b
+lab1.txt lab1.1.txt differ: byte 4, line 1 is 162 r 157 o
+openonevm@openonevm:~/labs$ cmp lab1.txt lab1.1.txt -l
+ 4 162 157
+ 5 157 170
+ 6 170 151
+ 7 151 155
+ 8 155 141
+ 9 141 164
+10 164 145
+11 145 154
+12 154 171
+13 171  54
+14  54  40
+15  40 164
+16 157 150
+17 156 145
+18 154 163
+19 171 145
+21 107 163
+23 162 156
+24 155 164
+25 141 145
+27  40 143
+28 141 145
+29 156 163
+30 144  40
+31  40 141
+32 113 162
+33 157 145
+34 162  40
+35 145 146
+37 156 154
+38  40 163
+39 156 145
+40 141  12
+cmp: EOF on lab1.1.txt after byte 40
+openonevm@openonevm:~/labs$ cmp lab1.txt lab1.1.txt -i
+cmp: option requires an argument -- 'i'
+cmp: Try 'cmp --help' for more information.
+openonevm@openonevm:~/labs$ cmp lab1.1.txt lab1.txt -n
+cmp: option requires an argument -- 'n'
+cmp: Try 'cmp --help' for more information.
+openonevm@openonevm:~/labs$ man cmp
+openonevm@openonevm:~/labs$ cmp -n 19 lab1.txt lab1.1.txt
+lab1.txt lab1.1.txt differ: byte 4, line 1
+openonevm@openonevm:~/labs$ cmp -i 3 lab1.txt lab1.1.txt
+lab1.txt lab1.1.txt differ: byte 1, line 1
+openonevm@openonevm:~/labs$ man cmp
+openonevm@openonevm:~/labs$ cat < f1.txt
+bash: f1.txt: No such file or directory
+openonevm@openonevm:~/labs$ cat > f1.txt 
+alaska
+california
+cansas
+jamaika
+colorado
+
+^C
+openonevm@openonevm:~/labs$ cat > f2.txt
+alabama
+Iowa
+Wyoming
+Vermont
+Washington
+Wisconsin
+Dakota
+alaska
+^C
+openonevm@openonevm:~/labs$ cat < f3.txt
+bash: f3.txt: No such file or directory
+openonevm@openonevm:~/labs$ cat > f3.txt
+123
+4342
+111
+0306
+^C
+openonevm@openonevm:~/labs$ comm f1.txt f2.txt
+ alabama
+alaska
+california
+cansas
+ Iowa
+jamaika
+comm: file 1 is not in sorted order
+colorado
+
+ Wyoming
+comm: file 2 is not in sorted order
+ Vermont
+ Washington
+ Wisconsin
+ Dakota
+ alaska
+openonevm@openonevm:~/labs$ comm -1 lab1.txt lab1.1.txt
+Appoximately, these sentences are false
+openonevm@openonevm:~/labs$ comm lab1.txt lab1.1.txt
+ Appoximately, these sentences are false
+Approximately, only German and Korean nations take care about nature.
+openonevm@openonevm:~/labs$ wc lab1.txt
+ 1 10 70 lab1.txt
+openonevm@openonevm:~/labs$ wc -c lab1.txt
+70 lab1.txt
+openonevm@openonevm:~/labs$ dd lab1.txt
+dd: unrecognized operand ‘lab1.txt’
+Try 'dd --help' for more information.
+openonevm@openonevm:~/labs$ dd  -bc20 lab1.txt
+dd: invalid option -- 'b'
+Try 'dd --help' for more information.
+openonevm@openonevm:~/labs$ dd -bc20 lab1.txt
+dd: invalid option -- 'b'
+Try 'dd --help' for more information.
+openonevm@openonevm:~/labs$ dd -bs20 lab1.txt
+dd: invalid option -- 'b'
+Try 'dd --help' for more information.
+openonevm@openonevm:~/labs$ dd -ibs20 lab1.1.txt
+dd: invalid option -- 'i'
+Try 'dd --help' for more information.
+openonevm@openonevm:~/labs$ diff lab1.txt lab1.1.txt
+1c1
+< Approximately, only German and Korean nations take care about nature.
+---
+> Appoximately, these sentences are false
+openonevm@openonevm:~/labs$ diff -q lab1.txt lab1.1.txt
+Files lab1.txt and lab1.1.txt differ
+openonevm@openonevm:~/labs$ grep "only" lab1.txt
+Approximately, only German and Korean nations take care about nature.
+openonevm@openonevm:~/labs$ sort lab1.txt
+Approximately, only German and Korean nations take care about nature.
+openonevm@openonevm:~/labs$ sort lab1.txt lab1.1.txt
+Appoximately, these sentences are false
+Approximately, only German and Korean nations take care about nature.
+openonevm@openonevm:~/labs$ sort -r lab1.txt lab1.1.txt
+Approximately, only German and Korean nations take care about nature.
+Appoximately, these sentences are false
+openonevm@openonevm:~/labs$ tail -c9 lab1.txt
+ nature.
+openonevm@openonevm:~/labs$ tee lab1.txt
+
+
+
+
+^C
+openonevm@openonevm:~/labs$ tr -d [s] lab1.txt
+tr: extra operand ‘lab1.txt’
+Only one string may be given when deleting without squeezing repeats.
+Try 'tr --help' for more information.
+openonevm@openonevm:~/labs$ tr s S lab1.txt
+tr: extra operand ‘lab1.txt’
+Try 'tr --help' for more information.
+openonevm@openonevm:~/labs$ echo "well, see ya" | tr w W
+Well, see ya
+openonevm@openonevm:~/labs$ uniq -c f1.txt
+      1 alaska
+      1 california
+      1 cansas
+      1 jamaika
+      1 colorado
+      1 
+openonevm@openonevm:~/labs$ uniq -d f2.txt
+openonevm@openonevm:~/labs$ od -c lab1.txt
+0000000  \n  \n
+0000002
+openonevm@openonevm:~/labs$ cut -b 1-3 lab1.txt
+
+
+openonevm@openonevm:~/labs$ ls
+f1.txt  f2.txt  f3.txt  lab1.1.txt  lab1.txt
+openonevm@openonevm:~/labs$ tar -cfv lab1.txt
+openonevm@openonevm:~/labs$ ls
+f1.txt  f2.txt  f3.txt  lab1.1.txt  lab1.txt  v
+openonevm@openonevm:~/labs$ gzip -l v
+
+gzip: v: not in gzip format
+openonevm@openonevm:~/labs$ gzip -c lab1.txt
+���elab1.txt��k�[openonevm@openonevm:~/labs$ sg
+Usage: sg group [[-c] command]
+openonevm@openonevm:~/labs$ ls
+f1.txt  f2.txt  f3.txt  lab1.1.txt  lab1.txt  v
+openonevm@openonevm:~/labs$ sed - l 8 lab1.txt
+sed: -e expression #1, char 1: unknown command: `-'
+openonevm@openonevm:~/labs$ sed -1 8 lab1.txt
+sed: invalid option -- '1'
+Usage: sed [OPTION]... {script-only-if-no-other-script} [input-file]...
+
+  -n, --quiet, --silent
+                 suppress automatic printing of pattern space
+      --debug
+                 annotate program execution
+  -e script, --expression=script
+                 add the script to the commands to be executed
+  -f script-file, --file=script-file
+                 add the contents of script-file to the commands to be executed
+  --follow-symlinks
+                 follow symlinks when processing in place
+  -i[SUFFIX], --in-place[=SUFFIX]
+edit files in place (makes backup if SUFFIX supplied)
+  -l N, --line-length=N
+                 specify the desired line-wrap length for the `l' command
+  --posix
+                 disable all GNU extensions.
+  -E, -r, --regexp-extended
+                 use extended regular expressions in the script
+                 (for portability use POSIX -E).
+  -s, --separate
+                 consider files as separate rather than as a single,
+                 continuous long stream.
+      --sandbox
+                 operate in sandbox mode (disable e/r/w commands).
+  -u, --unbuffered
+                 load minimal amounts of data from the input files and flush
+                 the output buffers more often
+  -z, --null-data
+                 separate lines by NUL characters
+      --help     display this help and exit
+      --version  output version information and exit
+
+If no -e, --expression, -f, or --file option is given, then the first
+non-option argument is taken as the sed script to interpret.  All
+remaining arguments are names of input files; if no input files are
+specified, then the standard input is read.
+
+GNU sed home page: <https://www.gnu.org/software/sed/>.
+General help using GNU software: <https://www.gnu.org/gethelp/>.
+openonevm@openonevm:~/labs$ sed -l 8 lab1.txt
+sed: -e expression #1, char 2: extra characters after command
+openonevm@openonevm:~/labs$ sed -s lab1.txt lab1.1.txt
+sed: -e expression #1, char 2: extra characters after command
+openonevm@openonevm:~/labs$ sed lab1.txt
+sed: -e expression #1, char 2: extra characters after command
+openonevm@openonevm:~/labs$ bzip2 -k lab1.txt
+openonevm@openonevm:~/labs$ ls
+f1.txt  f2.txt  f3.txt  lab1.1.txt  lab1.txt  lab1.txt.bz2  v
+openonevm@openonevm:~/labs$ head -c 4 lab1.txt
+
+
+openonevm@openonevm:~/labs$ head lab1.txt
+
+
+openonevm@openonevm:~/labs$ head f1.txt
+alaska
+california
+cansas
+jamaika
+colorado
+
+openonevm@openonevm:~/labs$ head -c 12 f1.txt
+alaska
+califopenonevm@openonevm:~/labs$ sed 's /Approximately/May be/ lab1.txt
+> ^C
+> 
+> ^M
+> 
+> 
+> '
+sed: -e expression #1, char 26: unknown option to `s'
+openonevm@openonevm:~/labs$ sed 's/Approximately/May be/' lab1.txt
+
+
+openonevm@openonevm:~/labs$ ls
+f1.txt  f2.txt  f3.txt  lab1.1.txt  lab1.txt  lab1.txt.bz2  v
+openonevm@openonevm:~/labs$ cat lab1.txt
+
+
+openonevm@openonevm:~/labs$ cat lab1.1.txt
+Appoximately, these sentences are false
+openonevm@openonevm:~/labs$ cat > lab1.txt
+Approximately. what the heck
+^C
+openonevm@openonevm:~/labs$ 
+openonevm@openonevm:~/labs$ sed 's/heck/meh/' lab1.txt
+Approximately. what the meh
+openonevm@openonevm:~/labs$
