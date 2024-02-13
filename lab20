@@ -1,0 +1,535 @@
+openonevm@openonevm:~$ mkdir labs
+mkdir: cannot create directory ‘labs’: File exists
+openonevm@openonevm:~$ ls
+Desktop    Downloads  labs       Music     Public     Videos
+Documents  lab20.txt  labs-2023  Pictures  Templates
+openonevm@openonevm:~$ mkdir lab
+openonevm@openonevm:~$ ls
+Desktop    Downloads  lab20.txt  labs-2023  Pictures  Templates
+Documents  lab        labs       Music      Public    Videos
+openonevm@openonevm:~$ cd lab
+openonevm@openonevm:~/lab$ touch f1.txt
+openonevm@openonevm:~/lab$ touch f2.txt
+openonevm@openonevm:~/lab$ touch f3.txt
+openonevm@openonevm:~/lab$ ls
+f1.txt  f2.txt  f3.txt
+openonevm@openonevm:~/lab$ cat > f1.txt
+mp – сравнивает файлы побайтово. 
+Флаги: -l используется для вывода ин-фы о позициях и значениях всех различных байт; -b для вы-вода отличающихся значений байтов; -i для пропуска определённого кол-ва начальных байтов;  
+
+^C
+openonevm@openonevm:~/lab$ cat > f2.txt
+comm – сравнивает два файла, выводя содержимое в три столбца: несовпадающие строки первого и второго файла, совпадающие – обоих файлов. 
+Флаги: -1 не показывать столбец 1; -2 не показывать столбец 2; -3 не показывать столбец 3(совпадение); --check-order проверяет правильность сортировки ввода, даже если входные строки имеют пару; 
+^C
+openonevm@openonevm:~/lab$ 
+openonevm@openonevm:~/lab$ touch f4.txt
+openonevm@openonevm:~/lab$ tocuh f5.txt
+
+Command 'tocuh' not found, did you mean:
+
+  command 'touch' from deb coreutils (8.30-3ubuntu2)
+
+Try: sudo apt install <deb name>
+
+openonevm@openonevm:~/lab$ touch f5.txt
+openonevm@openonevm:~/lab$ cat > f4.txt
+alaska 
+alabama iowa
+kailofrnia
+minnesota new york new jersey
+oregon
+ohaio
+^C
+openonevm@openonevm:~/lab$ cat > f5.txt
+alaska 
+alabama
+iowa
+kalifornia
+texas minnesota
+wyoming wisconsin
+
+ohaio
+^C
+openonevm@openonevm:~/lab$ touch dig.txt
+openonevm@openonevm:~/lab$ cat > dig.txt
+1234 124 24 68778 554 
+234 123 0 5432 
+1435 654 
+12 769 4 9
+^C
+openonevm@openonevm:~/lab$ cmp f1.txt f2.txt
+f1.txt f2.txt differ: byte 1, line 1
+openonevm@openonevm:~/lab$ cmp -l f1.txt f2.txt
+  1 155 143
+  2 160 157
+  3  40 155
+  4 342 155
+  5 200  40
+  6 223 342
+  7  40 200
+  8 321 223
+  9 201  40
+ 11 200 201
+ 12 320 321
+ 13 260 200
+ 15 262 260
+ 17 275 262
+ 19 270 275
+ 21 262 270
+ 23 260 262
+ 25 265 260
+ 26 321 320
+ 27 202 265
+ 28  40 321
+ 29 321 202
+ 30 204  40
+ 32 260 264
+ 34 271 262
+ 36 273 260
+ 37 321  40
+ 38 213 321
+ 39  40 204
+ 41 277 260
+ 43 276 271
+ 45 261 273
+ 48 320  54
+ 49 271  40
+ 50 321 320
+ 51 202 262
+ 52 320 321
+ 53 276 213
+ 58  56 320
+ 59  40 264
+ 60  12 321
+ 61 320 217
+ 62 244  40
+ 63 320 321
+ 64 273 201
+ 66 260 276
+ 68 263 264
+ 70 270 265
+ 71  72 321
+ 72  40 200
+ 73  55 320
+ 74 154 266
+ 75  40 320
+ 76 320 270
+ 77 270 320
+ 78 321 274
+ 79 201 320
+ 80 320 276
+ 81 277 320
+ 82 320 265
+ 83 276  40
+ 85 273 262
+ 86 321  40
+ 87 214 321
+ 88 320 202
+ 89 267 321
+ 90 321 200
+ 91 203 320
+ 92 320 270
+ 93 265  40
+ 95 202 201
+ 97 201 202
+ 98 321 320
+ 99 217 276
+100  40 320
+101 320 273
+102 264 320
+103 320 261
+104 273 321
+105 321 206
+106 217 320
+107  40 260
+108 320  72
+109 262  40
+110 321 320
+111 213 275
+113 262 265
+114 320 321
+115 276 201
+117 264 276
+119 260 262
+120  40 320
+121 320 277
+122 270 320
+123 320 260
+124 275 320
+125  55 264
+126 321 320
+127 204 260
+129 213 216
+130  40 321
+131 320 211
+132 276 320
+133  40 270
+135 277 265
+136 320  40
+137 276 321
+138 320 201
+139 267 321
+140 320 202
+141 270 321
+142 321 200
+143 206 320
+144 320 276
+145 270 320
+146 321 272
+147 217 320
+148 321 270
+149 205  40
+150  40 320
+151 320 277
+152 270 320
+153  40 265
+154 320 321
+155 267 200
+157 275 262
+159 260 276
+160 321 320
+161 207 263
+163 265 276
+164 320  40
+165 275 320
+166 320 270
+167 270  40
+168 321 320
+169 217 262
+171 205 202
+172  40 320
+173 320 276
+174 262 321
+175 321 200
+176 201 320
+177 320 276
+178 265 320
+179 321 263
+180 205 320
+181  40 276
+182 321  40
+183 200 321
+184 320 204
+185 260 320
+186 320 260
+187 267 320
+188 320 271
+189 273 320
+190 320 273
+191 270 320
+192 321 260
+193 207  54
+194 320  40
+195 275 321
+196 321 201
+197 213 320
+198 321 276
+199 205 320
+200  40 262
+202 261 277
+206 271 264
+207 321 320
+208 202 260
+209  73 321
+210  40 216
+211  55 321
+212 142 211
+213  40 320
+214 320 270
+215 264 320
+216 320 265
+217 273  40
+218 321 342
+219 217 200
+220  40 223
+221 320  40
+222 262 320
+223 321 276
+224 213 320
+225  55 261
+227 262 276
+229 276 270
+230 320 321
+231 264 205
+232 320  40
+233 260 321
+234  40 204
+236 276 260
+237 321 320
+238 202 271
+242 270 276
+243 321 320
+244 207 262
+245 320  56
+246 260  40
+247 321  12
+248 216 320
+249 321 244
+250 211 320
+251 320 273
+252 270 320
+253 321 260
+254 205 320
+255 321 263
+256 201 320
+257 321 270
+258 217  72
+260 320  55
+261 267  61
+262 320  40
+263 275 320
+264 320 275
+265 260 320
+266 321 265
+267 207  40
+269 265 277
+271 275 276
+273 270 272
+275 271 260
+276  40 320
+277 320 267
+278 261 321
+279 320 213
+280 260 320
+281 320 262
+282 271 320
+283 321 260
+284 202 321
+285 320 202
+286 276 321
+287 320 214
+288 262  40
+289  73 321
+290  40 201
+291  55 321
+292 151 202
+293  40 320
+294 320 276
+295 264 320
+296 320 273
+297 273 320
+298 321 261
+299 217 320
+300  40 265
+301 320 321
+302 277 206
+303 321  40
+304 200  61
+305 320  73
+306 276  40
+307 320  55
+308 277  62
+309 321  40
+310 203 320
+311 321 275
+312 201 320
+313 320 265
+314 272  40
+316 260 277
+317  40 320
+318 320 276
+319 276 320
+320 320 272
+321 277 320
+322 321 260
+323 200 320
+324 320 267
+325 265 321
+326 320 213
+327 264 320
+328 320 262
+329 265 320
+330 320 260
+331 273 321
+332 321 202
+333 221 321
+334 320 214
+335 275  40
+336 320 321
+337 275 201
+338 320 321
+339 276 202
+341 263 276
+343 276 273
+344  40 320
+345 320 261
+346 272 320
+347 320 265
+348 276 321
+349 320 206
+350 273  40
+351  55  62
+352 320  73
+353 262  40
+354 320  55
+355 260  63
+360 260 265
+361 321  40
+362 207 320
+363 320 277
+364 260 320
+365 320 276
+366 273 320
+367 321 272
+368 214 320
+369 320 260
+370 275 320
+371 321 267
+372 213 321
+373 321 213
+374 205 320
+375  40 262
+377 261 260
+378 320 321
+379 260 202
+380 320 321
+381 271 214
+382 321  40
+383 202 321
+384 320 201
+385 276 321
+386 320 202
+387 262 320
+388  73 276
+389  40 320
+390  12 273
+391  12 320
+cmp: EOF on f1.txt after byte 391
+openonevm@openonevm:~/lab$ cmp -b f1.txt f2.txt
+f1.txt f2.txt differ: byte 1, line 1 is 155 m 143 c
+openonevm@openonevm:~/lab$ cmp -i 23 f1.txt f2.txt
+f1.txt f2.txt differ: byte 2, line 1
+openonevm@openonevm:~/lab$ comm f3.txt f4.txt
+	alaska 
+comm: file 2 is not in sorted order
+	alabama iowa
+	kailofrnia
+	minnesota new york new jersey
+	oregon
+	ohaio
+openonevm@openonevm:~/lab$ comm f1.txt f2.txt
+	comm – сравнивает два файла, выводя содержимое в три столбца: несовпадающие строки первого и второго файла, совпадающие – обоих файлов. 
+mp – сравнивает файлы побайтово. 
+	Флаги: -1 не показывать столбец 1; -2 не показывать столбец 2; -3 не показывать столбец 3(совпадение); --check-order проверяет правильность сортировки ввода, даже если входные строки имеют пару; 
+Флаги: -l используется для вывода ин-фы о позициях и значениях всех различных байт; -b для вы-вода отличающихся значений байтов; -i для пропуска определённого кол-ва начальных байтов; 
+comm: file 1 is not in sorted order
+
+openonevm@openonevm:~/lab$ comm -1 f1.txt f2.txt
+comm – сравнивает два файла, выводя содержимое в три столбца: несовпадающие строки первого и второго файла, совпадающие – обоих файлов. 
+Флаги: -1 не показывать столбец 1; -2 не показывать столбец 2; -3 не показывать столбец 3(совпадение); --check-order проверяет правильность сортировки ввода, даже если входные строки имеют пару; 
+comm: file 1 is not in sorted order
+openonevm@openonevm:~/lab$ comm --check-order f1.txt f2.txt
+	comm – сравнивает два файла, выводя содержимое в три столбца: несовпадающие строки первого и второго файла, совпадающие – обоих файлов. 
+mp – сравнивает файлы побайтово. 
+	Флаги: -1 не показывать столбец 1; -2 не показывать столбец 2; -3 не показывать столбец 3(совпадение); --check-order проверяет правильность сортировки ввода, даже если входные строки имеют пару; 
+Флаги: -l используется для вывода ин-фы о позициях и значениях всех различных байт; -b для вы-вода отличающихся значений байтов; -i для пропуска определённого кол-ва начальных байтов; 
+comm: file 1 is not in sorted order
+openonevm@openonevm:~/lab$ wc -c f1.txt
+391 f1.txt
+openonevm@openonevm:~/lab$ wc -m f1.txt
+220 f1.txt
+openonevm@openonevm:~/lab$ wc -l f1.txt
+3 f1.txt
+openonevm@openonevm:~/lab$ wc -w f1.txt
+31 f1.txt
+openonevm@openonevm:~/lab$ diff f1.txt f2.txt
+1,3c1,2
+< mp – сравнивает файлы побайтово. 
+< Флаги: -l используется для вывода ин-фы о позициях и значениях всех различных байт; -b для вы-вода отличающихся значений байтов; -i для пропуска определённого кол-ва начальных байтов; 
+< 
+---
+> comm – сравнивает два файла, выводя содержимое в три столбца: несовпадающие строки первого и второго файла, совпадающие – обоих файлов. 
+> Флаги: -1 не показывать столбец 1; -2 не показывать столбец 2; -3 не показывать столбец 3(совпадение); --check-order проверяет правильность сортировки ввода, даже если входные строки имеют пару; 
+openonevm@openonevm:~/lab$ diff -q f1.txt f2.txt
+Files f1.txt and f2.txt differ
+openonevm@openonevm:~/lab$ grep -r ohaio f5.txt
+ohaio
+openonevm@openonevm:~/lab$ grep -lr ohaio f4.txt
+f4.txt
+openonevm@openonevm:~/lab$ grep -c ohaio
+f4.txt
+
+^C
+openonevm@openonevm:~/lab$ sort -r f2.txt
+Флаги: -1 не показывать столбец 1; -2 не показывать столбец 2; -3 не показывать столбец 3(совпадение); --check-order проверяет правильность сортировки ввода, даже если входные строки имеют пару; 
+comm – сравнивает два файла, выводя содержимое в три столбца: несовпадающие строки первого и второго файла, совпадающие – обоих файлов. 
+openonevm@openonevm:~/lab$ sort f4.txt
+alabama iowa
+alaska 
+kailofrnia
+minnesota new york new jersey
+ohaio
+oregon
+openonevm@openonevm:~/lab$ tr -cd [2] f2.txt
+tr: extra operand ‘f2.txt’
+Only one string may be given when deleting without squeezing repeats.
+Try 'tr --help' for more information.
+openonevm@openonevm:~/lab$ echo "werlcomer horme" | tr -d 'r'
+welcome home
+openonevm@openonevm:~/lab$ uniq -c  f3.txt 
+openonevm@openonevm:~/lab$ uniq -d f2.txt
+openonevm@openonevm:~/lab$ uniq -q f5.txt
+uniq: invalid option -- 'q'
+Try 'uniq --help' for more information.
+openonevm@openonevm:~/lab$ uniq -u f5.txt
+alaska 
+alabama
+iowa
+kalifornia
+texas minnesota
+wyoming wisconsin
+
+ohaio
+openonevm@openonevm:~/lab$ od -c f5.txt
+0000000   a   l   a   s   k   a      \n   a   l   a   b   a   m   a  \n
+0000020   i   o   w   a  \n   k   a   l   i   f   o   r   n   i   a  \n
+0000040   t   e   x   a   s       m   i   n   n   e   s   o   t   a  \n
+0000060   w   y   o   m   i   n   g       w   i   s   c   o   n   s   i
+0000100   n  \n  \n   o   h   a   i   o  \n
+0000111
+openonevm@openonevm:~/lab$ od -b f3.txt
+0000000
+openonevm@openonevm:~/lab$ cit -b 1-30 f2.txt
+
+Command 'cit' not found, did you mean:
+
+  command 'ci' from deb rcs (5.9.4-6)
+  command 'cil' from deb cil (0.07.00-12)
+  command 'cht' from deb chemtool (1.6.14-5)
+  command 'cat' from deb coreutils (8.30-3ubuntu2)
+  command 'cvt' from deb xserver-xorg-core (2:1.20.13-1ubuntu1~20.04.9)
+  command 'clit' from deb convlit (1.8-2)
+  command 'wit' from deb wit (3.01a-2)
+  command 'vit' from deb vit (2.0.0-1)
+  command 'cut' from deb coreutils (8.30-3ubuntu2)
+  command 'git' from deb git (1:2.25.1-1ubuntu3.11)
+  command 'cnt' from deb open-infrastructure-container-tools (20200121-1)
+  command 'cct' from deb proj-bin (6.3.1-1)
+  command 'cst' from deb imx-code-signing-tool (3.3.0+dfsg-2)
+
+Try: sudo apt install <deb name>
+
+openonevm@openonevm:~/lab$ cut -b 1-30 f2.txt
+comm – сравнивает 
+Флаги: -1 не показ
+openonevm@openonevm:~/lab$ tar -cfzv f5.txt
+openonevm@openonevm:~/lab$ ;s
+bash: syntax error near unexpected token `;'
+openonevm@openonevm:~/lab$ ls
+dig.txt  f1.txt  f2.txt  f3.txt  f4.txt  f5.txt  zv
+openonevm@openonevm:~/lab$ gzip dig.txt
+openonevm@openonevm:~/lab$ ls
+dig.txt.gz  f1.txt  f2.txt  f3.txt  f4.txt  f5.txt  zv
+openonevm@openonevm:~/lab$ gzip -l dig.txt.gz
+         compressed        uncompressed  ratio uncompressed_name
+                 75                  60  18.3% dig.txt
+openonevm@openonevm:~/lab$ bzip2 -k f1.txt
+openonevm@openonevm:~/lab$ ls
+dig.txt.gz  f1.txt  f1.txt.bz2  f2.txt  f3.txt  f4.txt  f5.txt  zv
+openonevm@openonevm:~/lab$ head -c 45 f2.txt
+comm – сравнивает два файлopenonevm@openonevm:~/lab$ head -n 2 f3.txt
+openonevm@openonevm:~/lab$ ls
+dig.txt.gz  f1.txt  f1.txt.bz2  f2.txt  f3.txt  f4.txt  f5.txt  zv
+openonevm@openonevm:~/lab$ ^C
+openonevm@openonevm:~/lab$ 
