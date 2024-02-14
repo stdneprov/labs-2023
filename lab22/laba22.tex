@@ -1,0 +1,104 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+
+\title{Лабораторная работа №22}
+\author{\textbf{\texttt{Дмитрий Колесник}}}
+\begin{document}
+
+
+\maketitle
+
+\newpage
+\begin{center}
+\section{Суммы Дарбу. Критерий
+интегрируемости}
+\end{center}
+
+Полезным для дальнейшего является понятие колеба-
+ния функции f на отрезке [a, b]:
+\[ \omega(f, [a, b])\ =\sup_{x\in [a, b]}f(x) - \inf_{x\in [a, b]}f(x). \]
+В частном случае для краткости будем обозначать\ $\omega(f, [x_{k - 1}, x_{k}])\ =\ \omega_{k}(f).$
+
+Пусть\ $M_{k}\ =\ \overset{}{\underset{x \in [x_{k-1}, x_k]}{\sup}} f(x),\ m_{k}\ =\ \overset{}{\underset{x \in [x_{k-1}, x_k]}{\inf}} f(x). $\\
+Суммы
+\[S(T)\ =\ \sum_{k=1}^n M_{k} \bigtriangleup x_{k},\ \qquad s(T)\ =\ \sum_{k=1}^n m_{k} \bigtriangleup x_{k} \]
+называются соответственно \textit{верхней и нижней суммами
+Дарбу}, соответствующими разбиению T.
+
+\textbf{Свойство 1.} При фиксированном разбиении T сум-
+мы Дарбу являются точными границами множества инте-
+гральных сумм.
+
+\textbf{Свойство 2.} При добавлении точек деления нижняя
+сумма Дарбу разве лишь увеличивается, а верхняя разве
+лишь уменьшается.
+
+\textbf{Свойство 3.} Пусть разбиение $T^\prime$ получено из разбиения $T$ добавлением $p$ точек деления и $\lambda T$ - мелкость разбиения $T$ . Пусть $M$ – верхняя граница функции $f$ на $[a, b]$,
+$m$ – ее нижняя граница. Тогда
+\[S(T) - S(T^\prime) \le (M-m) p \lambda T. \]
+
+\textbf{Свойство 4.} Пусть $I^*\ =\ $ $\overset{}{\underset{T}{\inf}} \{S(T)\}$, а $I_{*}\ =\ $ $\overset{}{\underset{T}{\sup}} \{S(T)\}$.\\
+Тогда
+\[I^*\ =\ \lim_{\lambda\ \to\ 0} S(T), \qquad I_{*}\ =\ \lim_{\lambda\ \to\ 0} s(T).\]
+
+\textsf{\textit{Доказательство.}} Докажем, что $I^*\ =\ \overset{}{\underset{\lambda\ \to\ 0}{\lim}} S(T)$, т.е 
+\[ \forall \varepsilon\ >\ 0\ \exists \delta(\varepsilon)\ >\ 0\ \forall T\ (\lambda\ <\ \delta\ \Rightarrow\ S(T)\ -\ I^*\ <\ \varepsilon). \]
+Заметим, что это утверждение очевидно для $f(x) \equiv C\ $(подумайте, почему), и проведем доказательство для $f(x)$, отличной от константы.
+
+Из определения $I^*\ $ имеем:
+\[\forall \varepsilon\ >\ 0\ \exists T^{\varepsilon}: S(T^{\varepsilon})\ <\ I^*\ +\ \frac{\varepsilon}{3}. \]
+Возьмем $\delta\ \le\ \frac{\varepsilon}{3(M-m)p}$, где $p$ - число точек деления $T^{\varepsilon}$, $M,\ m$ - точные грани $f(x)$ на $[a, b]$. Возьмем произвольное разбиение $T$ с мелкостью $\lambda\ <\ \delta$. Пусть $T^\prime$ содержит все точки разбиений $T$ и $T^{\varepsilon}$. Рассмотрим
+\[0\ \le\ S(T)\ -\ I^*\ =\ S(T)\ -\ S(T^\prime)\ +\ S(T^\prime)\ -\ S(T^\varepsilon)\ +\ S(T^\varepsilon)\ -\ I^*. \]
+Тогда $S(T^{\varepsilon})\ -\ I^*\ <\ \frac{\varepsilon}{3}$ по выбору $T^{\varepsilon}$, $S(T^\prime)\ -\ S(T^{\varepsilon})\ \le\ 0$, так как $T^{\prime}$ получено из $T^{\varepsilon}$ добавлением точек разбиения (свойство 2), а по свойству 3
+\[S(T)\ -\ S(T^{\prime})\ \le\ (M - m)p\delta\ \le\ (M - m)p \frac{\varepsilon}{3(M - m)p}\ =\ \frac{\varepsilon}{3}. \]
+Отсюда
+\[0\ \le\ S(T)\ -\ I^*\ \le\ \frac{2\varepsilon}{3}\ <\ \varepsilon. \qquad \square \]
+
+\newpage
+\textbf{Теорема 11.2} (критерий Римана)
+\textit{Для того, чтобы ограниченная функция $f$ была интегрируемой на отрезке $[a, b]$, необходимо и достаточно, чтобы для любого $\varepsilon\ >\ 0\ $нашлось такое разбиение $T$ отрезка $[a, b]$, при котором}
+\[\sum_{k=1}^n \omega_{k} (f) \bigtriangleup x_{k}\ <\ \varepsilon. \]
+
+\textsf{\textit{Доказательство. Необходимость.}} Поскольку функция итерируема, найдется $I$ такое, что
+\[\forall \varepsilon\ >\ 0\ \exists \delta(\varepsilon)\ >\ 0\ \forall T,\ \forall A \{\xi_{k} \} \]
+\[\lambda\ <\ \delta(\varepsilon)\ \Rightarrow\ \left| \sum_{k=1}^n f(\xi_{k})\bigtriangleup x_{k}\ -\ I \right|\ <\ \frac{\varepsilon}{3}. \]
+Берем любое разбиение $T$ с мелкостью $\lambda\ <\ \delta(\varepsilon)$. Тогда
+\[I\ -\ \frac{\varepsilon}{3}\ <\ \sum_{k=1}^n f(\xi_{k})\bigtriangleup x_{k}\ <\ I\ +\ \frac{\varepsilon}{3} \]
+Поскольку нижняя и верхняя суммы Дарбу являются, при выбранном $T$, точной нижней и верхней границей множества интегральных сумм, то 
+\[I\ -\ \frac{\varepsilon}{3}\ \le\ s(T)\ \le\ \sum_{k=1}^n f(\xi_{k}) \bigtriangleup x_{k}\ \le\ S(T)\ \le\ I\ +\ \varepsilon, \]
+т. е.
+\[S(T)\ -\ s(T)\ =\ \sum_{k=1}^n \omega_{k} (f) \bigtriangleup x_{k}\ \le\ \frac{2}{3} \varepsilon\ <\ \varepsilon. \]
+
+\textsf{\textit{Достаточность.}} Для начала заметим, что $I^*\ =\ I_{*}$. Действительно, поскольку
+\[0\ \le\ I^*\ -\ I_{*}\ \le\ S(T)\ -\ s(T), \]
+для любого $T$, а по условию для любого $\varepsilon\ >\ 0\ $существует разбиение $T$, для которого $S(T)\ -\ s(T)\ <\ \varepsilon $, то для любого $\varepsilon\ >\ 0$
+\[0\ \le\ I^*\ -\ I_{*}\ <\ \varepsilon, \]
+т. е. $I^*\ -\ I_{*}\ =\ 0$ или $I^*\ =\ I_{*}\ = I.$
+
+Далее, для любого разбиения $T$
+\[s(T)\ \le\ \sum_{k=1}^n f(\xi_{k}) \bigtriangleup x_{k} \le\ S(T),\]
+а при $\lambda\ \to\ 0$ по свойству 4 сумм Дарбу $s(T)\ \to\ I_{*}\ =\ I$ и $S(T)\ \to\ I^*\ =\ I.$ Следовательно, по правилу "двух миллиционеров", интегральная сумма тоже стремится к $I.$ $\qquad \square$
+\newpage
+\section{Далее просто представлены некоторые формулы и примеры из книги}
+\[1. \qquad \frac{\int_a^b f(x)g(x)dx}{\int_a^b g(x)ds}\ =\ C \in [m, M]. \]
+\[2. \qquad \left| F(x)\ -\ F(x_{0}) \right|\ =\ \left| \int_{x_0}^x f(t)dt \right|\ \le\ \left| \int_{x_0}^x \left| f(t) \right|dt  \right|\ \le\ M \left| x - x_{0} \right|  \]
+\[3. \qquad \sum_{i=1}^n (a_{i} + b_{i})^2\ =\ \sum_{i=1}^n a_i^2 + 2 \sum_{i=1}^n a_i b_i + \sum_{i=1}^n b^2_i\ \le\ \left( \sqrt{\sum_{i=1}^n a_i^2} \right)^2 + 2 \sqrt{\sum_{i=1}^n a_i^2} \cdot \sqrt{\sum_{i=1}^n b_i^2}\ + \left( \sqrt{\sum_{i=1}^n b_i^2} \right)^2  \]
+\[4. \qquad \lim_{y \to 0} \lim_{x \to 0} \frac{xy}{x^2 + y^2} = \lim_{x \to 0} \lim_{y \to 0} \frac{xy}{x^2 + y^2} = 0 \]
+\[5. \qquad \bigtriangleup f(x_0, y_0) = \frac{\delta f}{\delta x} (x_0, y_0) \bigtriangleup x + \frac{\delta f}{\delta y} (x_0, y_0) \bigtriangleup y + o(\sqrt{\bigtriangleup x^2 + \bigtriangleup y^2})  \]
+\[6. \qquad \lim_{n \to \infty} \frac{n^3 + 7n + 3}{2n^3 + 5n + 4} = \frac{1}{2} \]
+\[7. \qquad \lim_{n \to \infty} x_n = \frac{\overset{}{\underset{n \to \infty}{\lim} y_n}}{\overset{}{\underset{n \to \infty}{\lim} (1 + \frac{1}{n})}} = e \]
+\[8. \qquad \lim_{x \to x_0} \left[ f(x) + g(x) \right] = \lim_{x \to x_0} f(x) + \lim_{x \to x_0} g(x)  \]
+\[9. \qquad \int x^{\alpha} dx = \frac{x^{\alpha + 1}}{\alpha + 1} + C,\ \alpha \ne 1 \]
+\[10. \qquad \int \frac{xdx}{x^2 + a^2} = \left[ u = x^2 + a^2; du = 2xdx \right] = \frac{1}{2} \int \left. \frac{du}{u}  \right|_{u=x^2 + a^2} = \]
+\[ \frac{1}{2} \ln{\left| u \right|} + \left. C \right|_{u=x^2 + a^2} = \frac{1}{2} \ln(x^2 + a^2) + C \]
+\end{document}
+
+
