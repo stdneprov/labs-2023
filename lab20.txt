@@ -1,0 +1,339 @@
+vboxuser@Linux:~$ mkdir lab20
+vboxuser@Linux:~$ cd lab20
+vboxuser@Linux:~/lab20$ touch f1.txt f2.txt
+vboxuser@Linux:~/lab20$ ls
+f1.txt  f2.txt
+vboxuser@Linux:~/lab20$ cat > f1.txt
+Hello, World!
+vboxuser@Linux:~/lab20$ cat > f2.txt
+Hello, MAI!
+vboxuser@Linux:~/lab20$ cmp f1.txt f2.txt
+f1.txt f2.txt differ: byte 8, line 1
+vboxuser@Linux:~/lab20$ cmp -b f1.txt f2.txt
+f1.txt f2.txt differ: byte 8, line 1 is 127 W 115 M
+vboxuser@Linux:~/lab20$ cmp -l  f1.txt f2.txt
+ 8 127 115
+ 9 157 101
+10 162 111
+11 154  41
+12 144  12
+cmp: EOF on f2.txt after byte 12
+vboxuser@Linux:~/lab20$ cat >> f1.txt
+My name is Pedro
+I,m 27 years old
+And I,m still living with my parents
+vboxuser@Linux:~/lab20$ wc f1.txt
+ 4 17 85 f1.txt
+vboxuser@Linux:~/lab20$ wc -cw f1.txt
+17 85 f1.txt
+vboxuser@Linux:~/lab20$ wc -w f1.txt
+17 f1.txt
+vboxuser@Linux:~/lab20$ cat >> f2.txt
+My name is Oleg
+I,m 20 years old
+And I already have my own business         
+vboxuser@Linux:~/lab20$ diff f1.txt f2.txt
+1,4c1,4
+< Hello, World!
+< My name is Pedro
+< I,m 27 years old
+< And I,m still living with my parents
+---
+> Hello, MAI!
+> My name is Oleg
+> I,m 20 years old
+> And I already have my own business
+vboxuser@Linux:~/lab20$ echo -e "Matan \nLAAG \nProgramming practic \nEnglish" > disciplines.txt
+vboxuser@Linux:~/lab20$ ls
+disciplines.txt  f1.txt  f2.txt
+vboxuser@Linux:~/lab20$ cat disciplines.txt
+Matan 
+LAAG 
+Programming practic 
+English
+vboxuser@Linux:~/lab20$ sort disciplines.txt
+English
+LAAG 
+Matan 
+Programming practic 
+vboxuser@Linux:~/lab20$ sort -r disciplines.txt
+Programming practic 
+Matan 
+LAAG 
+English
+vboxuser@Linux:~/lab20$ tail -n 2 f1.txt
+I,m 27 years old
+And I,m still living with my parents
+vboxuser@Linux:~/lab20$ tail -c 20 f1.txt
+ing with my parents
+vboxuser@Linux:~/lab20$ touch output.txt
+vboxuser@Linux:~/lab20$ ls -la | tee output.txt
+total 20
+drwxrwxr-x  2 vboxuser vboxuser 4096 Feb 17 10:45 .
+drwxr-x--- 23 vboxuser vboxuser 4096 Feb 17 09:59 ..
+-rw-rw-r--  1 vboxuser vboxuser   42 Feb 17 10:34 disciplines.txt
+-rw-rw-r--  1 vboxuser vboxuser   85 Feb 17 10:13 f1.txt
+-rw-rw-r--  1 vboxuser vboxuser   80 Feb 17 10:25 f2.txt
+-rw-rw-r--  1 vboxuser vboxuser    0 Feb 17 10:45 output.txt
+vboxuser@Linux:~/lab20$ cat output.txt
+total 20
+drwxrwxr-x  2 vboxuser vboxuser 4096 Feb 17 10:45 .
+drwxr-x--- 23 vboxuser vboxuser 4096 Feb 17 09:59 ..
+-rw-rw-r--  1 vboxuser vboxuser   42 Feb 17 10:34 disciplines.txt
+-rw-rw-r--  1 vboxuser vboxuser   85 Feb 17 10:13 f1.txt
+-rw-rw-r--  1 vboxuser vboxuser   80 Feb 17 10:25 f2.txt
+-rw-rw-r--  1 vboxuser vboxuser    0 Feb 17 10:45 output.txt
+vboxuser@Linux:~/lab20$ pwd | tee -a disciplines.txt
+/home/vboxuser/lab20
+vboxuser@Linux:~/lab20$ cat disciplines.txt
+Matan 
+LAAG 
+Programming practic 
+English
+/home/vboxuser/lab20
+vboxuser@Linux:~/lab20$ tr g d
+A, golf!
+A, dolf!
+vboxuser@Linux:~/lab20$ tr c t
+Hi, cler!
+Hi, tler!
+vboxuser@Linux:~/lab20$ tr -d [:lower:]
+Zachem Zaets Zasnul?
+Z Z Z?
+vboxuser@Linux:~/lab20$ od -b f1.txt
+0000000 110 145 154 154 157 054 040 127 157 162 154 144 041 012 115 171
+0000020 040 156 141 155 145 040 151 163 040 120 145 144 162 157 012 111
+0000040 054 155 040 062 067 040 171 145 141 162 163 040 157 154 144 012
+0000060 101 156 144 040 111 054 155 040 163 164 151 154 154 040 154 151
+0000100 166 151 156 147 040 167 151 164 150 040 155 171 040 160 141 162
+0000120 145 156 164 163 012
+0000125
+vboxuser@Linux:~/lab20$ od -c f1.txt
+0000000   H   e   l   l   o   ,       W   o   r   l   d   !  \n   M   y
+0000020       n   a   m   e       i   s       P   e   d   r   o  \n   I
+0000040   ,   m       2   7       y   e   a   r   s       o   l   d  \n
+0000060   A   n   d       I   ,   m       s   t   i   l   l       l   i
+0000100   v   i   n   g       w   i   t   h       m   y       p   a   r
+0000120   e   n   t   s  \n
+0000125
+vboxuser@Linux:~/lab20$ od -i f1.txt
+0000000  1819043144  1461726319  1684828783  2035092001
+0000020  1835101728  1936269413  1684361248  1225420658
+0000040   840985900  1702436919   544436833   174353519
+0000060   543452737   544025673  1818850419  1768693868
+0000100  1735289206  1953068832  2037194856  1918988320
+0000120  1937010277          10
+0000125
+vboxuser@Linux:~/lab20$ sum f1.txt
+36312     1
+vboxuser@Linux:~/lab20$ sum f2.txt
+38157     1
+vboxuser@Linux:~/lab20$ echo "Barn" | cut -b 3
+r
+vboxuser@Linux:~/lab20$ echo "Barn" | cut -b 1,2,4
+Ban
+vboxuser@Linux:~/lab20$ cut -c 2 f1.txt
+e
+y
+,
+n
+vboxuser@Linux:~/lab20$ cut -c 2-4 f1.txt
+ell
+y n
+,m 
+nd 
+vboxuser@Linux:~/lab20$ vim f1.txt
+
+Hello, World!
+My name is Pedro
+I,m 27 years old
+And I,m still living with my parents
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+"f1.txt" 4L, 85B                                              2,16          All
+
+Hello, World!
+My name is Pedro
+I,m 27 years old
+And I,m still living with my parents
+I'm such a loser
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+-- INSERT --                                                  5,17          All
+
+vboxuser@Linux:~/lab20$ cat f1.txt
+Hello, World!
+My name is Pedro
+I,m 27 years old
+And I,m still living with my parents
+I'm such a loser
+vboxuser@Linux:~/lab20$ tar cf myarch.tar f1.txt
+vboxuser@Linux:~/lab20$ tar rf myarch.tar f2.txt
+vboxuser@Linux:~/lab20$ ls
+disciplines.txt  f2.txt      nakazanie.txt  output.txt
+f1.txt           myarch.tar  output2.txt
+vboxuser@Linux:~/lab20$ tar tf myarch.tar
+f1.txt
+f2.txt
+vboxuser@Linux:~/lab20$ touch WeekDays.txt
+vboxuser@Linux:~/lab20$ cat > WeekDays.txt
+Monday
+Tuesday
+Thursday 
+Friday
+vboxuser@Linux:~/lab20$ paste disciplines.txt WeekDays.txt > schedule
+vboxuser@Linux:~/lab20$ ls
+disciplines.txt  f2.txt      nakazanie.txt  output.txt  WeekDays.txt
+f1.txt           myarch.tar  output2.txt    schedule
+vboxuser@Linux:~/lab20$ cat schedule
+Matan 	Monday
+LAAG 	Tuesday
+Programming practic 	Thursday
+English	Friday
+/home/vboxuser/lab20	
+vboxuser@Linux:~/lab20$ head -2 f1.txt
+Hello, World!
+My name is Pedro
+vboxuser@Linux:~/lab20$ head -3 f2.txt
+Hello, MAI!
+My name is Oleg
+I,m 20 years old
+vboxuser@Linux:~/lab20$ mktemp
+/tmp/tmp.SvqYbva7jZ
+vboxuser@Linux:~/lab20$ mktemp -d
+/tmp/tmp.uisgKqQW82
+vboxuser@Linux:~/lab20$ ls -al /tmp/tmp.*
+-rw------- 1 vboxuser vboxuser    0 Feb 17 12:17 /tmp/tmp.SvqYbva7jZ
+
+/tmp/tmp.uisgKqQW82:
+total 8
+drwx------  2 vboxuser vboxuser 4096 Feb 17 12:17 .
+drwxrwxrwt 19 root     root     4096 Feb 17 12:17 ..
+vboxuser@Linux:~/lab20$ split f1.txt
+vboxuser@Linux:~/lab20$ ls
+disciplines.txt  f2.txt      nakazanie.txt  output.txt  WeekDays.txt
+f1.txt           myarch.tar  output2.txt    schedule    xaa
+vboxuser@Linux:~/lab20$ cat xaa
+Hello, World!
+My name is Pedro
+I,m 27 years old
+And I,m still living with my parents
+I'm such a loser
+vboxuser@Linux:~/lab20$ split -l 2 f1.txt
+vboxuser@Linux:~/lab20$ ls
+disciplines.txt  f2.txt      nakazanie.txt  output.txt  WeekDays.txt  xab
+f1.txt           myarch.tar  output2.txt    schedule    xaa           xac
+vboxuser@Linux:~/lab20$ cat xab
+I,m 27 years old
+And I,m still living with my parents
+vboxuser@Linux:~/lab20$ cat xac
+I'm such a loser
+vboxuser@Linux:~/lab20$ cat xaa
+Hello, World!
+My name is Pedro
+vboxuser@Linux:~/lab20$ file f1.txt
+f1.txt: ASCII text
+vboxuser@Linux:~/lab20$ file myarch.tar
+myarch.tar: POSIX tar archive (GNU)
+vboxuser@Linux:~/lab20$ sudo df
+[sudo] password for vboxuser: 
+Filesystem     1K-blocks     Used Available Use% Mounted on
+tmpfs             504440     1680    502760   1% /run
+/dev/sda3       30267332 16432752  12271752  58% /
+tmpfs            2522192        0   2522192   0% /dev/shm
+tmpfs               5120        4      5116   1% /run/lock
+/dev/sda2         524252     6220    518032   2% /boot/efi
+tmpfs             504436      148    504288   1% /run/user/1000
+vboxuser@Linux:~/lab20$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           493M  1.7M  491M   1% /run
+/dev/sda3        29G   16G   12G  58% /
+tmpfs           2.5G     0  2.5G   0% /dev/shm
+tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+/dev/sda2       512M  6.1M  506M   2% /boot/efi
+tmpfs           493M  148K  493M   1% /run/user/1000
+vboxuser@Linux:~/lab20$ du ~/lab20
+60	/home/vboxuser/lab20
+vboxuser@Linux:~/lab20$ du -a ~/lab20
+4	/home/vboxuser/lab20/f1.txt
+4	/home/vboxuser/lab20/output.txt
+4	/home/vboxuser/lab20/disciplines.txt
+4	/home/vboxuser/lab20/xaa
+12	/home/vboxuser/lab20/myarch.tar
+4	/home/vboxuser/lab20/f2.txt
+4	/home/vboxuser/lab20/xac
+4	/home/vboxuser/lab20/schedule
+4	/home/vboxuser/lab20/nakazanie.txt
+4	/home/vboxuser/lab20/output2.txt
+4	/home/vboxuser/lab20/xab
+4	/home/vboxuser/lab20/WeekDays.txt
+60	/home/vboxuser/lab20
+vboxuser@Linux:~/lab20$ xargs
+Hello, world!
+Hello, world!
+vboxuser@Linux:~/lab20$ xargs -t
+Hello, world!
+echo Hello, 'world!'
+Hello, world!
+vboxuser@Linux:~/lab20$ ls | xargs -t echo
+echo disciplines.txt f1.txt f2.txt myarch.tar nakazanie.txt output2.txt output.txt schedule WeekDays.txt xaa xab xac
+disciplines.txt f1.txt f2.txt myarch.tar nakazanie.txt output2.txt output.txt schedule WeekDays.txt xaa xab xac
+vboxuser@Linux:~/lab20$ ls | xargs -t -L1 echo
+echo disciplines.txt
+disciplines.txt
+echo f1.txt
+f1.txt
+echo f2.txt
+f2.txt
+echo myarch.tar
+myarch.tar
+echo nakazanie.txt
+nakazanie.txt
+echo output2.txt
+output2.txt
+echo output.txt
+output.txt
+echo schedule
+schedule
+echo WeekDays.txt
+WeekDays.txt
+echo xaa
+xaa
+echo xab
+xab
+echo xac
+xac
+
