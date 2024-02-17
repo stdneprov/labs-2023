@@ -1,0 +1,1040 @@
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023   lab20  ls
+ codestyle.txt   lab11.txt   lab15.txt          lab3.txt   lab8.txt
+ kp3.txt         lab12.txt   lab20              lab5.txt  '#lab9.txt#'
+ kp4.txt         lab13.txt   lab2-example.txt   lab6.txt   lab9.t
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  touch protocol.txt
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  man cmp    
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  touch test.txt
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  touch test2.txt
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat > test.txxt 
+^C
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  rm test.txxt
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat > test.txt  
+AABOOOBA
+^C	
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat > test2.txt 
+AABOOODA
+^C
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cmp test.txt test2.txt
+test.txt test2.txt различаются: байт 7, строка 1
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cmp test2.txt test.txt
+test2.txt test.txt различаются: байт 7, строка 1
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cmp -l test.txt test2.txt
+7 102 104
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat > test2.txt 
+AAAASASF
+^C
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cmp -l test.txt test2.txt
+3 102 101
+4 117 101
+5 117 123
+6 117 101
+7 102 123
+8 101 106
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cmp -l -c test.txt test2.txt
+3 102 B    101 A
+4 117 O    101 A
+5 117 O    123 S
+6 117 O    101 A
+7 102 B    123 S
+8 101 A    106 F
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  diff test.txt test2.txt 
+1c1
+< AABOOOBA
+---
+> AAAASASF
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  diff -q test.txt test2.txt
+Файлы test.txt и test2.txt различаются
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat test.txt > test2.txt 
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  diff -s test.txt test2.txt
+Файлы test.txt и test2.txt идентичны
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  diff test.txt test2.txt 
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat > test2.txt 
+AAABSDS
+^C
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20   ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  diff -y test.txt test2.txt
+AABOOOBA						     |	AAABSDS
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat > test1 
+^C
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  rm test1 traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat > test.txt 
+Hello, i'm Buba!
+^Z
+[1]  + 21187 suspended  cat > test.txt
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat > test2.txt
+Hello, i'm Bobu!
+^C
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  diff -y test.txt test2.txt
+Hello, i'm Buba!					     |	Hello, i'm Bobu!
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  diff test.txt test2.txt 
+1c1
+< Hello, i'm Buba!
+---
+> Hello, i'm Bobu!
+
+ ✘ traktor@traktor-MaiBook-X-series  ~  cat test3.txt           
+2022-12-01 12:00:05 Ошибка входа: Неверное имя пользователя
+2022-12-01 12:02:15 Ошибка входа: Неверный пароль
+2022-12-01 12:05:30 Сбой при обработке запроса: Ошибка базы данных
+2022-12-01 12:10:20 Предупреждение: Низкий уровень батареи
+2022-12-01 12:15:02 Ошибка приложения: Отсутствует необходимый файл
+2022-12-01 12:20:45 Сбой сети: Отключение от сервера
+2022-12-01 12:25:18 Ошибка: Недостаточно памяти для выполнения операции
+2022-12-01 12:30:11 Предупреждение: Превышен лимит запросов к API
+2022-12-01 12:35:09 Ошибка: Непредвиденное завершение программы
+2022-12-01 12:40:04 Ошибка сетевого соединения: Не удалось установить связь с сервером
+2022-12-01 12:45:22 Предупреждение: Перегрев процессора
+2022-12-01 12:50:14 Ошибка: Файл не найден
+2022-12-01 12:55:30 Ошибка входа: Сессия истекла
+2022-12-01 13:00:01 Сбой приложения: Нарушение доступа к памяти
+2022-12-01 13:05:21 Предупреждение: Заканчивается место на диске
+2022-12-01 13:10:44 Ошибка: Невозможно загрузить изображение
+2022-12-01 13:15:05 Ошибка сетевого соединения: Превышено время ожидания
+2022-12-01 13:20:16 Ошибка: Неподдерживаемый формат данных
+2022-12-01 13:25:29 Сбой сетевого интерфейса: Отключение от Интернета
+2022-12-01 13:30:52 Ошибка: Не удалось запустить процесс
+ traktor@traktor-MaiBook-X-series  ~  tail test3.txt 
+2022-12-01 12:45:22 Предупреждение: Перегрев процессора
+2022-12-01 12:50:14 Ошибка: Файл не найден
+2022-12-01 12:55:30 Ошибка входа: Сессия истекла
+2022-12-01 13:00:01 Сбой приложения: Нарушение доступа к памяти
+2022-12-01 13:05:21 Предупреждение: Заканчивается место на диске
+2022-12-01 13:10:44 Ошибка: Невозможно загрузить изображение
+2022-12-01 13:15:05 Ошибка сетевого соединения: Превышено время ожидания
+2022-12-01 13:20:16 Ошибка: Неподдерживаемый формат данных
+2022-12-01 13:25:29 Сбой сетевого интерфейса: Отключение от Интернета
+2022-12-01 13:30:52 Ошибка: Не удалось запустить процесс
+ traktor@traktor-MaiBook-X-series  ~  tail -c30 test3.txt
+пустить процесс
+ traktor@traktor-MaiBook-X-series  ~  tail -n2 test3.txt
+2022-12-01 13:25:29 Сбой сетевого интерфейса: Отключение от Интернета
+2022-12-01 13:30:52 Ошибка: Не удалось запустить процесс	
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat > test4.txt
+34
+21
+2435
+234
+210
+599
+800
+1000
+1023
+^Z
+[2]  + 25683 suspended  cat > test4.txt
+ ✘ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  od test4.txt 
+0000000 032063 031012 005061 032062 032463 031012 032063 031012
+0000020 030061 032412 034471 034012 030060 030412 030060 005060
+0000040 030061 031462 000012
+0000045
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  od -b test4.txt
+0000000 063 064 012 062 061 012 062 064 063 065 012 062 063 064 012 062
+0000020 061 060 012 065 071 071 012 070 060 060 012 061 060 060 060 012
+0000040 061 060 062 063 012
+0000045
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  od -c test4.txt
+0000000   3   4  \n   2   1  \n   2   4   3   5  \n   2   3   4  \n   2
+0000020   1   0  \n   5   9   9  \n   8   0   0  \n   1   0   0   0  \n
+0000040   1   0   2   3  \n
+0000045
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  od -o test4.txt
+0000000 032063 031012 005061 032062 032463 031012 032063 031012
+0000020 030061 032412 034471 034012 030060 030412 030060 005060
+0000040 030061 031462 000012
+0000045
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  od -x test4.txt
+0000000 3433 320a 0a31 3432 3533 320a 3433 320a
+0000020 3031 350a 3939 380a 3030 310a 3030 0a30
+0000040 3031 3332 000a
+0000045
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  od -i test4.txt
+0000000   839529523   875694641   839529779   839529523
+0000020   889860145   940194105   822751280   170930224
+0000040   858927153          10
+0000045
+ traktor@traktor-MaiBook-X-series  ~  ed
+a
+$#31231 
+3213 sdasd
+dascx
+dsad hello
+hi
+.
+p
+hi
+1,2p
+$#31231 
+3213 sdasd
+^C
+?
+^Z
+[2]  + 10451 suspended  ed
+ ✘ ⚙ traktor@traktor-MaiBook-X-series  ~  ed test2.txt
+test2.txt: Нет такого файла или каталога
+
+?
+^Z
+[3]  + 10489 suspended  ed test2.txt
+ ✘ ⚙ traktor@traktor-MaiBook-X-series  ~  cd labs 
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs  cd labs-2023/
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023   lab20  cd lab20     
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  ed test2.txt
+17
+
+?
+^Z
+[4]  + 10724 suspended  ed test2.txt
+ ✘ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat test2.txt 
+Hello, i'm Bobu!
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  eda
+Пришло время
+сильно погудеть
+.
+w test2.txt
+54
+q
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat test2.txt 
+Пришло время
+сильно погудеть
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  ed
+e test2.txt
+54
+w test5.txt
+54
+q
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat test5.txt 
+Пришло время
+сильно погудеть
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  head test5.txt 
+2022-12-01 12:00:05 Ошибка входа: Неверное имя пользователя
+2022-12-01 12:02:15 Ошибка входа: Неверный пароль
+2022-12-01 12:05:30 Сбой при обработке запроса: Ошибка базы данных
+2022-12-01 12:10:20 Предупреждение: Низкий уровень батареи
+2022-12-01 12:15:02 Ошибка приложения: Отсутствует необходимый файл
+2022-12-01 12:20:45 Сбой сети: Отключение от сервера
+2022-12-01 12:25:18 Ошибка: Недостаточно памяти для выполнения операции
+2022-12-01 12:30:11 Предупреждение: Превышен лимит запросов к API
+2022-12-01 12:35:09 Ошибка: Непредвиденное завершение программы
+2022-12-01 12:40:04 Ошибка сетевого соединения: Не удалось установить связь с сервером
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  head -c30 test5.txt 
+2022-12-01 12:00:05 Ошибк%                                                          ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  head -n5 test5.txt 
+2022-12-01 12:00:05 Ошибка входа: Неверное имя пользователя
+2022-12-01 12:02:15 Ошибка входа: Неверный пароль
+2022-12-01 12:05:30 Сбой при обработке запроса: Ошибка базы данных
+2022-12-01 12:10:20 Предупреждение: Низкий уровень батареи
+2022-12-01 12:15:02 Ошибка приложения: Отсутствует необходимый файл
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  head -v test5.txt 
+==> test5.txt <==
+2022-12-01 12:00:05 Ошибка входа: Неверное имя пользователя
+2022-12-01 12:02:15 Ошибка входа: Неверный пароль
+2022-12-01 12:05:30 Сбой при обработке запроса: Ошибка базы данных
+2022-12-01 12:10:20 Предупреждение: Низкий уровень батареи
+2022-12-01 12:15:02 Ошибка приложения: Отсутствует необходимый файл
+2022-12-01 12:20:45 Сбой сети: Отключение от сервера
+2022-12-01 12:25:18 Ошибка: Недостаточно памяти для выполнения операции
+2022-12-01 12:30:11 Предупреждение: Превышен лимит запросов к API
+2022-12-01 12:35:09 Ошибка: Непредвиденное завершение программы
+2022-12-01 12:40:04 Ошибка сетевого соединения: Не удалось установить связь с сервером
+ ✘ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  du /home/traktor/labs/labs-2023 
+4	/home/traktor/labs/labs-2023/.git/branches
+4	/home/traktor/labs/labs-2023/.git/objects/info
+1872	/home/traktor/labs/labs-2023/.git/objects/pack
+1880	/home/traktor/labs/labs-2023/.git/objects
+8	/home/traktor/labs/labs-2023/.git/info
+12	/home/traktor/labs/labs-2023/.git/logs/refs/heads
+8	/home/traktor/labs/labs-2023/.git/logs/refs/remotes/origin
+12	/home/traktor/labs/labs-2023/.git/logs/refs/remotes
+28	/home/traktor/labs/labs-2023/.git/logs/refs
+36	/home/traktor/labs/labs-2023/.git/logs
+64	/home/traktor/labs/labs-2023/.git/hooks
+4	/home/traktor/labs/labs-2023/.git/refs/tags
+12	/home/traktor/labs/labs-2023/.git/refs/heads
+8	/home/traktor/labs/labs-2023/.git/refs/remotes/origin
+12	/home/traktor/labs/labs-2023/.git/refs/remotes
+32	/home/traktor/labs/labs-2023/.git/refs
+2048	/home/traktor/labs/labs-2023/.git
+36	/home/traktor/labs/labs-2023/lab20
+2188	/home/traktor/labs/labs-2023
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  du -a /home/traktor/labs/labs-2023
+4	/home/traktor/labs/labs-2023/kp4.txt
+4	/home/traktor/labs/labs-2023/lab9.txt
+4	/home/traktor/labs/labs-2023/kp3.txt
+4	/home/traktor/labs/labs-2023/#lab9.txt#
+4	/home/traktor/labs/labs-2023/.gitignore
+4	/home/traktor/labs/labs-2023/lab10.txt
+4	/home/traktor/labs/labs-2023/lab14.txt
+12	/home/traktor/labs/labs-2023/README.md
+4	/home/traktor/labs/labs-2023/lab12.txt
+12	/home/traktor/labs/labs-2023/lab2.txt
+4	/home/traktor/labs/labs-2023/lab15.txt
+4	/home/traktor/labs/labs-2023/lab11.txt
+4	/home/traktor/labs/labs-2023/codestyle.txt
+4	/home/traktor/labs/labs-2023/.git/description
+4	/home/traktor/labs/labs-2023/.git/branches
+4	/home/traktor/labs/labs-2023/.git/objects/info
+1860	/home/traktor/labs/labs-2023/.git/objects/pack/pack-ef4d38efa63cb6594b1758b86d0978f0a9a44b20.pack
+8	/home/traktor/labs/labs-2023/.git/objects/pack/pack-ef4d38efa63cb6594b1758b86d0978f0a9a44b20.idx
+1872	/home/traktor/labs/labs-2023/.git/objects/pack
+1880	/home/traktor/labs/labs-2023/.git/objects
+4	/home/traktor/labs/labs-2023/.git/packed-refs
+4	/home/traktor/labs/labs-2023/.git/index
+4	/home/traktor/labs/labs-2023/.git/info/exclude
+8	/home/traktor/labs/labs-2023/.git/info
+4	/home/traktor/labs/labs-2023/.git/logs/refs/heads/main
+4	/home/traktor/labs/labs-2023/.git/logs/refs/heads/lab20
+12	/home/traktor/labs/labs-2023/.git/logs/refs/heads
+4	/home/traktor/labs/labs-2023/.git/logs/refs/remotes/origin/HEAD
+8	/home/traktor/labs/labs-2023/.git/logs/refs/remotes/origin
+12	/home/traktor/labs/labs-2023/.git/logs/refs/remotes
+28	/home/traktor/labs/labs-2023/.git/logs/refs
+4	/home/traktor/labs/labs-2023/.git/logs/HEAD
+36	/home/traktor/labs/labs-2023/.git/logs
+4	/home/traktor/labs/labs-2023/.git/hooks/commit-msg.sample
+4	/home/traktor/labs/labs-2023/.git/hooks/pre-applypatch.sample
+4	/home/traktor/labs/labs-2023/.git/hooks/pre-receive.sample
+8	/home/traktor/labs/labs-2023/.git/hooks/pre-rebase.sample
+4	/home/traktor/labs/labs-2023/.git/hooks/push-to-checkout.sample
+4	/home/traktor/labs/labs-2023/.git/hooks/prepare-commit-msg.sample
+4	/home/traktor/labs/labs-2023/.git/hooks/update.sample
+4	/home/traktor/labs/labs-2023/.git/hooks/pre-commit.sample
+4	/home/traktor/labs/labs-2023/.git/hooks/post-update.sample
+4	/home/traktor/labs/labs-2023/.git/hooks/pre-push.sample
+8	/home/traktor/labs/labs-2023/.git/hooks/fsmonitor-watchman.sample
+4	/home/traktor/labs/labs-2023/.git/hooks/applypatch-msg.sample
+4	/home/traktor/labs/labs-2023/.git/hooks/pre-merge-commit.sample
+64	/home/traktor/labs/labs-2023/.git/hooks
+4	/home/traktor/labs/labs-2023/.git/refs/tags
+4	/home/traktor/labs/labs-2023/.git/refs/heads/main
+4	/home/traktor/labs/labs-2023/.git/refs/heads/lab20
+12	/home/traktor/labs/labs-2023/.git/refs/heads
+4	/home/traktor/labs/labs-2023/.git/refs/remotes/origin/HEAD
+8	/home/traktor/labs/labs-2023/.git/refs/remotes/origin
+12	/home/traktor/labs/labs-2023/.git/refs/remotes
+32	/home/traktor/labs/labs-2023/.git/refs
+4	/home/traktor/labs/labs-2023/.git/HEAD
+4	/home/traktor/labs/labs-2023/.git/config
+2048	/home/traktor/labs/labs-2023/.git
+4	/home/traktor/labs/labs-2023/lab2-example.txt
+8	/home/traktor/labs/labs-2023/lab3.txt
+4	/home/traktor/labs/labs-2023/lab6.txt
+4	/home/traktor/labs/labs-2023/lab8.txt
+4	/home/traktor/labs/labs-2023/lab13.txt
+4	/home/traktor/labs/labs-2023/lab7.txt
+4	/home/traktor/labs/labs-2023/lab20/test4.txt
+4	/home/traktor/labs/labs-2023/lab20/test.txt
+4	/home/traktor/labs/labs-2023/lab20/test2.txt
+12	/home/traktor/labs/labs-2023/lab20/protocol.txt
+4	/home/traktor/labs/labs-2023/lab20/test3.txt
+4	/home/traktor/labs/labs-2023/lab20/test5.txt
+36	/home/traktor/labs/labs-2023/lab20
+4	/home/traktor/labs/labs-2023/lab5.txt
+2188	/home/traktor/labs/labs-2023
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  du -B /home/traktor/labs/labs-2023
+du: неверный -B аргумент «/home/traktor/labs/labs-2023»
+ ✘ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  du -BG /home/traktor/labs/labs-2023
+1G	/home/traktor/labs/labs-2023/.git/branches
+1G	/home/traktor/labs/labs-2023/.git/objects/info
+1G	/home/traktor/labs/labs-2023/.git/objects/pack
+1G	/home/traktor/labs/labs-2023/.git/objects
+1G	/home/traktor/labs/labs-2023/.git/info
+1G	/home/traktor/labs/labs-2023/.git/logs/refs/heads
+1G	/home/traktor/labs/labs-2023/.git/logs/refs/remotes/origin
+1G	/home/traktor/labs/labs-2023/.git/logs/refs/remotes
+1G	/home/traktor/labs/labs-2023/.git/logs/refs
+1G	/home/traktor/labs/labs-2023/.git/logs
+1G	/home/traktor/labs/labs-2023/.git/hooks
+1G	/home/traktor/labs/labs-2023/.git/refs/tags
+1G	/home/traktor/labs/labs-2023/.git/refs/heads
+1G	/home/traktor/labs/labs-2023/.git/refs/remotes/origin
+1G	/home/traktor/labs/labs-2023/.git/refs/remotes
+1G	/home/traktor/labs/labs-2023/.git/refs
+1G	/home/traktor/labs/labs-2023/.git
+1G	/home/traktor/labs/labs-2023/lab20
+1G	/home/traktor/labs/labs-2023
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  du -BK /home/traktor/labs/labs-2023
+4K	/home/traktor/labs/labs-2023/.git/branches
+4K	/home/traktor/labs/labs-2023/.git/objects/info
+1872K	/home/traktor/labs/labs-2023/.git/objects/pack
+1880K	/home/traktor/labs/labs-2023/.git/objects
+8K	/home/traktor/labs/labs-2023/.git/info
+12K	/home/traktor/labs/labs-2023/.git/logs/refs/heads
+8K	/home/traktor/labs/labs-2023/.git/logs/refs/remotes/origin
+12K	/home/traktor/labs/labs-2023/.git/logs/refs/remotes
+28K	/home/traktor/labs/labs-2023/.git/logs/refs
+36K	/home/traktor/labs/labs-2023/.git/logs
+64K	/home/traktor/labs/labs-2023/.git/hooks
+4K	/home/traktor/labs/labs-2023/.git/refs/tags
+12K	/home/traktor/labs/labs-2023/.git/refs/heads
+8K	/home/traktor/labs/labs-2023/.git/refs/remotes/origin
+12K	/home/traktor/labs/labs-2023/.git/refs/remotes
+32K	/home/traktor/labs/labs-2023/.git/refs
+2048K	/home/traktor/labs/labs-2023/.git
+36K	/home/traktor/labs/labs-2023/lab20
+2188K	/home/traktor/labs/labs-2023
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  du -c /home/traktor/labs/labs-2023
+4	/home/traktor/labs/labs-2023/.git/branches
+4	/home/traktor/labs/labs-2023/.git/objects/info
+1872	/home/traktor/labs/labs-2023/.git/objects/pack
+1880	/home/traktor/labs/labs-2023/.git/objects
+8	/home/traktor/labs/labs-2023/.git/info
+12	/home/traktor/labs/labs-2023/.git/logs/refs/heads
+8	/home/traktor/labs/labs-2023/.git/logs/refs/remotes/origin
+12	/home/traktor/labs/labs-2023/.git/logs/refs/remotes
+28	/home/traktor/labs/labs-2023/.git/logs/refs
+36	/home/traktor/labs/labs-2023/.git/logs
+64	/home/traktor/labs/labs-2023/.git/hooks
+4	/home/traktor/labs/labs-2023/.git/refs/tags
+12	/home/traktor/labs/labs-2023/.git/refs/heads
+8	/home/traktor/labs/labs-2023/.git/refs/remotes/origin
+12	/home/traktor/labs/labs-2023/.git/refs/remotes
+32	/home/traktor/labs/labs-2023/.git/refs
+2048	/home/traktor/labs/labs-2023/.git
+36	/home/traktor/labs/labs-2023/lab20
+2188	/home/traktor/labs/labs-2023
+2188	итого
+✘ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  ls /home/traktor/labs/labs-2023/ | xargs echo
+codestyle.txt kp3.txt kp4.txt lab10.txt lab11.txt lab12.txt lab13.txt lab14.txt lab15.txt lab20 lab2-example.txt lab2.txt lab3.txt lab5.txt lab6.txt lab7.txt lab8.txt #lab9.txt# lab9.txt README.md
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  ls /home/traktor/labs/labs-2023/ | xargs -t -L1 echo
+echo codestyle.txt
+codestyle.txt
+echo kp3.txt
+kp3.txt
+echo kp4.txt
+kp4.txt
+echo lab10.txt
+lab10.txt
+echo lab11.txt
+lab11.txt
+echo lab12.txt
+lab12.txt
+echo lab13.txt
+lab13.txt
+echo lab14.txt
+lab14.txt
+echo lab15.txt
+lab15.txt
+echo lab20
+lab20
+echo lab2-example.txt
+lab2-example.txt
+echo lab2.txt
+lab2.txt
+echo lab3.txt
+lab3.txt
+echo lab5.txt
+lab5.txt
+echo lab6.txt
+lab6.txt
+echo lab7.txt
+lab7.txt
+echo lab8.txt
+lab8.txt
+echo '#lab9.txt#'
+#lab9.txt#
+echo lab9.txt
+lab9.txt
+echo README.md
+README.md
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat test2.txt 
+Пришло время
+сильно погудеть
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat test.txt            
+Hello, i'm Buba!
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  comm test.txt test2.txt 
+Hello, i'm Buba!
+	Пришло время
+	сильно погудеть
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat >> test.txt 
+Hello, i'm Buba!
+^X^H^Z
+[6]  + 15101 suspended  cat >> test.txt
+ ✘ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat test.txt            
+Hello, i'm Buba!
+Hello, i'm Buba!
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  comm test.txt test2.txt
+Hello, i'm Buba!
+Hello, i'm Buba!
+	Пришло время
+	сильно погудеть
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat > comm1.txt
+	
+000
+001
+003
+004
+005
+^Z
+[7]  + 15272 suspended  cat > comm1.txt
+ ✘ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat > comm2.txt
+001
+002
+004 
+005
+007
+^Z
+[8]  + 15321 suspended  cat > comm2.txt
+ ✘ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  comm comm1.txt comm2.txt 
+
+000
+		001
+	002
+003
+		004
+		005
+	007
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  grep Ошибка test5.txt 
+2022-12-01 12:00:05 Ошибка входа: Неверное имя пользователя
+2022-12-01 12:02:15 Ошибка входа: Неверный пароль
+2022-12-01 12:05:30 Сбой при обработке запроса: Ошибка базы данных
+2022-12-01 12:15:02 Ошибка приложения: Отсутствует необходимый файл
+2022-12-01 12:25:18 Ошибка: Недостаточно памяти для выполнения операции
+2022-12-01 12:35:09 Ошибка: Непредвиденное завершение программы
+2022-12-01 12:40:04 Ошибка сетевого соединения: Не удалось установить связь с сервером
+2022-12-01 12:50:14 Ошибка: Файл не найден
+2022-12-01 12:55:30 Ошибка входа: Сессия истекла
+2022-12-01 13:10:44 Ошибка: Невозможно загрузить изображение
+2022-12-01 13:15:05 Ошибка сетевого соединения: Превышено время ожидания
+2022-12-01 13:20:16 Ошибка: Неподдерживаемый формат данных
+2022-12-01 13:30:52 Ошибка: Не удалось запустить процесс
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  grep 13 test5.txt 
+2022-12-01 13:00:01 Сбой приложения: Нарушение доступа к памяти
+2022-12-01 13:05:21 Предупреждение: Заканчивается место на диске
+2022-12-01 13:10:44 Ошибка: Невозможно загрузить изображение
+2022-12-01 13:15:05 Ошибка сетевого соединения: Превышено время ожидания
+2022-12-01 13:20:16 Ошибка: Неподдерживаемый формат данных
+2022-12-01 13:25:29 Сбой сетевого интерфейса: Отключение от Интернета
+2022-12-01 13:30:52 Ошибка: Не удалось запустить процесс
+traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  grep -m3 13 test5.txt
+2022-12-01 13:00:01 Сбой приложения: Нарушение доступа к памяти
+2022-12-01 13:05:21 Предупреждение: Заканчивается место на диске
+2022-12-01 13:10:44 Ошибка: Невозможно загрузить изображение
+traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  grep -e "сбой" -e "9" test5.txt
+2022-12-01 12:35:09 Ошибка: Непредвиденное завершение программы
+2022-12-01 13:25:29 Сбой сетевого интерфейса: Отключение от Интернета
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  grep -n 9 test5.txt  
+9:2022-12-01 12:35:09 Ошибка: Непредвиденное завершение программы
+19:2022-12-01 13:25:29 Сбой сетевого интерфейса: Отключение от Интернета
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat >> test5.txt 
+[LOG]
+[LOG1]
+^Z
+[1]  + 19482 suspended  cat >> test5.txt
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  grep [ test5.txt
+grep: Неверное регулярное выражение
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  grep -F [ test5.txt
+[LOG]
+[LOG1]
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  ls -la | tee out.txt
+итого 68
+drwxrwxr-x 2 traktor traktor  4096 фев 16 20:25 .
+drwxrwxr-x 4 traktor traktor  4096 фев 15 20:02 ..
+-rw-rw-r-- 1 traktor traktor    21 фев 16 20:01 comm1.txt
+-rw-rw-r-- 1 traktor traktor    20 фев 16 20:02 comm2.txt
+-rw-rw-r-- 1 traktor traktor 30049 фев 16 20:25 protocol.txt
+-rw-rw-r-- 1 traktor traktor    54 фев 16 19:40 test2.txt
+-rw-rw-r-- 1 traktor traktor     1 фев 15 22:25 test3.txt
+-rw-rw-r-- 1 traktor traktor    37 фев 15 22:33 test4.txt
+-rw-rw-r-- 1 traktor traktor  1974 фев 16 20:24 test5.txt
+-rw-rw-r-- 1 traktor traktor    34 фев 16 20:01 test.txt
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat out.txtитого 68
+drwxrwxr-x 2 traktor traktor  4096 фев 16 20:25 .
+drwxrwxr-x 4 traktor traktor  4096 фев 15 20:02 ..
+-rw-rw-r-- 1 traktor traktor    21 фев 16 20:01 comm1.txt
+-rw-rw-r-- 1 traktor traktor    20 фев 16 20:02 comm2.txt
+-rw-rw-r-- 1 traktor traktor 30049 фев 16 20:25 protocol.txt
+-rw-rw-r-- 1 traktor traktor    54 фев 16 19:40 test2.txt
+-rw-rw-r-- 1 traktor traktor     1 фев 15 22:25 test3.txt
+-rw-rw-r-- 1 traktor traktor    37 фев 15 22:33 test4.txt
+-rw-rw-r-- 1 traktor traktor  1974 фев 16 20:24 test5.txt
+-rw-rw-r-- 1 traktor traktor    34 фев 16 20:01 test.txt
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cp comm1.txt comm1_test.txt
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  sum comm1.txt
+47414     1 comm1.txt
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  sum comm1.txt comm1_test.txt 
+47414     1 comm1.txt
+47414     1 comm1_test.txt
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  vi test.txt
+[2]  + 21209 suspended  vi test.txt
+ ✘ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat test.txt            
+Hello, i'm Buba!
+Hello, i'm Buba!
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  vi test.txt 
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat test.txt            
+Hello, i'm Buba!
+Hello, i'm Bubsdad
+dddsds
+saas
+
+ida
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  echo "Hello, i'm UGAGA PSPS" | cut -b 1
+H
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  echo "Hello, i'm UGAGA PSPS" | cut -b 1,4,6
+Hl,
+✘ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  echo "Hello, i'm UGAGA PSPS" | cut -b 4-10
+lo, i'm
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat test.txt
+Hello, i'm Buba!
+Hello, i'm Bubsdad
+dddsds
+saas
+
+ida
+
+
+
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cut -b 1,9 test.txt
+H'
+H'
+d
+s
+
+i
+
+
+
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cut -b 3-9 test.txt
+llo, i'
+llo, i'
+dsds
+as
+
+a
+ ✘ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  tar -c --file archive.tar test.txt test2.txt test5.txt
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  ls archive.tar     comm1.txt  out.txt       test2.txt  test4.txt  test.txt
+comm1_test.txt  comm2.txt  protocol.txt  test3.txt  test5.txt
+ ✘ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  tar -tf archive.tar
+test.txt
+test2.txt
+test5.txt
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  rm test.txt 
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  rm test2.txt 
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  rm test5.txt 
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  lsarchive.tar     comm1.txt  out.txt       test3.txt
+comm1_test.txt  comm2.txt  protocol.txt  test4.txt
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  tar -xvf archive.tar
+test.txt
+test2.txt
+test5.txt
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  ls
+archive.tar     comm1.txt  out.txt       test2.txt  test4.txt  test.txt
+comm1_test.txt  comm2.txt  protocol.txt  test3.txt  test5.txt
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  ls -l               
+итого 84
+-rw-rw-r-- 1 traktor traktor 10240 фев 16 22:00 archive.tar
+-rw-rw-r-- 1 traktor traktor    21 фев 16 20:31 comm1_test.txt
+-rw-rw-r-- 1 traktor traktor    21 фев 16 20:01 comm1.txt
+-rw-rw-r-- 1 traktor traktor    20 фев 16 20:02 comm2.txt
+-rw-rw-r-- 1 traktor traktor   611 фев 16 20:27 out.txt
+-rw-rw-r-- 1 traktor traktor 34492 фев 16 22:05 protocol.txt
+-rw-rw-r-- 1 traktor traktor    54 фев 16 19:40 test2.txt
+-rw-rw-r-- 1 traktor traktor     1 фев 15 22:25 test3.txt
+-rw-rw-r-- 1 traktor traktor    37 фев 15 22:33 test4.txt
+-rw-rw-r-- 1 traktor traktor  1974 фев 16 20:24 test5.txt
+-rw-rw-r-- 1 traktor traktor    56 фев 16 21:31 test.txt
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  gzip out.txt       
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  ls -l
+итого 84
+-rw-rw-r-- 1 traktor traktor 10240 фев 16 22:00 archive.tar
+-rw-rw-r-- 1 traktor traktor    21 фев 16 20:31 comm1_test.txt
+-rw-rw-r-- 1 traktor traktor    21 фев 16 20:01 comm1.txt
+-rw-rw-r-- 1 traktor traktor    20 фев 16 20:02 comm2.txt
+-rw-rw-r-- 1 traktor traktor   204 фев 16 20:27 out.txt.gz
+-rw-rw-r-- 1 traktor traktor 34492 фев 16 22:05 protocol.txt
+-rw-rw-r-- 1 traktor traktor    54 фев 16 19:40 test2.txt
+-rw-rw-r-- 1 traktor traktor     1 фев 15 22:25 test3.txt
+-rw-rw-r-- 1 traktor traktor    37 фев 15 22:33 test4.txt
+-rw-rw-r-- 1 traktor traktor  1974 фев 16 20:24 test5.txt
+-rw-rw-r-- 1 traktor traktor    56 фев 16 21:31 test.txt
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  gzip -k test5.txt
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  ls -l
+итого 88
+-rw-rw-r-- 1 traktor traktor 10240 фев 16 22:00 archive.tar
+-rw-rw-r-- 1 traktor traktor    21 фев 16 20:31 comm1_test.txt
+-rw-rw-r-- 1 traktor traktor    21 фев 16 20:01 comm1.txt
+-rw-rw-r-- 1 traktor traktor    20 фев 16 20:02 comm2.txt
+-rw-rw-r-- 1 traktor traktor   204 фев 16 20:27 out.txt.gz
+-rw-rw-r-- 1 traktor traktor 34492 фев 16 22:05 protocol.txt
+-rw-rw-r-- 1 traktor traktor    54 фев 16 19:40 test2.txt
+-rw-rw-r-- 1 traktor traktor     1 фев 15 22:25 test3.txt
+-rw-rw-r-- 1 traktor traktor    37 фев 15 22:33 test4.txt
+-rw-rw-r-- 1 traktor traktor  1974 фев 16 20:24 test5.txt
+-rw-rw-r-- 1 traktor traktor   733 фев 16 20:24 test5.txt.gz
+-rw-rw-r-- 1 traktor traktor    56 фев 16 21:31 test.txt
+traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  awk {'print $0'} test5.txt 
+2022-12-01 12:00:05 Ошибка входа: Неверное имя пользователя
+2022-12-01 12:02:15 Ошибка входа: Неверный пароль
+2022-12-01 12:05:30 Сбой при обработке запроса: Ошибка базы данных
+2022-12-01 12:10:20 Предупреждение: Низкий уровень батареи
+2022-12-01 12:15:02 Ошибка приложения: Отсутствует необходимый файл
+2022-12-01 12:20:45 Сбой сети: Отключение от сервера
+2022-12-01 12:25:18 Ошибка: Недостаточно памяти для выполнения операции
+2022-12-01 12:30:11 Предупреждение: Превышен лимит запросов к API
+2022-12-01 12:35:09 Ошибка: Непредвиденное завершение программы
+2022-12-01 12:40:04 Ошибка сетевого соединения: Не удалось установить связь с сервером
+2022-12-01 12:45:22 Предупреждение: Перегрев процессора
+2022-12-01 12:50:14 Ошибка: Файл не найден
+2022-12-01 12:55:30 Ошибка входа: Сессия истекла
+2022-12-01 13:00:01 Сбой приложения: Нарушение доступа к памяти
+2022-12-01 13:05:21 Предупреждение: Заканчивается место на диске
+2022-12-01 13:10:44 Ошибка: Невозможно загрузить изображение
+2022-12-01 13:15:05 Ошибка сетевого соединения: Превышено время ожидания
+2022-12-01 13:20:16 Ошибка: Неподдерживаемый формат данных
+2022-12-01 13:25:29 Сбой сетевого интерфейса: Отключение от Интернета
+2022-12-01 13:30:52 Ошибка: Не удалось запустить процесс
+[LOG]
+[LOG1]
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  awk {'print $1'} test5.txt
+2022-12-01
+2022-12-01
+2022-12-01
+2022-12-01
+2022-12-01
+2022-12-01
+2022-12-01
+2022-12-01
+2022-12-01
+2022-12-01
+2022-12-01
+2022-12-01
+2022-12-01
+2022-12-01
+2022-12-01
+2022-12-01
+2022-12-01
+2022-12-01
+2022-12-01
+2022-12-01
+[LOG]
+[LOG1]
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  awk {'print $2'} test5.txt
+12:00:05
+12:02:15
+12:05:30
+12:10:20
+12:15:02
+12:20:45
+12:25:18
+12:30:11
+12:35:09
+12:40:04
+12:45:22
+12:50:14
+12:55:30
+13:00:01
+13:05:21
+13:10:44
+13:15:05
+13:20:16
+13:25:29
+13:30:52
+
+
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  awk {'print NR,$2'} test5.txt
+1 12:00:05
+2 12:02:15
+3 12:05:30
+4 12:10:20
+5 12:15:02
+6 12:20:45
+7 12:25:18
+8 12:30:11
+9 12:35:09
+10 12:40:04
+11 12:45:22
+12 12:50:14
+13 12:55:30
+14 13:00:01
+15 13:05:21
+16 13:10:44
+17 13:15:05
+18 13:20:16
+19 13:25:29
+20 13:30:52
+21 
+22 
+traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat test5.txt
+2022-12-01 12:00:05 Ошибка входа: Неверное имя пользователя
+2022-12-01 12:02:15 Ошибка входа: Неверный пароль
+2022-12-01 12:05:30 Сбой при обработке запроса: Ошибка базы данных
+2022-12-01 12:10:20 Предупреждение: Низкий уровень батареи
+2022-12-01 12:15:02 Ошибка приложения: Отсутствует необходимый файл
+2022-12-01 12:20:45 Сбой сети: Отключение от сервера
+2022-12-01 12:25:18 Ошибка: Недостаточно памяти для выполнения операции
+2022-12-01 12:30:11 Предупреждение: Превышен лимит запросов к API
+2022-12-01 12:35:09 Ошибка: Непредвиденное завершение программы
+2022-12-01 12:40:04 Ошибка сетевого соединения: Не удалось установить связь с сервером
+2022-12-01 12:45:22 Предупреждение: Перегрев процессора
+2022-12-01 12:50:14 Ошибка: Файл не найден
+2022-12-01 12:55:30 Ошибка входа: Сессия истекла
+2022-12-01 13:00:01 Сбой приложения: Нарушение доступа к памяти
+2022-12-01 13:05:21 Предупреждение: Заканчивается место на диске
+2022-12-01 13:10:44 Ошибка: Невозможно загрузить изображение
+2022-12-01 13:15:05 Ошибка сетевого соединения: Превышено время ожидания
+2022-12-01 13:20:16 Ошибка: Неподдерживаемый формат данных
+2022-12-01 13:25:29 Сбой сетевого интерфейса: Отключение от Интернета
+2022-12-01 13:30:52 Ошибка: Не удалось запустить процесс
+[LOG]
+[LOG1]
+✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  sed 's/Ошибка/Сбой/' test5.txt
+2022-12-01 12:00:05 Сбой входа: Неверное имя пользователя
+2022-12-01 12:02:15 Сбой входа: Неверный пароль
+2022-12-01 12:05:30 Сбой при обработке запроса: Сбой базы данных
+2022-12-01 12:10:20 Предупреждение: Низкий уровень батареи
+2022-12-01 12:15:02 Сбой приложения: Отсутствует необходимый файл
+2022-12-01 12:20:45 Сбой сети: Отключение от сервера
+2022-12-01 12:25:18 Сбой: Недостаточно памяти для выполнения операции
+2022-12-01 12:30:11 Предупреждение: Превышен лимит запросов к API
+2022-12-01 12:35:09 Сбой: Непредвиденное завершение программы
+2022-12-01 12:40:04 Сбой сетевого соединения: Не удалось установить связь с сервером
+2022-12-01 12:45:22 Предупреждение: Перегрев процессора
+2022-12-01 12:50:14 Сбой: Файл не найден
+2022-12-01 12:55:30 Сбой входа: Сессия истекла
+2022-12-01 13:00:01 Сбой приложения: Нарушение доступа к памяти
+2022-12-01 13:05:21 Предупреждение: Заканчивается место на диске
+2022-12-01 13:10:44 Сбой: Невозможно загрузить изображение
+2022-12-01 13:15:05 Сбой сетевого соединения: Превышено время ожидания
+2022-12-01 13:20:16 Сбой: Неподдерживаемый формат данных
+2022-12-01 13:25:29 Сбой сетевого интерфейса: Отключение от Интернета
+2022-12-01 13:30:52 Сбой: Не удалось запустить процесс
+[LOG]
+[LOG1]
+traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  sed 's/12/21/' test5.txt
+2022-21-01 12:00:05 Ошибка входа: Неверное имя пользователя
+2022-21-01 12:02:15 Ошибка входа: Неверный пароль
+2022-21-01 12:05:30 Сбой при обработке запроса: Ошибка базы данных
+2022-21-01 12:10:20 Предупреждение: Низкий уровень батареи
+2022-21-01 12:15:02 Ошибка приложения: Отсутствует необходимый файл
+2022-21-01 12:20:45 Сбой сети: Отключение от сервера
+2022-21-01 12:25:18 Ошибка: Недостаточно памяти для выполнения операции
+2022-21-01 12:30:11 Предупреждение: Превышен лимит запросов к API
+2022-21-01 12:35:09 Ошибка: Непредвиденное завершение программы
+2022-21-01 12:40:04 Ошибка сетевого соединения: Не удалось установить связь с сервером
+2022-21-01 12:45:22 Предупреждение: Перегрев процессора
+2022-21-01 12:50:14 Ошибка: Файл не найден
+2022-21-01 12:55:30 Ошибка входа: Сессия истекла
+2022-21-01 13:00:01 Сбой приложения: Нарушение доступа к памяти
+2022-21-01 13:05:21 Предупреждение: Заканчивается место на диске
+2022-21-01 13:10:44 Ошибка: Невозможно загрузить изображение
+2022-21-01 13:15:05 Ошибка сетевого соединения: Превышено время ожидания
+2022-21-01 13:20:16 Ошибка: Неподдерживаемый формат данных
+2022-21-01 13:25:29 Сбой сетевого интерфейса: Отключение от Интернета
+2022-21-01 13:30:52 Ошибка: Не удалось запустить процесс
+[LOG]
+[LOG1]
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  sed 's/12/21/2' test5.txt
+2022-12-01 21:00:05 Ошибка входа: Неверное имя пользователя
+2022-12-01 21:02:15 Ошибка входа: Неверный пароль
+2022-12-01 21:05:30 Сбой при обработке запроса: Ошибка базы данных
+2022-12-01 21:10:20 Предупреждение: Низкий уровень батареи
+2022-12-01 21:15:02 Ошибка приложения: Отсутствует необходимый файл
+2022-12-01 21:20:45 Сбой сети: Отключение от сервера
+2022-12-01 21:25:18 Ошибка: Недостаточно памяти для выполнения операции
+2022-12-01 21:30:11 Предупреждение: Превышен лимит запросов к API
+2022-12-01 21:35:09 Ошибка: Непредвиденное завершение программы
+2022-12-01 21:40:04 Ошибка сетевого соединения: Не удалось установить связь с сервером
+2022-12-01 21:45:22 Предупреждение: Перегрев процессора
+2022-12-01 21:50:14 Ошибка: Файл не найден
+2022-12-01 21:55:30 Ошибка входа: Сессия истекла
+2022-12-01 13:00:01 Сбой приложения: Нарушение доступа к памяти
+2022-12-01 13:05:21 Предупреждение: Заканчивается место на диске
+2022-12-01 13:10:44 Ошибка: Невозможно загрузить изображение
+2022-12-01 13:15:05 Ошибка сетевого соединения: Превышено время ожидания
+2022-12-01 13:20:16 Ошибка: Неподдерживаемый формат данных
+2022-12-01 13:25:29 Сбой сетевого интерфейса: Отключение от Интернета
+2022-12-01 13:30:52 Ошибка: Не удалось запустить процесс
+[LOG]
+[LOG1]
+traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  sed 's/12/21/g' test5.txt
+2022-21-01 21:00:05 Ошибка входа: Неверное имя пользователя
+2022-21-01 21:02:15 Ошибка входа: Неверный пароль
+2022-21-01 21:05:30 Сбой при обработке запроса: Ошибка базы данных
+2022-21-01 21:10:20 Предупреждение: Низкий уровень батареи
+2022-21-01 21:15:02 Ошибка приложения: Отсутствует необходимый файл
+2022-21-01 21:20:45 Сбой сети: Отключение от сервера
+2022-21-01 21:25:18 Ошибка: Недостаточно памяти для выполнения операции
+2022-21-01 21:30:11 Предупреждение: Превышен лимит запросов к API
+2022-21-01 21:35:09 Ошибка: Непредвиденное завершение программы
+2022-21-01 21:40:04 Ошибка сетевого соединения: Не удалось установить связь с сервером
+2022-21-01 21:45:22 Предупреждение: Перегрев процессора
+2022-21-01 21:50:14 Ошибка: Файл не найден
+2022-21-01 21:55:30 Ошибка входа: Сессия истекла
+2022-21-01 13:00:01 Сбой приложения: Нарушение доступа к памяти
+2022-21-01 13:05:21 Предупреждение: Заканчивается место на диске
+2022-21-01 13:10:44 Ошибка: Невозможно загрузить изображение
+2022-21-01 13:15:05 Ошибка сетевого соединения: Превышено время ожидания
+2022-21-01 13:20:16 Ошибка: Неподдерживаемый формат данных
+2022-21-01 13:25:29 Сбой сетевого интерфейса: Отключение от Интернета
+2022-21-01 13:30:52 Ошибка: Не удалось запустить процесс
+[LOG]
+[LOG1]
+traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  ls -l
+итого 104
+-rw-rw-r-- 1 traktor traktor 10240 фев 16 22:00 archive.tar
+-rw-rw-r-- 1 traktor traktor    21 фев 16 20:31 comm1_test.txt
+-rw-rw-r-- 1 traktor traktor    21 фев 16 20:01 comm1.txt
+-rw-rw-r-- 1 traktor traktor    20 фев 16 20:02 comm2.txt
+-rw-rw-r-- 1 traktor traktor   204 фев 16 20:27 out.txt.gz
+-rw-rw-r-- 1 traktor traktor 50505 фев 17 01:06 protocol.txt
+-rw-rw-r-- 1 traktor traktor    54 фев 16 19:40 test2.txt
+-rw-rw-r-- 1 traktor traktor     1 фев 15 22:25 test3.txt
+-rw-rw-r-- 1 traktor traktor    37 фев 15 22:33 test4.txt
+-rw-rw-r-- 1 traktor traktor  1974 фев 16 20:24 test5.txt
+-rw-rw-r-- 1 traktor traktor   733 фев 16 20:24 test5.txt.gz
+-rw-rw-r-- 1 traktor traktor    56 фев 16 21:31 test.txt
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  bzip2 test.txt
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  ls -l
+итого 104
+-rw-rw-r-- 1 traktor traktor 10240 фев 16 22:00 archive.tar
+-rw-rw-r-- 1 traktor traktor    21 фев 16 20:31 comm1_test.txt
+-rw-rw-r-- 1 traktor traktor    21 фев 16 20:01 comm1.txt
+-rw-rw-r-- 1 traktor traktor    20 фев 16 20:02 comm2.txt
+-rw-rw-r-- 1 traktor traktor   204 фев 16 20:27 out.txt.gz
+-rw-rw-r-- 1 traktor traktor 50505 фев 17 01:06 protocol.txt
+-rw-rw-r-- 1 traktor traktor    54 фев 16 19:40 test2.txt
+-rw-rw-r-- 1 traktor traktor     1 фев 15 22:25 test3.txt
+-rw-rw-r-- 1 traktor traktor    37 фев 15 22:33 test4.txt
+-rw-rw-r-- 1 traktor traktor  1974 фев 16 20:24 test5.txt
+-rw-rw-r-- 1 traktor traktor   733 фев 16 20:24 test5.txt.gz
+-rw-rw-r-- 1 traktor traktor    83 фев 16 21:31 test.txt.bz2
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  bzip2 -9 test.txt
+bzip2: Can't open input file test.txt: No such file or directory.
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  bzip2 -9 test.txt.bz2
+bzip2: Input file test.txt.bz2 already has .bz2 suffix.
+ ✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  bzip2 -d test.txt.bz2
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  ls -l
+итого 104
+-rw-rw-r-- 1 traktor traktor 10240 фев 16 22:00 archive.tar
+-rw-rw-r-- 1 traktor traktor    21 фев 16 20:31 comm1_test.txt
+-rw-rw-r-- 1 traktor traktor    21 фев 16 20:01 comm1.txt
+-rw-rw-r-- 1 traktor traktor    20 фев 16 20:02 comm2.txt
+-rw-rw-r-- 1 traktor traktor   204 фев 16 20:27 out.txt.gz
+-rw-rw-r-- 1 traktor traktor 50505 фев 17 01:06 protocol.txt
+-rw-rw-r-- 1 traktor traktor    54 фев 16 19:40 test2.txt
+-rw-rw-r-- 1 traktor traktor     1 фев 15 22:25 test3.txt
+-rw-rw-r-- 1 traktor traktor    37 фев 15 22:33 test4.txt
+-rw-rw-r-- 1 traktor traktor  1974 фев 16 20:24 test5.txt
+-rw-rw-r-- 1 traktor traktor   733 фев 16 20:24 test5.txt.gz
+-rw-rw-r-- 1 traktor traktor    56 фев 16 21:31 test.txt
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  bzip2 -9 test.txt    
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  ls -l
+итого 104
+-rw-rw-r-- 1 traktor traktor 10240 фев 16 22:00 archive.tar
+-rw-rw-r-- 1 traktor traktor    21 фев 16 20:31 comm1_test.txt
+-rw-rw-r-- 1 traktor traktor    21 фев 16 20:01 comm1.txt
+-rw-rw-r-- 1 traktor traktor    20 фев 16 20:02 comm2.txt
+-rw-rw-r-- 1 traktor traktor   204 фев 16 20:27 out.txt.gz
+-rw-rw-r-- 1 traktor traktor 50505 фев 17 01:06 protocol.txt
+-rw-rw-r-- 1 traktor traktor    54 фев 16 19:40 test2.txt
+-rw-rw-r-- 1 traktor traktor     1 фев 15 22:25 test3.txt
+-rw-rw-r-- 1 traktor traktor    37 фев 15 22:33 test4.txt
+-rw-rw-r-- 1 traktor traktor  1974 фев 16 20:24 test5.txt
+-rw-rw-r-- 1 traktor traktor   733 фев 16 20:24 test5.txt.gz
+-rw-rw-r-- 1 traktor traktor    83 фев 16 21:31 test.txt.bz2
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  bzip2 -d test.txt.bz2
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  bzip2 test5.txt    
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  ls -l
+итого 104
+-rw-rw-r-- 1 traktor traktor 10240 фев 16 22:00 archive.tar
+-rw-rw-r-- 1 traktor traktor    21 фев 16 20:31 comm1_test.txt
+-rw-rw-r-- 1 traktor traktor    21 фев 16 20:01 comm1.txt
+-rw-rw-r-- 1 traktor traktor    20 фев 16 20:02 comm2.txt
+-rw-rw-r-- 1 traktor traktor   204 фев 16 20:27 out.txt.gz
+-rw-rw-r-- 1 traktor traktor 50505 фев 17 01:06 protocol.txt
+-rw-rw-r-- 1 traktor traktor    54 фев 16 19:40 test2.txt
+-rw-rw-r-- 1 traktor traktor     1 фев 15 22:25 test3.txt
+-rw-rw-r-- 1 traktor traktor    37 фев 15 22:33 test4.txt
+-rw-rw-r-- 1 traktor traktor   604 фев 16 20:24 test5.txt.bz2
+-rw-rw-r-- 1 traktor traktor   733 фев 16 20:24 test5.txt.gz
+-rw-rw-r-- 1 traktor traktor    56 фев 16 21:31 test.txt
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  bzip2 -d test5.txt.bz2
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  bzip2 -6 test5.txt    
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  ls -l                 
+итого 104
+-rw-rw-r-- 1 traktor traktor 10240 фев 16 22:00 archive.tar
+-rw-rw-r-- 1 traktor traktor    21 фев 16 20:31 comm1_test.txt
+-rw-rw-r-- 1 traktor traktor    21 фев 16 20:01 comm1.txt
+-rw-rw-r-- 1 traktor traktor    20 фев 16 20:02 comm2.txt
+-rw-rw-r-- 1 traktor traktor   204 фев 16 20:27 out.txt.gz
+-rw-rw-r-- 1 traktor traktor 50505 фев 17 01:06 protocol.txt
+-rw-rw-r-- 1 traktor traktor    54 фев 16 19:40 test2.txt
+-rw-rw-r-- 1 traktor traktor     1 фев 15 22:25 test3.txt
+-rw-rw-r-- 1 traktor traktor    37 фев 15 22:33 test4.txt
+-rw-rw-r-- 1 traktor traktor   604 фев 16 20:24 test5.txt.bz2
+-rw-rw-r-- 1 traktor traktor   733 фев 16 20:24 test5.txt.gz
+-rw-rw-r-- 1 traktor traktor    56 фев 16 21:31 test.txt
+✘ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  wc
+Hello
+Linux
+Ubuntu Hypr
+      3       4      24
+traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  wc test.txt	
+9  9 56 test.txt
+traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  echo "Hello,wordl" | wc                   
+      1       1      12
+traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  wc -m protocol.txt
+44773 protocol.txt
+ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  wc -l protocol.txt 
+975 protocol.txt
+✘ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat > test.txt
+Hello, i'm Buba!
+Hello, i'm Bubsdad
+traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat > test2.txt 
+Hello, i'm Buba!
+✘ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  join test.txt test2.txt
+Hello, i'm Buba! i'm Buba!
+Hello, i'm Bubsdad i'm Buba!
+⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  cat > test3.txt 
+001
+23
+1223
+002
+00
+000
+546
+^Z
+[4]  + 28093 suspended  cat > test3.txt
+ ✘ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  sort test3.txt 
+00
+000
+001
+002
+1223
+23
+546
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  sort -d test3.txt
+00
+000
+001
+002
+1223
+23
+546
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  sort -i test3.txt
+00
+000
+001
+002
+1223
+23
+546
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  sort -n test3.txt
+00
+000
+001
+002
+23
+546
+1223
+ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  sort -r test3.txt
+546
+23
+1223
+002
+001
+000
+00
+✘ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  echo "1111 dsada" | tr -s 1-9      
+1 dsada
+ ✘ ⚙ traktor@traktor-MaiBook-X-series  ~/labs/labs-2023/lab20   lab20  tr -d 1-9
+wea322224 adas
+wea %
+
+
