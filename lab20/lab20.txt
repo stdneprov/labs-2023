@@ -1,0 +1,443 @@
+
+
+MacBook-Air-Daniil:~ daniilkutugin$ mkdir lab20
+MacBook-Air-Daniil:~ daniilkutugin$ cd lab
+lab20/     labs-2023/ 
+MacBook-Air-Daniil:~ daniilkutugin$ cd lab
+lab20/     labs-2023/ 
+MacBook-Air-Daniil:~ daniilkutugin$ cd lab20/
+MacBook-Air-Daniil:lab20 daniilkutugin$ touch 1.txt
+MacBook-Air-Daniil:lab20 daniilkutugin$ vi 1.txt 
+MacBook-Air-Daniil:lab20 daniilkutugin$ cat 1.txt 
+Zaycev 
+VE
+The
+Best
+
+MacBook-Air-Daniil:lab20 daniilkutugin$ cat 1.txt >> 2.txt
+MacBook-Air-Daniil:lab20 daniilkutugin$ cat 2.txt 
+Zaycev 
+VE
+The
+Best
+
+MacBook-Air-Daniil:lab20 daniilkutugin$ cat >> 2.txt 
+Python
+Programmer
+^C
+MacBook-Air-Daniil:lab20 daniilkutugin$ cat 2.txt 
+Zaycev 
+VE
+The
+Best
+
+Python
+Programmer
+MacBook-Air-Daniil:lab20 daniilkutugin$ cmp 1.txt 2.txt
+cmp: EOF on 1.txt
+MacBook-Air-Daniil:lab20 daniilkutugin$ man cmp
+MacBook-Air-Daniil:lab20 daniilkutugin$ 
+MacBook-Air-Daniil:lab20 daniilkutugin$ cmp 1.txt 2.txt -b
+Invalid skip1: -b
+usage: cmp [-l | -s | -x] [-bhz] [-i num1[:num2] | --ignore-initial=num1[:num2]] [-n num | --bytes=num] file1 file2 [skip1 [skip2]]
+MacBook-Air-Daniil:lab20 daniilkutugin$ cmp -b 1.txt 2.txt -b
+Invalid skip1: -b
+usage: cmp [-l | -s | -x] [-bhz] [-i num1[:num2] | --ignore-initial=num1[:num2]] [-n num | --bytes=num] file1 file2 [skip1 [skip2]]
+MacBook-Air-Daniil:lab20 daniilkutugin$ cmp -n 1.txt 2.txt -b
+Invalid --bytes: 1.txt
+usage: cmp [-l | -s | -x] [-bhz] [-i num1[:num2] | --ignore-initial=num1[:num2]] [-n num | --bytes=num] file1 file2 [skip1 [skip2]]
+MacBook-Air-Daniil:lab20 daniilkutugin$ cmp -l 1.txt 2.txt -b
+Invalid skip1: -b
+usage: cmp [-l | -s | -x] [-bhz] [-i num1[:num2] | --ignore-initial=num1[:num2]] [-n num | --bytes=num] file1 file2 [skip1 [skip2]]
+MacBook-Air-Daniil:lab20 daniilkutugin$ cmp -l 1.txt 2.txt
+cmp: EOF on 1.txt
+MacBook-Air-Daniil:lab20 daniilkutugin$ cat >> 1.txt 
+123
+Simple-dimple
+^C
+MacBook-Air-Daniil:lab20 daniilkutugin$ cmp 1.txt 2.txt
+1.txt 2.txt differ: char 22, line 6
+MacBook-Air-Daniil:lab20 daniilkutugin$ cmp -b 1.txt 2.txt
+1.txt 2.txt differ: char 22, line 6 is  61 1 120 P
+MacBook-Air-Daniil:lab20 daniilkutugin$ cmp -n 1.txt 2.txt
+Invalid --bytes: 1.txt
+usage: cmp [-l | -s | -x] [-bhz] [-i num1[:num2] | --ignore-initial=num1[:num2]] [-n num | --bytes=num] file1 file2 [skip1 [skip2]]
+MacBook-Air-Daniil:lab20 daniilkutugin$ cmp -l 1.txt 2.txt
+    22  61 120
+    23  62 171
+    24  63 164
+    25  12 150
+    26 123 157
+    27 151 156
+    28 155  12
+    29 160 120
+    30 154 162
+    31 145 157
+    32  55 147
+    33 144 162
+    34 151 141
+    36 160 155
+    37 154 145
+    38 145 162
+MacBook-Air-Daniil:lab20 daniilkutugin$ diff 1.txt 2.txt
+6,7c6,7
+< 123
+< Simple-dimple
+---
+> Python
+> Programmer
+MacBook-Air-Daniil:lab20 daniilkutugin$ man tail
+MacBook-Air-Daniil:lab20 daniilkutugin$ tail -n 2 2.txt
+Python
+Programmer
+MacBook-Air-Daniil:lab20 daniilkutugin$ tail -c 2 2.txt
+r
+MacBook-Air-Daniil:lab20 daniilkutugin$ tail -c 3 2.txt
+er
+MacBook-Air-Daniil:lab20 daniilkutugin$ tail -c +3 2.txt
+ycev 
+VE
+The
+Best
+
+Python
+Programmer
+MacBook-Air-Daniil:lab20 daniilkutugin$ man wc
+MacBook-Air-Daniil:lab20 daniilkutugin$ wc 1.txt
+       7       6      39 1.txt
+MacBook-Air-Daniil:lab20 daniilkutugin$ man wc
+MacBook-Air-Daniil:lab20 daniilkutugin$ man -m wc
+What manual page do you want?
+MacBook-Air-Daniil:lab20 daniilkutugin$ man -m wc 1.txt 
+No manual entry for 1.txt
+MacBook-Air-Daniil:lab20 daniilkutugin$ wc -m 1.txt 
+      39 1.txt
+MacBook-Air-Daniil:lab20 daniilkutugin$ wc -c 1.txt 
+      39 1.txt
+MacBook-Air-Daniil:lab20 daniilkutugin$ wc -L 1.txt 
+      13 1.txt
+MacBook-Air-Daniil:lab20 daniilkutugin$ wc -l 1.txt 
+       7 1.txt
+MacBook-Air-Daniil:lab20 daniilkutugin$ man comm
+
+[1]+  Stopped                 man comm
+MacBook-Air-Daniil:lab20 daniilkutugin$ comm 1.txt 2.txt 
+		Zaycev 
+		VE
+		The
+		Best
+		
+123
+	Python
+	Programmer
+Simple-dimple
+MacBook-Air-Daniil:lab20 daniilkutugin$ man dd
+
+[2]+  Stopped                 man dd
+MacBook-Air-Daniil:lab20 daniilkutugin$ dd if=1.txt of=3.txt
+0+1 records in
+0+1 records out
+39 bytes transferred in 0.000361 secs (108033 bytes/sec)
+MacBook-Air-Daniil:lab20 daniilkutugin$ ls
+1.txt	2.txt	3.txt
+MacBook-Air-Daniil:lab20 daniilkutugin$ cat 3.txt 
+Zaycev 
+VE
+The
+Best
+
+123
+Simple-dimple
+MacBook-Air-Daniil:lab20 daniilkutugin$ man grep
+MacBook-Air-Daniil:lab20 daniilkutugin$ grep .
+123
+123
+123^C
+MacBook-Air-Daniil:lab20 daniilkutugin$ grep 1.txt "Z"
+grep: Z: No such file or directory
+MacBook-Air-Daniil:lab20 daniilkutugin$ grep 1.txt
+Z
+^C
+MacBook-Air-Daniil:lab20 daniilkutugin$ man grep
+
+[3]+  Stopped                 man grep
+MacBook-Air-Daniil:lab20 daniilkutugin$ man dir
+MacBook-Air-Daniil:lab20 daniilkutugin$ dir ..
+-bash: dir: command not found
+MacBook-Air-Daniil:lab20 daniilkutugin$ dir
+-bash: dir: command not found
+MacBook-Air-Daniil:lab20 daniilkutugin$ grep "Zayc" 1.txt
+Zaycev 
+MacBook-Air-Daniil:lab20 daniilkutugin$ grep -w "Zayc" 1.txt
+MacBook-Air-Daniil:lab20 daniilkutugin$ grep -w "Best" 1.txt
+Best
+MacBook-Air-Daniil:lab20 daniilkutugin$ man join
+MacBook-Air-Daniil:lab20 daniilkutugin$ join 1.txt 2.txt
+Zaycev
+VE
+The
+Best
+
+MacBook-Air-Daniil:lab20 daniilkutugin$ man sort
+MacBook-Air-Daniil:lab20 daniilkutugin$ ls | sort
+1.txt
+2.txt
+3.txt
+MacBook-Air-Daniil:lab20 daniilkutugin$ man tee
+MacBook-Air-Daniil:lab20 daniilkutugin$ tee -a 1.txt
+123
+123
+124
+124
+MacBook-Air-Daniil:lab20 daniilkutugin$ car 1.txt 
+-bash: car: command not found
+MacBook-Air-Daniil:lab20 daniilkutugin$ cat 1.txt 
+Zaycev 
+VE
+The
+Best
+
+123
+Simple-dimple
+123
+124
+MacBook-Air-Daniil:lab20 daniilkutugin$ cat 3.txt | tee 2.txt
+Zaycev 
+VE
+The
+Best
+
+123
+Simple-dimple
+MacBook-Air-Daniil:lab20 daniilkutugin$ cat 2.txt
+Zaycev 
+VE
+The
+Best
+
+123
+Simple-dimple
+MacBook-Air-Daniil:lab20 daniilkutugin$ man tr
+MacBook-Air-Daniil:lab20 daniilkutugin$ tr 1.txt
+usage: tr [-Ccsu] string1 string2
+       tr [-Ccu] -d string1
+       tr [-Ccu] -s string1
+       tr [-Ccu] -ds string1 string2
+MacBook-Air-Daniil:lab20 daniilkutugin$ tr 1.txt 2.txt
+Z
+Z
+MacBook-Air-Daniil:lab20 daniilkutugin$ cat 1.txt
+Zaycev 
+VE
+The
+Best
+
+123
+Simple-dimple
+123
+124
+MacBook-Air-Daniil:lab20 daniilkutugin$ tr -d 1.txt "Z" 
+usage: tr [-Ccsu] string1 string2
+       tr [-Ccu] -d string1
+       tr [-Ccu] -s string1
+       tr [-Ccu] -ds string1 string2
+MacBook-Air-Daniil:lab20 daniilkutugin$ tr -d "Zayca" "Z" 
+usage: tr [-Ccsu] string1 string2
+       tr [-Ccu] -d string1
+       tr [-Ccu] -s string1
+       tr [-Ccu] -ds string1 string2
+MacBook-Air-Daniil:lab20 daniilkutugin$ man uniq
+MacBook-Air-Daniil:lab20 daniilkutugin$ uniq 1.txt
+Zaycev 
+VE
+The
+Best
+
+123
+Simple-dimple
+123
+124
+MacBook-Air-Daniil:lab20 daniilkutugin$ cat 1.txt 
+Zaycev 
+VE
+The
+Best
+
+123
+Simple-dimple
+123
+124
+MacBook-Air-Daniil:lab20 daniilkutugin$ cat 1.txt > sort > uniq
+MacBook-Air-Daniil:lab20 daniilkutugin$ cat 1.txt | sort | uniq
+
+123
+124
+Best
+Simple-dimple
+The
+VE
+Zaycev 
+MacBook-Air-Daniil:lab20 daniilkutugin$ man od
+MacBook-Air-Daniil:lab20 daniilkutugin$ 
+MacBook-Air-Daniil:lab20 daniilkutugin$ od 1.txt 
+0000000    060532  061571  073145  005040  042526  052012  062550  041012
+0000020    071545  005164  030412  031462  051412  066551  066160  026545
+0000040    064544  070155  062554  030412  031462  030412  032062  000012
+0000057
+MacBook-Air-Daniil:lab20 daniilkutugin$ man sum
+MacBook-Air-Daniil:lab20 daniilkutugin$ sum 1.txt 2.txt 
+59072 1 1.txt
+34532 1 2.txt
+MacBook-Air-Daniil:lab20 daniilkutugin$ man cut
+MacBook-Air-Daniil:lab20 daniilkutugin$ man nroff
+No manual entry for nroff
+MacBook-Air-Daniil:lab20 daniilkutugin$ man mc
+No manual entry for mc
+MacBook-Air-Daniil:lab20 daniilkutugin$ mc
+-bash: mc: command not found
+MacBook-Air-Daniil:lab20 daniilkutugin$ man tar
+MacBook-Air-Daniil:lab20 daniilkutugin$ tar -a zayka.tar 1.txt 2.txt 
+tar: Must specify one of -c, -r, -t, -u, -x
+MacBook-Air-Daniil:lab20 daniilkutugin$ tar zayka.tar 1.txt 2.txt 
+tar: Can't specify both -y and -z
+MacBook-Air-Daniil:lab20 daniilkutugin$ tar -z zayka.tar 1.txt 2.txt 
+tar: Must specify one of -c, -r, -t, -u, -x
+MacBook-Air-Daniil:lab20 daniilkutugin$ man tar
+MacBook-Air-Daniil:lab20 daniilkutugin$ tar -cf zayka.tar 1.txt 2.txt 
+MacBook-Air-Daniil:lab20 daniilkutugin$ ls
+1.txt		3.txt		uniq
+2.txt		sort		zayka.tar
+MacBook-Air-Daniil:lab20 daniilkutugin$ cat zayka.tar 
+1.txt000644 000765 000024 00000000057 14564436656 014016 0ustar00daniilkutuginstaff000000 000000 Zaycev 
+VE
+The
+Best
+
+123
+Simple-dimple
+123
+124
+2.txt000644 000765 000024 00000000047 14564436735 014014 0ustar00daniilkutuginstaff000000 000000 Zaycev 
+VE
+The
+Best
+
+123
+Simple-dimple
+MacBook-Air-Daniil:lab20 daniilkutugin$ tar -xvf zayka.tar 
+x 1.txt
+x 2.txt
+MacBook-Air-Daniil:lab20 daniilkutugin$ ls
+1.txt		3.txt		uniq
+2.txt		sort		zayka.tar
+MacBook-Air-Daniil:lab20 daniilkutugin$ move 1.txt 
+-bash: move: command not found
+MacBook-Air-Daniil:lab20 daniilkutugin$ mv 1.txt 
+usage: mv [-f | -i | -n] [-hv] source target
+       mv [-f | -i | -n] [-v] source ... directory
+MacBook-Air-Daniil:lab20 daniilkutugin$ rm 1.txt 2.txt 
+MacBook-Air-Daniil:lab20 daniilkutugin$ ls
+3.txt		sort		uniq		zayka.tar
+MacBook-Air-Daniil:lab20 daniilkutugin$ tar -xvf zayka.tar 
+x 1.txt
+x 2.txt
+MacBook-Air-Daniil:lab20 daniilkutugin$ ls
+1.txt		3.txt		uniq
+2.txt		sort		zayka.tar
+MacBook-Air-Daniil:lab20 daniilkutugin$ man gzio
+No manual entry for gzio
+MacBook-Air-Daniil:lab20 daniilkutugin$ man gzip
+MacBook-Air-Daniil:lab20 daniilkutugin$ maned
+-bash: maned: command not found
+MacBook-Air-Daniil:lab20 daniilkutugin$ man ed
+MacBook-Air-Daniil:lab20 daniilkutugin$ ed 1.txt 
+47
+new
+?
+1
+Zaycev 
+2
+VE
+3
+The
+4
+Best
+5
+
+q
+MacBook-Air-Daniil:lab20 daniilkutugin$ man awk
+MacBook-Air-Daniil:lab20 daniilkutugin$ 
+MacBook-Air-Daniil:lab20 daniilkutugin$ man sed
+MacBook-Air-Daniil:lab20 daniilkutugin$ cat 1.txt 
+Zaycev 
+VE
+The
+Best
+
+123
+Simple-dimple
+123
+124
+MacBook-Air-Daniil:lab20 daniilkutugin$ sed 's/Zaycev/Krylov/' 1.txt 
+Krylov 
+VE
+The
+Best
+
+123
+Simple-dimple
+123
+124
+MacBook-Air-Daniil:lab20 daniilkutugin$ ls 1.txt 
+1.txt
+MacBook-Air-Daniil:lab20 daniilkutugin$ cat 1.txt 
+Zaycev 
+VE
+The
+Best
+
+123
+Simple-dimple
+123
+124
+MacBook-Air-Daniil:lab20 daniilkutugin$ sed 's/Zaycev/Krylov/' 1.txt | cat > krylov.txt
+MacBook-Air-Daniil:lab20 daniilkutugin$ ls
+1.txt		3.txt		sort		zayka.tar
+2.txt		krylov.txt	uniq
+MacBook-Air-Daniil:lab20 daniilkutugin$ cat krylov.txt 
+Krylov 
+VE
+The
+Best
+
+123
+Simple-dimple
+123
+124
+MacBook-Air-Daniil:lab20 daniilkutugin$ man head
+MacBook-Air-Daniil:lab20 daniilkutugin$ head -n 2 krylov.txt 
+Krylov 
+VE
+MacBook-Air-Daniil:lab20 daniilkutugin$ man iconv
+MacBook-Air-Daniil:lab20 daniilkutugin$ 
+MacBook-Air-Daniil:lab20 daniilkutugin$ man patch
+MacBook-Air-Daniil:lab20 daniilkutugin$ man md5
+MacBook-Air-Daniil:lab20 daniilkutugin$ 
+MacBook-Air-Daniil:lab20 daniilkutugin$ cat 1.txt | md5
+ca40f5bd510863df768bb1a4ccb6c6b6
+MacBook-Air-Daniil:lab20 daniilkutugin$ cat krylov.txt | find Kr
+find: Kr: No such file or directory
+MacBook-Air-Daniil:lab20 daniilkutugin$ find .
+.
+./sort
+./uniq
+./3.txt
+./zayka.tar
+./2.txt
+./1.txt
+./krylov.txt
+MacBook-Air-Daniil:lab20 daniilkutugin$ find kry
+find: kry: No such file or directory
+MacBook-Air-Daniil:lab20 daniilkutugin$ find . -name kry*
+./krylov.txt
+MacBook-Air-Daniil:lab20 daniilkutugin$ 
