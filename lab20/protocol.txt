@@ -1,0 +1,283 @@
+debian@debian:~$ mktemp -d
+/tmp/tmp.ONiqKNOJGq
+debian@debian:~$ cd /tmp/tmp.ONiqKNOJGq/
+debian@debian:/tmp/tmp.ONiqKNOJGq$ cat | tee file1.txt
+this is my test file
+this is my test file
+fwea
+fwea
+debian@debian:/tmp/tmp.ONiqKNOJGq$ cat file1.txt 
+this is my test file
+fwea
+debian@debian:/tmp/tmp.ONiqKNOJGq$ tee file1.txt 
+you can also write into a file from tee directly
+you can also write into a file from tee directly
+this is easier
+this is easier
+debian@debian:/tmp/tmp.ONiqKNOJGq$ cat file1.txt 
+you can also write into a file from tee directly
+this is easier
+debian@debian:/tmp/tmp.ONiqKNOJGq$ dd if=file1.txt of=file2.txt
+0+1 records in
+0+1 records out
+64 bytes copied, 0.000169083 s, 379 kB/s
+debian@debian:/tmp/tmp.ONiqKNOJGq$ cat file2.txt 
+you can also write into a file from tee directly
+this is easier
+debian@debian:/tmp/tmp.ONiqKNOJGq$ vi file2.txt
+debian@debian:/tmp/tmp.ONiqKNOJGq$ cat file2.txt 
+this is a new line added before
+you can also write into a file from tee directly
+this is easier
+this is a new line added after
+debian@debian:/tmp/tmp.ONiqKNOJGq$ cmp file1.txt file2.txt 
+file1.txt file2.txt differ: byte 1, line 1
+debian@debian:/tmp/tmp.ONiqKNOJGq$ diff file1.txt file2.txt
+0a1
+> this is a new line added before
+2a4
+> this is a new line added after
+debian@debian:/tmp/tmp.ONiqKNOJGq$ ed
+a
+this time we edit file using ed command
+to start put a symbol
+to stop put a dot
+to print put a p symbol
+to save put a f <filename>
+.
+p
+to save put a f <filename>
+,p
+this time we edit file using ed command
+to start put a symbol
+to stop put a dot
+to print put a p symbol
+to save put a f <filename>
+f file3.txt
+file3.txt
+w
+131
+Q
+debian@debian:/tmp/tmp.ONiqKNOJGq$ cat file3.txt
+this time we edit file using ed command
+to start put a symbol
+to stop put a dot
+to print put a p symbol
+to save put a f <filename>
+debian@debian:/tmp/tmp.ONiqKNOJGq$ dd if=/dev/urandom of=random_data bs=20M count=1 iflag=fullblock
+1+0 records in
+1+0 records out
+20971520 bytes (21 MB, 20 MiB) copied, 0.0702905 s, 298 MB/s
+debian@debian:/tmp/tmp.ONiqKNOJGq$ ls
+file1.txt  file2.txt  file3.txt  random_data
+debian@debian:/tmp/tmp.ONiqKNOJGq$ du .
+20496	.
+debian@debian:/tmp/tmp.ONiqKNOJGq$ du -a
+4	./file1.txt
+20480	./random_data
+4	./file2.txt
+4	./file3.txt
+20496	.
+debian@debian:/tmp/tmp.ONiqKNOJGq$ shuf -i 0-255 -n 1024 > random_numbers.txt
+debian@debian:/tmp/tmp.ONiqKNOJGq$ head random_numbers.txt 
+255
+60
+199
+215
+213
+133
+150
+220
+247
+9
+debian@debian:/tmp/tmp.ONiqKNOJGq$ tail random_numbers.txt 
+98
+107
+67
+58
+140
+102
+161
+99
+97
+246
+debian@debian:/tmp/tmp.ONiqKNOJGq$ tail -n 5 random_numbers.txt 
+102
+161
+99
+97
+246
+debian@debian:/tmp/tmp.ONiqKNOJGq$ tail -n 1 random_data
+�����G����)��)��Z*�N)V��`���*��7��V�����@n=������}��h���w���>L�<R��H$�|��L���`%���'L�τ �el�RQ�WSj�n��Ȭ�\�M.��lC��?uʣ'a���ż�1��� R�!�oj���gA�~A@�����ɭ���!�yi(m��k�a�S>|���e]b?��ke/�^��,.:?��Z�NmA���l2wc���`����3�QY
++%}�RƑ�fy��BX2&i�       �!��4O
+debian@debian:/tmp/tmp.ONiqKNOJGq$ od random_data | tail -n 5
+117777700 114532 047006 040555 115653 066377 073462 015543 036022
+117777720 153645 060303 111024 131623 004220 031760 050730 054416
+117777740 167413 041572 025415 076445 051225 110706 063351 000171
+117777760 150647 054102 023062 154551 150411 150441 104352 047464
+debian@debian:/tmp/tmp.ONiqKNOJGq$ vim code.c
+debian@debian:/tmp/tmp.ONiqKNOJGq$ cat code.c
+#include <stdio.h>
+
+#define N 20
+#define MESSAGE "This is the message"
+#define MYPRINT printf(MESSAGE)
+
+int main() {
+for (int i = 0; i < N; i++) {
+MYPRINT;
+}
+return 0;
+}
+debian@debian:/tmp/tmp.ONiqKNOJGq$ indent code.c
+debian@debian:/tmp/tmp.ONiqKNOJGq$ cat code.c
+#include <stdio.h>
+
+#define N 20
+#define MESSAGE "This is the message"
+#define MYPRINT printf(MESSAGE)
+
+int
+main ()
+{
+  for (int i = 0; i < N; i++)
+    {
+      MYPRINT;
+    }
+  return 0;
+}
+debian@debian:/tmp/tmp.ONiqKNOJGq$ vim code.c
+debian@debian:/tmp/tmp.ONiqKNOJGq$ nroff code.c
+// #include <stdio.h>
+
+#define N 20
+#define MESSAGE "This is the message"
+#define MYPRINT printf(MESSAGE)
+
+int
+main ()
+{
+  for (int i = 0; i < N; i++)
+    {
+      MYPRINT;
+    }
+  return 0;
+}
+debian@debian:/tmp/tmp.ONiqKNOJGq$ cpp code.c
+# 1 "code.c"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "code.c"
+
+
+
+
+
+
+int
+main ()
+{
+  for (int i = 0; i < 20; i++)
+    {
+      printf("This is the message");
+    }
+  return 0;
+}
+debian@debian:/tmp/tmp.ONiqKNOJGq$ sed 's/This/That/' code.c
+// #include <stdio.h>
+
+#define N 20
+#define MESSAGE "That is the message"
+#define MYPRINT printf(MESSAGE)
+
+int
+main ()
+{
+  for (int i = 0; i < N; i++)
+    {
+      MYPRINT;
+    }
+  return 0;
+}
+debian@debian:/tmp/tmp.ONiqKNOJGq$ sed -n 's/This/That/p' code.c
+#define MESSAGE "That is the message"
+debian@debian:/tmp/tmp.ONiqKNOJGq$  find . -iname "*.txt" | xargs grep file
+file1.txt:you can also write into a file from tee directly
+file2.txt:you can also write into a file from tee directly
+file3.txt:this time we edit file using ed command
+file3.txt:to save put a f <filename>
+debian@debian:/tmp/tmp.ONiqKNOJGq$ vim names1.txt
+debian@debian:/tmp/tmp.ONiqKNOJGq$ vim names2.txt
+debian@debian:/tmp/tmp.ONiqKNOJGq$ sort -o names1.txt{,} && sort -o names2.txt{,}
+debian@debian:/tmp/tmp.ONiqKNOJGq$ comm names1.txt names2.txt
+		Aaron
+	Alfred
+		Brian
+Brittany
+		Candice
+		Clara
+		Dennis
+	Max
+debian@debian:/tmp/tmp.ONiqKNOJGq$ sum random_data 
+57705 20480
+debian@debian:/tmp/tmp.ONiqKNOJGq$ md5sum random_data 
+af596da0eab7bdb035bc013186a9adce  random_data
+debian@debian:/tmp/tmp.ONiqKNOJGq$ rm random_numbers.txt 
+debian@debian:/tmp/tmp.ONiqKNOJGq$ shuf -i 0-20 -n 100 -r > random_numbers.txt
+debian@debian:/tmp/tmp.ONiqKNOJGq$ uniq -c random_numbers.txt 
+      4 0
+      5 1
+      5 10
+      4 11
+      9 12
+      6 13
+      8 14
+      4 15
+      4 16
+      6 17
+      3 18
+      3 19
+      6 2
+      4 20
+      5 3
+      2 4
+      5 5
+      4 6
+      3 7
+      4 8
+      6 9
+debian@debian:/tmp/tmp.ONiqKNOJGq$ cat file1.txt
+you can also write into a file from tee directly
+this is easier
+debian@debian:/tmp/tmp.ONiqKNOJGq$ cat file1.txt | tr [a-z] [A-Z]
+YOU CAN ALSO WRITE INTO A FILE FROM TEE DIRECTLY
+THIS IS EASIER
+debian@debian:/tmp/tmp.ONiqKNOJGq$ tar czf archive.tar.gz ./*.txt
+debian@debian:/tmp/tmp.ONiqKNOJGq$ tar cf archive.tar ./*.txt
+debian@debian:/tmp/tmp.ONiqKNOJGq$ bzip2 -zk random_data
+debian@debian:/tmp/tmp.ONiqKNOJGq$ gzip -k random_data
+debian@debian:/tmp/tmp.ONiqKNOJGq$ bzip2 -zk random_numbers.txt 
+debian@debian:/tmp/tmp.ONiqKNOJGq$ gzip -k random_numbers.txt
+debian@debian:/tmp/tmp.ONiqKNOJGq$ ls -lha
+total 62M
+drwx------  2 debian debian 4.0K Feb 19 10:23 .
+drwxrwxrwt 14 root   root   4.0K Feb 19 10:05 ..
+-rw-r--r--  1 debian debian  10K Feb 19 10:16 archive.tar
+-rw-r--r--  1 debian debian  497 Feb 19 10:16 archive.tar.gz
+-rw-r--r--  1 debian debian  192 Feb 19 09:26 code.c
+-rw-r--r--  1 debian debian  170 Feb 19 09:15 code.c~
+-rw-r--r--  1 debian debian  127 Feb 19 08:52 file2.txt
+-rw-r--r--  1 debian debian  131 Feb 19 08:59 file3.txt
+-rw-r--r--  1 debian debian   42 Feb 19 09:56 names1.txt
+-rw-r--r--  1 debian debian   44 Feb 19 09:56 names2.txt
+-rw-r--r--  1 debian debian  20M Feb 19 09:03 random_data
+-rw-r--r--  1 debian debian  21M Feb 19 09:03 random_data.bz2
+-rw-r--r--  1 debian debian  21M Feb 19 09:03 random_data.gz
+-rw-r--r--  1 debian debian 714K Feb 19 10:23 random_numbers.txt
+-rw-r--r--  1 debian debian 214K Feb 19 10:23 random_numbers.txt.bz2
+-rw-r--r--  1 debian debian 264K Feb 19 10:23 random_numbers.txt.gz
+
+
+
+
+
