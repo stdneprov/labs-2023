@@ -1,0 +1,239 @@
+vika@vika-VirtualBox:~$ cd labs-2023/
+vika@vika-VirtualBox:~/labs-2023$ cat > f1.txt
+1234
+vika@vika-VirtualBox:~/labs-2023$ cat > f2.txt
+1235
+vika@vika-VirtualBox:~/labs-2023$ cmp f1.txt f2.txt
+f1.txt f2.txt differ: byte 4, line 1
+vika@vika-VirtualBox:~/labs-2023$ cmp f1.txt f2.txt -l
+4  64  65
+vika@vika-VirtualBox:~/labs-2023$ cmp f1.txt f2.txt -b
+f1.txt f2.txt differ: byte 4, line 1 is  64 4  65 5
+vika@vika-VirtualBox:~/labs-2023$ cat >> f1.txt
+4321
+vika@vika-VirtualBox:~/labs-2023$ cat >> f2.txt
+4321
+5678
+vika@vika-VirtualBox:~/labs-2023$ comm f1.txt f2.txt 
+1234
+	1235
+		4321
+	5678
+vika@vika-VirtualBox:~/labs-2023$ comm -3 f1.txt f2.txt 
+1234
+	1235
+	5678
+vika@vika-VirtualBox:~/labs-2023$ wc f1.txt
+ 2  2 10 f1.txt
+vika@vika-VirtualBox:~/labs-2023$ diff f1.txt f2.txt 
+1c1
+< 1234
+---
+> 1235
+2a3
+> 5678
+vika@vika-VirtualBox:~/labs-2023$ diff f1.txt f2.txt -s
+1c1
+< 1234
+---
+> 1235
+2a3
+> 5678
+vika@vika-VirtualBox:~/labs-2023$ cat f1.txt > f3.txt
+vika@vika-VirtualBox:~/labs-2023$ diff f1.txt f3.txt
+vika@vika-VirtualBox:~/labs-2023$ diff f1.txt f3.txt -s
+Files f1.txt and f3.txt are identical
+vika@vika-VirtualBox:~/labs-2023$ diff f1.txt f2.txt -y
+1234							      |	1235
+4321								4321
+							      >	5678
+vika@vika-VirtualBox:~/labs-2023$ grep "1" f2.txt
+1235
+4321
+vika@vika-VirtualBox:~/labs-2023$ grep -v "1" f2.txt
+5678
+vika@vika-VirtualBox:~/labs-2023$ join f1.txt f2.txt 
+4321
+vika@vika-VirtualBox:~/labs-2023$ join f1.txt f2.txt -a 1
+1234
+4321
+vika@vika-VirtualBox:~/labs-2023$ cat >> f2.txt
+1234
+2345
+vika@vika-VirtualBox:~/labs-2023$ cat f2.txt 
+1235
+4321
+5678
+1234
+2345
+vika@vika-VirtualBox:~/labs-2023$ sort f2.txt
+1234
+1235
+2345
+4321
+5678
+vika@vika-VirtualBox:~/labs-2023$ sort f2.txt -r
+5678
+4321
+2345
+1235
+1234
+vika@vika-VirtualBox:~/labs-2023$ tail f2.txt 
+1235
+4321
+5678
+1234
+2345
+vika@vika-VirtualBox:~/labs-2023$ tail f2.txt -c 2
+5
+vika@vika-VirtualBox:~/labs-2023$ tail f2.txt -c 4
+345
+vika@vika-VirtualBox:~/labs-2023$ tee f4.txt f5.txt
+hello
+hello
+vika@vika-VirtualBox:~/labs-2023$ cat f4.txt
+hello
+vika@vika-VirtualBox:~/labs-2023$ cat f5.txt
+hello
+vika@vika-VirtualBox:~/labs-2023$ tee f3.txt -a
+hello
+hello
+vika@vika-VirtualBox:~/labs-2023$ cat f3.txt
+1234
+4321
+hello
+vika@vika-VirtualBox:~/labs-2023$ tr 'abc' '123'
+a
+1
+b
+2
+d
+d
+vika@vika-VirtualBox:~/labs-2023$ uniq f2.txt 
+1235
+4321
+5678
+1234
+2345
+vika@vika-VirtualBox:~/labs-2023$ cat >> f2.txt
+1235
+vika@vika-VirtualBox:~/labs-2023$ uniq f2.txt 
+1235
+4321
+5678
+1234
+2345
+1235
+vika@vika-VirtualBox:~/labs-2023$ uniq f2.txt -c
+      1 1235
+      1 4321
+      1 5678
+      1 1234
+      1 2345
+      1 1235
+vika@vika-VirtualBox:~/labs-2023$ cat >> f2.txt
+1235
+
+vika@vika-VirtualBox:~/labs-2023$ uniq f2.txt -c
+      1 1235
+      1 4321
+      1 5678
+      1 1234
+      1 2345
+      2 1235
+      1 
+vika@vika-VirtualBox:~/labs-2023$ sum f1.txt
+28858     1 f1.txt
+vika@vika-VirtualBox:~/labs-2023$ head f2.txt -n 3
+1235
+4321
+5678
+vika@vika-VirtualBox:~/labs-2023$ du f1.txt
+4	f1.txt
+vika@vika-VirtualBox:~/labs-2023$ du f1.txt -h
+4,0K	f1.txt
+vika@vika-VirtualBox:~/labs-2023$ du -h
+12K	./.git/logs/refs/remotes/origin
+16K	./.git/logs/refs/remotes
+12K	./.git/logs/refs/heads
+32K	./.git/logs/refs
+40K	./.git/logs
+8,0K	./.git/objects/f3
+8,0K	./.git/objects/bf
+8,0K	./.git/objects/66
+32K	./.git/objects/pack
+8,0K	./.git/objects/b0
+8,0K	./.git/objects/58
+8,0K	./.git/objects/71
+8,0K	./.git/objects/50
+8,0K	./.git/objects/12
+8,0K	./.git/objects/86
+8,0K	./.git/objects/95
+4,0K	./.git/objects/info
+120K	./.git/objects
+8,0K	./.git/info
+64K	./.git/hooks
+4,0K	./.git/refs/tags
+12K	./.git/refs/remotes/origin
+16K	./.git/refs/remotes
+12K	./.git/refs/heads
+36K	./.git/refs
+4,0K	./.git/branches
+300K	./.git
+328K	.
+vika@vika-VirtualBox:~/labs-2023$ file f1.txt
+f1.txt: ASCII text
+vika@vika-VirtualBox:~/labs-2023$ file f1.txt -i
+f1.txt: text/plain; charset=us-ascii
+vika@vika-VirtualBox:~/labs-2023$ xargs du
+f1.txt
+f2.txt
+4	f1.txt
+4	f2.txt
+vika@vika-VirtualBox:~/labs-2023$ touch 1.c
+vika@vika-VirtualBox:~/labs-2023$ cat > 1.c
+#include <stdio.h>
+
+int main()
+{
+printf("Hello, world");
+return 0;
+}
+vika@vika-VirtualBox:~/labs-2023$ indent 1.c
+vika@vika-VirtualBox:~/labs-2023$ cat 1.c
+#include <stdio.h>
+
+int
+main ()
+{
+  printf ("Hello, world");
+  return 0;
+}
+vika@vika-VirtualBox:~/labs-2023$ split f2.txt -l 2
+vika@vika-VirtualBox:~/labs-2023$ ls
+1.c  1.c~  f1.txt  f2.txt  f3.txt  f4.txt  f5.txt  xaa  xab  xac  xad
+vika@vika-VirtualBox:~/labs-2023$ cat f2.txt
+1235
+4321
+5678
+1234
+2345
+1235
+1235
+
+vika@vika-VirtualBox:~/labs-2023$ cat xab
+5678
+1234
+vika@vika-VirtualBox:~/labs-2023$ gzip f1.txt
+vika@vika-VirtualBox:~/labs-2023$ ls
+1.c  1.c~  f1.txt.gz  f2.txt  f3.txt  f4.txt  f5.txt  xaa  xab  xac  xad
+vika@vika-VirtualBox:~/labs-2023$ gzip f1.txt.gz -d
+vika@vika-VirtualBox:~/labs-2023$ ls
+1.c  1.c~  f1.txt  f2.txt  f3.txt  f4.txt  f5.txt  xaa  xab  xac  xad
+
+
+
+
+
+
+
