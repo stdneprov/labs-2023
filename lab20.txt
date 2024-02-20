@@ -1,0 +1,429 @@
+fastix@fastixr:~$ ls
+labs-2023-one-courses-chernikov  quiz-bot
+fastix@fastixr:~$ mkdir lab20
+fastix@fastixr:~$ ls
+lab20  labs-2023-one-courses-chernikov  quiz-bot
+fastix@fastixr:~$ cd lab20
+fastix@fastixr:~/lab20$ ls
+fastix@fastixr:~/lab20$ touch f1.txt f2.txt
+fastix@fastixr:~/lab20$ ls
+f1.txt  f2.txt
+fastix@fastixr:~/lab20$ cat > f2.txt
+Hapishem, dopustim, takoy text...
+^Z
+[1]+  Stopped                 cat > f2.txt
+fastix@fastixr:~/lab20$ cat f2.txt
+Hapishem, dopustim, takoy text...
+fastix@fastixr:~/lab20$ cat > f1.txt
+A tyt napishem' chut'-chut' drugoy text, chtobi on bil drugim po smisly!
+fastix@fastixr:~/lab20$ cat f1.txt
+A tyt napishem' chut'-chut' drugoy text, chtobi on bil drugim po smisly!
+fastix@fastixr:~/lab20$ cmp f1.txt
+cmp: EOF on - which is empty
+fastix@fastixr:~/lab20$ cmp f1.txt f2.txt
+f1.txt f2.txt differ: byte 1, line 1
+fastix@fastixr:~/lab20$ cmp -b f1.txt f2.txt
+f1.txt f2.txt differ: byte 1, line 1 is 101 A 110 H
+fastix@fastixr:~/lab20$ cat > f1.txt
+Privet vsem
+fastix@fastixr:~/lab20$ cat f1.txt
+Privet vsem
+fastix@fastixr:~/lab20$ cat > f2.txt
+Privet vsem, kto tyt s nami!
+fastix@fastixr:~/lab20$ cmp f1.txt f2.txt
+f1.txt f2.txt differ: byte 12, line 1
+fastix@fastixr:~/lab20$ cmp -b f1.txt f2.txt
+f1.txt f2.txt differ: byte 12, line 1 is  12 ^J  54 ,
+fastix@fastixr:~/lab20$ cmp -l f1.txt f2.txt
+12  12  54
+cmp: EOF on f1.txt after byte 12
+fastix@fastixr:~/lab20$ wc f2.txt
+ 1  6 29 f2.txt
+fastix@fastixr:~/lab20$ wc f1.txt
+ 1  2 12 f1.txt
+fastix@fastixr:~/lab20$ wc -w f2.txt
+6 f2.txt
+fastix@fastixr:~/lab20$ wc -w f1.txt
+2 f1.txt
+fastix@fastixr:~/lab20$ wc -cw f1.txt
+ 2 12 f1.txt
+fastix@fastixr:~/lab20$ wc -cw f2.txt
+ 6 29 f2.txt
+fastix@fastixr:~/lab20$ diff f1.txt f2.txt
+1c1
+< Privet vsem
+---
+> Privet vsem, kto tyt s nami!
+fastix@fastixr:~/lab20$ ls
+f1.txt  f2.txt
+fastix@fastixr:~/lab20$ echo -e "Tyt \nMozhno \nSozdat \nInteresnie \nPodpisi \nPo \nStolbcam \nV \nFile" > surprise.txt
+fastix@fastixr:~/lab20$ ls
+f1.txt  f2.txt  surprise.txt
+fastix@fastixr:~/lab20$ cat surprise.txt
+Tyt
+Mozhno
+Sozdat
+Interesnie
+Podpisi
+Po
+Stolbcam
+V
+File
+fastix@fastixr:~/lab20$ cmp surprise.txt
+cmp: EOF on - which is empty
+fastix@fastixr:~/lab20$ cmp surprise.txt f1.txt
+surprise.txt f1.txt differ: byte 1, line 1
+fastix@fastixr:~/lab20$ cmp surprise.txt f2.txt
+surprise.txt f2.txt differ: byte 1, line 1
+fastix@fastixr:~/lab20$ wc surprise.txt
+ 9  9 64 surprise.txt
+fastix@fastixr:~/lab20$ sort surprise.txt
+File
+Interesnie
+Mozhno
+Po
+Podpisi
+Sozdat
+Stolbcam
+Tyt
+V
+fastix@fastixr:~/lab20$ sort -r surprise.txt
+V
+Tyt
+Stolbcam
+Sozdat
+Podpisi
+Po
+Mozhno
+Interesnie
+File
+fastix@fastixr:~/lab20$ tail -n 1 surprise.txt
+File
+fastix@fastixr:~/lab20$ tail -n 2 surprise.txt
+V
+File
+fastix@fastixr:~/lab20$ tail -n 3 surprise.txt
+Stolbcam
+V
+File
+fastix@fastixr:~/lab20$ tail -n -3 surprise.txt
+Stolbcam
+V
+File
+fastix@fastixr:~/lab20$ tail -n 0100 surprise.txt
+Tyt
+Mozhno
+Sozdat
+Interesnie
+Podpisi
+Po
+Stolbcam
+V
+File
+fastix@fastixr:~/lab20$ tail -n 000 surprise.txt
+fastix@fastixr:~/lab20$ tail -c 000 surprise.txt
+fastix@fastixr:~/lab20$ tail -c 100 surprise.txt
+Tyt
+Mozhno
+Sozdat
+Interesnie
+Podpisi
+Po
+Stolbcam
+V
+File
+fastix@fastixr:~/lab20$ tail -c 50 surprise.txt
+ozdat
+Interesnie
+Podpisi
+Po
+Stolbcam
+V
+File
+fastix@fastixr:~/lab20$ touch outputiks.txt
+fastix@fastixr:~/lab20$ ls
+f1.txt  f2.txt  outputiks.txt  surprise.txt
+fastix@fastixr:~/lab20$ ls -la | tee outputiks.txt
+total 20
+drwxr-xr-x 2 fastix fastix 4096 Feb 19 06:12 .
+drwxr-x--- 6 fastix fastix 4096 Feb 19 05:59 ..
+-rw-r--r-- 1 fastix fastix   12 Feb 19 06:03 f1.txt
+-rw-r--r-- 1 fastix fastix   29 Feb 19 06:04 f2.txt
+-rw-r--r-- 1 fastix fastix    0 Feb 19 06:12 outputiks.txt
+-rw-r--r-- 1 fastix fastix   64 Feb 19 06:08 surprise.txt
+fastix@fastixr:~/lab20$ cat outputiks.txt
+total 20
+drwxr-xr-x 2 fastix fastix 4096 Feb 19 06:12 .
+drwxr-x--- 6 fastix fastix 4096 Feb 19 05:59 ..
+-rw-r--r-- 1 fastix fastix   12 Feb 19 06:03 f1.txt
+-rw-r--r-- 1 fastix fastix   29 Feb 19 06:04 f2.txt
+-rw-r--r-- 1 fastix fastix    0 Feb 19 06:12 outputiks.txt
+-rw-r--r-- 1 fastix fastix   64 Feb 19 06:08 surprise.txt
+fastix@fastixr:~/lab20$ cat > outputiks.txt
+
+fastix@fastixr:~/lab20$
+fastix@fastixr:~/lab20$ cat outputiks.txt
+
+fastix@fastixr:~/lab20$ pwd | tee -a outputiks.txt
+/home/fastix/lab20
+fastix@fastixr:~/lab20$ tr R C
+Russia
+Cussia
+fastix@fastixr:~/lab20$ tr R C
+Ruka
+Cuka
+ fastix@fastixr:~/lab20$ tr -d [:lower:]
+Poprobuem Povtorit Pukvu Petu
+P P P P
+maybe ameba avangard
+
+maybe babe labe
+
+fastix@fastixr:~/lab20$ tr -d [:lower:]
+maybe babe labe
+
+fastix@fastixr:~/lab20$ cat f1.txt
+Privet vsem
+fastix@fastixr:~/lab20$ od f1.txt
+0000000 071120 073151 072145 073040 062563 005155
+0000014
+fastix@fastixr:~/lab20$ od -c f1.txt
+0000000   P   r   i   v   e   t       v   s   e   m  \n
+0000014
+fastix@fastixr:~/lab20$ od -b f1.txt
+0000000 120 162 151 166 145 164 040 166 163 145 155 012
+0000014
+fastix@fastixr:~/lab20$ od -i f1.txt
+0000000  1986622032  1981838437   174941555
+0000014
+fastix@fastixr:~/lab20$ sum
+f1.txt         f2.txt         outputiks.txt  surprise.txt
+fastix@fastixr:~/lab20$ sum surprise.txt
+63491     1
+fastix@fastixr:~/lab20$ sum f1.txt
+60275     1
+fastix@fastixr:~/lab20$ cut -c 1 f1.txt
+P
+fastix@fastixr:~/lab20$ cut -c 2 f2.txt
+r
+fastix@fastixr:~/lab20$ cut -c 1-2 f2.txt
+Pr
+fastix@fastixr:~/lab20$ echo "BAN" | cut -b 2
+A
+fastix@fastixr:~/lab20$ echo "BAN" | cut -b 1-2
+BA
+fastix@fastixr:~/lab20$ echo "BAN" | cut -b 1,3
+BN
+fastix@fastixr:~/lab20$ vim f1.txt
+
+[2]+  Stopped                 vim f1.txt
+fastix@fastixr:~/lab20$ vim f1.txt
+
+[3]+  Stopped                 vim f1.txt
+fastix@fastixr:~/lab20$ Psddasdasdasdrivet vsem
+~                       Psddasdasdasdrivet vsem
+~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       ~                                                                                                                       -- INSERT --                                                                                          1,14          All
+Psddasdasdasdrivet: command not found
+-bash: /home/fastix: Is a directory
+fastix@fastixr:~/lab20$ cat f1.txt
+Privet vsem
+fastix@fastixr:~/lab20$ tar cf len.tar f1.txt
+fastix@fastixr:~/lab20$ ls
+f1.txt  f2.txt  len.tar  outputiks.txt  surprise.txt
+fastix@fastixr:~/lab20$ cat len.tar
+f1.txt0000644000175000017500000000001414564542437011514 0ustar  fastixfastixPrivet vsem
+fastix@fastixr:~/lab20$ touch wed.txt
+fastix@fastixr:~/lab20$ cat > wed.txt
+A
+Tyt
+Budut
+Kakie-to
+Dop
+Slova
+Dlya
+2
+txt
+fastix@fastixr:~/lab20$ ls
+f1.txt  f2.txt  len.tar  outputiks.txt  surprise.txt  wed.txt
+fastix@fastixr:~/lab20$ paste surprise.txt wed.txt > final.txt
+fastix@fastixr:~/lab20$ cat final.txt
+Tyt     A
+Mozhno  Tyt
+Sozdat  Budut
+Interesnie      Kakie-to
+Podpisi         Dop
+Po      Slova
+Stolbcam        Dlya
+V       2
+File    txt
+fastix@fastixr:~/lab20$ head -1 final.txt
+Tyt     A
+fastix@fastixr:~/lab20$ head 2 final.txt
+head: cannot open '2' for reading: No such file or directory
+==> final.txt <==
+Tyt     A
+Mozhno  Tyt
+Sozdat  Budut
+Interesnie      Kakie-to
+Podpisi         Dop
+Po      Slova
+Stolbcam        Dlya
+V       2
+File    txt
+fastix@fastixr:~/lab20$ head -2 final.txt
+Tyt     A
+Mozhno  Tyt
+fastix@fastixr:~/lab20$ mktemp
+/tmp/tmp.jJDUkP8XQN
+fastix@fastixr:~/lab20$ mktemp -d
+/tmp/tmp.FGARUJchPx
+fastix@fastixr:~/lab20$ ls -al /tmp/tmp.F*
+total 8
+drwx------ 2 fastix fastix 4096 Feb 19 06:26 .
+drwxrwxrwt 7 root   root   4096 Feb 19 06:26 ..
+fastix@fastixr:~/lab20$ ls -al /tmp/tmp.*
+-rw------- 1 fastix fastix    0 Feb 19 06:26 /tmp/tmp.jJDUkP8XQN
+
+/tmp/tmp.FGARUJchPx:
+total 8
+drwx------ 2 fastix fastix 4096 Feb 19 06:26 .
+drwxrwxrwt 7 root   root   4096 Feb 19 06:26 ..
+fastix@fastixr:~/lab20$ split final.txt
+fastix@fastixr:~/lab20$ cat final.txt
+Tyt     A
+Mozhno  Tyt
+Sozdat  Budut
+Interesnie      Kakie-to
+Podpisi         Dop
+Po      Slova
+Stolbcam        Dlya
+V       2
+File    txt
+fastix@fastixr:~/lab20$ ls
+f1.txt  f2.txt  final.txt  len.tar  outputiks.txt  surprise.txt  wed.txt  xaa
+fastix@fastixr:~/lab20$ cat xaa
+Tyt     A
+Mozhno  Tyt
+Sozdat  Budut
+Interesnie      Kakie-to
+Podpisi         Dop
+Po      Slova
+Stolbcam        Dlya
+V       2
+File    txt
+fastix@fastixr:~/lab20$ split -l 2 surprise.txt
+fastix@fastixr:~/lab20$ ls
+f1.txt  f2.txt  final.txt  len.tar  outputiks.txt  surprise.txt  wed.txt  xaa  xab  xac  xad  xae
+fastix@fastixr:~/lab20$ cat xab
+Sozdat
+Interesnie
+fastix@fastixr:~/lab20$ cat xac
+Podpisi
+Po
+fastix@fastixr:~/lab20$ cat xad
+Stolbcam
+V
+fastix@fastixr:~/lab20$ cat xae
+File
+fastix@fastixr:~/lab20$ file surprise.txt
+surprise.txt: ASCII text
+fastix@fastixr:~/lab20$ sudo df
+[sudo] password for fastix:
+Filesystem      1K-blocks     Used  Available Use% Mounted on
+none              3997856        4    3997852   1% /mnt/wsl
+none            125829116 69437356   56391760  56% /usr/lib/wsl/drivers
+/dev/sdc       1055762868  1703820 1000355576   1% /
+none              3997856       84    3997772   1% /mnt/wslg
+none              3997856        0    3997856   0% /usr/lib/wsl/lib
+rootfs            3994560     2056    3992504   1% /init
+none              3997856      908    3996948   1% /run
+none              3997856        0    3997856   0% /run/lock
+none              3997856        0    3997856   0% /run/shm
+tmpfs                4096        0       4096   0% /sys/fs/cgroup
+none              3997856       76    3997780   1% /mnt/wslg/versions.txt
+none              3997856       76    3997780   1% /mnt/wslg/doc
+drvfs           125829116 69437356   56391760  56% /mnt/c
+drvfs           357803004 14989828  342813176   5% /mnt/d
+snapfuse              128      128          0 100% /snap/bare/5
+snapfuse            75904    75904          0 100% /snap/core22/1033
+snapfuse            75776    75776          0 100% /snap/core22/864
+snapfuse            93952    93952          0 100% /snap/gtk-common-themes/1535
+snapfuse            41856    41856          0 100% /snap/snapd/20290
+snapfuse            41472    41472          0 100% /snap/snapd/20671
+snapfuse           134272   134272          0 100% /snap/ubuntu-desktop-installer/1278
+snapfuse           134144   134144          0 100% /snap/ubuntu-desktop-installer/1284
+fastix@fastixr:~/lab20$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+none            3.9G  4.0K  3.9G   1% /mnt/wsl
+none            120G   67G   54G  56% /usr/lib/wsl/drivers
+/dev/sdc       1007G  1.7G  955G   1% /
+none            3.9G   84K  3.9G   1% /mnt/wslg
+none            3.9G     0  3.9G   0% /usr/lib/wsl/lib
+rootfs          3.9G  2.1M  3.9G   1% /init
+none            3.9G  908K  3.9G   1% /run
+none            3.9G     0  3.9G   0% /run/lock
+none            3.9G     0  3.9G   0% /run/shm
+tmpfs           4.0M     0  4.0M   0% /sys/fs/cgroup
+none            3.9G   76K  3.9G   1% /mnt/wslg/versions.txt
+none            3.9G   76K  3.9G   1% /mnt/wslg/doc
+drvfs           120G   67G   54G  56% /mnt/c
+drvfs           342G   15G  327G   5% /mnt/d
+snapfuse        128K  128K     0 100% /snap/bare/5
+snapfuse         75M   75M     0 100% /snap/core22/1033
+snapfuse         74M   74M     0 100% /snap/core22/864
+snapfuse         92M   92M     0 100% /snap/gtk-common-themes/1535
+snapfuse         41M   41M     0 100% /snap/snapd/20290
+snapfuse         41M   41M     0 100% /snap/snapd/20671
+snapfuse        132M  132M     0 100% /snap/ubuntu-desktop-installer/1278
+snapfuse        131M  131M     0 100% /snap/ubuntu-desktop-installer/1284
+fastix@fastixr:~/lab20$ du ~/lab20
+84      /home/fastix/lab20
+fastix@fastixr:~/lab20$ du -a ~/lab20
+4       /home/fastix/lab20/final.txt
+4       /home/fastix/lab20/xac
+12      /home/fastix/lab20/len.tar
+4       /home/fastix/lab20/wed.txt
+4       /home/fastix/lab20/xaa
+4       /home/fastix/lab20/xad
+4       /home/fastix/lab20/xae
+12      /home/fastix/lab20/.f1.txt.swo
+12      /home/fastix/lab20/.f1.txt.swp
+4       /home/fastix/lab20/f1.txt
+4       /home/fastix/lab20/xab
+4       /home/fastix/lab20/outputiks.txt
+4       /home/fastix/lab20/f2.txt
+4       /home/fastix/lab20/surprise.txt
+84      /home/fastix/lab20
+fastix@fastixr:~/lab20$ ls | xargs -t echo
+echo f1.txt f2.txt final.txt len.tar outputiks.txt surprise.txt wed.txt xaa xab xac xad xae
+f1.txt f2.txt final.txt len.tar outputiks.txt surprise.txt wed.txt xaa xab xac xad xae
+fastix@fastixr:~/lab20$ ls | xargs -t
+echo f1.txt f2.txt final.txt len.tar outputiks.txt surprise.txt wed.txt xaa xab xac xad xae
+f1.txt f2.txt final.txt len.tar outputiks.txt surprise.txt wed.txt xaa xab xac xad xae
+fastix@fastixr:~/lab20$ ls | xargs -t -L1 echo
+echo f1.txt
+f1.txt
+echo f2.txt
+f2.txt
+echo final.txt
+final.txt
+echo len.tar
+len.tar
+echo outputiks.txt
+outputiks.txt
+echo surprise.txt
+surprise.txt
+echo wed.txt
+wed.txt
+echo xaa
+xaa
+echo xab
+xab
+echo xac
+xac
+echo xad
+xad
+echo xae
+xae
+fastix@fastixr:~/lab20$ ^C
+fastix@fastixr:~/lab20$
