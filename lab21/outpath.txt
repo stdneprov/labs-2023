@@ -1,0 +1,6 @@
+./test/test.txt
+./test/secrets.txt
+./test/test2.txt
+./test/order/pupa.txt
+./test/Test2.txt
+
