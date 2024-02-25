@@ -1,0 +1,20 @@
+#!/bin/bash
+
+
+echo "Введите суффикс:"
+read suffix
+
+files=$(ls *$suffix)
+
+for file in $files; do
+
+  file_name=$(basename $file $suffix)
+  
+  other_files=$(ls $file_name*)
+  
+  if [ ${#other_files} -gt ${#file} ]
+  then
+    rm $file
+    echo "Deleted $file"
+  fi
+done
