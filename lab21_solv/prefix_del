@@ -1,0 +1,28 @@
+prefix="$1"
+min_length="$2"
+max_length="$3"
+
+prefix=$1
+min_length=$2
+max_length=$3
+
+if [ -z "$prefix" ] || [ -z "$min_length" ] || [ -z "$max_length" ]; then
+  echo "Ошибка: Не все переменные установлены"
+  exit 1
+fi
+
+files=$(ls "${prefix}"*)
+
+if [ -z "$files" ]; then
+    echo "Файлы с префиксом '$prefix' не найдены."
+    exit 1
+fi
+
+for file in $files; do
+    filename=$(basename "$file")
+    length=$(cat "$filename" | wc -c)
+    if [ "$length" -ge "$min_length" ] && [ "$length" -le "$max_length" ]; then
+        echo "Удаляется файл: $file"
+        rm "$file"
+    fi
+done
