@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 
 //Структура, представляющая один узел бинарного дерева
@@ -82,21 +83,59 @@ int IsLinear(Tree* root) {
     return 1;
 }
 
-int main() {
+void Hello() {
+    printf("Это меню управления программой\n");
+    printf("Если хочешь добавить значение - введи push и в следующей строке значение\n");
+    printf("Если хочешь проверить линейность - введи linear\n");
+    printf("Если хочешь посмотреть дерево - введи print\n");
+    printf("Если хочешь выйти - введи exit\n");
+    printf("В случае неверной команды ничего не произойдет\n");
+}
+//Меню управления
+void Menu() {
+    Hello();
     Tree *BinaryTree = NULL;
-    Push(&BinaryTree, 4);
-    // Push(&binaryTree, 3);
-    Push(&BinaryTree, 7);
-    // Push(&binaryTree, 4);
-    Push(&BinaryTree, 5);
-    Push(&BinaryTree, 6);
-    // Push(&BinaryTree, 1);
-    PrintInDepthRecursively(BinaryTree);
-    if (IsLinear(BinaryTree)) {
-        printf("Двоичное дерево является линейным списком");
-    } else {
-        printf("Двоичное дерево не является линейным списком");
+    char inputUser[10] = "";
+    int haveNode = 0;
+
+    while(strcmp(inputUser, "exit") != 0) {
+        char inputUser[10] = "";
+        fgets(inputUser, sizeof(char) * 10, stdin);
+        fflush(stdin);
+        if (strcmp(inputUser, "print\n") == 0) {
+            if (haveNode == 0) {
+                printf("Дерево не задано\n");
+            } else {
+                printf("Бинарное дерево\n");
+                PrintInDepthRecursively(BinaryTree);
+                printf("\n");
+            }
+            
+        } else if (strcmp(inputUser, "linear\n") == 0){
+            if (haveNode == 0) {
+                printf("Дерево не задано\n");
+            } else {
+                if (IsLinear(BinaryTree)) {
+                    printf("Двоичное дерево является линейным списком\n");
+                } else {
+                    printf("Двоичное дерево не является линейным списком\n");
+                }
+            }
+        } else if (strcmp(inputUser, "push\n") == 0) {
+            printf("Введите значение элемента: ");
+            int number = 0;
+            scanf("%d", &number);
+            Push(&BinaryTree, number);
+            haveNode = 1;
+            printf("Элемент добавлен\n");
+        } else if (strcmp(inputUser, "exit\n") == 0) {
+            break;
+        }
     }
+}
+
+int main() {
+    Menu();
     return 0;
 
 }
