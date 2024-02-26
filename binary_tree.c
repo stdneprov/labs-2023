@@ -91,12 +91,57 @@ void Hello() {
     printf("Если хочешь выйти - введи exit\n");
     printf("В случае неверной команды ничего не произойдет\n");
 }
+
+int haveNode = 0;
+struct BinaryTree* deleteNode(Tree* root, int key) {
+    if (root == NULL) {
+        printf("Дерево не задано");
+        haveNode = 0;
+        return root;
+    }
+
+    if (key < root->data) {
+        root->left = deleteNode(root->left, key);
+    } else if (key > root->data) {
+        root->right = deleteNode(root->right, key);
+    } else {
+        if (root->left == NULL) {
+            struct BinaryTree* temp = root->right;
+            free(root);
+            
+            return temp;
+        } else if (root->right == NULL) {
+            struct BinaryTree* temp = root->left;
+            free(root);
+            
+            return temp;
+        }
+
+        struct BinaryTree* temp = root->right;
+        while (temp->left != NULL) {
+            temp = temp->left;
+        }
+
+        root->data = temp->data;
+        root->right = deleteNode(root->right, temp->data);
+    }
+    
+    return root;
+}
+
+int hasElements(Tree* root) {
+    if(root == NULL) {
+        return 0;
+    } else {
+        return 1;
+    }
+}
 //Меню управления
 void Menu() {
     Hello();
     Tree *BinaryTree = NULL;
     char inputUser[10] = "";
-    int haveNode = 0;
+    
 
     while(strcmp(inputUser, "exit") != 0) {
         char inputUser[10] = "";
@@ -130,6 +175,21 @@ void Menu() {
             printf("Элемент добавлен\n");
         } else if (strcmp(inputUser, "exit\n") == 0) {
             break;
+        } else if (strcmp(inputUser, "delete\n") == 0) {
+            if (haveNode == 0) {
+                printf("Дерево не задано\n");
+            } else {
+                printf("Введите значение элемента: ");
+                int number = 0;
+                scanf("%d", &number);
+                BinaryTree = deleteNode(BinaryTree, number);
+                printf("Элемент удален\n");
+                if (hasElements(BinaryTree) == 0) {
+                    haveNode = 0;
+                }
+            }
+            
+            
         }
     }
 }
