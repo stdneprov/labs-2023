@@ -1,7 +1,12 @@
 #!/bin/bash
 transcode()
 {
-    dir=$(pwd)
+    if [ $# -eq 0 ]; 
+    then
+	    dir=$(pwd)
+    else
+        dir=$1
+    fi
     for file in "$dir"/* 
     do
         echo $file
@@ -16,4 +21,10 @@ transcode()
         fi
     done
 }
-transcode
+
+if [[ $1 == "?" ]]; then
+    echo -e "Hello! This program goes through the subdirectories recursively and changes the encoding from US-ASCII to UTF-16. 
+    You can specify the directory in which you want to recode the files as a parameter, otherwise the script will start from the directory in which it is located.\n"
+else
+    transcode
+fi
