@@ -1,0 +1,287 @@
+linuxuser@win10:~$ ls
+Desktop Documents Downloads Music Pictures Public Templates Videos
+linuxuser@win10:~$ cd Desktop
+linuxuser@win10:~/Desktop$ ls
+linuxuser@win10:~/Desktop$ mkdir dir1
+linuxuser@win10:~/Desktop$ ls
+dir1
+linuxuser@win10:~/Desktop$ touch f1.txt
+linuxuser@win10:~/Desktop$ cat f1.txt
+linuxuser@win10:~/Desktop$ cat> f1.txt
+hey
+^Z
+[1]+ Stopped cat > f1.txt
+linuxuser@win10:~/Desktop$ cat f1.txt
+hey
+linuxuser@win10:~/Desktop$ cat » f1.txt
+there
+^Z
+[2]+ Stopped cat » f1.txt
+linuxuser@win10:~/Desktop$ cat f1.txt
+hey
+there
+linuxuser@win10:~/Desktop$ cat>f1.txt
+hello
+^Z
+[3]+ Stopped cat > f1.txt
+linuxuser@win10:~/Desktop$ cat f1.txt
+hello
+linuxuser@win10:~/Desktop$ cd dir1
+linuxuser@win10:~/Desktop/dir1$ pwd
+/home/linuxuser/Desktop/dir1
+linuxuser@win10:~/Desktop/dir1$ cd .
+linuxuser@win10:~/Desktop/dir1$ ls
+linuxuser@win10:~/Desktop/dir1$ cd ..
+linuxuser@win10:~/Desktop$ ls
+dir1 f1.txt
+linuxuser@win10:~/Desktop$ ls -a
+. .. dir1 f1.txt
+linuxuser@win10:~/Desktop$ ls -l
+total 8
+drwxr-xr-x 2 linuxuser sudo 4096 сен 2 20:38 dir1
+-rw-r--r— 1 linuxuser sudo 6 сен 2 20:40 f1.txt
+linuxuser@win10:~/Desktop$ ls -ls
+total 8
+4 drwxr-xr-x 2 linuxuser sudo 4096 сен 2 20:38 dir1
+4 -rw-r--r— 1 linuxuser sudo 6 сен 2 20:40 f1.txt
+linuxuser@win10:~/Desktop$ ls -al
+total 16
+drwxr-xr-x 3 linuxuser sudo 4096 сен 2 20:39 .
+drwxr-xr-x 16 linuxuser sudo 4096 сен 2 20:02 ..
+drwxr-xr-x 2 linuxuser sudo 4096 сен 2 20:38 dir1
+-rw-r--r— 1 linuxuser sudo 6 сен 2 20:40 f1.txt
+linuxuser@win10:~/Desktop$ who
+linuxuser tty7 2023-09-02 19:40 (:0)
+linuxuser@win10:~/Desktop$ whoami
+linuxuser
+linuxuser@win10:~/Desktop$ mkdir dir2
+linuxuser@win10:~/Desktop$ touch f2.txt
+linuxuser@win10:~/Desktop$ cat > f2.txt
+this is new file!
+^Z
+[4]+ Stopped cat > f2.txt
+linuxuser@win10:~/Desktop$ ls
+dir1 dir2 f1.txt f2.txt
+linuxuser@win10:~/Desktop$ mv dir2 dir1
+linuxuser@win10:~/Desktop$ ls
+dir1 f1.txt f2.txt
+linuxuser@win10:~/Desktop$ cd dir1
+linuxuser@win10:~/Desktop/dir1$ ls
+dir2
+linuxuser@win10:~/Desktop/dir1$ cd ..
+linuxuser@win10:~/Desktop$ mv f2.txt dir1
+linuxuser@win10:~/Desktop$ ls
+dir1 f1.txt
+linuxuser@win10:~/Desktop$ cd dir1
+linuxuser@win10:~/Desktop/dir1$ ls
+dir2 f2.txt
+linuxuser@win10:~/Desktop/dir1$ cp f2.txt dir2
+linuxuser@win10:~/Desktop/dir1$ ls
+dir2 f2.txt
+linuxuser@win10:~/Desktop/dir1$ cd dir2
+linuxuser@win10:~/Desktop/dir1/dir2$ ls
+f2.txt
+linuxuser@win10:~/Desktop/dir1/dir2$ cd ..
+linuxuser@win10:~/Desktop/dir1$ mkdir dir3
+linuxuser@win10:~/Desktop/dir1$ ls
+dir2 dir3 f2.txt
+linuxuser@win10:~/Desktop/dir1$ cp -r dir3 dir2
+linuxuser@win10:~/Desktop/dir1$ ls
+dir2 dir3 f2.txt
+linuxuser@win10:~/Desktop/dir1$ cd dir2
+linuxuser@win10:~/Desktop/dir1/dir2$ ls
+dir3 f2.txt
+linuxuser@win10:~/Desktop/dir1/dir2$
+linuxuser@win10:~/Desktop/dir1/dir2$ mkdir dir4
+linuxuser@win10:~/Desktop/dir1/dir2$ cp -rf f2.txt dir4 dir3
+linuxuser@win10:~/Desktop/dir1/dir2$ ls
+dir3 dir4 f2.txt
+linuxuser@win10:~/Desktop/dir1/dir2$ cd dir3
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ ls
+dir4 f2.txt
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ mv f2.txt dir4
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ ls
+dir4
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ cd dir4
+linuxuser@win10:~/Desktop/dir1/dir2/dir3/dir4$ ls
+f2.txt
+linuxuser@win10:~/Desktop/dir1/dir2/dir3/dir4$ ps
+PID TTY TIME CMD
+4186 pts/0 00:00:00 bash
+4213 pts/0 00:00:00 cat
+4215 pts/0 00:00:00 cat
+4217 pts/0 00:00:00 cat
+4295 pts/0 00:00:00 cat
+4378 pts/0 00:00:00 ps
+linuxuser@win10:~/Desktop/dir1/dir2/dir3/dir4$ rm -rf f2.txt
+linuxuser@win10:~/Desktop/dir1/dir2/dir3/dir4$ ls
+linuxuser@win10:~/Desktop/dir1/dir2/dir3/dir4$ cd ..
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ ls
+dir4
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ cat > f3.txt
+This
+File
+Need
+For
+Lab
+^Z
+[5]+ Stopped cat > f3.txt
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ cat > f4.txt
+This
+Second
+File
+^Z
+[7]+ Stopped cat > f4.txt
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ ls
+dir4 f3.txt f4.txt
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ grep "l" f3.txt f4.txt
+f3.txt:File
+f4.txt:File
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ ls | sort -r
+f4.txt
+f3.txt
+dir4
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ ls | sort
+dir4
+f3.txt
+f4.txt
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ cat f3.txt > f4.txt
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ cat f4.txt
+This
+File
+Need
+For
+Lab
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ cat f3.txt
+This
+File
+Need
+For
+Lab
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ cat > f3.txt < f3.txt
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ cat f3.txt
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ cat f4.txt
+This
+File
+Need
+For
+Lab
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ cat > f3.txt
+aoaooo
+^Z
+[9]+ Stopped cat > f3.txt
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ cat f3.txt» f4.txt
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ cat f3.txt
+aoaooo
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ cat f4.txt
+This
+File
+Need
+For
+Lab
+aoaooo
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ mv *.txt dir4
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ ls
+dir4
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ cd dir4
+linuxuser@win10:~/Desktop/dir1/dir2/dir3/dir4$ ls
+f3.txt f4.txt
+linuxuser@win10:~/Desktop/dir1/dir2/dir3/dir4$ mkdir dir5
+linuxuser@win10:~/Desktop/dir1/dir2/dir3/dir4$ ls
+dir5 f3.txt f4.txt
+linuxuser@win10:~/Desktop/dir1/dir2/dir3/dir4$ mv f3.txt ./Desktop
+linuxuser@win10:~/Desktop/dir1/dir2/dir3/dir4$ cd ..
+linuxuser@win10:~/Desktop/dir1/dir2/dir3$ cd ..
+linuxuser@win10:~/Desktop/dir1/dir2$ cd ..
+linuxuser@win10:~/Desktop/dir1$ cd ..
+linuxuser@win10:~/Desktop$ ls
+dir1 f1.txt
+linuxuser@win10:~/Desktop$ cat > f2.txt
+yellow
+^Z
+[10]+ Stopped cat > f2.txt
+linuxuser@win10:~/Desktop$ cat > f3.txt
+bellow
+^Z
+[11]+ Stopped cat > f3.txt
+linuxuser@win10:~/Desktop$ cat > f4.txt
+marsh-mellow
+^Z
+[12]+ Stopped cat > f4.txt
+linuxuser@win10:~/Desktop$ ls
+dir1 f1.txt f2.txt f3.txt f4.txt
+linuxuser@win10:~/Desktop$ mv f4.txt dir1
+linuxuser@win10:~/Desktop$ grep -r "ell" dir1 f1.txt f2.txt f3.txt
+dir1/f4.txt:marsh-mellow
+f1.txt:hello
+f2.txt:yellow
+f3.txt:bellow
+linuxuser@win10:~/Desktop$ grep -lr "ell" dir1 f1.txt f2.txt f3.txt
+dir1/f4.txt
+f1.txt
+f2.txt
+f3.txt
+linuxuser@win10:~/Desktop$ grep -c "ell" dir1 f1.txt f2.txt f3.txt
+grep: dir1: Is a directory
+dir1:0
+f1.txt:1
+f2.txt:1
+f3.txt:1
+linuxuser@win10:~/Desktop$ cat > f4.txt
+ell eyu123
+^Z
+[13]+ Stopped cat > f4.txt
+linuxuser@win10:~/Desktop$ cat > f5.txt
+ell eyu234
+^Z
+[14]+ Stopped cat > f5.txt
+linuxuser@win10:~/Desktop$ cat > f6.txt
+ell, eyu12
+^Z
+[15]+ Stopped cat > f6.txt
+linuxuser@win10:~/Desktop$ grep -rw "ell" dir1 f4.txt f5.txt f6.txt
+f4.txt:ell eyu123
+f5.txt:ell eyu234
+f6.txt:ell, eyu12
+linuxuser@win10:~/Desktop$ cat > f7.txt
+ello
+hello
+a
+mello
+^Z
+[16]+ Stopped cat > f7.txt
+linuxuser@win10:~/Desktop$ grep -v "ell" f7.txt
+a
+linuxuser@win10:~/Desktop$ cat > f10.txt
+test123
+^Z
+[17]+ Stopped cat > f10.txt
+linuxuser@win10:~/Desktop$ cat > f11.txt
+test228
+^Z
+[18]+ Stopped cat > f11.txt
+linuxuser@win10:~/Desktop$ cat > f12.txt
+test966
+^Z
+[19]+ Stopped cat > f12.txt
+linuxuser@win10:~/Desktop$ cat > f10.txt
+test123
+^Z
+[17]+ Stopped cat > f10.txt
+linuxuser@win10:~/Desktop$ cat > f11.txt
+test228
+^Z
+[18]+ Stopped cat > f11.txt
+linuxuser@win10:~/Desktop$ cat > f12.txt
+test966
+^Z
+[19]+ Stopped cat > f12.txt
+linuxuser@win10:~/Desktop/dir1$ ls | grep -E "^test[0-9]+" f10.txt f11.txt f12.txt
+f10.txt:test123
+f11.txt:test228
+f12.txt:test966
+linuxuser@win10:~/Desktop/dir1$ cat f10.txt f11.txt f12.txt
+test123
+test228
+test966
