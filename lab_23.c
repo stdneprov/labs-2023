@@ -193,7 +193,7 @@ void Menu() {
     char exitCommand[10] = "exit";
     char command[10] = "";
 
-    while(strcmp(command, exitCommand) != 0) {
+    while(strcmp(command, exitCommand) != 0 && command == EOF) {
         printf("----------------------------------------------------------------------\n");
         printf("$ add value - will add value (instead \"value\" type your number)\n");
         printf("$ show - will show tree\n");
