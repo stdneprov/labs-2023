@@ -15,55 +15,60 @@ Node tree;
 int wasCreated = 0;
 
 //Добавление нового узла
-void FindPosition(Node *node, Node *root, int value) {
-
-    if (root->val == value){
-        // такое значение уже существует, ничего не делаем
-    }
-
-    if (root->val < value){
-        if (root->right != NULL){
-            FindPosition(node, root->right, value);
-        }
-        else{
-            root->right = node;
-        }
-    }
-
-    if (root->val > value){
-        if (root->left != NULL){
-            FindPosition(node, root->left, value);
-        }
-        else{
-            root->left = node;
-        }
-    }
-}
-
-Node AddNode(Node *root, int value){
+Node *CreateNode(int value){
     Node *ptrNode = malloc(sizeof(Node));
     if (ptrNode != NULL) {
         ptrNode->left = NULL;
         ptrNode->right = NULL;
         ptrNode->val = value;
-        FindPosition(ptrNode, root, value);
-        return *ptrNode;
+        return ptrNode;
     } else {
         exit(-1);
     }
 }
+
+void AddNode(Node *root, int value) {
+    while (1) {
+        if (root->val == value){
+            // такое значение уже существует, ничего не делаем
+            break;
+        }
+
+        if (root->val < value) {
+            if (root->right != NULL){
+                root = root->right;
+            }
+            else{
+                root->right = CreateNode(value);
+                break;
+            }
+        }
+
+        if (root->val > value){
+            if (root->left != NULL){
+                root = root->left;
+            }
+            else{
+                root->left = CreateNode(value);
+                break;
+            }
+        }
+
+    }
+}
+
 
 //Вывод дерева
 void PrintNode(Node *root, int indent) {
     if (root == NULL) {
         return;     
     }
+    indent += 1;
+    PrintNode(root->left, indent);     
     for (int i = 0; i < indent; ++i){
         printf(" ");
     }
-    indent += 1;
     printf("%d\n", root->val);  
-    PrintNode(root->left, indent);     
     PrintNode(root->right, indent); 
 }
 
@@ -73,85 +78,96 @@ void PrintTree(Node *root){
 
 //Удаление элемента
 int FindValueForRight(Node *root, Node *parent, int value) {
-    if (root->left != NULL) {
-        FindValueForRight(root->left, root, value);
-    } else {
-        if (parent->right != NULL) {
-            if (parent->right->val == root->val && root->right == NULL) {
-                parent->right = NULL;
-                printf("-The value has been deleted\n");
-                return root->val;
-            } else if (parent->right->val == root->val && root->right != NULL) {
-                parent->right = root->right;
-                printf("-The value has been deleted\n");
-                return root->val;
-            }
-        }
-        if (root->right == NULL) {
-            parent->left = NULL;
+    while (1){
+        if (root->left != NULL) {
+            root = root->left;
         } else {
-            parent->left = root->right;
+            if (parent->right != NULL) {
+                if (parent->right->val == root->val && root->right == NULL) {
+                    parent->right = NULL;
+                    printf("-The value has been deleted\n");
+                    return root->val;
+                } else if (parent->right->val == root->val && root->right != NULL) {
+                    parent->right = root->right;
+                    printf("-The value has been deleted\n");
+                    return root->val;
+                }
+            }
+            if (root->right == NULL) {
+                parent->left = NULL;
+            } else {
+                parent->left = root->right;
+            }
+            printf("-The value has been deleted\n");
+            return root->val;
         }
-        printf("-The value has been deleted\n");
-        return root->val;
+        return 0;
     }
-    return 0;
 }
 
 int FindValueForLeft(Node *root, Node *parent, int value) {
-    if (root->right != NULL) {
-        FindValueForLeft(root->right, root, value);
-    } else {
-        if (parent->left->val == root->val && root->left == NULL) {
-            parent->left = NULL;
-            printf("-The value has been deleted\n");
-            return root->val;
-        } else if (parent->left->val == root->val && root->left != NULL) {
-            parent->left = root->left;
-            printf("-The value has been deleted\n");
-            return root->val;
-        }
-        if (root->left == NULL) {
-            parent->right = NULL;
+    while (1) {
+        if (root->right != NULL) {
+            root = root->right;
         } else {
-            parent->right = root->left;
+            if (parent->left->val == root->val && root->left == NULL) {
+                parent->left = NULL;
+                printf("-The value has been deleted\n");
+                return root->val;
+            } else if (parent->left->val == root->val && root->left != NULL) {
+                parent->left = root->left;
+                printf("-The value has been deleted\n");
+                return root->val;
+            }
+            if (root->left == NULL) {
+                parent->right = NULL;
+            } else {
+                parent->right = root->left;
+            }
+            printf("-The value has been deleted\n");
+            return root->val;
         }
-        printf("-The value has been deleted\n");
-        return root->val;
+        return 0;
     }
-    return 0;
 }
 
 void DeleteNode(Node *root, Node *parent, int value){
-    if (root->val == value){
-        if (root->right == NULL && root->left == NULL) {
-            if (parent->val < value){
-                parent->right = NULL;
-                free(root);
-            } else if (parent->val > value){
-                parent->left = NULL;
-                free(root);
-            } else if (parent->val == root->val) {
-                root->val = 0;
-                wasCreated = 0;
+    while (1) { 
+        if (root->val == value){
+            if (root->right == NULL && root->left == NULL) {
+                if (parent->val < value){
+                    parent->right = NULL;
+                    free(root);
+                } else if (parent->val > value){
+                    parent->left = NULL;
+                    free(root);
+                } else if (parent->val == root->val) {
+                    root->val = 0;
+                    wasCreated = 0;
+                }
+                printf("-Value was deleted\n");
+                break;
+            } else if(root->right != NULL) {
+                root->val = FindValueForRight(root->right, root, value);
+                break;
+            } else if(root->left != NULL) {
+                root->val = FindValueForLeft(root->left, root, value);
+                break;
             }
-            printf("-Value was deleted\n");
-        } else if(root->right != NULL) {
-            root->val = FindValueForRight(root->right, root, value);
-        } else if(root->left != NULL) {
-            root->val = FindValueForLeft(root->left, root, value);
-        }
-    } else if (root->val < value) {
-        if (root->right == NULL) {
-            printf("-There is no such value\n");
-        } else {
-            DeleteNode(root->right, root, value);
-        }
-    } else if (root->val > value) {
-        if (root->left == NULL) {
-            printf("-There is no such value\n");
-        } else {
-            DeleteNode(root->left, root, value);
+        } else if (root->val < value) {
+            if (root->right == NULL) {
+                printf("-There is no such value\n");
+                break;
+            } else {
+                root = root->right;
+            }
+        } else if (root->val > value) {
+            if (root->left == NULL) {
+                printf("-There is no such value\n");
+                break;
+            } else {
+                root = root->left;
+            }
         }
     }
 }
@@ -193,7 +209,7 @@ void Menu() {
     char exitCommand[10] = "exit";
     char command[10] = "";
 
-    while(strcmp(command, exitCommand) != 0 && command == EOF) {
+    while(strcmp(command, exitCommand) != 0) {
         printf("----------------------------------------------------------------------\n");
         printf("$ add value - will add value (instead \"value\" type your number)\n");
         printf("$ show - will show tree\n");
@@ -204,6 +220,9 @@ void Menu() {
 
         char command[10] = "";
         fgets(input, sizeof(char) * 20, stdin);
+        if (feof(stdin)) {
+            break;
+        }
         int num = 0;
 
         for (int i = 0; input[i] != '\n'; ++i) {
