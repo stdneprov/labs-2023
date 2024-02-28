@@ -137,41 +137,114 @@ void Hello() {
 }
 
 int haveNode = 0;
+int errorNode = 0;
+
 struct BinaryTree* deleteNode(Tree* root, int key) {
-    if (root == NULL) {
-        printf("Дерево не задано");
-        haveNode = 0;
+    struct BinaryTree *parent = NULL, *current = root;
+
+    while (current != NULL && current->data != key) {
+        parent = current;
+        if (key < current->data) {
+            current = current->left;
+        } else {
+            current = current->right;
+        }
+    }
+
+    if (current == NULL) {
+        printf("Элемент в дереве не найден.\n");
+        errorNode = 1;
         return root;
     }
 
-    if (key < root->data) {
-        root->left = deleteNode(root->left, key);
-    } else if (key > root->data) {
-        root->right = deleteNode(root->right, key);
+    if (current->left == NULL && current->right == NULL) {
+        if (parent == NULL) {
+            free(current);
+            return NULL;
+        }
+        if (parent->left == current) {
+            parent->left = NULL;
+        } else {
+            parent->right = NULL;
+        }
+        free(current);
+    } else if (current->left == NULL) {
+        if (parent == NULL) {
+            root = current->right;
+            free(current);
+            return root;
+        }
+        if (parent->left == current) {
+            parent->left = current->right;
+        } else {
+            parent->right = current->right;
+        }
+        free(current);
+    } else if (current->right == NULL) {
+        if (parent == NULL) {
+            root = current->left;
+            free(current);
+            return root;
+        }
+        if (parent->left == current) {
+            parent->left = current->left;
+        } else {
+            parent->right = current->left;
+        }
+        free(current);
     } else {
-        if (root->left == NULL) {
-            struct BinaryTree* temp = root->right;
-            free(root);
-            // haveNode = 0;
-            return temp;
-        } else if (root->right == NULL) {
-            struct BinaryTree* temp = root->left;
-            free(root);
-            // haveNode = 0;
-            return temp;
+        struct BinaryTree* successor = current->right;
+        struct BinaryTree* successorParent = current;
+        while (successor->left != NULL) {
+            successorParent = successor;
+            successor = successor->left;
         }
-
-        struct BinaryTree* temp = root->right;
-        while (temp->left != NULL) {
-            temp = temp->left;
+        current->data = successor->data;
+        if (successorParent->left == successor) {
+            successorParent->left = successor->right;
+        } else {
+            successorParent->right = successor->right;
         }
-
-        root->data = temp->data;
-        root->right = deleteNode(root->right, temp->data);
+        free(successor);
     }
-    // haveNode = 0;
+
     return root;
 }
+// struct BinaryTree* deleteNode(Tree* root, int key) {
+//     if (root == NULL) {
+//         printf("Дерево не задано");
+//         haveNode = 0;
+//         return root;
+//     }
+
+//     if (key < root->data) {
+//         root->left = deleteNode(root->left, key);
+//     } else if (key > root->data) {
+//         root->right = deleteNode(root->right, key);
+//     } else {
+//         if (root->left == NULL) {
+//             struct BinaryTree* temp = root->right;
+//             free(root);
+//             // haveNode = 0;
+//             return temp;
+//         } else if (root->right == NULL) {
+//             struct BinaryTree* temp = root->left;
+//             free(root);
+//             // haveNode = 0;
+//             return temp;
+//         }
+
+//         struct BinaryTree* temp = root->right;
+//         while (temp->left != NULL) {
+//             temp = temp->left;
+//         }
+
+//         root->data = temp->data;
+//         root->right = deleteNode(root->right, temp->data);
+//     }
+//     // haveNode = 0;
+//     return root;
+// }
 
 int hasElements(Tree* root) {
     if(root == NULL) {
@@ -229,7 +302,13 @@ void Menu() {
                 int number = 0;
                 scanf("%d", &number);
                 BinaryTree = deleteNode(BinaryTree, number);
-                printf("Элемент удален\n");
+                if (errorNode != 1) {
+                    printf("Элемент удален\n");
+                    
+                } else {
+                    errorNode = 0;
+                }
+                
                 if (hasElements(BinaryTree) == 0) {
                     haveNode = 0;
                 }
