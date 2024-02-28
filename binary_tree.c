@@ -28,28 +28,55 @@ Tree *createdNode(int data) {
 }
 
 //функция, добавляющая элементы в бинарное дерево
-void Push(Tree **treeBinary, int data) {
+void Push(Tree** root, int value) {
+    Tree* newNode = createdNode(value);
+    if (*root == NULL) {
+        *root = newNode;
+        return;
+    }
 
-    Tree *tmp = *treeBinary;
-    //Если бинарное дерево равно NULL
-    if (tmp == NULL) {
-        *treeBinary = createdNode(data);
-    }
-    else if (data < tmp->data) {
-        if (tmp->left == NULL) {
-            tmp->left = createdNode(data);
+    Tree* current = *root;
+    while (1) {
+        if (value < current->data) {
+            if (current->left == NULL) {
+                current->left = newNode;
+                break;
+            } else {
+                current = current->left;
+            }
         } else {
-            Push(&(tmp->left), data);
-        }
-    }
-    else if (data > tmp->data) {
-        if (tmp->right == NULL) {
-            tmp->right = createdNode(data);
-        } else {
-            Push(&(tmp->right), data);
+            if (current->right == NULL) {
+                current->right = newNode;
+                break;
+            } else {
+                current = current->right;
+            }
         }
     }
 }
+
+// void Push(Tree **treeBinary, int data) {
+
+//     Tree *tmp = *treeBinary;
+//     //Если бинарное дерево равно NULL
+//     if (tmp == NULL) {
+//         *treeBinary = createdNode(data);
+//     }
+//     else if (data < tmp->data) {
+//         if (tmp->left == NULL) {
+//             tmp->left = createdNode(data);
+//         } else {
+//             Push(&(tmp->left), data);
+//         }
+//     }
+//     else if (data > tmp->data) {
+//         if (tmp->right == NULL) {
+//             tmp->right = createdNode(data);
+//         } else {
+//             Push(&(tmp->right), data);
+//         }
+//     }
+// }
 
 //Рекурсивный обход дерева в глубину
 void PrintInDepthRecursively(Tree *BinaryTree) {
@@ -67,28 +94,45 @@ void PrintInDepthRecursively(Tree *BinaryTree) {
 }
 
 int IsLinear(Tree* root) {
-    if (root == NULL) {
-        return 1;
-    }
-
-    if (root->left && root->right) {
+    if (root->left != NULL && root-> right != NULL) {
         return 0;
+    } else if (root->right != NULL) {
+        while (root != NULL && root->left == NULL) {
+            root = root->right;
+        }
+    } else {
+        while (root != NULL && root->right == NULL) {
+            root = root->left;
+        }
     }
 
-    if (root->left) {
-        return IsLinear(root->left);
-    } else if (root->right) {
-        return IsLinear(root->right);
-    }
-    return 1;
+    return (root == NULL);
 }
+
+// int IsLinear(Tree* root) {
+//     if (root == NULL) {
+//         return 1;
+//     }
+
+//     if (root->left && root->right) {
+//         return 0;
+//     }
+
+//     if (root->left) {
+//         return IsLinear(root->left);
+//     } else if (root->right) {
+//         return IsLinear(root->right);
+//     }
+//     return 1;
+// }
 
 void Hello() {
     printf("Это меню управления программой\n");
     printf("Если хочешь добавить значение - введи push и в следующей строке значение\n");
     printf("Если хочешь проверить линейность - введи linear\n");
     printf("Если хочешь посмотреть дерево - введи print\n");
-    printf("Если хочешь выйти - введи exit\n");
+    printf("Если хочешь удалить значение - введи delete и в следующей строке значение\n");
+    printf("Если хочешь выйти - введи exit или cntr+D\n");
     printf("В случае неверной команды ничего не произойдет\n");
 }
 
@@ -108,12 +152,12 @@ struct BinaryTree* deleteNode(Tree* root, int key) {
         if (root->left == NULL) {
             struct BinaryTree* temp = root->right;
             free(root);
-            
+            // haveNode = 0;
             return temp;
         } else if (root->right == NULL) {
             struct BinaryTree* temp = root->left;
             free(root);
-            
+            // haveNode = 0;
             return temp;
         }
 
@@ -125,7 +169,7 @@ struct BinaryTree* deleteNode(Tree* root, int key) {
         root->data = temp->data;
         root->right = deleteNode(root->right, temp->data);
     }
-    
+    // haveNode = 0;
     return root;
 }
 
@@ -140,10 +184,11 @@ int hasElements(Tree* root) {
 void Menu() {
     Hello();
     Tree *BinaryTree = NULL;
+    
     char inputUser[10] = "";
     
 
-    while(strcmp(inputUser, "exit") != 0) {
+    while(!feof(stdin)) {
         char inputUser[10] = "";
         fgets(inputUser, sizeof(char) * 10, stdin);
         fflush(stdin);
@@ -173,9 +218,10 @@ void Menu() {
             Push(&BinaryTree, number);
             haveNode = 1;
             printf("Элемент добавлен\n");
-        } else if (strcmp(inputUser, "exit\n") == 0) {
+            continue;
+        } else if ((strcmp(inputUser, "exit\n") == 0)) {
             break;
-        } else if (strcmp(inputUser, "delete\n") == 0) {
+        } else if ((strcmp(inputUser, "delete\n") == 0)) {
             if (haveNode == 0) {
                 printf("Дерево не задано\n");
             } else {
@@ -188,10 +234,9 @@ void Menu() {
                     haveNode = 0;
                 }
             }
-            
-            
         }
     }
+    
 }
 
 int main() {
