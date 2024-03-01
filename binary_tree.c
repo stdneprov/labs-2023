@@ -26,7 +26,7 @@ Tree *createdNode(int data) {
     newNode->right = NULL;
     return newNode;
 }
-
+int elemInTree = 0;
 //функция, добавляющая элементы в бинарное дерево
 void Push(Tree** root, int value) {
     Tree* newNode = createdNode(value);
@@ -44,13 +44,16 @@ void Push(Tree** root, int value) {
             } else {
                 current = current->left;
             }
-        } else {
+        } else if (value > current->data) {
             if (current->right == NULL) {
                 current->right = newNode;
                 break;
             } else {
                 current = current->right;
             }
+        } else {
+            elemInTree = 1;
+            break;
         }
     }
 }
@@ -152,7 +155,7 @@ struct BinaryTree* deleteNode(Tree* root, int key) {
     }
 
     if (current == NULL) {
-        printf("Элемент в дереве не найден.\n");
+        printf("Элемент в дереве не найден\n");
         errorNode = 1;
         return root;
     }
@@ -264,6 +267,9 @@ void Menu() {
     while(!feof(stdin)) {
         char inputUser[10] = "";
         fgets(inputUser, sizeof(char) * 10, stdin);
+        // if (fgets(inputUser, sizeof(char) * 10, stdin) == NULL) {
+        //     break;
+        // }
         fflush(stdin);
         if (strcmp(inputUser, "print\n") == 0) {
             if (haveNode == 0) {
@@ -290,7 +296,14 @@ void Menu() {
             scanf("%d", &number);
             Push(&BinaryTree, number);
             haveNode = 1;
-            printf("Элемент добавлен\n");
+            if (elemInTree == 1) {
+                printf("Элемент уже существует в дереве\n");
+                elemInTree = 0;
+            }
+            else {
+                printf("Элемент добавлен\n");
+            }
+            
             continue;
         } else if ((strcmp(inputUser, "exit\n") == 0)) {
             break;
