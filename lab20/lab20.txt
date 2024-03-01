@@ -1,0 +1,968 @@
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы
+$ mkdir ./files
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы
+$ cd ./files
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ touch f1.txt
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ touch f2.txt
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ ls
+f1.txt  f2.txt
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cat > f1.txt
+london is the capital of great britain
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cat > f2.txt
+london is not the capital of france
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cmp f1.txt f2.txt
+f1.txt f2.txt differ: char 5, line 1
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cmp f1.txt f2.txt -b
+f1.txt f2.txt differ: byte 5, line 1 is 157 o 151 i // тут я опечаталась и исправила, но он не понял
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ pomogite
+bash: pomogite: command not found
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cat > f2.txt
+london is not the capital of france
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cmp f1.txt f2.txt
+f1.txt f2.txt differ: char 11, line 1
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cmp f1.txt f2.txt -b
+f1.txt f2.txt differ: byte 11, line 1 is 164 t 156 n
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cmp f1.txt f2.txt -l
+11 164 156
+12 150 157
+13 145 164
+15 143 164
+16 141 150
+17 160 145
+18 151  40
+19 164 143
+21 154 160
+22  40 151
+23 157 164
+24 146 141
+25  40 154
+26 147  40
+27 162 157
+28 145 146
+29 141  40
+30 164 146
+31  40 162
+32 142 141
+33 162 156
+34 151 143
+35 164 145
+36 141  12
+cmp: EOF on f2.txt after byte 36
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ touch f3.txt
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cat > f3.txt
+Yo, listen up here's a story
+About a little guy
+That lives in a blue world
+And all day and all night
+And everything he sees is just blue
+Like him inside and outside
+Blue his house
+With a blue little window
+And a blue corvette
+And everything is blue for him
+And himself and everybody around
+Cause he ain't got nobody to listen to
+I'm blue
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+I'm blue
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+I have a blue house
+With a blue window
+Blue is the colour of all that I wear
+Blue are the streets
+And all the trees are too
+I have a girlfriend and she is so blue
+Blue are the people here
+That walk around
+Blue like my corvette its in and outside
+Blue are the words I say
+And what I think
+Blue are the feelings
+That live inside me
+I'm blue
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+I'm blue
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+I have a blue house
+With a blue window
+Blue is the colour of all that I wear
+Blue are the streets
+And all the trees are too
+I have a girlfriend and she is so blue
+Blue are the people here
+That walk around
+Blue like my corvette, its in and outside
+Blue are the words I say
+And what I think
+Blue are the feelings
+That live inside me
+I'm blue
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+I'm blue
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ tail f3.txt
+Da ba dee da ba di
+Da ba dee da ba di
+I'm blue
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ tail -12 f3.txt
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+I'm blue
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ head -20 f3.txt
+Yo, listen up here's a story
+About a little guy
+That lives in a blue world
+And all day and all night
+And everything he sees is just blue
+Like him inside and outside
+Blue his house
+With a blue little window
+And a blue corvette
+And everything is blue for him
+And himself and everybody around
+Cause he ain't got nobody to listen to
+I'm blue
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ join f1.txt f2.txt
+london is the capital of great britain is not the capital of france
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ file f1.txt
+f1.txt: ASCII text
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ file f3.txt
+f3.txt: data
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ diff f1.txt f2.txt
+1c1
+< london is the capital of great britain
+---
+> london is not the capital of france
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ diff -brief f1.txt f2.txt
+diff: conflicting output style options
+diff: Try 'diff --help' for more information.
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ diff --brief f1.txt f2.txt
+Files f1.txt and f2.txt differ
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cat > f2.txt
+london is the capital of great britain
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ diff --brief f1.txt f2.txt
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cat > f1.txt
+london
+is
+the
+capital
+of
+great
+britain
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cat > f2.txt
+london
+isn't
+the
+capital
+of
+france
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ comm f1.txt f2.txt
+                london
+is
+        isn't
+                the
+comm: file 1 is not in sorted order
+comm: file 2 is not in sorted order
+                capital
+                of
+        france
+great
+britain
+comm: input is not in sorted order
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ comm -3 f1.txt f2.txt
+is
+        isn't
+comm: file 1 is not in sorted order
+comm: file 2 is not in sorted order
+        france
+great
+britain
+comm: input is not in sorted order
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ wc f3.txt
+  86  471 1843 f3.txt
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ wc f1.txt
+ 7  7 39 f1.txt
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ wc -m f3.txt
+1843 f3.txt
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ wc -L f3.txt
+41 f3.txt
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ sort f1.txt
+britain
+capital
+great
+is
+london
+of
+the
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ touch f4.txt
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ ls
+f1.txt  f2.txt  f3.txt  f4.txt
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cat > f4.txt
+8
+4
+2
+0
+1
+5
+9
+3
+7
+6
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ sort -bn f4.txt
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cat > f4.txt
+8
+4 2
+0
+1 5 9
+3 
+7
+6
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cat f4.txt
+8
+4 2
+0
+1 5 9
+3 7
+6
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ sort -bn f4.txt
+0
+1 5 9
+3 7
+4 2
+6
+8
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cat > f4.txt
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ sort -r f4.txt
+9
+8
+7
+6
+5
+4
+3
+2
+1
+0
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ ls | grep -E "^f[1-9]+"
+f1.txt
+f2.txt
+f3.txt
+f4.txt
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ grep -c "blue" f3.txt
+17
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ grep -c "da ba di" f3.txt
+42
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cat > f1.txt
+london is the capital of great britain
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cat > f2.txt
+london is not the capital of france
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cd ..
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы
+$ grep -rw "london" ./files
+./files/f1.txt:london is the capital of great britain
+./files/f2.txt:london is not the capital of france
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы
+$ cd ./files
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ sed -n '13p' f3.txt
+I'm blue
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ sed -n '13,15p' f3.txt
+I'm blue
+Da ba dee da ba di
+Da ba dee da ba di
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ sed 's/blue/green/g' f3.txt
+Yo, listen up here's a story
+About a little guy
+That lives in a green world
+And all day and all night
+And everything he sees is just green
+Like him inside and outside
+Blue his house
+With a green little window
+And a green corvette
+And everything is green for him
+And himself and everybody around
+Cause he ain't got nobody to listen to
+I'm green
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+I'm green
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+I have a green house
+With a green window
+Blue is the colour of all that I wear
+Blue are the streets
+And all the trees are too
+I have a girlfriend and she is so green
+Blue are the people here
+That walk around
+Blue like my corvette its in and outside
+Blue are the words I say
+And what I think
+Blue are the feelings
+That live inside me
+I'm green
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+I'm green
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+I have a green house
+With a green window
+Blue is the colour of all that I wear
+Blue are the streets
+And all the trees are too
+I have a girlfriend and she is so green
+Blue are the people here
+That walk around
+Blue like my corvette, its in and outside
+Blue are the words I say
+And what I think
+Blue are the feelings
+That live inside me
+I'm green
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+I'm green
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cat f1.txt
+london is the capital of great britain
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cat f1.txt | tr [a-z] [A-Z]
+LONDON IS THE CAPITAL OF GREAT BRITAIN
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ echo "da ba dee da ba di" | tr -d d
+a ba ee a ba i
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ uniq f3.txt
+Yo, listen up here's a story
+About a little guy
+That lives in a blue world
+And all day and all night
+And everything he sees is just blue
+Like him inside and outside
+Blue his house
+With a blue little window
+And a blue corvette
+And everything is blue for him
+And himself and everybody around
+Cause he ain't got nobody to listen to
+I'm blue
+Da ba dee da ba di
+I'm blue
+Da ba dee da ba di
+I have a blue house
+With a blue window
+Blue is the colour of all that I wear
+Blue are the streets
+And all the trees are too
+I have a girlfriend and she is so blue
+Blue are the people here
+That walk around
+Blue like my corvette its in and outside
+Blue are the words I say
+And what I think
+Blue are the feelings
+That live inside me
+I'm blue
+Da ba dee da ba di
+I'm blue
+Da ba dee da ba di
+I have a blue house
+With a blue window
+Blue is the colour of all that I wear
+Blue are the streets
+And all the trees are too
+I have a girlfriend and she is so blue
+Blue are the people here
+That walk around
+Blue like my corvette, its in and outside
+Blue are the words I say
+And what I think
+Blue are the feelings
+That live inside me
+I'm blue
+Da ba dee da ba di
+I'm blue
+Da ba dee da ba di
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ uniq -c f3.txt
+      1 Yo, listen up here's a story
+      1 About a little guy
+      1 That lives in a blue world
+      1 And all day and all night
+      1 And everything he sees is just blue
+      1 Like him inside and outside
+      1 Blue his house
+      1 With a blue little window
+      1 And a blue corvette
+      1 And everything is blue for him
+      1 And himself and everybody around
+      1 Cause he ain't got nobody to listen to
+      1 I'm blue
+      7 Da ba dee da ba di
+      1 I'm blue
+      7 Da ba dee da ba di
+      1 I have a blue house
+      1 With a blue window
+      1 Blue is the colour of all that I wear
+      1 Blue are the streets
+      1 And all the trees are too
+      1 I have a girlfriend and she is so blue
+      1 Blue are the people here
+      1 That walk around
+      1 Blue like my corvette its in and outside
+      1 Blue are the words I say
+      1 And what I think
+      1 Blue are the feelings
+      1 That live inside me
+      1 I'm blue
+      7 Da ba dee da ba di
+      1 I'm blue
+      7 Da ba dee da ba di
+      1 I have a blue house
+      1 With a blue window
+      1 Blue is the colour of all that I wear
+      1 Blue are the streets
+      1 And all the trees are too
+      1 I have a girlfriend and she is so blue
+      1 Blue are the people here
+      1 That walk around
+      1 Blue like my corvette, its in and outside
+      1 Blue are the words I say
+      1 And what I think
+      1 Blue are the feelings
+      1 That live inside me
+      1 I'm blue
+      7 Da ba dee da ba di
+      1 I'm blue
+      7 Da ba dee da ba di
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ uniq -d f3.txt
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ uniq -D f3.txt
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+Da ba dee da ba di
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ od -b f4.txt
+0000000 060 012 061 012 062 012 063 012 064 012 065 012 066 012 067 012
+0000020 070 012 071 012
+0000024
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ od -c f4.txt
+0000000   0  \n   1  \n   2  \n   3  \n   4  \n   5  \n   6  \n   7  \n
+0000020   8  \n   9  \n
+0000024
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ od -c -
+hello my name is nastya
+0000000   h   e   l   l   o       m   y       n   a   m   e       i   s
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cat > f1.txt
+london
+is
+the
+capital
+of
+great
+britain
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cut -b 1-3 f1.txt
+lon
+is
+the
+cap
+of
+gre
+bri
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cut -b 1-3,5,7 f1.txt
+lono
+is
+the
+captl
+of
+gret
+brian
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cut -c 1,3,5 f1.txt
+lno
+i
+te
+cpt
+o
+get
+bia
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ du -c ~/Desktop/маи_лабы/
+13      /c/Users/nasta/Desktop/маи_лабы/files
+97      /c/Users/nasta/Desktop/маи_лабы/lab11
+113     /c/Users/nasta/Desktop/маи_лабы/lab12
+97      /c/Users/nasta/Desktop/маи_лабы/lab13
+5       /c/Users/nasta/Desktop/маи_лабы/lab14/.vscode
+142     /c/Users/nasta/Desktop/маи_лабы/lab14
+60      /c/Users/nasta/Desktop/маи_лабы/lab15/bin/Debug
+60      /c/Users/nasta/Desktop/маи_лабы/lab15/bin
+8       /c/Users/nasta/Desktop/маи_лабы/lab15/obj/Debug
+8       /c/Users/nasta/Desktop/маи_лабы/lab15/obj
+227     /c/Users/nasta/Desktop/маи_лабы/lab15
+140     /c/Users/nasta/Desktop/маи_лабы/lab9
+100     /c/Users/nasta/Desktop/маи_лабы/пз
+966     /c/Users/nasta/Desktop/маи_лабы/
+966     total
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы
+$ du --time -h ~/Desktop/маи_лабы/
+13K     2024-02-19 20:46        /c/Users/nasta/Desktop/маи_лабы/files
+97K     2023-12-23 23:16        /c/Users/nasta/Desktop/маи_лабы/lab11
+113K    2023-12-23 23:24        /c/Users/nasta/Desktop/маи_лабы/lab12
+97K     2023-12-07 22:31        /c/Users/nasta/Desktop/маи_лабы/lab13
+5.0K    2023-12-01 02:48        /c/Users/nasta/Desktop/маи_лабы/lab14/.vscode
+142K    2023-12-24 00:39        /c/Users/nasta/Desktop/маи_лабы/lab14
+60K     2023-10-05 20:42        /c/Users/nasta/Desktop/маи_лабы/lab15/bin/Debug
+60K     2023-10-05 20:42        /c/Users/nasta/Desktop/маи_лабы/lab15/bin
+8.0K    2023-10-05 20:42        /c/Users/nasta/Desktop/маи_лабы/lab15/obj/Debug
+8.0K    2023-10-05 20:42        /c/Users/nasta/Desktop/маи_лабы/lab15/obj
+227K    2023-12-24 01:02        /c/Users/nasta/Desktop/маи_лабы/lab15
+140K    2023-10-21 13:12        /c/Users/nasta/Desktop/маи_лабы/lab9
+100K    2023-11-18 14:24        /c/Users/nasta/Desktop/маи_лабы/пз
+966K    2024-02-19 20:46        /c/Users/nasta/Desktop/маи_лабы/
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы
+$ cd ~
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~
+$ find ./Desktop -name lab7.txt
+./Desktop/маи_лабы/lab7.txt
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~
+$ cd ./Desktop/маи_лабы
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы
+$ find . -d
+find: warning: the -d option is deprecated; please use -depth instead, because the latter is a POSIX-compliant feature.
+./6_8_finale
+./desktop.ini
+./files/f1.txt
+./files/f2.txt
+./files/f3.txt
+./files/f4.txt
+./files
+./lab11/a.exe
+./lab11/lab11.c
+./lab11/lab11test.txt
+./lab11
+./lab12/a.exe
+./lab12/lab12.c
+./lab12/test12.txt
+./lab12
+./lab13/a.exe
+./lab13/lab13.c
+./lab13/test13.txt
+./lab13
+./lab14/.vscode/launch.json
+./lab14/.vscode/tasks.json
+./lab14/.vscode
+./lab14/a.exe
+./lab14/lab14.c
+./lab14/lab14.exe
+./lab14/test14.txt
+./lab14
+./lab15/a.exe
+./lab15/bin/Debug/lab15.exe
+./lab15/bin/Debug
+./lab15/bin
+./lab15/lab15.cbp
+./lab15/lab15.depend
+./lab15/lab15.layout
+./lab15/lab15_vscode.c
+./lab15/lab15_vscode.exe
+./lab15/main.c
+./lab15/obj/Debug/main.o
+./lab15/obj/Debug
+./lab15/obj
+./lab15/test15.txt
+./lab15
+./lab7.txt
+./lab9/a.exe
+./lab9/lab9.c
+./lab9/lab9.exe
+./lab9
+./лаба5_исправленная.txt
+./пз/1.c
+./пз/2.c
+./пз/3.c
+./пз/4.c
+./пз/a.exe
+./пз/test1.txt
+./пз
+.
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы
+$ cd ~
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~
+$ df
+Filesystem           1K-blocks      Used Available Use% Mounted on
+C:/Program Files/Git 248953156 128034320 120918836  52% /
+G:                    15728640   9689964   6038676  62% /g
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~
+$ df -ah
+Filesystem                         Size  Used Avail Use% Mounted on
+C:/Program Files/Git               238G  123G  116G  52% /
+C:/Program Files/Git/usr/bin          -     -     -    - /bin
+C:/Users/nasta/AppData/Local/Temp     -     -     -    - /tmp
+C:                                    -     -     -    - /c
+G:                                  15G  9.3G  5.8G  62% /g
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~
+$ df --total -h
+Filesystem            Size  Used Avail Use% Mounted on
+C:/Program Files/Git  238G  123G  116G  52% /
+G:                     15G  9.3G  5.8G  62% /g
+total                 253G  132G  122G  53% -
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~
+$ cd ./Desktop/маи_лабы
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы
+$ cd ./files
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cat f1.txt
+london
+is
+the
+capital
+of
+great
+britain
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cat f2.txt
+london is not the capital of france
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cat > f2.txt
+london
+isn't
+the
+capital
+of
+france
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ cat > f4.txt
+8
+4 2
+0
+1 5 9
+3
+7
+6
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ paste f4.txt f1.txt f2.txt
+8       london  london
+4 2     is      isn't
+0       the     the
+1 5 9   capital capital
+3       of      of
+7       great   france
+6       britain
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ paste -d "|," f4.txt f1.txt f2.txt
+8|london,london
+4 2|is,isn't
+0|the,the
+1 5 9|capital,capital
+3 |of,of
+7|great,france
+6|britain,
+
+Анастасия Аксельрод@LAPTOP-N99648VG MINGW64 ~/Desktop/маи_лабы/files
+$ paste -s f4.txt f1.txt f2.txt
+8       4 2     0       1 5 9   3       7       6
+london  is      the     capital of      great   britain
+london  isn't   the     capital of      france
