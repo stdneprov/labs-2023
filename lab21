@@ -1,0 +1,30 @@
+#!/bin/bash
+
+echo "Введите определённый префикс"
+read prefix
+
+echo "Введите максимальный размер файлов"
+read max_total_size
+
+# Проверяем, есть ли файлы с указанным префиксом в текущей директории
+files_count=$(find . -maxdepth 1 -type f -name "${prefix}*" | wc -l)
+if [ $files_count -eq 0 ]; then
+    echo "Файлов с префиксом '${prefix}' не найдено в текущей директории."
+    exit 1
+fi
+
+# Получаем список файлов с указанным префиксом, сортируем их по размеру
+files=$(find . -maxdepth 1 -type f -name "${prefix}*" -printf "%s\t%p\n" | sort -n)
+
+total_size=0
+
+# Цикл по файлам, удаляем файлы, пока общий размер не будет меньше заданного
+while IFS=$'\t' read -r size filename; do
+    total_size=$((total_size + size))
+    if [ $total_size -gt $max_total_size ]; then
+        rm "$filename"
+        echo "Удален файл: $filename"
+    fi
+done <<< "$files"
+
+echo "Общий размер оставшихся файлов: $total_size байт"
