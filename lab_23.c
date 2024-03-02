@@ -34,7 +34,7 @@ void AddNode(Node *root, int value) {
             break;
         }
 
-        if (root->val < value) {
+        else if (root->val < value) {
             if (root->right != NULL){
                 root = root->right;
             }
@@ -44,7 +44,7 @@ void AddNode(Node *root, int value) {
             }
         }
 
-        if (root->val > value){
+        else if (root->val > value){
             if (root->left != NULL){
                 root = root->left;
             }
@@ -80,6 +80,7 @@ void PrintTree(Node *root){
 int FindValueForRight(Node *root, Node *parent, int value) {
     while (1){
         if (root->left != NULL) {
+            parent = root;
             root = root->left;
         } else {
             if (parent->right != NULL) {
@@ -101,23 +102,26 @@ int FindValueForRight(Node *root, Node *parent, int value) {
             printf("-The value has been deleted\n");
             return root->val;
         }
-        return 0;
     }
+    return 0;
 }
 
 int FindValueForLeft(Node *root, Node *parent, int value) {
     while (1) {
         if (root->right != NULL) {
+            parent = root;
             root = root->right;
         } else {
-            if (parent->left->val == root->val && root->left == NULL) {
-                parent->left = NULL;
-                printf("-The value has been deleted\n");
-                return root->val;
-            } else if (parent->left->val == root->val && root->left != NULL) {
-                parent->left = root->left;
-                printf("-The value has been deleted\n");
-                return root->val;
+            if (parent->left != NULL) {
+                if (parent->left->val == root->val && root->left == NULL) {
+                    parent->left = NULL;
+                    printf("-The value has been deleted\n");
+                    return root->val;
+                } else if (parent->left->val == root->val && root->left != NULL) {
+                    parent->left = root->left;
+                    printf("-The value has been deleted\n");
+                    return root->val;
+                }
             }
             if (root->left == NULL) {
                 parent->right = NULL;
@@ -127,8 +131,8 @@ int FindValueForLeft(Node *root, Node *parent, int value) {
             printf("-The value has been deleted\n");
             return root->val;
         }
-        return 0;
     }
+    return 0;
 }
 
 void DeleteNode(Node *root, Node *parent, int value){
