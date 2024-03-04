@@ -1,0 +1,171 @@
+\documentclass[fleqn, 12pt]{article}
+\usepackage[a4paper, margin={10mm, 10mm}, includefoot]{geometry}
+
+\usepackage[english, russian]{babel}
+\usepackage{indentfirst}
+\usepackage{mathtools}
+\usepackage{setspace}
+
+\author{Максим Гига}
+\title{Конспект по математическому анализу, лекция \textnumero 12}
+
+\begin{document}
+\onehalfspacing
+\maketitle
+
+\section{Определение дифференциала}
+
+\textbf{Определение:}
+Пусть функция $f: U(x_0) \rightarrow R$ определена в $U(x_0)$,
+\textit{приращение} $\Delta f(x_0, \Delta x)$ функции $f$
+при $\Delta x \to 0$ можно представить в виде
+\begin{math}
+	\Delta f(x_0, \Delta x) = f(x_0 + \Delta x) - f(x_0) = A * \Delta x + o(\Delta x),
+\end{math}
+где
+\begin{math}
+	A = const, \quad \lim_{x \to 2} f(x) = 5 \Rightarrow
+\end{math}
+
+\(f\) называется \textit{дифференцируемой} в точке
+\(x_0\), \(df = fy = A \Delta x = A d x\) -
+\textit{дифференциал} функции, \(\Delta x = d x\) - приращение аргумента.
+
+\textbf{Определение:}
+Дифференциал - главная линейная (относительно приращения аргумента) часть
+приращения функции.
+
+\section{Критерий дифференцируемости}
+
+\textbf{определение:}
+\(f(x)\) дифференцируема в точке \(x_0 \Leftrightarrow \exists f'(x_0) \)
+
+\textbf{доказательство:}
+\begin{displaymath}
+	1. \Rightarrow
+	\Delta f = A \Delta x + o(\Delta x), \quad \Delta x \to 0 \Rightarrow
+	\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x} = A = f'(x_0)
+\end{displaymath}
+\begin{displaymath}
+	2. \Leftarrow
+	\exists f'(x_0) \Rightarrow \frac{\Delta f}{\Delta x} =
+	f'(x_0) + o(\Delta x) \Rightarrow \Delta f = f'(x_0) \Delta x + o(\Delta x),
+	d f = f' dx
+\end{displaymath}
+
+\section{Геометрический смысл производной и дифференциала}
+
+Пусть функция \(y = f(x)\) - дифференцируемая на
+\((a, b),
+\quad x, x_0 \in (a, b),
+\quad y_o = f(x_0), \quad M_0 = (x_0, y_0),
+\quad x_0 + \Delta x = x,
+\quad f(x_0 + \Delta x) = y
+\quad M = (x, y)\)
+
+Уравнение секущей, проходящей через точки \(M_0, M: \\
+y - y_0 = k(\Delta x)(x - x_0)\), где \(k(\Delta x)\) - угловой коэффициент \\
+\(\frac{\Delta y}{\Delta x} = k(\Delta x)
+\quad \Delta x \to 0
+\quad \Delta y \to 0\)
+
+В силу непрерывности функции \(f\) малому приращению аргумента
+соответствует малое приращение функции:
+\(\Delta x \to 0 \Rightarrow \Delta y \to 0\)
+Расстояние между точками \(M, M_0
+\quad \rho (M, M_0) = \sqrt{\Delta x^2 + \Delta y^2} \to 0 \Rightarrow M \to M_0 \)
+при \(\Delta x \to 0\)
+
+\textbf{Определение:} Предельное положение секущей (если этот предел существует)
+называется \textit{касательной} к кривой в данной точке
+$k_0 = \lim_{\Delta x \to 0} k(\Delta x) =
+	\lim_{\Delta x \to 0} \frac {\Delta y}{\Delta x} = y'(x_0)$ -
+угловой коэффициент касательной
+
+\textbf{Уравнение касательной:} $y - y_0 = y'(x_0)(x - x_0)$
+
+\textbf{Геометрический смысл производной:}
+Тангенс угла наклона касательной к графику функции в данной точке.
+$k_0 = y'(x_0) = tan \alpha$, где $\alpha$ - угол наклона к оси $Ox$ абцисс.
+
+\textbf{Геометрический смысл дифференциала:}
+Приращение ординаты касательной к графику функции
+в соответствующей точке.
+
+\textbf{Механический смысл производной:}
+Скорость изменения некоторой величины есть ее производная.
+
+\section{Правила дифференцирования}
+\textbf{Утверждение:} Если существуют производные $f', g' \Rightarrow$
+
+\begin{enumerate}
+	\item $(C)' = 0 $
+	\item $(C f)' = C f' $
+	\item $(f \pm g)' = f' \pm g' $
+	\item $(f g)' = f'g + g'f $
+	\item $(\frac{1}{g(x)})' = -\frac{1}{g^2(x)}g'(x), g \ne 0 $
+	\item $(\frac{f}{g})' = -\frac{f'g - g'f}{g^2}, g \ne 0 $
+\end{enumerate}
+
+\section{Производные и дифференциалы высших порядков}
+\textbf{Определение:} \(y = f(x), \quad x \in (a, b)
+\quad \exists y' = f'(x) = z(x), \quad x \in (a, b). \)
+
+Если $\exists z'(x) = (y')' = \frac{d}{dx}(\frac{dy}{dx}) = \frac{d^2 y}{d x^2}$,
+то она называется \textit{второй производной функции} $y$, а $y$ -
+\textit{дважды дифференцируемой}
+
+\(y^{(n)}(x) \coloneqq \frac{d}{dx}(y^{(n-1)}(x))\)
+
+\textbf{Утверждение:} если $\exists f^(n), g^(n) \Rightarrow $
+\begin{itemize}
+	\item $(f \pm g)^{(n)} = f^{(n)} \pm g^{(n)}$
+	\item $(f g)^(n) x = \sum_{i=0}^{n} C^i_n f^{(i)} g^{(n - 1)} $ - формула Лейбница, где
+	      $C^i_n = \frac{n!}{(n - i)!\,i!}$
+\end{itemize}
+
+\section{Производная параметрически заданной функции}
+\textbf{Определение:}
+
+\[
+	\begin{cases}
+		x = x(t) \\
+		y = y(t)
+	\end{cases}
+	t \in (\alpha; \beta)
+\]
+
+Пусть $x \uparrow\uparrow (\downarrow\downarrow) $ строго монотонна и непрерывна в
+$U(t_0) \in (\alpha, \beta) \Rightarrow \exists t = t(x) $ обратная к $x(t)$ и
+$\exists y(t(x))$. Эта функция называется параметрически заданной системой
+уравнений, $t$ параметр.
+
+\textbf{Утверждение:}
+\begin{enumerate}
+	\item \begin{displaymath}
+		      \exists x'|_{t=t_0} \ne 0,
+		      \exists y'|_{t=t_0} \Rightarrow
+		      \exists y_x'(x_0) = \frac{y_t'}{x_t'}\Bigr|_{t=t_0}
+	      \end{displaymath}
+	\item \begin{displaymath}
+		      \exists x''|_{t=t_0}
+		      \exists y''|_{t=t_0} \Rightarrow
+		      \exists y_{xx}'' = \frac{y_{tt}'' x_t' - y_t' x_{tt}''}{(x_t')^3}\Bigr|_{t=t_0}
+	      \end{displaymath}
+\end{enumerate}
+
+\section{Производные высших порядков от обратных функций}
+\textbf{Утверждение:} Пусть $y : \mathring{U}(x_0) \rightarrow R, \quad y = y(x),
+	\quad y \uparrow\uparrow (\downarrow\downarrow) $ - строго монотонна в $U(x_0)$ и
+непрерывна, $\exists y', y''$ в
+$x_0, y'(x_0) \ne 0 \Rightarrow
+	\exists x = x(y), \exists x_y' = \frac{1}{y_x'} \quad
+	\exists x_{yy}'' = - \frac{y_{xx}''}{(y_x')^3}$ в $y_0 = y(x_0)$
+
+\textbf{Доказательство:}
+$x_{yy}'' = (x_y')_y' = (\frac{1}{y_x'})_y' =
+	(\frac{1}{y_x'})_x' \frac{dx}{dy} =
+	- \frac{y_{xx}''}{(y_x')^2 y_x'} =
+	- \frac{y_{xx}''}{(y_x')^3} $
+
+\end{document}
