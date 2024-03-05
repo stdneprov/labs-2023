@@ -82,19 +82,35 @@ void Push(Tree** root, int value) {
 // }
 
 //Рекурсивный обход дерева в глубину
-void PrintInDepthRecursively(Tree *BinaryTree) {
-    if (BinaryTree == NULL) {
-        return;
-    } else {
-        printf("%d ", BinaryTree->data);
-        if (BinaryTree->left != NULL) {
-            PrintInDepthRecursively(BinaryTree->left);
-        }
-        if (BinaryTree->right != NULL) {
-            PrintInDepthRecursively(BinaryTree->right); 
-        }
+void PrintNode(Tree *root, int indent) {
+    if (root == NULL) {
+        return;     
     }
+    indent += 1;
+    PrintNode(root->left, indent);     
+    for (int i = 0; i < indent; ++i){
+        printf(" ");
+    }
+    printf("%d\n", root->data);  
+    PrintNode(root->right, indent); 
 }
+
+void PrintInDepthRecursively(Tree *root){
+    PrintNode(root, 0);
+}
+// void PrintInDepthRecursively(Tree *BinaryTree) {
+//     if (BinaryTree == NULL) {
+//         return;
+//     } else {
+//         printf("%d ", BinaryTree->data);
+//         if (BinaryTree->left != NULL) {
+//             PrintInDepthRecursively(BinaryTree->left);
+//         }
+//         if (BinaryTree->right != NULL) {
+//             PrintInDepthRecursively(BinaryTree->right); 
+//         }
+//     }
+// }
 
 int IsLinear(Tree* root) {
     if (root->left != NULL && root-> right != NULL) {
@@ -327,6 +343,9 @@ void Menu() {
                 }
             }
         }
+        //  else if ((fgets(inputUser, sizeof(char) * 10, stdin) == NULL)) {
+        //     break;
+        // }
     }
     
 }
