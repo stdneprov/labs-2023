@@ -45,6 +45,10 @@ void FindNode(Tree *t, int id, Node **res, Node **parent, Node **side) {
 
 int AddNode(Tree *t, int parent_id, int val) {
     Node *new = (Node *)malloc(sizeof(Node));
+    if (new == NULL) {
+        printf("ERROR: Not enought memory\n");
+        exit(1);
+    }
     new->child = NULL;
     new->side = NULL;
     new->id = (++t->id_counter);
