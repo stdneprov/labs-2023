@@ -17,30 +17,18 @@ struct Node {
     Node *side;
 };
 
-void FindNodeR(Node *t, int id, Node **res, Node **parent, Node **side) {
-    if (t->child != NULL && t->child->id == id) {
-        *res = t->child;
-        *parent = t;
-    } else if (t->side != NULL && t->side->id == id) {
-        *res = t->side;
-        *side = t;
-    } else {
-        if (t->side != NULL)
-            FindNodeR(t->side, id, res, parent, side);
-        if (t->child != NULL)
-            FindNodeR(t->child, id, res, parent, side);
+void FindNode(Node *t, int id, Node **res, Node **prev) {
+    if (t == NULL || *res != NULL) {
+        return;
     }
-}
-
-void FindNode(Tree *t, int id, Node **res, Node **parent, Node **side) {
-    *res = NULL;
-    *parent = NULL;
-    *side = NULL;
-    if (t->root->id == id) {
-        *res = t->root;
-    } else {
-        FindNodeR(t->root, id, res, parent, side);
+    if (t->id == id) {
+        *res = t;
+        return;
     }
+    *prev = t;
+    FindNode(t->side, id, res, prev);
+    *prev = t;
+    FindNode(t->child, id, res, prev);
 }
 
 int AddNode(Tree *t, int parent_id, int val) {
@@ -59,8 +47,8 @@ int AddNode(Tree *t, int parent_id, int val) {
         return new->id;
     }
 
-    Node *parent, *p, *s;
-    FindNode(t, parent_id, &parent, &p, &s);
+    Node *parent = 0, *prev = 0;
+    FindNode(t->root, parent_id, &parent, &prev);
     if (parent == NULL) {
         printf("ERROR: no node with id %d found\n", parent_id);
         exit(1);
@@ -87,21 +75,22 @@ void RemoveNodeR(Node *n) {
 }
 
 void RemoveNode(Tree *t, int id) {
-    Node *n, *p, *s;
-    FindNode(t, id, &n, &p, &s);
+    Node *n = 0, *p = 0;
+    FindNode(t->root, id, &n, &p);
     if (n == NULL) {
         return; // no such node found
     }
-    if (p != NULL)
-        p->child = n->side; // if connected vertically
-    else if (s != NULL) {
-        s->side = n->side; // if connected horizontally
-    } else {
+    if (p == NULL) {
         t->root = NULL; // if root element
         t->id_counter = 0;
+    } else if (p->child == n)
+        p->child = n->side; // if connected vertically
+    else if (p->side == n) {
+        p->side = n->side; // if connected horizontally
     }
     if (n->child != NULL)
         RemoveNodeR(n->child);
+    free(n);
 }
 
 void PrintTreeR(Node *n, int offset) {
