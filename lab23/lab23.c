@@ -143,12 +143,12 @@ int main(void) {
     printf("r id:\t remove node vith id i\n");
     printf("p: print\n");
     printf("d: deepest nonterminal value\n");
-    printf("s: stop\n");
+    printf("q: quit\n");
     printf("> ");
     Tree t = {0};
     char c;
     int a, b;
-    do {
+    while (true) {
         scanf("%c", &c);
         if (c == '\n') {
             continue;
@@ -163,11 +163,13 @@ int main(void) {
             PrintTree(&t);
         } else if (c == 'd') {
             printf("%d\n", DeepestNonEndValue(&t));
+        } else if (c == 'q') {
+            return 0;
         } else {
             printf("unknown commad %c\n", c);
         }
         printf("> ");
-    } while (c != 's');
+    }
     printf("\n");
     return 0;
 }
