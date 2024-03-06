@@ -255,21 +255,56 @@ void PrintTreeAsExpression(Tree *t) {
     printf("\n");
 }
 
-int main(void) {
-    // упрастить выполнив деление
-    char *str = "a * -(b + c * d) / 2";
-    printf("%s\n\n", str);
-    List l = ConvertToReversePolish(str);
-    for (int i = 0; i < l.index; i++) {
-        printf("%d: ", i);
-        PrintValue(&l.v[i]);
-        printf("\n");
+void OptimizeTree(Tree *t) {
+    if (t->val.t == ValueTypeOp) {
+        OptimizeTree(t->l);
+        OptimizeTree(t->r);
     }
-    printf("\n");
+
+    // we can only optimize a * () / b or () * a / b, were we divide a by b
+    if (!(t->val.t == ValueTypeOp && t->val.v.op == '/' &&
+          t->r->val.t == ValueTypeVal)) {
+        return;
+    }
+
+    float denominator = t->r->val.v.val;
+    if (t->l->val.t == ValueTypeVal) {
+        t->l->val.v.val /= denominator;
+        free(t->r);
+        *t = *t->l;
+        return;
+    }
+    if (!(t->l->val.t == ValueTypeOp && t->l->val.v.op == '*')) {
+        return;
+    }
+    if (!(t->l->l->val.t == ValueTypeVal || t->l->r->val.t == ValueTypeVal)) {
+        return;
+    }
+    if (t->l->l->val.t == ValueTypeVal) {
+        t->l->l->val.v.val /= denominator;
+    } else {
+        t->l->r->val.v.val /= denominator;
+    }
+    free(t->r);
+    *t = *t->l;
+}
+
+int main(void) {
+    // упростить выполнив деление
+    char *str = "3 * a / (2 / 4) - 12 / 4 + -a";
+    List l = ConvertToReversePolish(str);
+
     Tree t = GenerateTreeFromReversePolish(&l);
     PrintTree(&t, 0);
     printf("\n");
     PrintTreeAsExpression(&t);
+    printf("\n");
+
+    OptimizeTree(&t);
+    PrintTree(&t, 0);
+    printf("\n");
+    PrintTreeAsExpression(&t);
+    printf("\n");
 
     return 0;
 }
