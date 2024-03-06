@@ -4,9 +4,9 @@
 #include <string.h>
 
 typedef enum ValueType {
+    ValueTypeOp,
     ValueTypeVal,
     ValueTypeName,
-    ValueTypeOp,
 } ValueType;
 
 typedef union ValueValue {
@@ -135,6 +135,7 @@ List ConvertToReversePolish(char *str) {
     List stack = {0};
     Value cur = {0};
     Value last = {0};
+    Value p = {0};
     char strbuf[256] = {0};
     int i_strbuf = -1;
     char prev = ' ';
@@ -142,6 +143,7 @@ List ConvertToReversePolish(char *str) {
         if (IsOperand(*str) || *str == ' ') {
             if (prev != ' ' && !IsOperand(prev) && strbuf[0]) {
                 PushValue(&res, &cur, strbuf, &i_strbuf);
+                p = cur;
             }
             if (*str == ' ') {
                 while (*(++str) == ' ')
@@ -162,17 +164,29 @@ List ConvertToReversePolish(char *str) {
                     }
                 } else if (cur.v.op == '(') {
                     ListPush(&stack, cur);
+                    p = cur;
                 } else {
-                    while (!ListEmpty(&stack)) {
-                        last = *ListLast(&stack);
-                        if (OperandPriority(cur) <= OperandPriority(last)) {
-                            ListPop(&stack);
-                            ListPush(&res, last);
-                            continue;
+                    if (cur.v.op == '-' && p.t == ValueTypeOp) {
+                        Value q = {0};
+                        q.t = ValueTypeVal;
+                        q.v.val = -1.0;
+                        ListPush(&res, q);
+                        q.t = ValueTypeOp;
+                        q.v.op = '*';
+                        ListPush(&stack, q);
+                    } else {
+                        while (!ListEmpty(&stack)) {
+                            last = *ListLast(&stack);
+                            if (OperandPriority(cur) <= OperandPriority(last)) {
+                                ListPop(&stack);
+                                ListPush(&res, last);
+                                continue;
+                            }
+                            break;
                         }
-                        break;
+                        ListPush(&stack, cur);
+                        p = cur;
                     }
-                    ListPush(&stack, cur);
                 }
             }
         } else {
@@ -243,15 +257,18 @@ void PrintTreeAsExpression(Tree *t) {
 
 int main(void) {
     // упрастить выполнив деление
-    char *str = "g * (a + b * c) * d";
+    char *str = "a * -(b + c * d) / 2";
+    printf("%s\n\n", str);
     List l = ConvertToReversePolish(str);
     for (int i = 0; i < l.index; i++) {
         printf("%d: ", i);
         PrintValue(&l.v[i]);
         printf("\n");
     }
+    printf("\n");
     Tree t = GenerateTreeFromReversePolish(&l);
     PrintTree(&t, 0);
+    printf("\n");
     PrintTreeAsExpression(&t);
 
     return 0;
