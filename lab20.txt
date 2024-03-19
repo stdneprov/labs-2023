@@ -1,0 +1,176 @@
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ touch fi1.txt fi2.txt
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ ls
+fi1.txt  fi2.txt
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ tee -a fi1.txt fi2.txt 
+trulalal
+trulalal
+somrthing            
+somrthing
+i like HxH
+i like HxH
+^C
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ cat fi1.txt
+trulalal
+somrthing
+i like HxH
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ cmp fi1.txt fi2.txt 
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ cd fi1.txt 
+bash: cd: fi1.txt: Это не каталог
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ tee -a fi1.txt 
+hjkghdkjhg
+hjkghdkjhg
+^Z
+[1]+  Остановлен    tee -a fi1.txt
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ cat fi1.txt 
+trulalal
+somrthing
+i like HxH
+hjkghdkjhg
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ cmp fi1.txt fi2.txt 
+cmp: EOF в fi2.txt после байта 30, строка 3
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ touch fi3.txt
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ echo "soderzhimoe fai;a 3" > fi3.txt 
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ cat fi3.txt 
+soderzhimoe fai;a 3
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ ls
+fi1.txt  fi2.txt  fi3.txt
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ cmp fi1.txt  fi3.txt 
+fi1.txt fi3.txt различаются: байт 1, строка 1
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ diff fi1.txt fi2.txt 
+4d3
+< hjkghdkjhg
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ diff fi2.txt fi3.txt 
+1,3c1
+< trulalal
+< somrthing
+< i like HxH
+---
+> soderzhimoe fai;a 3
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ tail -n 1 fi1.txt 
+hjkghdkjhg
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ tail -n 1 fi3.txt 
+soderzhimoe fai;a 3
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ head -n 1 fi1.txt 
+trulalal
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ head -n 1 fi3.txt 
+soderzhimoe fai;a 3
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ wc fi2.txt 
+ 3  5 30 fi2.txt
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ wc -l fi2.txt 
+3 fi2.txt
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ wc -c fi2.txt 
+30 fi2.txt
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ wc -m fi2.txt 
+30 fi2.txt
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ wc -L fi2.txt 
+10 fi2.txt
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ wc -w fi2.txt 
+5 fi2.txt
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ od fi3.txt 
+0000000 067563 062544 075162 064550 067555 020145 060546 035551
+0000020 020141 005063
+0000024
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ find nesushestvuiushiifile.txt
+find: ‘nesushestvuiushiifile.txt’: Нет такого файла или каталога
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ find fi1.txt 
+fi1.txt
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ dd if=/dev/zero of=null.txt count=123456
+123456+0 records in
+123456+0 records out
+63209472 bytes (63 MB, 60 MiB) copied, 0,456875 s, 138 MB/s
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ du -h
+61M	.
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ du -h ./*
+4,0K	./fi1.txt
+4,0K	./fi2.txt
+4,0K	./fi3.txt
+61M	./null.txt
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ gzip null.txt 
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ du -h ./*
+4,0K	./fi1.txt
+4,0K	./fi2.txt
+4,0K	./fi3.txt
+60K	./null.txt.gz
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ gzip -d null.txt.gz 
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ du -h ./*
+4,0K	./fi1.txt
+4,0K	./fi2.txt
+4,0K	./fi3.txt
+72K	./laba.tar
+61M	./null.txt
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ tar -c * -f laba.tar
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ du -h ./*
+4,0K	./fi1.txt
+4,0K	./fi2.txt
+4,0K	./fi3.txt
+72K	./laba.tar
+60K	./null.txt.gz
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ sum 
+fi1.txt   fi2.txt   fi3.txt   laba.tar  null.txt  
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ sum fi2.txt 
+11762     1 fi2.txt
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ vi fi2.txt 
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ comm fi1.txt  fi2.txt 
+		trulalal
+		somrthing
+		i like HxH
+hjkghdkjhg
+comm: данные файла 1 не отсортированы
+comm: входные данные не отсортированы
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ cat f* | grep lala
+trulalal
+trulalal
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ cat > rf.txt
+3
+6
+7
+2
+3
+5
+3
+2
+2
+1
+0
+856
+^Z
+[2]+  Остановлен    cat > rf.txt
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ cat rf.txt 
+3
+6
+7
+2
+3
+5
+3
+2
+2
+1
+0
+856
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ sort rf.txt 
+0
+1
+2
+2
+2
+3
+3
+3
+5
+6
+7
+856
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ sort rf.txt | uniq
+0
+1
+2
+3
+5
+6
+7
+856
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ df -h ./
+Файл.система   Размер Использовано  Дост Использовано% Cмонтировано в
+/dev/sda2         25G          13G   11G           55% /
+sofasol@sofasol-VirtualBox:~/labs-2023/lab20$ 
