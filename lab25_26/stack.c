@@ -47,6 +47,14 @@ void stack_push_back(stack *s, const STACK_T val) {
     s->ptr[s->size++] = val;
 }
 
+void stack_push_front(stack *s, const STACK_T val) {
+    stack_push_back(s, 0);
+    for (int i = s->size - 1; i > 0; i--) {
+        s->ptr[i] = s->ptr[i - 1];
+    }
+    s->ptr[0] = val;
+}
+
 void stack_pop_back(stack *s) {
     if (s->size == 0)
         return;

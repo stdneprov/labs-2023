@@ -23,6 +23,7 @@ bool stack_is_empty(const stack *);
 size_t stack_size(const stack *);
 void stack_print(const stack *);
 void stack_push_back(stack *, const STACK_T);
+void stack_push_front(stack *, const STACK_T);
 void stack_pop_back(stack *);
 STACK_T *stack_back(const stack *);
 STACK_T *stack_get(const stack *, size_t);
