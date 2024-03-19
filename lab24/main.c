@@ -167,13 +167,18 @@ List ConvertToReversePolish(char *str) {
                     p = cur;
                 } else {
                     if (cur.v.op == '-' && p.t == ValueTypeOp) {
-                        Value q = {0};
-                        q.t = ValueTypeVal;
-                        q.v.val = -1.0;
-                        ListPush(&res, q);
-                        q.t = ValueTypeOp;
-                        q.v.op = '*';
-                        ListPush(&stack, q);
+                        if ('0' <= *(str + 1) && *(str + 1) <= '9') {
+                            strbuf[++i_strbuf] = *str;
+                        } else {
+                            Value q = {0};
+                            q.t = ValueTypeVal;
+                            q.v.val = -1.0;
+                            ListPush(&res, q);
+                            q.t = ValueTypeOp;
+                            q.v.op = '*';
+                            ListPush(&stack, q);
+                        }
+
                     } else {
                         while (!ListEmpty(&stack)) {
                             last = *ListLast(&stack);
@@ -291,7 +296,7 @@ void OptimizeTree(Tree *t) {
 
 int main(void) {
     // упростить выполнив деление
-    char *str = "3 * a / (2 / 4) - 12 / 4 + -a";
+    char *str = "-6 / 2 + a * 2 -3 - a * (b - 4 / 2 / d)";
     List l = ConvertToReversePolish(str);
 
     Tree t = GenerateTreeFromReversePolish(&l);
