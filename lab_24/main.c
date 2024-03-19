@@ -211,12 +211,20 @@ void Recursive(struct Node* node) {
     if (node->object.tokentype == 1 || node->object.tokentype == 2 || node->object.tokentype == 0) {
         PrintTask(node);
     }
-    if (node->left) {
-        Recursive(node->left);
+    while (node->left) {
+        node = node->left;
+        print_Task(node);
     }
-    if (node->right) {
-        Recursive(node->right);
+    while (node->right) {
+        node = node->right;
+        print_Task(node);
     }
+    // if (node->left) {
+    //     Recursive(node->left);
+    // }
+    // if (node->right) {
+    //     Recursive(node->right);
+    // }
     // if (node->left->object.tokentype == 1 || node->left->object.tokentype == 2 || node->left->object.tokentype == 0) {
     //     printf("YES");
     //     Recursive(node->left);
