@@ -12,6 +12,10 @@ int currentIndex = 1;
 
 Node* CreateNode(int value) {
     Node *newNode = (Node*)malloc(sizeof(Node));
+    if (newNode == NULL) {
+        printf("malloc error\n");
+        return NULL;
+    }
 
     newNode->index = currentIndex++;
     newNode->value = value;
