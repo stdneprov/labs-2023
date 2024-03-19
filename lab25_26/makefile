@@ -1,6 +1,6 @@
 CC = clang
 CFLAGS = -std=gnu99 -pedantic -Wall -Wextra -Werror
-TARGET = main
+TARGET = main.out
 
 .PHONY: clean run build
 
@@ -20,4 +20,4 @@ stack.o: stack.c stack.h
 
 clean:
 	@rm -f ./*.o
-	@rm -f main
+	@rm -f ${TARGET}
