@@ -1,0 +1,11 @@
+#!/bin/bash
+
+suffix=".txt"
+output_file="output.txt"
+max_size=1024
+
+find . -type f -name "*$suffix" -exec du -b {} + | while read -r size file; do
+    if ((size <= max_size)); then
+        echo "$file: $size bytes" >> "$output_file"
+    fi
+done
