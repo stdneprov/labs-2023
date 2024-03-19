@@ -26,9 +26,9 @@ void stack_print(const stack *s) {
     printf("%d\n", s->ptr[s->size - 1]);
 }
 
-void stack_push_back(stack *s, const T val) {
+void stack_push_back(stack *s, const STACK_T val) {
     if (s->ptr == NULL) {
-        s->ptr = malloc(sizeof(T));
+        s->ptr = malloc(sizeof(STACK_T));
         if (s->ptr == NULL) {
             printf("ERROR: not enough memory");
             exit(EXIT_FAILURE);
@@ -36,7 +36,7 @@ void stack_push_back(stack *s, const T val) {
         s->capacity = 1;
     }
     if (s->size + 1 > s->capacity) {
-        T *tmp = realloc(s->ptr, s->capacity * 2 * sizeof(T));
+        STACK_T *tmp = realloc(s->ptr, s->capacity * 2 * sizeof(STACK_T));
         if (tmp == NULL) {
             printf("ERROR: not enough memory");
             exit(EXIT_FAILURE);
@@ -51,7 +51,7 @@ void stack_pop_back(stack *s) {
     if (s->size == 0)
         return;
     if (--s->size <= s->capacity / 4) {
-        T *tmp = malloc(s->capacity / 4 * sizeof(T));
+        STACK_T *tmp = malloc(s->capacity / 4 * sizeof(STACK_T));
         if (tmp == NULL) {
             printf("ERROR: not enough memory");
             exit(EXIT_FAILURE);
@@ -61,11 +61,11 @@ void stack_pop_back(stack *s) {
     }
 }
 
-T *stack_back(const stack *s) {
+STACK_T *stack_back(const stack *s) {
     return &s->ptr[s->size - 1];
 }
 
-T *stack_get(const stack *s, size_t i) {
+STACK_T *stack_get(const stack *s, size_t i) {
     if (i < 0 || i >= s->size)
         return NULL;
     return &s->ptr[i];
