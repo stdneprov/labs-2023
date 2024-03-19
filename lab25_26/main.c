@@ -14,11 +14,16 @@ int main(void) {
         stack_push_back(a, i * 2);
         stack_push_back(b, i * 2 + 1);
     }
+    printf("unsorted:\n");
+    stack_print(a);
+    stack_print(b);
     stack_sort(a);
     stack_sort(b);
     stack_merge(c, a, b);
+    printf("sorted:\n");
     stack_print(a);
     stack_print(b);
+    printf("merged:\n");
     stack_print(c);
     return 0;
 }
