@@ -56,26 +56,37 @@ void NodeSearch(int id, Node* root, Node** res) {
     }
 }
 
-void AddNode(int dad_id, int value, int *idCounter, Node* root) {
+void AddNode(int dad_id, int value, int *idCounter, Node** rootPtr) {
     Node *res[3];
-    NodeSearch(dad_id, root, res);
-    if (res[CUR] != NULL) {
-        Node *dad = res[CUR];
-        Node *newNode = (Node*)malloc(sizeof(Node));
-        newNode->value = value;
-        newNode->id = *idCounter;
-        *idCounter = *idCounter + 1;
-        newNode->bro = NULL;
-        newNode->son = NULL;
-        if (dad != NULL) {
-            if (dad->son == NULL) {
-                dad->son = newNode;
-            } else {
-                Node *oldBro = dad->son;
-                while (oldBro->bro != NULL) {
-                    oldBro = oldBro->bro;
+    Node *root = *rootPtr;
+    if (dad_id == -1) {
+        root = (Node*)malloc(sizeof(Node));
+        root->bro = NULL;
+        root->son = NULL;
+        root->id = 0;
+        root->value = value;
+        *idCounter += 1;
+        *rootPtr = root;
+    } else {
+        NodeSearch(dad_id, root, res);
+        if (res[CUR] != NULL) {
+            Node *dad = res[CUR];
+            Node *newNode = (Node*)malloc(sizeof(Node));
+            newNode->value = value;
+            newNode->id = *idCounter;
+            *idCounter = *idCounter + 1;
+            newNode->bro = NULL;
+            newNode->son = NULL;
+            if (dad != NULL) {
+                if (dad->son == NULL) {
+                    dad->son = newNode;
+                } else {
+                    Node *oldBro = dad->son;
+                    while (oldBro->bro != NULL) {
+                        oldBro = oldBro->bro;
+                    }
+                    oldBro->bro = newNode;
                 }
-                oldBro->bro = newNode;
             }
         }
     }
@@ -84,7 +95,9 @@ void AddNode(int dad_id, int value, int *idCounter, Node* root) {
 void ChangeValue(int id, int value, Node *root) {
     Node *res[3];
     NodeSearch(id, root, res);
-    res[CUR]->value = value;
+    if (res[CUR] != NULL) {
+        res[CUR]->value = value;
+    }
 }
 
 void DeleteNodeR(Node *node) {
@@ -97,18 +110,24 @@ void DeleteNodeR(Node *node) {
     free(node);
 }
 
-void DeleteNode(int id, Node *root) {
+
+void DeleteNode(int id, Node **rootPtr) {
+    Node *root = *rootPtr;
     Node *res[3];
     NodeSearch(id, root, res);
-    if (res[DAD] != NULL) {
-        res[DAD]->son = res[CUR]->bro;
-    } else if (res[BRO] != NULL) {
-        res[BRO]->bro = res[CUR]->bro;
+    if (res[CUR] != NULL) {
+        if (res[DAD] != NULL) {
+            res[DAD]->son = res[CUR]->bro;
+        } else if (res[BRO] != NULL) {
+            res[BRO]->bro = res[CUR]->bro;
+        }
+        if (res[CUR]->son != NULL) {
+            DeleteNodeR(res[CUR]->son);
+        }
+        free(res[CUR]);
+        if (id == 0) root = NULL;
+        *rootPtr = root;
     }
-    if (res[CUR]->son != NULL) {
-        DeleteNodeR(res[CUR]->son);
-    }
-    free(res[CUR]);
 }
 
 void PrintTree(Node *root, int depth) {
@@ -125,9 +144,13 @@ void PrintTree(Node *root, int depth) {
 }
 
 void PrintTreeDec(Node *root) {
-    printf("------------\n");
-    PrintTree(root, 0);
-    printf("------------\n");
+    if (root != NULL){
+            printf("------------\n");
+        PrintTree(root, 0);
+        printf("------------\n");
+    } else {
+        printf("EMPTY\n");
+    }
 }
 
 int Power(Node* root) {
@@ -157,15 +180,11 @@ int Power(Node* root) {
 }
 
 int main() {
-    int idCounter = 1;
-    Node *root =  (Node*)malloc(sizeof(Node));
-    root->bro = NULL;
-    root->son = NULL;
-    root->id = 0;
-    root->value = 0;
+    int idCounter = 0;
+    Node *root = NULL;
     char command;
     int arg1, arg2;
-    PrintTreeDec(root);
+    PrintTreeDec;
     printf("Enter 'h' to show help note\n");
     do {
         scanf("%c", &command);
@@ -173,7 +192,7 @@ int main() {
             ShowHelp();
         } else if (command == 'a') {
             scanf("%d %d", &arg1, &arg2);
-            AddNode(arg1, arg2, &idCounter, root);
+            AddNode(arg1, arg2, &idCounter, &root);
             PrintTreeDec(root);
         } else if (command == 'c') {
             scanf("%d %d", &arg1, &arg2);
@@ -181,7 +200,7 @@ int main() {
             PrintTreeDec(root);
         } else if (command == 'd') {
             scanf("%d", &arg1);
-            DeleteNode(arg1, root);
+            DeleteNode(arg1, &root);
             PrintTreeDec(root);
         } else if (command == 'p') {
             PrintTreeDec(root);
