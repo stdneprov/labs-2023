@@ -20,7 +20,7 @@ void Clear(Node** targ){
     *targ = NULL;
 }
 
-int Add(Node** parent, Value val, enum Type type) {
+int Add(Node** parent, Value val, enum Type type, int priority) {
     Node* ptr = (Node*)malloc(sizeof(Node));
     if (ptr == NULL) {
 //        printf("Узел не добавлен, недостаточно памяти\n");
@@ -29,6 +29,7 @@ int Add(Node** parent, Value val, enum Type type) {
     *parent = ptr;
     ptr->val = val;
     ptr->type = type;
+    ptr->priority = priority;
     ptr->lvalue = NULL;
     ptr->rvalue = NULL;
 //    printf("Узел добавлен\n");
@@ -79,7 +80,13 @@ void PrintTree(Tree ptr, int depth) {
 
 void PrintExpression(Node* ptr) {
     if (ptr->lvalue != NULL) {
-        PrintExpression(ptr->lvalue);
+        if (ptr->lvalue->type == OPER && (ptr->priority > ptr->lvalue->priority)) {
+            printf("(");
+            PrintExpression(ptr->lvalue);
+            printf(")");
+        } else {
+            PrintExpression(ptr->lvalue);
+        }
     }
 
     switch (ptr->type)
@@ -105,6 +112,12 @@ void PrintExpression(Node* ptr) {
     }
 
     if (ptr->rvalue != NULL) {
-        PrintExpression(ptr->rvalue);
+        if (ptr->rvalue->type == OPER && (ptr->priority > ptr->rvalue->priority)) {
+            printf("(");
+            PrintExpression(ptr->rvalue);
+            printf(")");
+        } else {
+            PrintExpression(ptr->rvalue);
+        }
     }
 }

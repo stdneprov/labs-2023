@@ -25,15 +25,14 @@ void AddUnarMinus(Stack* expr) {
 }
 
 void ClosingBracket(Stack* expr, Stack* buff) { /* Обработка скобок */
-    Elem top;
     if (Empty(buff)) {
         return;
     }
-    do {
-        top = Top(buff);
+    while ((!Empty(buff)) && (Top(buff).type != OPER || Top(buff).val.oper != '(')) {
         Push(expr, Top(buff));
         Pop(buff);
-    } while ((!Empty(buff)) && (top.type != OPER || top.val.oper != '('));
+    }
+    Pop(buff);
 }
 
 void AddMult(Stack* buff, Stack* expr) { /* Добавление оператора умножения в стек */
@@ -144,7 +143,6 @@ void Input(Stack* expr) { /* Перевод выражения в обратну
 
             case ')':
                 elem.priority = 0;
-                Push(expr, elem);
                 ClosingBracket(expr, buff);
                 break;
 
@@ -171,7 +169,7 @@ void Input(Stack* expr) { /* Перевод выражения в обратну
     DeleteStack(&buff);
 }
 
-void ParseIntoTree(Stack* expr, Node** node, int brackets) { /* Из стека в дерево */
+void ParseIntoTree(Stack* expr, Node** node) { /* Из стека в дерево */
     if (Empty(expr)) {
         printf("Something wrong\n");
         return;
@@ -181,25 +179,16 @@ void ParseIntoTree(Stack* expr, Node** node, int brackets) { /* Из стека 
     
     if (elem.type == OPER) {
         if (elem.val.oper != ')') {
-            Add(node, elem.val, elem.type);
-            ParseIntoTree(expr, &((*node)->rvalue), brackets);
+            Add(node, elem.val, elem.type, elem.priority);
+            ParseIntoTree(expr, &((*node)->rvalue));
         } else {
-            ++brackets;
-            ParseIntoTree(expr, node, brackets);
+            ParseIntoTree(expr, node);
         }
         if (elem.val.oper != ')' && elem.val.oper != '(' && elem.priority >= 0) {
-            ParseIntoTree(expr, &((*node)->lvalue), 0);
+            ParseIntoTree(expr, &((*node)->lvalue));
         }
     } else {
-        Add(node, elem.val, elem.type);
-        while (brackets--) {
-            node = &((*node)->rvalue);
-            Value val;
-            enum Type type;
-            val.oper = ')';
-            type = OPER;
-            Add(node, val, type);
-        }
+        Add(node, elem.val, elem.type, elem.priority);
     }
 }
 
@@ -225,23 +214,7 @@ void Eval(Node* node) { /* Задание согласно варианту */
             node->type = NUM;
             node->val.num = Pow(node->lvalue->val.num, node->rvalue->val.num);
             Del(&(node->lvalue));
-            Node* ptr = node->rvalue;
-            int brackets = 0;
-            while (ptr->rvalue != NULL) {
-                ++brackets;
-                ptr = ptr->rvalue;
-            }
             Del(&(node->rvalue));
-
-            Node** next = &node;
-            while (brackets--) {
-                next = &((*next)->rvalue);
-                Value val;
-                enum Type type;
-                val.oper = ')';
-                type = OPER;
-                Add(next, val, type);
-            }
         }
     }
     Eval(node->lvalue);
@@ -265,7 +238,7 @@ int main() {
 
     putchar('\n');
     Tree tree = InitTree();
-    ParseIntoTree(expr, &tree, 0);
+    ParseIntoTree(expr, &tree);
     PrintTree(tree, 0);
     putchar('\n');
     PrintExpression(tree);

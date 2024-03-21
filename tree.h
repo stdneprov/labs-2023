@@ -23,11 +23,12 @@ struct Node {
 
     Value val;
     enum Type type;
+    int priority;
 };
 
 Tree InitTree();
 void Clear(Node** tree);
-int Add(Node** parent, Value val, enum Type type);
+int Add(Node** parent, Value val, enum Type type, int priority);
 int Del(Node** targ);
 void PrintTree(Tree ptr, int depth);
 void PrintExpression(Tree ptr);
