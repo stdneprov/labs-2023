@@ -139,7 +139,7 @@ List ConvertToReversePolish(char *str) {
     char strbuf[256] = {0};
     int i_strbuf = -1;
     char prev = ' ';
-    while (*str) {
+    while (*str && *str != '\n') {
         if (IsOperand(*str) || *str == ' ') {
             if (prev != ' ' && !IsOperand(prev) && strbuf[0]) {
                 PushValue(&res, &cur, strbuf, &i_strbuf);
@@ -217,15 +217,17 @@ typedef struct Tree {
     struct Tree *r;
 } Tree;
 
-Tree GenerateTreeFromReversePolish(List *l) {
-    Tree t = {0};
-    t.val = *ListLast(l);
+Tree *GenerateTreeFromReversePolish(List *l) {
+    Tree *t = malloc(sizeof(Tree));
+    if (t == NULL) {
+        printf("ERROR: buy more ram\n");
+        exit(1);
+    }
+    t->val = *ListLast(l);
     ListPop(l);
-    if (t.val.t == ValueTypeOp) {
-        t.l = malloc(sizeof(Tree));
-        t.r = malloc(sizeof(Tree));
-        *t.r = GenerateTreeFromReversePolish(l);
-        *t.l = GenerateTreeFromReversePolish(l);
+    if (t->val.t == ValueTypeOp) {
+        t->r = GenerateTreeFromReversePolish(l);
+        t->l = GenerateTreeFromReversePolish(l);
     }
     return t;
 }
@@ -294,22 +296,36 @@ void OptimizeTree(Tree *t) {
     *t = *t->l;
 }
 
+void FreeTree(Tree *t) {
+    if (t == NULL)
+        return;
+    FreeTree(t->l);
+    FreeTree(t->r);
+    free(t);
+}
+
 int main(void) {
     // упростить выполнив деление
-    char *str = "-6 / 2 + a * 2 -3 - a * (b - 4 / 2 / d)";
+    // char *str = "-6 / 2 + a * 2 -3 - a * (b - 4 / 2 / d)";
+    // char *str = "2 + 4/2";
+    char *str = NULL;
+    size_t len = 0;
+    getline(&str, &len, stdin);
     List l = ConvertToReversePolish(str);
 
-    Tree t = GenerateTreeFromReversePolish(&l);
-    PrintTree(&t, 0);
+    Tree *t = GenerateTreeFromReversePolish(&l);
+    PrintTree(t, 0);
     printf("\n");
-    PrintTreeAsExpression(&t);
-    printf("\n");
-
-    OptimizeTree(&t);
-    PrintTree(&t, 0);
-    printf("\n");
-    PrintTreeAsExpression(&t);
+    PrintTreeAsExpression(t);
     printf("\n");
 
+    OptimizeTree(t);
+    PrintTree(t, 0);
+    printf("\n");
+    PrintTreeAsExpression(t);
+    printf("\n");
+
+    FreeTree(t);
+    free(str);
     return 0;
 }
