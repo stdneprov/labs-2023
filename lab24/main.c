@@ -246,13 +246,27 @@ void PrintTree(Tree *t, int depth) {
 
 void PrintTreeAsExpressionR(Tree *t) {
     if (t->l && t->r) {
-        printf("(");
-        if (t->l)
+        if ((t->l->val.t == ValueTypeVal && t->l->val.v.val < 0) ||
+            (t->l->val.t == ValueTypeOp &&
+             OperandPriority(t->l->val) < OperandPriority(t->val))) {
+            printf("(");
             PrintTreeAsExpressionR(t->l);
+            printf(")");
+        } else {
+            PrintTreeAsExpressionR(t->l);
+        }
+
         PrintValue(&t->val);
-        if (t->r)
+        if ((t->r->val.t == ValueTypeVal && t->r->val.v.val < 0) ||
+            (t->r->val.t == ValueTypeOp &&
+             OperandPriority(t->r->val) <= OperandPriority(t->val))) {
+            printf("(");
             PrintTreeAsExpressionR(t->r);
-        printf(")");
+            printf(")");
+        } else {
+            PrintTreeAsExpressionR(t->r);
+        }
+
     } else {
         PrintValue(&t->val);
     }
