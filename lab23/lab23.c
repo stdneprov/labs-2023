@@ -10,13 +10,51 @@ typedef struct Node {
 
 int currentIndex = 1;
 
-Node* CreateNode(int value) {
-    Node *newNode = (Node*)malloc(sizeof(Node));
-    if (newNode == NULL) {
-        printf("malloc error\n");
+Node** findNode(Node *root, int index) {
+    if (root == NULL)
         return NULL;
+
+    // если нужный узел - корень
+    if (root->index == index) {
+        Node **node = (Node**)malloc(2 * sizeof(Node*));
+        node[0] = NULL; // родителя нет
+        node[1] = root;
+        return node;
     }
 
+    // если нужный узел - ребёнок
+    if (root->child != NULL) {
+        if (root->child->index == index) {
+            Node **node = (Node**)malloc(2 * sizeof(Node*));
+            node[0] = root;
+            node[1] = root->child;
+            return node;
+        }
+
+        // если нужный узел - сиблинг
+        Node *temp = root->child;
+        while (temp->sibling != NULL) {
+            if (temp->sibling->index == index) {
+                Node **node = (Node**)malloc(2 * sizeof(Node*));
+                node[0] = root;
+                node[1] = temp->sibling;
+                return node;
+            }
+            temp = temp->sibling;
+        }
+    }
+
+    // рекурсивный поиск по детям
+    Node **result = findNode(root->child, index); 
+    if (result != NULL)
+        return result;
+
+    // по сиблингам
+    return findNode(root->sibling, index); 
+}
+
+Node* createNode(int value) {
+    Node *newNode = (Node*)malloc(sizeof(Node));
     newNode->index = currentIndex++;
     newNode->value = value;
     newNode->child = NULL;
@@ -24,47 +62,34 @@ Node* CreateNode(int value) {
     return newNode;
 }
 
-Node* FindNode(Node *root, int index) {
-    if (root == NULL)
-        return NULL;
-    
-    if (root->index == index)
-        return root;
-
-    Node *temp = FindNode(root->child, index);
-    if (temp != NULL)
-        return temp;
-    
-    return FindNode(root->sibling, index);
-}
-
-void AddNode(Node **root) {
+void addNode(Node **root) {
     int value;
-    printf("enter new node value: ");
+    printf("enter node value: ");
     scanf("%d", &value);
-    
+
+    // если пока нет корня
     if (*root == NULL) {
-        *root = CreateNode(value);
+        *root = createNode(value);
+
+    // если корень уже есть
     } else {
         int parentIndex;
-        printf("enter parent node index: "); 
-        scanf("%d", &parentIndex); 
+        printf("enter parent node index: ");
+        scanf("%d", &parentIndex);
+        Node **parentNode = findNode(*root, parentIndex);
 
-        Node *parentNode = FindNode(*root, parentIndex);
-        if (parentNode == NULL) {
+        if (parentNode == NULL || parentNode[1] == NULL) {
             printf("parent node not found\n");
             return;
         }
 
-        Node *newChild = CreateNode(value);
-
-        // вставляем ребёнка родителю
-        if (parentNode->child == NULL) {
-            parentNode->child = newChild;
-        } else {
-            Node *temp = parentNode->child;
+        Node *newChild = createNode(value);
+        // если у родителя нет детей
+        if (parentNode[1]->child == NULL) {
+            parentNode[1]->child = newChild;
+        } else { // если дети есть
+            Node *temp = parentNode[1]->child;
             
-            // либо вставляем его сиблингом
             while (temp->sibling != NULL)
                 temp = temp->sibling;
             temp->sibling = newChild;
@@ -72,57 +97,72 @@ void AddNode(Node **root) {
     }
 }
 
-void DeleteNode(Node **root, int index) {
+void deleteDescendants(Node **root) {
     if (*root == NULL)
         return;
 
-    // если надо удалить корень
-    if ((*root)->index == index) {
-        Node *temp = *root;
-        *root = (*root)->sibling;
+    // делаем из ребёнка корень и всё удаляем
+    Node *currentChild = *root;
+    while (currentChild != NULL) {
+        Node *temp = currentChild;
+        currentChild = currentChild->sibling;
+        deleteDescendants(&(temp->child)); 
+        printf("freeing node %d\n", temp->index);
         free(temp);
+    }
+}
+
+void deleteNode(Node **root, int index) {
+    // нет корня
+    if (*root == NULL) {
+        printf("Root node not found\n");
         return;
     }
+
+    // ищем корень
+    Node **nodeToDelete = findNode(*root, index);
+    if (nodeToDelete == NULL || nodeToDelete[0] == NULL) {
+        printf("Node with index %d not found\n", index);
+        return;
+    }
+
+    // удаляем всех детей детей 
+    deleteDescendants(&(nodeToDelete[1]->child));
     
-    // удалить ребёнка и переместить сиблинга вверх
-    if ((*root)->child != NULL && (*root)->child->index == index) {
-        Node *temp = (*root)->child;
-        (*root)->child = temp->sibling;
-        free(temp);
-        return;
-    }
-
-    // если надо копаться в детях
-    Node *prev = (*root)->child;
-    Node *current = prev->sibling;
-
-    while (current != NULL) {
-        if (current->index == index) {
-            prev->sibling = current->sibling;
-            free(current);
-            return;
+    // соединяет сиблинга с родителем
+    if (nodeToDelete[0]->child == nodeToDelete[1]) {
+        nodeToDelete[0]->child = nodeToDelete[1]->sibling;
+    } else {
+        Node *temp = nodeToDelete[0]->child;
+        while (temp->sibling != nodeToDelete[1]) {
+            temp = temp->sibling;
         }
-        prev = current;
-        current = current->sibling;
+        temp->sibling = nodeToDelete[1]->sibling;
     }
 
-    DeleteNode(&((*root)->child), index);
-    DeleteNode(&((*root)->sibling), index);
+    printf("freeing node %d\n", nodeToDelete[1]->index);
+    // удаляет сам узел
+    free(nodeToDelete[1]);
+    // чистит массив
+    free(nodeToDelete);
 }
 
-void PrintTree(Node *root, int depth) {
-    if (root == NULL)
+void printTree(Node **root, int depth) {
+    if (*root == NULL)
         return;
 
-    for (int i = 0; i < depth; i++)
-        printf("\t");
-    printf("(%d) %d\n", root->index, root->value);
+    Node *current = *root;
 
-    PrintTree(root->child, depth + 1);
-    PrintTree(root->sibling, depth);
+    for (int i = 0; i < depth; i++) {
+        printf("\t");
+    }
+    printf("(%d) %d\n", current->index, current->value);
+
+    printTree(&(current->child), depth + 1);
+    printTree(&(current->sibling), depth);
 }
 
-int CountLeaves(Node *root) {
+int countLeaves(Node *root) {
     if (root == NULL)
         return 0;
 
@@ -131,9 +171,8 @@ int CountLeaves(Node *root) {
 
     int count = 0;
     Node *temp = root->child;
-
     while (temp != NULL) {
-        count += CountLeaves(temp);
+        count += countLeaves(temp);
         temp = temp->sibling;
     }
     return count;
@@ -144,17 +183,16 @@ int main() {
     Node *root = NULL;
 
     while (1) {
-        printf("1. add Node\n");
-        printf("2. delete Node\n");
-        printf("3. show tree\n");
+        printf("1. add node\n");
+        printf("2. delete node\n");
+        printf("3. print tree\n");
         printf("4. count leaves\n");
         printf("5. exit\n");
-
         scanf("%d", &choice);
 
         switch (choice) {
             case 1:
-                AddNode(&root);
+                addNode(&root);
                 break;
 
             case 2:
@@ -163,23 +201,33 @@ int main() {
                 } else {
                     printf("enter node index: ");
                     scanf("%d", &index);
-                    DeleteNode(&root, index);
+
+                    if (root->index == index) {
+                        deleteDescendants(&root);
+                        root = NULL;
+                        break;
+                    }
+                    deleteNode(&root, index);
+                    
+                    if (root == NULL) {
+                        printf("root node deleted\n");
+                    }
                 }
                 break;
 
             case 3:
                 if (root == NULL) {
-                    printf("tree is empty\n");
+                    printf("root node not found\n");
                 } else {
-                    PrintTree(root, 0);
+                    printTree(&root, 0);
                 }
                 break;
 
             case 4:
                 if (root == NULL) {
-                    printf("root not found\n");
+                    printf("root node not found\n");
                 } else {
-                    printf("leaf count: %d\n", CountLeaves(root));
+                    printf("leaf count: %d\n", countLeaves(root));
                 }
                 break;
 
@@ -190,6 +238,5 @@ int main() {
                 printf("invalid choice\n");
         }
     }
-
     return 0;
 }
