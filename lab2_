@@ -1,0 +1,164 @@
+dmitriy@dmitriy-VirtualBox:~$ who
+dmitriy  seat0        2023-09-03 13:55 (login screen)
+dmitriy  tty2         2023-09-03 13:55 (tty2)
+dmitriy@dmitriy-VirtualBox:~$ whoami
+dmitriy
+dmitriy@dmitriy-VirtualBox:~$ ls
+Desktop  Documents  Downloads  ho  labs-2023  Music  Pictures  Public  README.md  snap  Templates  Videos  wget-log
+dmitriy@dmitriy-VirtualBox:~$ ls -l
+total 48
+drwxr-xr-x 2 dmitriy dmitriy 4096 Sep  2 18:16 Desktop
+drwxr-xr-x 2 dmitriy dmitriy 4096 Sep  2 18:16 Documents
+drwxr-xr-x 2 dmitriy dmitriy 4096 Sep  2 18:16 Downloads
+-rw-rw-r-- 1 dmitriy dmitriy    0 Sep  3 15:46 ho
+drwxrwxr-x 3 dmitriy dmitriy 4096 Sep  2 19:54 labs-2023
+drwxr-xr-x 2 dmitriy dmitriy 4096 Sep  2 18:16 Music
+drwxr-xr-x 2 dmitriy dmitriy 4096 Sep  2 18:16 Pictures
+drwxr-xr-x 2 dmitriy dmitriy 4096 Sep  2 18:16 Public
+-rw-rw-r-- 1 dmitriy dmitriy    7 Sep  2 19:10 README.md
+drwx------ 7 dmitriy dmitriy 4096 Sep  3 10:40 snap
+drwxr-xr-x 2 dmitriy dmitriy 4096 Sep  2 18:16 Templates
+drwxr-xr-x 2 dmitriy dmitriy 4096 Sep  2 18:16 Videos
+-rw-rw-r-- 1 dmitriy dmitriy  315 Sep  3 10:53 wget-log
+dmitriy@dmitriy-VirtualBox:~$ chmod 777 ho
+dmitriy@dmitriy-VirtualBox:~$ ls -l
+total 48
+drwxr-xr-x 2 dmitriy dmitriy 4096 Sep  2 18:16 Desktop
+drwxr-xr-x 2 dmitriy dmitriy 4096 Sep  2 18:16 Documents
+drwxr-xr-x 2 dmitriy dmitriy 4096 Sep  2 18:16 Downloads
+-rwxrwxrwx 1 dmitriy dmitriy    0 Sep  3 15:46 ho
+drwxrwxr-x 3 dmitriy dmitriy 4096 Sep  2 19:54 labs-2023
+drwxr-xr-x 2 dmitriy dmitriy 4096 Sep  2 18:16 Music
+drwxr-xr-x 2 dmitriy dmitriy 4096 Sep  2 18:16 Pictures
+drwxr-xr-x 2 dmitriy dmitriy 4096 Sep  2 18:16 Public
+-rw-rw-r-- 1 dmitriy dmitriy    7 Sep  2 19:10 README.md
+drwx------ 7 dmitriy dmitriy 4096 Sep  3 10:40 snap
+drwxr-xr-x 2 dmitriy dmitriy 4096 Sep  2 18:16 Templates
+drwxr-xr-x 2 dmitriy dmitriy 4096 Sep  2 18:16 Videos
+-rw-rw-r-- 1 dmitriy dmitriy  315 Sep  3 10:53 wget-log
+dmitriy@dmitriy-VirtualBox:~$ ps
+    PID TTY          TIME CMD
+   4045 pts/0    00:00:00 bash
+   4182 pts/0    00:00:00 ps
+dmitriy@dmitriy-VirtualBox:~$ pwd
+/home/dmitriy
+dmitriy@dmitriy-VirtualBox:~$ mkdir papka_1
+dmitriy@dmitriy-VirtualBox:~$ ls
+Desktop  Documents  Downloads  ho  labs-2023  Music  papka_1  Pictures  Public  README.md  snap  Templates  Videos  wget-log
+dmitriy@dmitriy-VirtualBox:~$ cd papka_1
+dmitriy@dmitriy-VirtualBox:~/papka_1$ ls
+dmitriy@dmitriy-VirtualBox:~/papka_1$ touch file_1 file_2 file_3 file_4
+dmitriy@dmitriy-VirtualBox:~/papka_1$ ls
+file_1  file_2  file_3  file_4
+dmitriy@dmitriy-VirtualBox:~/papka_1$ cat > file_1
+Пишу текст
+Он может быть многострочным
+
+Текст даже может разбиваться на абзацы
+^C
+dmitriy@dmitriy-VirtualBox:~/papka_1$ cat file_1
+Пишу текст
+Он может быть многострочным
+
+Текст даже может разбиваться на абзацы
+dmitriy@dmitriy-VirtualBox:~/papka_1$ echo "Пишу заменяемый текст" > file_2
+dmitriy@dmitriy-VirtualBox:~/papka_1$ cat file_2
+Пишу заменяемый текст
+dmitriy@dmitriy-VirtualBox:~/papka_1$ cat file_1 > file_2
+dmitriy@dmitriy-VirtualBox:~/papka_1$ cat file_2
+Пишу текст
+Он может быть многострочным
+
+Текст даже может разбиваться на абзацы
+dmitriy@dmitriy-VirtualBox:~/papka_1$ echo "Пишу дополняемый текст" > file_3
+dmitriy@dmitriy-VirtualBox:~/papka_1$ cat file_3
+Пишу дополняемый текст
+dmitriy@dmitriy-VirtualBox:~/papka_1$ cat file_2 >> file_3
+dmitriy@dmitriy-VirtualBox:~/papka_1$ cat file_3
+Пишу дополняемый текст
+Пишу текст
+Он может быть многострочным
+
+Текст даже может разбиваться на абзацы
+dmitriy@dmitriy-VirtualBox:~/papka_1$ mv file_1 file_111
+dmitriy@dmitriy-VirtualBox:~/papka_1$ ls
+file_111  file_2  file_3  file_4
+dmitriy@dmitriy-VirtualBox:~/papka_1$ cat > file_4
+Просто набор слов
+^C
+dmitriy@dmitriy-VirtualBox:~/papka_1$ cp file_111 file_4
+dmitriy@dmitriy-VirtualBox:~/papka_1$ cat file_4
+Пишу текст
+Он может быть многострочным
+
+Текст даже может разбиваться на абзацы
+dmitriy@dmitriy-VirtualBox:~/papka_1$ ls
+file_111  file_2  file_3  file_4
+dmitriy@dmitriy-VirtualBox:~/papka_1$ rm file_111
+dmitriy@dmitriy-VirtualBox:~/papka_1$ ls
+file_2  file_3  file_4
+dmitriy@dmitriy-VirtualBox:~/papka_1$ mkdir papka_2
+dmitriy@dmitriy-VirtualBox:~/papka_1$ ls
+file_2  file_3  file_4  papka_2
+dmitriy@dmitriy-VirtualBox:~/papka_1$ cd /home/dmitriy/papka_1/papka_2
+dmitriy@dmitriy-VirtualBox:~/papka_1/papka_2$ cd ~/
+dmitriy@dmitriy-VirtualBox:~$ cd papka_1
+dmitriy@dmitriy-VirtualBox:~/papka_1$ tty
+/dev/pts/0
+dmitriy@dmitriy-VirtualBox:~/papka_1$ mv papka_2 papka_22
+dmitriy@dmitriy-VirtualBox:~/papka_1$ ls
+file_2  file_3  file_4  papka_22
+dmitriy@dmitriy-VirtualBox:~/papka_1$ mv file_1 papka_22
+mv: cannot stat 'file_1': No such file or directory
+dmitriy@dmitriy-VirtualBox:~/papka_1$ mv file_2 papka_22
+dmitriy@dmitriy-VirtualBox:~/papka_1$ cd papka_22
+dmitriy@dmitriy-VirtualBox:~/papka_1/papka_22$ ls
+file_2
+dmitriy@dmitriy-VirtualBox:~/papka_1/papka_22$ cd ..
+dmitriy@dmitriy-VirtualBox:~/papka_1$ mkdir papka_3
+dmitriy@dmitriy-VirtualBox:~/papka_1$ ls
+file_3  file_4  papka_22  papka_3
+dmitriy@dmitriy-VirtualBox:~/papka_1$ cp -r papka_3 papka_22
+dmitriy@dmitriy-VirtualBox:~/papka_1$ cd papka_22
+dmitriy@dmitriy-VirtualBox:~/papka_1/papka_22$ ls
+file_2  papka_3
+dmitriy@dmitriy-VirtualBox:~/papka_1/papka_22$ cd ..
+dmitriy@dmitriy-VirtualBox:~/papka_1$ ls
+file_3  file_4  papka_22  papka_3
+dmitriy@dmitriy-VirtualBox:~/papka_1$ rm -r papka_3
+dmitriy@dmitriy-VirtualBox:~/papka_1$ ls
+file_3  file_4  papka_22
+dmitriy@dmitriy-VirtualBox:~/papka_1$ grep -r "текст" file_4
+Пишу текст
+dmitriy@dmitriy-VirtualBox:~/papka_1$ grep -c "текст" file_4
+1
+dmitriy@dmitriy-VirtualBox:~/papka_1$ cd ..
+dmitriy@dmitriy-VirtualBox:~$ ls
+Desktop  Documents  Downloads  ho  labs-2023  Music  papka_1  Pictures  Public  README.md  snap  Templates  Videos  wget-log
+dmitriy@dmitriy-VirtualBox:~$ ls -1
+Desktop
+Documents
+Downloads
+ho
+labs-2023
+Music
+papka_1
+Pictures
+Public
+README.md
+snap
+Templates
+Videos
+wget-log
+dmitriy@dmitriy-VirtualBox:~$ ls -a
+.              .bash_logout  .config    Downloads   ho         .local   Pictures  README.md  .sudo_as_admin_successful  .viminfo
+..             .bashrc       Desktop    .git        labs-2023  Music    .profile  snap       Templates                  wget-log
+.bash_history  .cache        Documents  .gitconfig  .lesshst   papka_1  Public    .ssh       Videos
+dmitriy@dmitriy-VirtualBox:~$ ls | grep -E "^labs-[0-9]+"
+labs-2023
+dmitriy@dmitriy-VirtualBox:~$ cd papka_1
+dmitriy@dmitriy-VirtualBox:~/papka_1$ grep -v "текст" file_4
+Он может быть многострочным
+
+Текст даже может разбиваться на абзацы
+dmitriy@dmitriy-VirtualBox:~/papka_1$ 
