@@ -6,55 +6,55 @@ typedef enum {
     STATE_SCAN
 } state;
 
-bool shift_first_min(barrier_list *lst) {
+bool ShiftFirstMin(barrier_list *lst) {
 
 
-    if (list_get_size(lst) <= 1) {
+    if (ListGetSize(lst) <= 1) {
         return false;
     }
 
 
-    list_iter iter = list_iter_begin(lst);
-    int prev_num = list_iter_get(&iter);
-    list_iter_move_next(&iter);
+    list_iter iter = ListIterBegin(lst);
+    int prev_num = ListIterGet(&iter);
+    ListIterMoveNext(&iter);
 
 
-    for (; !list_iter_equal(iter, list_iter_end(lst)); list_iter_move_next(&iter)) {
-        if (prev_num > list_iter_get(&iter)) {
+    for (; !ListIterEqual(iter, ListIterEnd(lst)); ListIterMoveNext(&iter)) {
+        if (prev_num > ListIterGet(&iter)) {
             break;
         }
         else {
-            prev_num = list_iter_get(&iter);
+            prev_num = ListIterGet(&iter);
         }
     }
-    if (list_iter_equal(iter, list_iter_end(lst))) {
+    if (ListIterEqual(iter, ListIterEnd(lst))) {
         return false;
     } 
-    int shift_num = list_iter_get(&iter);
-    list_iter_remove(&iter);
-    list_iter_move_back(&iter);
-    for (; !list_iter_equal(iter, list_iter_end(lst)); list_iter_move_back(&iter)) {
-        if (list_iter_get(&iter) < shift_num) {
+    int shift_num = ListIterGet(&iter);
+    ListIterRemove(&iter);
+    ListIterMoveBack(&iter);
+    for (; !ListIterEqual(iter, ListIterEnd(lst)); ListIterMoveBack(&iter)) {
+        if (ListIterGet(&iter) < shift_num) {
             break;
         }
     }
-    list_iter_move_next(&iter);
-    list_iter_insert_before(&iter, shift_num);
+    ListIterMoveNext(&iter);
+    ListIterInsertBefore(&iter, shift_num);
     return true;
 }
 
-void sort(barrier_list *lst) {
-    while (shift_first_min(lst));
+void Sort(barrier_list *lst) {
+    while (ShiftFirstMin(lst));
 }
 
-bool is_sep(int ch) {
+bool IsSep(int ch) {
     return (('\t' <= ch && ch <= '\r') || ch == ' ');
 }
 
 int main() {
     barrier_list lst;
-    list_init(&lst);
-    list_iter iter = list_iter_begin(&lst);
+    ListInit(&lst);
+    list_iter iter = ListIterBegin(&lst);
     int n = 0;
     int s;
     state st = STATE_FIND_DIGIT;
@@ -67,19 +67,19 @@ int main() {
             }
             continue;
         }
-        if (is_sep(s) && st == STATE_SCAN) {
+        if (IsSep(s) && st == STATE_SCAN) {
             if (znak == 1) {
                 n = -n;
             }
             znak = 0;
-            list_iter_insert_before(&iter, n);
+            ListIterInsertBefore(&iter, n);
             n = 0;
             st = STATE_FIND_DIGIT;
-        } else if (!is_sep(s) && (s <= 57 && s >= 48)) {
+        } else if (!IsSep(s) && (s <= 57 && s >= 48)) {
             n = n*10 + (s-'0');
 
             st = STATE_SCAN;
-        } else if (is_sep(s)) {
+        } else if (IsSep(s)) {
             znak = 0;
         }
     }
@@ -89,13 +89,13 @@ int main() {
                 n = -n;
                 znak = 0;
         }
-        list_iter_insert_before(&iter, n);
+        ListIterInsertBefore(&iter, n);
     }
-    sort(&lst);
-    for (iter = list_iter_begin(&lst); !list_iter_equal(iter, list_iter_end(&lst)); list_iter_move_next(&iter)) {
-        printf("%d ", list_iter_get(&iter));
+    Sort(&lst);
+    for (iter = ListIterBegin(&lst); !ListIterEqual(iter, ListIterEnd(&lst)); ListIterMoveNext(&iter)) {
+        printf("%d ", ListIterGet(&iter));
     }
     printf("\n");
-    list_destroy(&lst);
+    ListDestroy(&lst);
     return 0;
 }
