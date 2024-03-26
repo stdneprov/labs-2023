@@ -1,4 +1,4 @@
-CC=gcc -g -Wall 
+CC=gcc -g -Wall -std=99c -pedantic
 all: main
 default: main
 main: main.o tree.o stack.o
