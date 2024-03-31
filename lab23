@@ -1,0 +1,313 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Node Node;
+
+struct Node {
+    Node* left;
+    Node* right;
+
+    int value;
+    int depth;
+};
+
+void Init(Node** ptr, int val) {
+    if (*ptr != NULL) {
+        printf("Дерево уже существует\n");
+        return;
+    }
+    *ptr = (Node*)malloc(sizeof(Node));
+    if (*ptr == NULL) {
+        printf("Недостаточно памяти\n");
+        return;
+    }
+    (*ptr)->value = val;
+    (*ptr)->depth = 0;
+    (*ptr)->left = NULL;
+    (*ptr)->right = NULL;
+    printf("Все верно\n");
+}
+
+Node* FindNode(Node* root, int val) {
+    if (root == NULL || root->value == val) {
+        return root;
+    }
+    Node* left = FindNode(root->left, val);
+    if (left != NULL) {
+        return left;
+    }
+    return FindNode(root->right, val);
+}
+
+int Add(Node** root, int parentVal, int newVal, int direction) {
+    Node* parentNode = FindNode(*root, parentVal);
+    if (parentNode == NULL) {
+        printf("Родительский узел с указанным значением не найден\n");
+        return 0;
+    }
+
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    if (newNode == NULL) {
+        printf("Недостаточно памяти\n");
+        return 0;
+    }
+    newNode->value = newVal;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    newNode->depth = parentNode->depth + 1;
+
+    if (direction == 0) {
+        if (parentNode->left != NULL) {
+            printf("Левый потомок родительского узла уже существует\n");
+            free(newNode);
+            return 0;
+        }
+        parentNode->left = newNode;
+    } else {
+        if (parentNode->right != NULL) {
+            printf("Правый потомок родительского узла уже существует\n");
+            free(newNode);
+            return 0;
+        }
+        parentNode->right = newNode;
+    }
+    return 1;
+}
+
+void Move(Node* targ) {
+    if (targ == NULL) {
+        return;
+    }
+    Move(targ->left);
+    Move(targ->right);
+    --(targ->depth);
+}
+
+void Del(Node** targ) {
+    Node** ptr;
+    Node* new;
+
+    if ((*targ)->right != NULL) {
+        ptr = &((*targ)->right);
+        while ((*ptr)->left != NULL) {
+            ptr = &(*ptr)->left;
+        }
+        new = *ptr;
+
+        if ((*ptr)->right != NULL) {
+            *ptr = (*ptr)->right;
+            Move(*ptr);
+        } else {
+            *ptr = NULL;
+        }
+
+        new->right = (*targ)->right;
+        new->left = (*targ)->left;
+        new->depth = (*targ)->depth;
+
+        free(*targ);
+        *targ = new;
+
+    } else if ((*targ)->left != NULL) {
+        ptr = &((*targ)->left);
+        while ((*ptr)->right != NULL) {
+            ptr = &(*ptr)->right;
+        }
+        new = *ptr;
+
+        if ((*ptr)->left != NULL) {
+            *ptr = (*ptr)->left;
+            Move(*ptr);
+        } else {
+            *ptr = NULL;
+        }
+
+        new->left = (*targ)->left;
+        new->right = (*targ)->right;
+        new->depth = (*targ)->depth;
+
+        free(*targ);
+        *targ = new;
+
+    } else {
+        free(*targ);
+        *targ = NULL;
+    }
+}
+
+void Clear(Node** tree) {
+    if (*tree == NULL) {
+        return;
+    }
+    Clear(&((*tree)->left));
+    Clear(&((*tree)->right));
+    free(*tree);
+    *tree = NULL;
+}
+
+void PrintTree(Node* root) {
+    if (root != NULL) {
+        PrintTree(root->right);
+        int i;
+        for (i = 0; i < root->depth; i++) {
+            printf("    ");
+        }
+        printf("%d\n", root->value);
+        PrintTree(root->left);
+    }
+}
+
+int CheckLeafDepth(Node* root, int currentDepth, int* leafDepth) {
+    if (root == NULL)
+        return 1;
+        
+    if (root->left == NULL && root->right == NULL) {
+        if (*leafDepth == -1) {
+            *leafDepth = currentDepth;
+        } else {
+            if (currentDepth != *leafDepth) {
+                return 0;
+            }
+        }
+    }
+
+    return CheckLeafDepth(root->left, currentDepth + 1, leafDepth) && CheckLeafDepth(root->right, currentDepth + 1, leafDepth);
+}
+
+void OnCheck(Node** tree) {
+    printf("\n_____________________________________________\n\ni [value] - инициализация начального узла значением value\n\n");
+    printf("a [parentValue] [newValue] [direction] - добавить узел, направление: 0 - влево, 1 - вправо\n\n");
+    printf("d [0..1] ... [0..1] - удалить узел, 0 - левый сын, 1 - правый. Отсутствие параметров - удаление\n первого узла\n\n");
+    printf("p - вывести графическую визуализацию дерева\n\n");
+    printf("c - проверить, находятся ли все листья на одном уровне\n\n");
+    printf("s - очистка памяти и завершение работы программы\n");
+    
+    Node** ptrD = NULL;
+    char command = '0';
+    printf("Инициализируйте первый узел:\n");
+
+    while (command != 's') {
+        
+        command = getchar();
+
+        if (*tree == NULL && (command != 'i' && command != 's')) {
+            printf(" \n");
+            while (getchar() != '\n'){
+                continue;
+            }
+            continue;
+        }
+
+        switch (command) {
+            case 'i':
+                getchar();
+                int in;
+                scanf("%d", &in);
+                Init(tree, in);
+                while (getchar() != '\n'){
+                    continue;
+                }
+                break;
+
+            case 'a':
+                getchar();
+                int parentVal, newVal, direction;
+                scanf("%d %d %d", &parentVal, &newVal, &direction);
+                
+                if (Add(tree, parentVal, newVal, direction)) {
+                    printf("Узел добавлен\n");
+                }
+                
+                while (getchar() != '\n'){
+                    continue;
+                }
+                
+                break;
+
+            case 'd':
+                ptrD = tree;
+                int targD = -1;
+                            
+                while (getchar() != '\n') {
+                    scanf("%d", &targD);
+                                
+                    if (targD == -1) {
+                        break;
+                    }
+
+                    if (targD == 1) {
+                        ptrD = &((*ptrD)->right);
+                    } else if (targD == 0) {
+                        ptrD = &((*ptrD)->left);
+                    }
+                    
+                    if (*ptrD == NULL) {
+                        break;
+                    }
+                }
+                            
+                if (*ptrD != NULL) {
+                    Del(ptrD);
+                    printf("Узел удален\n");
+                    if (*tree == NULL) {
+                        command = 's';
+                        printf(" \n");
+                    }
+                } else {
+                    printf("Не существует узла в этой позиции\n");
+                    while (getchar() != '\n'){
+                        continue;
+                    }
+                }
+                break;
+
+            case 'p':
+                while (getchar() != '\n'){
+                    continue;
+                }
+                printf(" Дерево: \n");
+                PrintTree(*tree);
+                break;
+
+            case 'c':
+                while (getchar() != '\n'){
+                    continue;
+                }
+                int leafDepth = -1;
+                if (CheckLeafDepth(*tree, 0, &leafDepth)) {
+                    printf("Листья находятся на одном уровне\n");
+                } else {
+                    printf("Листья не находятся на одном уровне\n");
+                }
+                break;
+
+            case 's':
+                while (getchar() != '\n'){
+                    continue;
+                }
+                if (*tree != NULL) {
+                    Clear(tree);
+                } else {
+                    printf(" \n");
+                    break;
+                }
+                printf("Удаление :(\n");
+                break;
+            
+            default:
+                while (getchar() != '\n'){
+                    continue;
+                }
+                printf(" \n");
+                break;
+        }
+    } 
+}
+
+int main() {
+    Node* tree = NULL;
+    
+    OnCheck(&tree);
+
+    return 0;
+}
