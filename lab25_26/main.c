@@ -25,5 +25,8 @@ int main(void) {
     stack_print(b);
     printf("merged:\n");
     stack_print(c);
+    stack_free(a);
+    stack_free(b);
+    stack_free(c);
     return 0;
 }
