@@ -7,26 +7,36 @@ int main(void) {
     // структура 1:  стек
     // операция  5:  слияние двух стеков, деков, списков или очередей,
     // упорядоченных по возрастанию, с сохранением порядка
-    stack *a = stack_create();
-    stack *b = stack_create();
-    stack *c = stack_create();
-    for (int i = 10; i >= 0; i--) {
-        stack_push_back(a, i * 2);
-        stack_push_back(b, i * 2 + 1);
+    printf("a v:\t add element v\n");
+    printf("r:\t pop last element\n");
+    printf("p: print\n");
+    printf("s: sort stack\n");
+    printf("q: quit\n");
+    printf("> ");
+    char c;
+    int a;
+    stack *s = stack_create();
+    while (true) {
+        scanf("%c", &c);
+        if (c == '\n') {
+            continue;
+        }
+        if (c == 'a') {
+            scanf("%d", &a);
+            stack_push_back(s, a);
+        } else if (c == 'r') {
+            stack_pop_back(s);
+        } else if (c == 'p') {
+            stack_print(s);
+        } else if (c == 's') {
+            stack_sort(s);
+        } else if (c == 'q') {
+            return 0;
+        } else {
+            printf("unknown commad %c\n", c);
+        }
+        printf("> ");
     }
-    printf("unsorted:\n");
-    stack_print(a);
-    stack_print(b);
-    stack_sort(a);
-    stack_sort(b);
-    stack_merge(c, a, b);
-    printf("sorted:\n");
-    stack_print(a);
-    stack_print(b);
-    printf("merged:\n");
-    stack_print(c);
-    stack_free(a);
-    stack_free(b);
-    stack_free(c);
+    stack_free(s);
     return 0;
 }
