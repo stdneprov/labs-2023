@@ -15,10 +15,10 @@ int IsNumber(int c) {
 }
 
 Queue* ReadExpression() {
+    int c = getchar();
     Queue* queue = (Queue*)malloc(sizeof(Queue));
     queue->head = NULL;
     queue->tail = NULL;
-    int c = getchar();
     int numStarted = 0;
     int dot = 0;
     int varStarted = 0;
@@ -29,7 +29,7 @@ Queue* ReadExpression() {
     while (1) {
         if ((numStarted) && (IsNumber(c)) && (dot == 0)) {
             numBuf = numBuf * 10 + ((double)c - '0');
-        } else if ((numStarted) && (IsNumber(c)) && (dot == 1)) {
+        } else if ((numStarted) && (IsNumber(c)) && (dot >= 1)) {
             numBuf = numBuf + (double)(c - '0') * pow(10, -dot);
             dot++;
         } else if ((numStarted) && (c == '.')) {

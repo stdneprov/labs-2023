@@ -8,7 +8,7 @@ void PrintItem(Item* i) {
     } else if (i->type == OPERATOR) {
         if (i->value.operator.c == '(') printf(" (");
         else if (i->value.operator.c == ')') printf(") ");
-        else printf(" %c ", i->value.operator);
+        else printf(" %c ", i->value.operator.c);
     } else {
         int lenVar = i->value.str->lenStr;
         char* str = i->value.str->chars;
