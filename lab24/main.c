@@ -4,6 +4,8 @@
 #include "tree.h"
 #include <stdbool.h>
 
+
+
 void PrintResult(Node* tree) {
     if (tree->left == NULL && tree->right == NULL) {
         if (tree->type == SYMB) {
@@ -41,14 +43,25 @@ void DeletDividerOne(Node *tree) {
         return;
     }
     if (tree->left != NULL && tree->right != NULL) {
+        DeletDividerOne(tree->right);
+        DeletDividerOne(tree->left);
+        if (tree->left->type == SYMB){
+            if (*tree->key.symb == '/' && tree->right->key.num == 1) {
+                tree->type = SYMB;
+                tree->right = tree->left->right;
+                tree->key.symb = tree->left->key.symb;
+                tree->key = tree->left->key;
+                tree->left = tree->left->left;
+            }
+        }
         if (*tree->key.symb == '/' && tree->right->key.num == 1) {
-            tree->type = NUM;
+            tree->type = tree->left->type;
             tree->right = NULL;
             tree->key.symb = NULL;
             tree->key = tree->left->key;
             tree->left = NULL;
 
-        }
+        } 
     }
     DeletDividerOne(tree->right);
     DeletDividerOne(tree->left);
@@ -125,7 +138,6 @@ void ReadForm(){
                         if (StackIsEmpty(&operators) != true) {
                             while (*StackTop(&operators).symb == '*' || *StackTop(&operators).symb == '/' || *StackTop(&operators).symb == '^') {
                                 StackPush(&values, *StackPop(&operators).symb, SYMB);
-                                StackPop(&operators);
                                 if (operators.top == NULL) {
                                     break;
                                 }
@@ -139,7 +151,6 @@ void ReadForm(){
                         if (StackIsEmpty(&operators) != true) {
                             while (*StackTop(&operators).symb == '^') {
                             StackPush(&values, *StackPop(&operators).symb, SYMB);
-                            StackPop(&operators);
                             if (operators.top == NULL) {
                                 break;
                                 }
@@ -190,10 +201,15 @@ void ReadForm(){
         StackPush(&values, *operators.top->value.symb, SYMB);
         StackPop(&operators);
     }
+    StackPrint(&values);
     Node tree;
     tree = *CreateNode(StackPop(&values), SYMB);
     StackToTree(&values, &tree);
+    printf("\n");
+    TreePrint(&tree, 0);
     DeletDividerOne(&tree);
+    printf("\n");
+    TreePrint(&tree, 0);
     PrintResult(&tree);
 }
 
