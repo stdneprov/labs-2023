@@ -74,8 +74,7 @@ void StackPrint(Stack *stk) {
 
 void BubbleSort(Stack *stack) {
     Stack tempStack;
-    //initialize(&tempStack);
-
+    
     while (!IsEmpty(stack)) {
         int current = Pop(stack);
 
