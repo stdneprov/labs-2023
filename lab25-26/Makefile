@@ -1,12 +1,12 @@
-PRC = $(wildcart *.c)
-OBJ = $(patsubst *.c, *.o, $(PRC))
+all: main
+main: main.o lab26.o
+	gcc main.o lab26.o -o main
 
+main.o: main.c
+	gcc main.c -c -o main.o
 
-MyProject : $(OBJ)
-	gcc $(OBJ) -o MyProject
+lab26.o: lab26.c
+	gcc lab26.c -c -o lab26.o
 
-%.o : %.c
-	gcc -c $< -o $@
-
-clean :
-	rm MyProject *.o
+clean:
+	rm main *.o
