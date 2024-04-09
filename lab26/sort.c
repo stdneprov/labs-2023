@@ -3,60 +3,54 @@
 #include <stdbool.h>
 #include "queue.h"
 
-Queue Find(Queue *q, Queue *qr) {
-    if (QueueIsEmpty(q)) {
-        printf("Exit");
-        exit(-1);
-    }
-    int k1 = 0;
-    int k2 = -1;
-    Node* temp = q->first;
-    int n;
-    temp = temp->next;
-    while (temp != NULL) {
-        k1 += 1;
-        if (temp->next == NULL) {
-            printf("Такого элемента нет");
-            exit(-1);
-        }
-        if ((temp->next->data < temp->data)) {
-            n = temp->next->data;
-            break;
-        }
-        temp = temp->next;
-    }
-    temp = q->first;
-    temp = temp->next;
-    for (int _ = 0; _ < k1 - 1; _++) {
-        if (temp->data <= n) {
-            k2 = _;
-        }
-        temp = temp->next;
-    }
-    temp = q->first;
-    temp = temp->next;
-    if (k2 == -1) {
-        QueuePush(qr, n);
-        for (int _ = 0; _ < q->size; _++) {
-            if (!(_ == k1)) {
-                QueuePush(qr, temp->data);
+void Find(Queue *q) {
+    //if (QueueIsEmpty(q)) {
+    //    printf("Exit");
+    //    exit(-1);
+    //}
+    Queue qt1;
+    Queue *qr = &qt1;
+    Create(qr);
+    Queue qt2;
+    Queue *qt = &qt2;
+    Create(qt);
+    int n1, n2;
+    while(!(QueueIsEmpty(q))) {
+        int d = 0;
+        if (QueueIsEmpty(qr) && QueueIsEmpty(qt)) {
+            n1 = QueuePop(q);
+            QueuePush(qr, n1);
+        } else if (QueueIsEmpty(qr)) {
+            //printf("OK");
+            while (!(QueueIsEmpty(qt))) {
+                QueuePush(qr, QueuePop(qt));
             }
-            temp = temp->next;
+            //printf("OKo");
         }
-        return *qr;
-    } else {
-        for (int _ = 0; _ < k1; _++) {
-            QueuePush(qr, temp->data);
-            temp = temp->next;
-            if (_ == k2) {
-                QueuePush(qr, n);
+        //printf("\nTTT\n");
+        n1 = qr->first->next->data;
+        //printf("%d\n", n1);
+        n2 = QueuePop(q);
+        while(!(QueueIsEmpty(qr))) {
+            if (n1 > n2) {
+                d = 1;
+                QueuePush(qt, n2);
+                while(!(QueueIsEmpty(qr))) {
+                    //printf("OKey");
+                    QueuePush(qt, QueuePop(qr));
+                }
+                break;
+            } else {
+                QueuePush(qt, QueuePop(qr));
+                if (qr->first->next != NULL)
+                    {n1 = qr->first->next->data;}
             }
         }
-        temp = temp->next;
-        while (temp != NULL) {
-            QueuePush(qr, temp->data);
-            temp = temp->next;
+        if (d == 0) {
+            QueuePush(qt, n2);
         }
-        return *qr;
+    }
+    while(!(QueueIsEmpty(qt))) {
+        QueuePush(q, QueuePop(qt));
     }
 }

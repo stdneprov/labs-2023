@@ -16,11 +16,11 @@ typedef struct Queue {
 
 void Create(Queue *q);
 void QueuePush(Queue *q, int value);
-void QueuePop(Queue *q);
+int QueuePop(Queue *q);
 bool QueueIsEmpty(Queue *q);
 void QueuePrint(Queue *q);
 void QueueSize(Queue *q);
-Queue Find(Queue *q, Queue *qr);
-
+void Find(Queue *q);
+void QueueFree(Queue *q);
 
 #endif

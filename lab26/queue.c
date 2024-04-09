@@ -28,10 +28,12 @@ void QueuePush(Queue* queue, int data) {
     }
 }
 
-void QueuePop(Queue* queue) {
-    if (queue->first == NULL) {
-        printf("Queue is empty\n");
+int QueuePop(Queue* queue) {
+    if (QueueIsEmpty(queue)) {
+        printf("Queue is empty (Вам вернётся результат -1)\n");
+        return -1;
     } else {
+        int number = queue->first->next->data;
         queue->size--;
         Node* temp = queue->first;
         queue->first = queue->first->next;
@@ -40,12 +42,13 @@ void QueuePop(Queue* queue) {
         if (queue->first == NULL) {
             queue->last = NULL;
         }
+        return number;
     }
 }
 
 void QueuePrint(Queue* queue) {
     if (QueueIsEmpty(queue)) {
-        printf("Выход в связи с ошибкой( Список пуст");
+        printf("Выход в связи с ошибкой( Список пуст )");
         exit(-1);
     }
     Node* temp = queue->first;
@@ -59,5 +62,13 @@ void QueuePrint(Queue* queue) {
 
 void QueueSize(Queue* q) {
     printf("%d\n", q->size);
+}
+
+void QueueFree(Queue *q) {
+    Node *next;
+    for (Node *i = q->first; i != NULL; i = next) {
+        next = i->next;
+        free(i);
+    }
 }
 

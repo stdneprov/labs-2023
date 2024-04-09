@@ -9,31 +9,12 @@ int IsSeparator(char c) {
     return (c == ' ') || (c == ',') || (c == '\n') || (c == '\t');
 }
 
-int Reverse(int r) {
-    int iq = 1;
-    for (int tq = 0; tq < 8; ++tq) {
-        iq = iq * 10 + r % 10;
-        r = r / 10;
-    }
-    return iq;
-
-}
-
-int Two(int x) {
-    int k = 1;
-    for (int t = 0; t < 8; ++t) {
-        k = k * 10 + x % 2;
-        x = x / 2;
-    }
-    return Reverse(k);
-}
-
 int CharBytes(int twin) {
-    if (twin / 10000000 == 10) {
+    if (twin >> 7 == 0) {
         return 1;
-    } else if ((twin / 100000 == 1110)) {
+    } else if (twin >> 5 == 6) {
         return 2;
-    } else if ((twin / 10000 == 11110)) {
+    } else if (twin >> 4 == 14) {
         return 3;
     }
     return 4;
@@ -63,14 +44,13 @@ int main() {
             b = a;
             a = 0;
         }
-        sec = Two(c);
         if (c == EOF) {
             break;
         }
-        if (CharBytes(sec) == 1) {
+        if (CharBytes(c) == 1) {
             continue;
         }
-        if (CharBytes(sec) == 2) {
+        if (CharBytes(c) == 2) {
             int rus = getchar();
             int m = ((c & 31) << 6) | (rus & 63);
             if (((m > 1040 && m < 1066) || (m > 1072 && m < 1098)) && !(IsGlas(m))) {
@@ -83,12 +63,12 @@ int main() {
 
 
         }
-        if (CharBytes(sec) == 3) {
+        if (CharBytes(c) == 3) {
             int c2 = getchar();
             int c3 = getchar();
             continue;
         }
-        if (CharBytes(sec) == 4) {
+        if (CharBytes(c) == 4) {
             int c2 = getchar();
             int c3 = getchar();
             int c4 = getchar();

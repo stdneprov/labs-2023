@@ -47,15 +47,12 @@ void Menu() {
             printf(">\n");
             continue;
         } else if (strcmp(inputUser, "do\n") == 0) {
-            Queue qt1;
-            Queue *qr = &qt1;
-            Create(qr);
-            *q = Find(q, qr);
+            Find(q);
             QueuePrint(q);
             printf(">\n");
             continue;
         } else if ((strcmp(inputUser, "pop\n") == 0)) {
-            QueuePop(q);
+            printf("Элемент %d удалён", QueuePop(q));
             printf(">\n");
             continue;
         } else if ((strcmp(inputUser, "exit\n") == 0)) {
