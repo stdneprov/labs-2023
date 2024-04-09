@@ -84,46 +84,78 @@ void Menu(List *nums) {
                 Print(nums);
             }
         } else if (strcmp(command, destroyCommand) == 0) {
-            Destroy(nums);
+            if (wasCreated == true) {
+                Destroy(nums);
+            }
         } else if (strcmp(command, deleteCommand) == 0) {
-            DeleteNum(nums, num);
+            if (wasCreated == true) {
+                DeleteNum(nums, num);
+            }
         } else if (strcmp(command, sortCommand) == 0) {
-            int buff;
-            for (Iterator i = First(nums); !IsTerminator(i); i = Next(i)) {
-                for (Iterator j = First(nums); !IsTerminator(Next(j)); j = Next(j)) {
-                    if (j.node->data > Next(j).node->data) {
-                        buff = j.node->data;
-                        SetValue(j, Next(j).node->data);
-                        SetValue(Next(j), buff);
+            if (wasCreated == true) {
+                int buff;
+                for (Iterator i = First(nums); !IsTerminator(i); i = Next(i)) {
+                    for (Iterator j = First(nums); !IsTerminator(Next(j)); j = Next(j)) {
+                        if (j.node->data > Next(j).node->data) {
+                            buff = j.node->data;
+                            SetValue(j, Next(j).node->data);
+                            SetValue(Next(j), buff);
+                        }
                     }
                 }
             }
         } else if (strcmp(command, taskCommand) == 0) {
-            Task(nums);
+            if (wasCreated == true && nums->size != 0) {
+                Task(nums);
+            }
         } else if (strcmp(command, nextCommand) == 0) {
-            if (IsEqual(iter, Last(nums)) == false) {
-                iter = Next(iter);
+            if (wasCreated == true && nums->size != 0) {
+                if (IsEqual(iter, Last(nums)) == false) {
+                    iter = Next(iter);
+                }
+                printf("%d\n", GetValue(iter));
             }
-            printf("%d\n", GetValue(iter));
         } else if (strcmp(command, prevCommand) == 0) {
-            if (IsEqual(iter, First(nums)) == false) {
-                iter = Previous(iter);
+            if (wasCreated == true && nums->size != 0) {
+                if (IsEqual(iter, First(nums)) == false) {
+                    iter = Previous(iter);
+                }
+                printf("%d\n", GetValue(iter));
             }
-            printf("%d\n", GetValue(iter));
         } else if (strcmp(command, showIterCommand) == 0) {
-            if (wasCreated == true) {
+            if (wasCreated == true && nums->size != 0) {
                 printf("%d\n", GetValue(iter));
             }
         } else if (strcmp(command, firstCommand) == 0) {
-            printf("%d\n", GetValue(First(nums)));
+            if (wasCreated == true && nums->size != 0) {
+                printf("%d\n", GetValue(First(nums)));
+            }
         } else if (strcmp(command, lastCommand) == 0) {
-            printf("%d\n", GetValue(Last(nums)));
+            if (wasCreated == true && nums->size != 0) {
+                printf("%d\n", GetValue(Last(nums)));
+            }
         } else if (strcmp(command, lengthCommand) == 0) {
             printf("%d\n", nums->size);
         }  else if (strcmp(command, insAfterCommand) == 0) {
-            InsertAfter(nums, num, iter);
+            if (wasCreated == true && nums->size != 0) {
+                InsertAfter(nums, num, iter);
+            } else {
+                Add(nums, num);
+                if (nums->size == 1) {
+                    wasCreated = true;
+                    iter = First(nums);
+                }
+            }
         } else if (strcmp(command, insBeforeCommand) == 0) {
-            InsertBefore(nums, num, iter);
+            if (wasCreated == true && nums->size != 0) {   
+                InsertBefore(nums, num, iter);
+            } else {
+                Add(nums, num);
+                if (nums->size == 1) {
+                    wasCreated = true;
+                    iter = First(nums);
+                }
+            }
         } else  if (strcmp(command, exitCommand) == 0) {
             Destroy(nums);
             break;
@@ -187,5 +219,4 @@ int main() {
     //     }
     // }
     // Print(&nums);
-    
 }
