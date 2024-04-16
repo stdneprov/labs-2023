@@ -1,0 +1,191 @@
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ ls
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ touch f1.txt f2.txt
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ ls
+f1.txt  f2.txt
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ sudo dd if=/dev/sda of=disk.img bs=1b count=4
+4+0 записей получено
+4+0 записей отправлено
+2048 байт (2,0 kB, 2,0 KiB) скопирован, 0,00138121 s, 1,5 MB/s
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ tee f1.txt f2.txt
+Do yor best
+Do yor best
+How are you?
+How are you?
+GoodBye!
+GoodBye!
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ cat f1.txt
+Do yor best
+How are you?
+GoodBye!
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ cmp f1.txt f2.txt
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ mktemp authentic+XXXXXX.tmp
+authentic+ZIkDSp.tmp
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ ls
+authentic+ZIkDSp.tmp  f1.txt  f2.txt
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ echo "Little monkey know lucky fox" | cut -b 1,2,10,21,28
+Linux
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ cat >  f2.txt
+1 Ниндзя
+2 Дак
+3 Фредди
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ cat >  f1.txt
+1 Черепашка
+2 Дональд
+3 Мишка
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ join f1.txt f2.txt
+1 Черепашка Ниндзя
+2 Дональд Дак
+3 Мишка Фредди
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ cat > f3.txt
+A
+C
+H
+D
+B
+Y
+Z
+S
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ sort f3.txt
+A
+B
+C
+D
+H
+S
+Y
+Z
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ ed
+a
+Text 1
+Text 2
+Text 3
+Text 4
+.
+1,4p
+Text 1
+Text 2
+Text 3
+Text 4
+2p
+Text 2
+p
+Text 2
+w
+?
+q
+?
+q
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ find . -iname "F*"
+./f3.txt
+./f2.txt
+./f1.txt
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ find . -iname "F"
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ cat > f1.txt
+001
+002
+003 
+004
+005
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ cat > f2.txt
+000
+001
+003
+005
+007
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ comm f1.txt f2.txt
+	000
+		001
+002
+		003
+004
+		005
+	007
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ echo "Hi, friend" | wc
+      1       2      11
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ cat > f1.txt
+Text 1
+Text 2         
+Text 3
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ cat > f2.txt
+Text 1
+Text 2, but...
+Text 3
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ diff -y f1.txt f2.txt
+Text 1								Text 1
+Text 2							      |	Text 2, but...
+Text 3								Text 3
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ grep -e "but" f2.txt
+Text 2, but...
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ grep -e "but" f1.txt
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ grep -e "text" f1.txt
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ grep -i "text" f1.txt
+Text 1
+Text 2
+Text 3
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ sum f1.txt
+25674     1
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ tr a A
+artem alim aleksandr
+Artem Alim AleksAndr
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ tr -d [:lower:]
+AdfdddRngggTEbccduiijgaM
+ARTEM
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ echo -e Linux\\nStepa\\nDream\\nHappiness | uniq -c
+      1 Linux
+      1 Stepa
+      1 Dream
+      1 Happiness
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ od -b f1.txt
+0000000 124 145 170 164 040 061 012 124 145 170 164 040 062 012 124 145
+0000020 170 164 040 063 012
+0000025
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ echo "Little monkey know lucky fox" | awk '{print $4}'
+lucky
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ vim f1.txt
+USE:
+1 cmp
+2 comm
+3 wc
+4 dd
+5 diff
+6 grep
+7 join
+8 sort
+9 tee
+10 tr
+11 uniq
+12 od
+13 sum
+14 cut
+15 ed
+16 touch
+17 find
+18 mktemp
+19 awk
+20 vim
+~                                                                               
+:wq
+artemdelgray@artemdelgray-VirtualBox:~/Рабочий стол/lab20$ cat f1.txt
+USE:
+1 cmp
+2 comm
+3 wc
+4 dd
+5 diff
+6 grep
+7 join
+8 sort
+9 tee
+10 tr
+11 uniq
+12 od
+13 sum
+14 cut
+15 ed
+16 touch
+17 find
+18 mktemp
+19 awk
+20 vim
+
+
