@@ -6,6 +6,8 @@
 void Create(Queue *q) {
     q->first = q->last = malloc(sizeof(Node));
     q->size = 0;
+    //q->first = NULL;
+    //q->first = NULL;
 }
 
 bool QueueIsEmpty(Queue *q) {
@@ -13,19 +15,15 @@ bool QueueIsEmpty(Queue *q) {
 }
 
 void QueuePush(Queue* queue, int data) {
-    Node* newNode = (Node*)malloc(sizeof(struct Node));
-    newNode->data = data;
-    newNode->next = NULL;
-
-    if (queue->last == NULL) {
-        queue->first = newNode;
-        queue->last = newNode;
-        queue->size++;
-    } else {
-        queue->last->next = newNode;
-        queue->last = newNode;
-        queue->size++;
+    if (!(queue->last->next = malloc(sizeof(Node)))) {
+        exit(-1);
     }
+    queue->last->data = data;
+    queue->last = queue->last->next;
+    queue->last->next = NULL;
+    //printf("%d !last\n", queue->last->data);
+    //printf("%d !first\n", queue->first->data);
+    queue->size++;
 }
 
 int QueuePop(Queue* queue) {
@@ -33,7 +31,7 @@ int QueuePop(Queue* queue) {
         printf("Queue is empty (Вам вернётся результат -1)\n");
         return -1;
     } else {
-        int number = queue->first->next->data;
+        int number = queue->first->data;
         queue->size--;
         Node* temp = queue->first;
         queue->first = queue->first->next;
@@ -51,9 +49,10 @@ void QueuePrint(Queue* queue) {
         printf("Выход в связи с ошибкой( Список пуст )");
         exit(-1);
     }
+    //printf("%d\n", queue->first->data);
     Node* temp = queue->first;
-    temp = temp->next;
-    while (temp != NULL) {
+    //temp = temp->next;
+    while (temp->next != NULL) {
         printf("%d ", temp->data);
         temp = temp->next;
     }

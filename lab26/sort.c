@@ -28,7 +28,7 @@ void Find(Queue *q) {
             //printf("OKo");
         }
         //printf("\nTTT\n");
-        n1 = qr->first->next->data;
+        n1 = qr->first->data;
         //printf("%d\n", n1);
         n2 = QueuePop(q);
         while(!(QueueIsEmpty(qr))) {
@@ -42,8 +42,8 @@ void Find(Queue *q) {
                 break;
             } else {
                 QueuePush(qt, QueuePop(qr));
-                if (qr->first->next != NULL)
-                    {n1 = qr->first->next->data;}
+                if (qr->first != NULL)
+                    {n1 = qr->first->data;}
             }
         }
         if (d == 0) {
