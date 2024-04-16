@@ -62,6 +62,7 @@ void AddNode(int dadId, int value, int *idCounter, Node** rootPtr) {
     Node *root = *rootPtr;
     if (dadId == -1) {
         root = (Node*)malloc(sizeof(Node));
+        if (root == NULL) exit(0);
         root->bro = NULL;
         root->son = NULL;
         root->id = 0;
@@ -73,6 +74,7 @@ void AddNode(int dadId, int value, int *idCounter, Node** rootPtr) {
         if (res[CUR] != NULL) {
             Node *dad = res[CUR];
             Node *newNode = (Node*)malloc(sizeof(Node));
+            if (newNode == NULL) exit(0);
             newNode->value = value;
             newNode->id = *idCounter;
             *idCounter = *idCounter + 1;
