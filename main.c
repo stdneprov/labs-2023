@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "tree.h"
 #include "stack.h"
-char oper = 42; // заебёт
+char oper = 42; 
 int IsOperation(char c) {
     return (c == '+') || (c == '-') || (c == '*') || (c == '/') || (c == '^') ;
 }
@@ -235,7 +235,6 @@ void ReadFormula() {
         StackPush(&values, *operations.top->value.symb, operations.top->type);
         StackPop(&operations);
     }
-    //крутой вывод закоменчен((
 
     printf("-----------------------STACK-----------------------\n");
     StackPrint(&values);
