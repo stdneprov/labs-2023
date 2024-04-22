@@ -6,16 +6,25 @@
 void StackMerge(Stack *res, Stack *a, Stack *b) {
     long long int i = 0;
     long long int j = 0;
-    for (i = 0; i < a->count; i ++) {
-        while ((j < b->count) && (a->buff[i] > b->buff[j])) {
-            StackPush(res, b->buff[j]);
-            j++;
+    while (1) {
+        if ((i >= a->count) || (j >= b->count)) {
+            break;
         }
-        StackPush(res, a->buff[i]);
+        if (StackGetElement(a, i) < StackGetElement(b, j)) {
+            StackPush(res, StackGetElement(b, j));
+            j++;
+        } else {
+            StackPush(res, StackGetElement(a, i));
+            i++;
+        }
+    }
+    while (i < a->count) {
+        StackPush(res, StackGetElement(a, i));
+        i++;
     }
     while (j < b->count) {
-        StackPush(res, b->buff[j]);
-            j++;
+        StackPush(res, StackGetElement(b, j));
+        j++;
     }
 }
 

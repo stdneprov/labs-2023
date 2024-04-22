@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include "stack.h"
 
+
+
 void PrintT(T a) {
     printf("%d", a);
 }
@@ -41,8 +43,9 @@ T StackPop(Stack *stk) {
         return -1;
     }
     
-    T result = stk->buff[--stk->count];
-
+    T result = stk->buff[stk->count-1];
+    stk->buff[stk->count-1] = 0;
+    stk->count--;
     if (stk->size - stk->count >= GROWTH) {
         stk->size -= GROWTH / 2;
         stk->buff = (T *)realloc(stk->buff, sizeof(T) * stk->size);
@@ -56,7 +59,7 @@ T StackTop(Stack *stk) {
         return -1;
     }
 
-    return stk->buff[--stk->count];
+    return stk->buff[stk->count-1];
 }
 
 bool StackIsEmpty(Stack *stk) {
@@ -84,4 +87,8 @@ void StackFree(Stack *stk) {
     if (stk->buff != NULL) {
         free(stk->buff);
     }
+}
+
+T StackGetElement(Stack *s, long long int i) {
+    return s->buff[i];
 }

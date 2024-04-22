@@ -7,8 +7,8 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-
 int main() {
+
     Stack stk;
     char input[20];
     char initStack[10] = "init";

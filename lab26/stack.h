@@ -5,6 +5,7 @@
 typedef int T;
 #define GROWTH 100
 
+
 typedef struct Stack {
     T *buff;
     int size;
@@ -18,5 +19,6 @@ T StackTop(Stack *stk);
 bool StackIsEmpty(Stack *stk);
 void StackPrint(Stack *stk);
 void StackFree(Stack *stk);
+T StackGetElement(Stack *stk, long long int i);
 
 #endif
