@@ -1,0 +1,10 @@
+cosmolab crush_moon 4 1 1 1
+loosers fly_to_mars 4 0 0 0
+cats meow 5 0 1 0 
+another_team another_project 3 1 0 1
+gorgoroth quantos 4 0 1 1
+slaves escape 3 1 0 1
+masters catch 5 1 1 1
+mai burn_baumanka 4 1 1 1
+punks shit_pants 4 0 0 0
+alchogolica drinkemall 4 1 1 1
