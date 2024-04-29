@@ -87,28 +87,53 @@ VList *VListFReadCSV(const char *filename, bool header, char sep) {
             continue;
     }
     char buf[256] = {0};
-    // format   channel     name    dd/mm/yyyy  views
+    // format   channel     title    dd/mm/yyyy  views
     while (true) {
+        // read channel
         int size = FReadCSVField(fp, buf, sep);
-        if (size == EOF) {
+        if (size == EOF)
             break;
-        }
         memcpy(v.channel, buf, size);
 
+        // read title
         size = FReadCSVField(fp, buf, sep);
         memcpy(v.title, buf, size);
 
-        size = FReadCSVField(fp, buf, sep);
-        buf[size] = 0;
-        if (size > 0 && sscanf(buf, "%hhd/%hhd/%hd", &v.date.day, &v.date.month,
-                               &v.date.year) != 3) {
-            fprintf(stderr, "ERROR: invalid date: %s\n", buf);
-            exit(EXIT_FAILURE);
-        }
-
+        // read date
         size = FReadCSVField(fp, buf, sep);
         buf[size] = 0;
         char *end;
+        v.date.day = strtol(buf, &end, 10);
+        if (v.date.day < 1 || v.date.day > 31) {
+            fprintf(stderr, "ERROR: day must be in range [1;31]: %d\n",
+                    v.date.day);
+            exit(EXIT_FAILURE);
+        }
+        if (*end != '/') {
+            fprintf(stderr, "ERROR: date must be in dd/mm/yyyy: %s\n", buf);
+            exit(EXIT_FAILURE);
+        }
+        v.date.month = strtol(end + 1, &end, 10);
+        if (v.date.month < 1 || v.date.month > 12) {
+            fprintf(stderr, "ERROR: month must be in range [1;12]: %d\n",
+                    v.date.month);
+            exit(EXIT_FAILURE);
+        }
+        if (*end != '/') {
+            fprintf(stderr, "ERROR: date must be in dd/mm/yyyy: %s\n", buf);
+            exit(EXIT_FAILURE);
+        }
+        v.date.year = strtol(end + 1, &end, 10);
+        // year cannot be zero; It can only occur if year is omitted
+        if (*end || !v.date.year) {
+            fprintf(stderr, "ERROR: year must be a number: %s\n", buf);
+            exit(EXIT_FAILURE);
+        }
+
+        // read view count
+        size = FReadCSVField(fp, buf, sep);
+        buf[size] = 0;
+        // use strtoll, as views is unsigned long
         long long views = strtoll(buf, &end, 10);
         if (*end) {
             fprintf(stderr, "ERROR: invalid number: %s\n", buf);
