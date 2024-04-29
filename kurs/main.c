@@ -117,7 +117,6 @@ int main(int argc, char **argw) {
                 VListPush(res, l->data[i]);
         }
     }
-    (void)out_header;
     if (output_file)
         if (out_sep)
             VListFWriteCSV(res, output_file, out_header, out_sep);
