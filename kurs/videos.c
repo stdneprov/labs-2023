@@ -8,7 +8,7 @@
 
 void VideoPrint(const Video *v) {
     printf("\"%s\": \"%s\"\n", v->channel, v->title);
-    printf("\tdate: %d/%d/%d\t\t%lu views\n", v->date.day, v->date.month,
+    printf("\tdate: %02d/%02d/%04d\t\t%lu views\n", v->date.day, v->date.month,
            v->date.year, v->views);
 }
 
