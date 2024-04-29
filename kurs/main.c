@@ -15,7 +15,7 @@
 */
 
 int main(int argc, char **argw) {
-    bool headers = true;
+    bool header = true;
     bool out_header = true;
     char sep = 0;
     char out_sep = 0;
@@ -26,11 +26,11 @@ int main(int argc, char **argw) {
     // skip first argument as it's program name
     for (int i = 1; i < argc; i++) {
         if (strcmp("--no_header", argw[i]) == 0) {
-            headers = false;
+            header = false;
             continue;
         }
         if (strcmp("--out_no_header", argw[i]) == 0) {
-            headers = false;
+            out_header = false;
             continue;
         }
         if (strcmp("-o", argw[i]) == 0 || strcmp("--out", argw[i]) == 0) {
@@ -47,6 +47,10 @@ int main(int argc, char **argw) {
                 return 1;
             }
             sep = argw[++i][0];
+            if (argw[i][1]) {
+                fprintf(stderr, "ERROR: separator must be a single char\n");
+                return 1;
+            }
             continue;
         }
         if (strcmp("--out_csv", argw[i]) == 0) {
@@ -55,6 +59,10 @@ int main(int argc, char **argw) {
                 return 1;
             }
             out_sep = argw[++i][0];
+            if (argw[i][1]) {
+                fprintf(stderr, "ERROR: separator must be a single char\n");
+                return 1;
+            }
             continue;
         }
         if (strcmp("-v", argw[i]) == 0 || strcmp("--views", argw[i]) == 0) {
@@ -74,6 +82,27 @@ int main(int argc, char **argw) {
             }
             views = v;
             continue;
+        }
+        if (strcmp("--help", argw[i]) == 0) {
+            printf("Usage: %s [OPTIONS] input_file\n", argw[0]);
+            printf("Options:\n");
+            printf("\t--csv <sep>\tSpecify that the input file is csv "
+                   "table with <sep>. If this argument is not specified, "
+                   "separator will be assumed based on file extension\n");
+            printf("\t--no_header\tSpecify that the input csv file has no "
+                   "header\n'");
+            printf("\t-o, --out\tSpecify output file. Otherwise data will be "
+                   "outputed in stdout\n");
+            printf("\t--out_csv <sep>\tSpecify that the output file "
+                   "should be csv table with <sep>. If this argument is "
+                   "not specified, separator will be assumed based on file "
+                   "extension\n");
+            printf("\t--out_no_header\tSpecify that the output csv file should "
+                   "have no header\n'");
+            printf("\t-v, --views <N>\tspecify bottom value for filtering "
+                   "videos\n");
+            printf("\t--help\tprint this message\n");
+            return 0;
         }
         if (argw[i][0] == '-') {
             fprintf(stderr, "ERROR: unknown flag: \"%s\"\n", argw[i]);
@@ -96,7 +125,7 @@ int main(int argc, char **argw) {
         if (ext && strcmp(ext, ".tsv") == 0)
             sep = '\t';
         else if (ext && strcmp(ext, ".csv") == 0)
-            sep = ';';
+            sep = ',';
     }
 
     if (output_file && !out_sep) {
@@ -104,10 +133,10 @@ int main(int argc, char **argw) {
         if (ext && strcmp(ext, ".tsv") == 0)
             out_sep = '\t';
         else if (ext && strcmp(ext, ".csv") == 0)
-            out_sep = ';';
+            out_sep = ',';
     }
 
-    VList *l = sep ? VListFReadCSV(input_file, headers, sep)
+    VList *l = sep ? VListFReadCSV(input_file, header, sep)
                    : VListFReadBinary(input_file);
     VList *res = l;
     if (views) {
