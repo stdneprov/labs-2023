@@ -34,7 +34,7 @@ VList *VListWithCapacity(size_t capacity) {
     return vlist;
 }
 
-int FReadTableField(FILE *fp, char *buf, char sep) {
+int FReadCSVField(FILE *fp, char *buf, char sep) {
     char c;
     int i = 0;
     c = fgetc(fp);
@@ -71,7 +71,7 @@ int FReadTableField(FILE *fp, char *buf, char sep) {
     return i;
 }
 
-VList *VListFReadTable(const char *filename, bool header, char sep) {
+VList *VListFReadCSV(const char *filename, bool header, char sep) {
     FILE *fp = fopen(filename, "r");
     if (fp == NULL) {
         fprintf(stderr, "ERROR: failed to open file: %s\n", filename);
@@ -89,16 +89,16 @@ VList *VListFReadTable(const char *filename, bool header, char sep) {
     char buf[256] = {0};
     // format   channel     name    dd/mm/yyyy  views
     while (true) {
-        int size = FReadTableField(fp, buf, sep);
+        int size = FReadCSVField(fp, buf, sep);
         if (size == EOF) {
             break;
         }
         memcpy(v.channel, buf, size);
 
-        size = FReadTableField(fp, buf, sep);
+        size = FReadCSVField(fp, buf, sep);
         memcpy(v.title, buf, size);
 
-        size = FReadTableField(fp, buf, sep);
+        size = FReadCSVField(fp, buf, sep);
         buf[size] = 0;
         if (size > 0 && sscanf(buf, "%hhd/%hhd/%hd", &v.date.day, &v.date.month,
                                &v.date.year) != 3) {
@@ -106,7 +106,7 @@ VList *VListFReadTable(const char *filename, bool header, char sep) {
             exit(EXIT_FAILURE);
         }
 
-        size = FReadTableField(fp, buf, sep);
+        size = FReadCSVField(fp, buf, sep);
         buf[size] = 0;
         char *end;
         long long views = strtoll(buf, &end, 10);
@@ -127,7 +127,7 @@ VList *VListFReadTable(const char *filename, bool header, char sep) {
     return l;
 }
 
-void VWriteTableField(FILE *fp, const char *str, char sep) {
+void VWriteCSVField(FILE *fp, const char *str, char sep) {
     if (strchr(str, '"')) {
         fputc('"', fp);
         for (const char *c = str; *c != 0; c++) {
@@ -143,8 +143,8 @@ void VWriteTableField(FILE *fp, const char *str, char sep) {
     }
 }
 
-void VListFWriteTable(const VList *l, const char *filename, bool header,
-                      char sep) {
+void VListFWriteCSV(const VList *l, const char *filename, bool header,
+                    char sep) {
     FILE *fp = fopen(filename, "w");
     if (fp == NULL) {
         fprintf(stderr, "ERROR: failed to open file: %s\n", filename);
@@ -154,9 +154,9 @@ void VListFWriteTable(const VList *l, const char *filename, bool header,
         fprintf(fp, "channel%ctitle%cdd/mm/yyyy%cviews\n", sep, sep, sep);
     for (size_t i = 0; i < l->size; i++) {
         Video v = l->data[i];
-        VWriteTableField(fp, v.channel, sep);
+        VWriteCSVField(fp, v.channel, sep);
         fputc(sep, fp);
-        VWriteTableField(fp, v.title, sep);
+        VWriteCSVField(fp, v.title, sep);
         fprintf(fp, "%c%02d/%02d/%04d%c%lu\n", sep, v.date.day, v.date.month,
                 v.date.year, sep, v.views);
     }

@@ -107,7 +107,7 @@ int main(int argc, char **argw) {
             out_sep = ';';
     }
 
-    VList *l = sep ? VListFReadTable(input_file, headers, sep)
+    VList *l = sep ? VListFReadCSV(input_file, headers, sep)
                    : VListFReadBinary(input_file);
     VList *res = l;
     if (views) {
@@ -120,7 +120,7 @@ int main(int argc, char **argw) {
     (void)out_header;
     if (output_file)
         if (out_sep)
-            VListFWriteTable(res, output_file, out_header, out_sep);
+            VListFWriteCSV(res, output_file, out_header, out_sep);
         else
             VListFWriteBinary(res, output_file);
     else

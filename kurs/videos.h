@@ -30,13 +30,13 @@ typedef struct {
     size_t capacity;
 } VList;
 
-VList *VListFReadTable(const char *filename, bool header, char sep);
+VList *VListFReadCSV(const char *filename, bool header, char sep);
 VList *VListFReadBinary(const char *filename);
 VList *VListNew(void);
 VList *VListWithCapacity(size_t capacity);
 void VListFWriteBinary(const VList *l, const char *filename);
-void VListFWriteTable(const VList *l, const char *filename, bool header,
-                      char sep);
+void VListFWriteCSV(const VList *l, const char *filename, bool header,
+                    char sep);
 void VListPrint(const VList *l);
 void VListPush(VList *l, const Video v);
 void VListPop(VList *l);
