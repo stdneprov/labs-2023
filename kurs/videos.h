@@ -16,8 +16,8 @@ typedef struct {
 } Date;
 
 typedef struct {
-    char channel[30]; // youtube channel hanle cannot exceed 100 characters
-    char title[100];  // youtube video name cannot exceed 100 characters
+    char channel[126];
+    char title[126];
     Date date;
     unsigned long views;
 } Video;
