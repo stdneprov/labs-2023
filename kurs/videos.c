@@ -58,7 +58,8 @@ int FReadCSVField(FILE *fp, char *buf, char sep) {
                     continue;
                 }
                 fprintf(stderr,
-                        "ERROR: single \"must be at the end of the field\n");
+                        "ERROR: single \" must be at the end of the field\n");
+                exit(EXIT_FAILURE);
             }
             buf[i++] = c;
         }
