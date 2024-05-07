@@ -103,31 +103,33 @@ VList *VListFReadCSV(const char *filename, bool header, char sep) {
         size = FReadCSVField(fp, buf, sep);
         buf[size] = 0;
         char *end;
-        v.date.day = strtol(buf, &end, 10);
-        if (v.date.day < 1 || v.date.day > 31) {
-            fprintf(stderr, "ERROR: day must be in range [1;31]: %d\n",
-                    v.date.day);
-            exit(EXIT_FAILURE);
-        }
-        if (*end != '/') {
-            fprintf(stderr, "ERROR: date must be in dd/mm/yyyy: %s\n", buf);
-            exit(EXIT_FAILURE);
-        }
-        v.date.month = strtol(end + 1, &end, 10);
-        if (v.date.month < 1 || v.date.month > 12) {
-            fprintf(stderr, "ERROR: month must be in range [1;12]: %d\n",
-                    v.date.month);
-            exit(EXIT_FAILURE);
-        }
-        if (*end != '/') {
-            fprintf(stderr, "ERROR: date must be in dd/mm/yyyy: %s\n", buf);
-            exit(EXIT_FAILURE);
-        }
-        v.date.year = strtol(end + 1, &end, 10);
-        // year cannot be zero; It can only occur if year is omitted
-        if (*end || !v.date.year) {
-            fprintf(stderr, "ERROR: year must be a number: %s\n", buf);
-            exit(EXIT_FAILURE);
+        if (size > 0) {
+            v.date.day = strtol(buf, &end, 10);
+            if (v.date.day < 1 || v.date.day > 31) {
+                fprintf(stderr, "ERROR: day must be in range [1;31]: %d\n",
+                        v.date.day);
+                exit(EXIT_FAILURE);
+            }
+            if (*end != '/') {
+                fprintf(stderr, "ERROR: date must be in dd/mm/yyyy: %s\n", buf);
+                exit(EXIT_FAILURE);
+            }
+            v.date.month = strtol(end + 1, &end, 10);
+            if (v.date.month < 1 || v.date.month > 12) {
+                fprintf(stderr, "ERROR: month must be in range [1;12]: %d\n",
+                        v.date.month);
+                exit(EXIT_FAILURE);
+            }
+            if (*end != '/') {
+                fprintf(stderr, "ERROR: date must be in dd/mm/yyyy: %s\n", buf);
+                exit(EXIT_FAILURE);
+            }
+            v.date.year = strtol(end + 1, &end, 10);
+            // year cannot be zero; It can only occur if year is omitted
+            if (*end || !v.date.year) {
+                fprintf(stderr, "ERROR: year must be a number: %s\n", buf);
+                exit(EXIT_FAILURE);
+            }
         }
 
         // read view count
