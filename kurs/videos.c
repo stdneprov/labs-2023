@@ -48,6 +48,11 @@ int FReadCSVField(FILE *fp, char *buf, char sep) {
         return 0;
     if (c == '"') {
         while (true) {
+            if (i >= 200) {
+                fprintf(stderr,
+                        "ERROR: field cannot be more than 200 symbols\n");
+                exit(EXIT_FAILURE);
+            }
             c = fgetc(fp);
             if (c == EOF) {
                 fprintf(stderr, "ERROR: unclosed field\n");
@@ -70,6 +75,11 @@ int FReadCSVField(FILE *fp, char *buf, char sep) {
     } else {
         buf[i++] = c;
         while (c = fgetc(fp), c != sep && c != '\n' && c != EOF) {
+            if (i >= 200) {
+                fprintf(stderr,
+                        "ERROR: field cannot be more than 200 symbols\n");
+                exit(EXIT_FAILURE);
+            }
             buf[i++] = c;
         }
     }
