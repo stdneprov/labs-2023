@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 List *List_create() {
-    List* list = (List *)malloc(sizeof(List));
+    List *list = (List *)malloc(sizeof(List));
     (list)->data = (int *)malloc(sizeof(int) * 5);
     if ((list)->data == NULL) {
         return NULL;
