@@ -18,6 +18,10 @@ VList *VListNew(void) {
 
 VList *VListWithCapacity(size_t capacity) {
     VList *vlist = malloc(sizeof(VList));
+    if (vlist == NULL) {
+        fprintf(stderr, "ERROR: buy more ram\n");
+        exit(EXIT_FAILURE);
+    }
     vlist->size = 0;
     if (capacity > 0) {
         capacity = pow(2, ceil(log2(capacity)));
