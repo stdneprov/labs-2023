@@ -98,7 +98,8 @@ VList *VListFReadCSV(const char *filename, bool header, char sep) {
 
         // read title
         size = FReadCSVField(fp, buf, sep);
-        memcpy(v.title, buf, size);
+        if (size > 0)
+            memcpy(v.title, buf, size);
 
         // read date
         size = FReadCSVField(fp, buf, sep);
