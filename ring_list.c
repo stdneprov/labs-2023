@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <math.h>
 #include "ring_list.h"
 
 Complex ToComplex(const int real, const int imaginary) {
@@ -25,16 +24,16 @@ void ListCreate(List** list) {
         return;
     }
     
-    (*list)->lalloc = malloc(11 * sizeof(Complex));
+    (*list)->lalloc = malloc(11 * sizeof(DataType));
     if ((*list)->lalloc == NULL) {
         return;
     }
 
-    (*list)->begin = (ListIterator*)malloc(sizeof(ListIterator));
-    (*list)->begin->list = *list;
-    (*list)->begin->shift = 0; 
     (*list)->size = 0;
     (*list)->mem = 10;
+    for (size_t i = 0; i < (*list)->mem; i++) {
+        (*list)->lalloc[i].inuse = false;
+    }
 }
 
 bool ListIsEmpty(const List* list) {
@@ -45,118 +44,125 @@ size_t ListSize(const List* list) {
     return list->size;
 }
 
-ListIterator ListBegin(List* list) {
-    return(*(list->begin));
-}
-
-ListIterator ListEnd(List* list) {
-    ListIterator end;
-    end.list = list;
-    end.shift = (list->begin->shift + list->size) % list->mem;
-    return(end);
-}
-
-ListIterator IteratorNext(const ListIterator iter) {
-    ListIterator next = iter;
-    
-    next.shift = (iter.list->begin->shift + ((iter.list->size + (iter.shift - iter.list->begin->shift + 1) 
-                    % iter.list->size) % iter.list->size)) % iter.list->mem;   
-    return next;
-}
-
-ListIterator IteratorPrev(const ListIterator iter) {
-    ListIterator prev = iter;
-    
-    prev.shift = (iter.list->begin->shift + ((iter.list->size + (iter.shift - iter.list->begin->shift - 1) 
-                    % iter.list->size) % iter.list->size)) % iter.list->mem;
-    return prev;
-}
-
-ListIterator IteratorGet(const List* list, const int idx) {
-    ListIterator iter = *(list->begin);
-    iter.shift = (iter.shift + ((iter.list->size + idx % iter.list->size) % iter.list->size)) % iter.list->mem;
-    return iter;
-}
-
-Complex* IteratorUnpack(const ListIterator iter) {
-    return &(iter.list->lalloc[iter.shift]);
-}
-
 void ListInsert(List* list, const int idx, const Complex value) {
     
     ++(list->size);
 
     if (list->size == list->mem) {
-        list->lalloc = (ListAllocator)realloc(list->lalloc, (((list->mem)*2 + 1) * sizeof(Complex)));
-        
-        for (int i = 0; i < list->begin->shift - 1; ++i) {
-            list->lalloc[list->size + i] = list->lalloc[i];
-        }
-
+        list->lalloc = (ListAllocator)realloc(list->lalloc, (((list->mem)*2 + 1) * sizeof(DataType)));
         (list->mem) *= 2;
+
+        for (size_t i = list->size; i < list->mem; ++i) {
+            if (i > list->size) {
+                list->lalloc[i].inuse = false;
+            }
+        }
+        for (size_t i = 0; i < list->size; ++i) {
+            if (list->lalloc[i].idx == 0 && list->lalloc->inuse) {
+                list->begin = &(list->lalloc[i]);
+                break;
+            }
+        }
     }
 
-    ListIterator cursor = IteratorGet(list, idx);
+    DataType* next = list->begin;
+    if (next != NULL){
+        for (int i = 0; i < idx; ++i) {
+            next = next->next;
+        }
+    }
     
-    Complex buff;
-    Complex to_write = value;
-
-    do {
-        buff = *IteratorUnpack(cursor);
-        *IteratorUnpack(cursor) = to_write;
-        to_write = buff;
-        cursor = IteratorNext(cursor);
-    } while (IteratorUnpack(cursor) != IteratorUnpack(*(list->begin)));
+    for (size_t i = 0; i < list->size; ++i) {
+        if (!list->lalloc[i].inuse) {
+            list->lalloc[i].inuse = true;
+            list->lalloc[i].value = value;
+            list->lalloc[i].idx = i;
+            if (next != NULL){
+                list->lalloc[i].next = next;
+                list->lalloc[i].prev = next->prev;
+                list->lalloc[i].next->prev = &(list->lalloc[i]);
+                list->lalloc[i].prev->next = &(list->lalloc[i]);
+            } else {
+                list->lalloc[i].next = &(list->lalloc[i]);
+                list->lalloc[i].prev = &(list->lalloc[i]);
+                list->begin = &(list->lalloc[i]);
+                
+            }
+            if (list->size > 1 && idx % (list->size - 1) == 0) {
+                list->begin = &(list->lalloc[i]);
+                
+            }
+            break;
+        }
+    }
 }
 
 void ListPushBack(List* list, const Complex value) {
-    ListIterator cursor = ListEnd(list);
-
+    
     ++(list->size);
 
     if (list->size == list->mem) {
-        list->lalloc = (ListAllocator)realloc(list->lalloc, (((list->mem)*2 + 1) * sizeof(Complex)));
-        
-        for (int i = 0; i < list->begin->shift - 1; ++i) {
-            list->lalloc[list->size + i] = list->lalloc[i];
-        }
-
+        list->lalloc = (ListAllocator)realloc(list->lalloc, (((list->mem)*2 + 1) * sizeof(DataType)));
         (list->mem) *= 2;
+
+        for (size_t i = list->size; i < list->mem; ++i) {
+            if (i > list->size) {
+                list->lalloc[i].inuse = false;
+            }
+        }
+        for (size_t i = 0; i < list->size; ++i) {
+            if (list->lalloc[i].idx == 0 && list->lalloc->inuse) {
+                list->begin = &(list->lalloc[i]);
+                break;
+            }
+        }
     }
+
+    DataType* next = list->begin;
     
-    *IteratorUnpack(cursor) = value;
+    
+    for (size_t i = 0; i < list->size; ++i) {
+        if (!list->lalloc[i].inuse) {
+            list->lalloc[i].inuse = true;
+            list->lalloc[i].value = value;
+            list->lalloc[i].idx = i;
+            if (next != NULL){
+                list->lalloc[i].next = next;
+                list->lalloc[i].prev = next->prev;
+                list->lalloc[i].next->prev = &(list->lalloc[i]);
+                list->lalloc[i].prev->next = &(list->lalloc[i]);
+            } else {
+                list->lalloc[i].next = &(list->lalloc[i]);
+                list->lalloc[i].prev = &(list->lalloc[i]);
+                list->begin = &(list->lalloc[i]);
+                
+            }
+            
+            break;
+        }
+    }
 }
 
-void ListRemove(List* list, const int idx) {
 
-    ListIterator cur = IteratorGet(list, idx);
-    if (IteratorUnpack(cur) == IteratorUnpack(*(list->begin))){
-        list->begin->shift = (list->begin->shift + 1) % list->mem;
-    } else {
-        ListIterator next = IteratorNext(cur);
-        while (IteratorUnpack(next) != IteratorUnpack(*(list->begin))) {
-            *IteratorUnpack(cur) = *IteratorUnpack(next);
-            cur = IteratorNext(cur);
-            next = IteratorNext(next);
-        }
+void ListRemove(List* list, const int idx) {
+    if (!list->lalloc[idx].inuse) {
+        return;
     }
+
+    list->lalloc[idx].inuse = false;
+    if (idx % list->size == 0) {
+        list->begin = list->lalloc[idx].next;
+    }
+    list->lalloc[idx].prev->next = list->lalloc[idx].next;
+    list->lalloc[idx].next->prev = list->lalloc[idx].prev;
 
     --(list->size);
 
     if (list->size == (list->mem)/4 && list->mem > 10) {
-        for (size_t i = 0; i < list->size; ++i) {
-            list->lalloc[i] = list->lalloc[list->begin->shift + i];
-        }
-        list->begin->shift = 0;
         
-        list->lalloc = (ListAllocator)realloc(list->lalloc, ((list->mem) / 2 + 1)*sizeof(Complex));
-        
+        list->lalloc = (ListAllocator)realloc(list->lalloc, ((list->mem) / 2 + 1)*sizeof(DataType));
         list->mem /= 2;
     }
-}
-
-Complex ListGet(const List* list, const int idx) {
-    return *(IteratorUnpack(IteratorGet(list, idx)));
 }
 
 void ListExtend(List* list, const size_t size, const Complex value) {
@@ -169,30 +175,21 @@ void ListPrint(const List* list) {
     if (ListIsEmpty(list)) {
         return;
     }
-    ListIterator iter = *(list->begin);
-    do {
-        ComplexPrint(IteratorUnpack(iter));
+    DataType* iter = list->begin;
+    for (size_t i = 0; i < list->size; ++i) {
+        ComplexPrint(&(iter->value));
         putchar(' ');
-        iter = IteratorNext(iter);
-    } while (IteratorUnpack(iter) != IteratorUnpack(*(list->begin)));
+        iter = iter->next;
+    }
     putchar('\n');
 }
 
 void ListSysPrint(const List* list) {
     for (size_t i = 0; i < list->mem; ++i) {
-        if ((list->begin->shift + list->size) % list->mem >= list->begin->shift) {
-
-            if ((i >= (list->begin->shift + list->size) % list->mem || i < list->begin->shift)) {
-                printf(". ");
-            } else {
-                printf("* ");
-            }
+        if (list->lalloc[i].inuse) {
+            printf("* ");
         } else {
-            if ((i >= (list->begin->shift + list->size) % list->mem && i < list->begin->shift)) {
-                printf(". ");
-            } else {
-                printf("* ");
-            }
+            printf(". ");
         }
     }
     putchar('\n');
@@ -200,17 +197,20 @@ void ListSysPrint(const List* list) {
 
 void ListClear(List* list) {
 
-    list->lalloc = (ListAllocator)realloc(list->lalloc, (11 * sizeof(Complex)));
-    list->begin->shift = 0;
+    list->lalloc = (ListAllocator)realloc(list->lalloc, (11 * sizeof(DataType)));
+    list->begin = NULL;
+    
 
     list->size = 0;
     list->mem = 10;
+    for (size_t i = 0; i < list->mem; i++) {
+        list->lalloc[i].inuse = false;
+    }
 }
 
 void ListDelete(List** list) {
     if (*list != NULL) {
         free((*list)->lalloc);
-        free((*list)->begin);
         free(*list);
         *list = NULL;
     }

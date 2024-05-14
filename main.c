@@ -35,7 +35,8 @@ int CommandRead() {
 
 void CommandExecute(int inp, List** list) {
     enum Command cmd = inp;
-    int re, im, idx, k;
+    int re, im, idx;
+    size_t k;
 
     switch (cmd)
     {
@@ -62,7 +63,7 @@ void CommandExecute(int inp, List** list) {
             printf("Enter complex value in format <real> <imaginary>\n");
             scanf("%d %d", &re, &im);
             printf("\nEnter length\n");
-            scanf("%d", &k);
+            scanf("%ld", &k);
             ListExtend(*list, k, ToComplex(re, im));
             break;
 

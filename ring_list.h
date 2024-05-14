@@ -7,14 +7,13 @@
 
 
 typedef struct RingList List;
+typedef struct DataType DataType;
 typedef struct Complex Complex;
-typedef struct ListIterator ListIterator;
-typedef Complex* ListAllocator;
+typedef DataType* ListAllocator;
 
 struct RingList {
     ListAllocator lalloc;
-
-    ListIterator* begin;
+    DataType* begin;
 
     size_t mem;
     size_t size;
@@ -25,9 +24,12 @@ struct Complex {
     int imaginary;
 };
 
-struct ListIterator {
-    List* list;
-    int shift;
+struct DataType {
+    Complex value;
+    int idx;
+    bool inuse;
+    DataType* next;
+    DataType* prev;
 };
 
 
@@ -38,17 +40,9 @@ void ListCreate(List**);
 bool ListIsEmpty(const List*);
 size_t ListSize(const List*);
 
-ListIterator ListBegin(List*);
-ListIterator ListEnd(List*);
-ListIterator IteratorNext(const ListIterator);
-ListIterator IteratorPrev(const ListIterator);
-ListIterator IteratorGet(const List*, const int);
-Complex* IteratorUnpack(const ListIterator);
-
 void ListInsert(List*, const int, const Complex);
 void ListPushBack(List*, const Complex);
 void ListRemove(List*, const int);
-Complex ListGet(const List*, const int);
 
 void ListExtend(List*, const size_t, const Complex);
 
