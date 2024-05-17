@@ -1,0 +1,7 @@
+Donk	25	62.4	228;
+Chopper	3318	60.0	3400;
+stdNEPROV	52	99.9	52;
+nikSav	575	57.5	575;
+MegaNub228	666	14.1	111;
+KtoProchitalTotLoh	0	0	0;
+LGBTpodsvetka	305	69.0	1181;	
