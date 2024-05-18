@@ -16,7 +16,7 @@ void MenuPrint() {
 
 
 int Menu() {
-    List *list = List_create();
+    List *list = ListCreate();
     while (1) {
         enum Command cmd;
         int value, index = 0;
@@ -28,34 +28,34 @@ int Menu() {
         case PUSH_BACK:
             printf("<value>\n");
             scanf("%d", &value);
-            List_push_back(list, value);
-            List_print(list);
+            ListPushBack(list, value);
+            ListPrint(list);
             break;
         case PUSH:
             printf("<index> <value>\n");
             scanf("%d %d", &index, &value);
-            List_insert(list, value, index);
-            List_print(list);
+            ListInsertByIndex(list, value, index);
+            ListPrint(list);
             break;
         case PRINT:
-            List_print(list);
+            ListPrint(list);
             break;
         case POP:
             printf("<index>\n");
             scanf("%d", &index);
-            List_pop(list, index);
-            List_print(list);
+            ListPopByIndex(list, index);
+            ListPrint(list);
             break;
         case POP_BACK:
-            List_pop_back(list);
-            List_print(list);
+            ListPopBack(list);
+            ListPrint(list);
             break;
         case SORT:
-            List_sort(list);
-            List_print(list);
+            ListSort(list);
+            ListPrint(list);
             break;
         case DELETE:
-            List_delete(&list);
+            ListDelete(&list);
             return 0;
             break;
         default:

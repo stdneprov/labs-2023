@@ -3,93 +3,149 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-List *List_create() {
+List *ListCreate() {
     List *list = (List *)malloc(sizeof(List));
-    (list)->data = (int *)malloc(sizeof(int) * 5);
-    if ((list)->data == NULL) {
-        return NULL;
-    }
-    (list)->size = 0;
-    (list)->memory = 6;
-    (list)->end = (list)->data;
+    (list)->head = NULL;
     return list;
 }
 
-bool List_is_empty(const List *list) { return ((list->size) == 0); }
+bool ListIsEmpty(const List *list) { return ((list->head) == NULL); }
 
-void List_insert(List *list, int value, int index) {
-    if ((list->size) == (list->memory)) {
-        int *old = list->data;
-        list->data =
-            (int *)realloc(list->data, sizeof(int) * (list->memory * 2 + 1));
-        if (list->data == NULL) {
-            list->data = old;
-            return;
+ListNode *ListNodeCreate(int value) {
+    ListNode *node = (ListNode *)malloc(sizeof(ListNode));
+    (node)->value = value;
+    (node)->next = NULL;
+    (node)->prev = NULL;
+    return node;
+}
+
+ListNode *GetNodeByIndex(List *list, int index) {
+    if (ListIsEmpty(list)) {
+        return NULL;
+    }
+    ListNode *prev = list->head;
+    for (int i = 0; i < index; i++) {
+        if (prev->next == NULL) {
+            printf("Index out of bounds\n");
+            return NULL;
         }
-        list->end = &((list->data)[list->size]);
-        list->memory *= 2;
+        prev = prev->next;
     }
-    list->size++;
-    list->end++;
-    int buff = value;
-    int prev = value;
-    for (int i = index; i < list->size; i++) {
-        buff = list->data[i];
-        list->data[i] = prev;
-        prev = buff;
+    return prev;
+}
+
+void ListInsert(ListNode *prev, int value) {
+    if (prev == NULL) {
+        return;
+    }
+    ListNode *node = ListNodeCreate(value);
+    ListNode *next;
+    next = prev->next;
+    prev->next = node;
+    node->prev = prev;
+    node->next = next;
+    if (next != NULL) {
+        next->prev = node;
     }
 }
 
-void List_push_back(List *list, int value) {
-    List_insert(list, value, list->size);
+void ListInsertByIndex(List *list, int value, int index) {
+    if (index == 0) {
+        ListNode *node = ListNodeCreate(value);
+        node->next = list->head;
+        list->head = node;
+    } else {
+        ListNode *prev;
+        prev = GetNodeByIndex(list, index);
+        ListInsert(prev, value);
+    }
 }
 
-void List_print(const List *list) {
-    for (int *i = list->data; i < list->end; i++) {
-        printf("%d ", *i);
+ListNode *GetLastNode(const List *list) {
+    ListNode *prev = list->head;
+    if (prev == NULL) {
+        return NULL;
+    }
+    while (prev->next != NULL) {
+        prev = prev->next;
+    }
+    return prev;
+}
+void ListPushBack(List *list, int value) {
+    ListNode *prev;
+    prev = GetLastNode(list);
+    if (prev == NULL) {
+        list->head = ListNodeCreate(value);
+
+    } else {
+        ListInsert(prev, value);
+    }
+}
+
+void ListPrint(const List *list) {
+    ListNode *node = list->head;
+    while (node != NULL) {
+        printf("%d ", node->value);
+        node = node->next;
     }
     printf("\n");
 }
 
-void List_pop(List *list, int index) {
-    int prev, buff;
-    for (int i = list->size - 1; i >= index; i--) {
-        buff = list->data[i];
-        if (i == list->size - 1) {
-            prev = buff;
-            continue;
-        }
-        list->data[i] = prev;
-        prev = buff;
+void ListPop(ListNode *node) {
+    if (node->prev != NULL) {
+        node->prev->next = node->next;
     }
-    list->size--;
-    list->end--;
+    if (node->next != NULL) {
+        node->next->prev = node->prev;
+    }
+    free(node);
+}
+void ListPopByIndex(List *list, int index) {
+    if (index == 0) {
+        ListNode *node = list->head;
+        list->head = list->head->next;
+        free(node);
+        return;
+    }
+    ListNode *node = GetNodeByIndex(list, index);
+    ListPop(node);
 }
 
-void List_pop_back(List *list) { List_pop(list, list->size - 1); }
+void ListPopBack(List *list) {
+    ListNode *node = GetLastNode(list);
+    ListPop(node);
+}
 
-void List_sort(List *list) {
+void ListSort(List *list) {
     bool flag = true;
+    ListNode *node;
     while (flag) {
         flag = false;
-        for (int i = 0; i < list->size - 1; i++) {
-            if (list->data[i] > list->data[i + 1]) {
-                int buff = list->data[i];
-                list->data[i] = list->data[i + 1];
-                list->data[i + 1] = buff;
+        node = list->head;
+        while (node->next != NULL) {
+            if (node->value > node->next->value) {
+                int buff = node->value;
+                node->value = node->next->value;
+                node->next->value = buff;
                 flag = true;
             }
+            node = node->next;
         }
     }
 }
 
-void List_clear(List *list) {
-    free(list->data);
-    list->data = NULL;
+void NodesClear(ListNode *node) {
+    if (node->next != NULL) {
+        NodesClear(node->next);
+    }
+    free(node);
+}
+void ListClear(List *list) {
+    NodesClear(list->head);
+    free(list);
 }
 
-void List_delete(List **list) {
-    List_clear(*list);
-    free(*list);
+void ListDelete(List **list) {
+    ListClear(*list);
     *list = NULL;
 }

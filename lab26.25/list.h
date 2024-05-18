@@ -6,26 +6,31 @@
 #include <stdlib.h>
 
 typedef struct List List;
-
+typedef struct ListNode ListNode;
 struct List {
-    int *data;
-    int *end;
-
-    int memory;
-    int size;
+    ListNode *head;
 };
 
-List *List_create();
-bool List_is_empty(const List *list);
-void List_insert(List *list, int value, int index);
-void List_push_back(List *list, int value);
-void List_pop_back(List *list);
-void List_pop(List *list, int index);
-void List_print(const List *);
+struct ListNode {
+    int value;
+    ListNode *next;
+    ListNode *prev;
+};
 
-void List_clear(List *);
-void List_delete(List **);
-void List_sort(List *list);
-void List_delete(List **list);
-void List_clear(List *list);
+List *ListCreate();
+bool ListIsEmpty(const List *list);
+ListNode *ListNodeCreate(int value);
+ListNode *GetNodeByIndex(List *list, int index);
+void ListInsert(ListNode *prev, int value);
+void ListInsertByIndex(List *list, int value, int index);
+ListNode *GetLastNode(const List *list);
+void ListPushBack(List *list, int value);
+void ListPrint(const List *list);
+void ListPop(ListNode *node);
+void ListPopByIndex(List *list, int index);
+void ListPopBack(List *list);
+void ListSort(List *list);
+void NodesClear(ListNode *node);
+void ListClear(List *list);
+void ListDelete(List **list);
 #endif
