@@ -19,30 +19,27 @@ ListNode *ListNodeCreate(int value) {
     return node;
 }
 
-ListNode *GetNodeByIndex(List *list, int index) {
+Iterator GetNodeByIndex(List *list, int index) {
+    int buffIndex = index;
     if (ListIsEmpty(list)) {
-        return NULL;
+        exit(1);
     }
-    ListNode *prev = list->head;
-    for (int i = 0; i < index; i++) {
-        if (prev->next == NULL) {
-            printf("Index out of bounds\n");
-            return NULL;
-        }
-        prev = prev->next;
+    Iterator i;
+    for (i = First(list); buffIndex > 0; Next(&i)) {
+        buffIndex--;
     }
-    return prev;
+    return i;
 }
 
-void ListInsert(ListNode *prev, int value) {
-    if (prev == NULL) {
+void ListInsert(Iterator prev, int value) {
+    if (prev.node == NULL) {
         return;
     }
     ListNode *node = ListNodeCreate(value);
     ListNode *next;
-    next = prev->next;
-    prev->next = node;
-    node->prev = prev;
+    next = prev.node->next;
+    prev.node->next = node;
+    node->prev = prev.node;
     node->next = next;
     if (next != NULL) {
         next->prev = node;
@@ -55,50 +52,47 @@ void ListInsertByIndex(List *list, int value, int index) {
         node->next = list->head;
         list->head = node;
     } else {
-        ListNode *prev;
+        Iterator prev;
         prev = GetNodeByIndex(list, index);
         ListInsert(prev, value);
     }
 }
 
-ListNode *GetLastNode(const List *list) {
-    ListNode *prev = list->head;
-    if (prev == NULL) {
-        return NULL;
-    }
-    while (prev->next != NULL) {
-        prev = prev->next;
+Iterator GetLastNode(const List *list) {
+    Iterator prev = First(list);
+    while (!IsLast(&prev)) {
+        Next(&prev);
     }
     return prev;
 }
 void ListPushBack(List *list, int value) {
-    ListNode *prev;
+    Iterator prev;
     prev = GetLastNode(list);
-    if (prev == NULL) {
+    if (prev.node == NULL) {
         list->head = ListNodeCreate(value);
-
     } else {
         ListInsert(prev, value);
     }
 }
 
 void ListPrint(const List *list) {
-    ListNode *node = list->head;
-    while (node != NULL) {
-        printf("%d ", node->value);
-        node = node->next;
+    Iterator node = First(list);
+    while (!IsLast(&node)) {
+        printf("%d ", Fetch(node));
+        Next(&node);
     }
+    printf("%d ", Fetch(node));
     printf("\n");
 }
 
-void ListPop(ListNode *node) {
-    if (node->prev != NULL) {
-        node->prev->next = node->next;
+void ListPop(Iterator node) {
+    if (node.node->prev != NULL) {
+        node.node->prev->next = node.node->next;
     }
-    if (node->next != NULL) {
-        node->next->prev = node->prev;
+    if (node.node->next != NULL) {
+        node.node->next->prev = node.node->prev;
     }
-    free(node);
+    free(node.node);
 }
 void ListPopByIndex(List *list, int index) {
     if (index == 0) {
@@ -107,29 +101,29 @@ void ListPopByIndex(List *list, int index) {
         free(node);
         return;
     }
-    ListNode *node = GetNodeByIndex(list, index);
+    Iterator node = GetNodeByIndex(list, index);
     ListPop(node);
 }
 
 void ListPopBack(List *list) {
-    ListNode *node = GetLastNode(list);
+    Iterator node = GetLastNode(list);
     ListPop(node);
 }
 
 void ListSort(List *list) {
     bool flag = true;
-    ListNode *node;
+    Iterator node;
     while (flag) {
         flag = false;
-        node = list->head;
-        while (node->next != NULL) {
-            if (node->value > node->next->value) {
-                int buff = node->value;
-                node->value = node->next->value;
-                node->next->value = buff;
+        node = First(list);
+        while (!IsLast(&node)) {
+            if (Fetch(node) > node.node->next->value) {
+                int buff = Fetch(node);
+                Store(node, node.node->next->value);
+                node.node->next->value = buff;
                 flag = true;
             }
-            node = node->next;
+            Next(&node);
         }
     }
 }
@@ -149,3 +143,38 @@ void ListDelete(List **list) {
     ListClear(*list);
     *list = NULL;
 }
+
+Iterator First(const List *list) {
+    Iterator it;
+    it.node = list->head;
+    return it;
+}
+
+bool Equal(const Iterator *it1, const Iterator *it2) {
+    return it1->node == it2->node;
+}
+
+bool NotEqual(const Iterator *it1, const Iterator *it2) {
+    return !(Equal(it1, it2));
+}
+
+bool IsLast(const Iterator *it) {
+    if (it->node == NULL) {
+        return true;
+    }
+    return it->node->next == NULL;
+}
+
+Iterator *Next(Iterator *it) {
+    it->node = it->node->next;
+    return it;
+}
+
+Iterator *Prev(Iterator *it) {
+    it->node = it->node->prev;
+    return it;
+}
+
+int Fetch(Iterator it) { return it.node->value;}
+
+void Store(Iterator it, int value) { it.node->value = value; }
