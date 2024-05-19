@@ -25,13 +25,6 @@ void StackPush(Stack *stk, int value, type type) {
         }
         *stk->top->value.symb = value;
         stk->top->type = SYMB;
-    } else {
-        stk->top->value.symb = (char *)malloc(sizeof(char));
-        if (stk->top->value.symb == NULL) {
-            exit(-1);
-        }
-        *stk->top->value.symb = value;
-        stk->top->type = VAR;
     }
     stk->len += 1;
 }
@@ -57,8 +50,8 @@ void StackPrint(Stack *stk) {
     for (Cell *i = stk->top; i != NULL; i = i->next) {
         if (i->type == SYMB) {
             printf("%c ", *i->value.symb);
-        } else if (i->type == VAR) {
-            printf("%s ", i->value.symb);
+        // } else if (i->type == VAR) {
+        //     printf("%s ", i->value.symb);
         } else {
             printf("%d ", i->value.num);
         }

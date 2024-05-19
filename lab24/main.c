@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <ctype.h>
 #include "stack.h"
 #include "tree.h"
 #include <stdbool.h>
@@ -19,9 +18,7 @@ void PrintResult(Node* root) {
     // печатаем внутри скобок
     if (root->type == SYMB) {
         printf("%c", *root->data.symb);
-    } else if (root->type == VAR) {
-        printf("%s", root->data.symb);
-    }
+    } 
     if (root->right != NULL) {
         PrintResult(root->right);       
         printf(")");
@@ -32,13 +29,13 @@ bool IsOperator(char a){
     return (a == '+' || a == '-' || a  == '/' || a == '*' || a == '^');
 }
 
-void ReplaceFractionWithNegativeExponent(Node *root) {
+void ChangeDivision(Node *root) {
     if (root == NULL) {
         return;
     }
     if (root->left != NULL && root->right != NULL) {
-        ReplaceFractionWithNegativeExponent(root->right);
-        ReplaceFractionWithNegativeExponent(root->left);
+        ChangeDivision(root->right);
+        ChangeDivision(root->left);
         
         if (*root->data.symb == '/' && root->right->type == SYMB && *root->right->data.symb == '^') {
             // меняем деление на умножение
@@ -93,84 +90,15 @@ void ReadExpr(){
     while (symbol != EOF && symbol != '\n'){
         if (symbol != ' ') {
             if (IsOperator(symbol)) {
-                switch (symbol) {
-                    case '+':
-                        // если стек с операторами не пустой
-                        if (StackIsEmpty(&operators) == false) {
-                            while (*StackTop(&operators).symb != '(') {
-                                // пушим в основной стек верхний элемент из стека операторов
-                                StackPush(&values, *StackPop(&operators).symb, SYMB);
-                                if (operators.top == NULL) {
-                                    break;
-                                }
-                            }
-                            // пушим оператор в стек операторов
-                            StackPush(&operators, symbol, SYMB);
-                        } else {
-                            StackPush(&operators, symbol, SYMB);
-                        }
-                        break;
-
-                    case '-':
-                        if (StackIsEmpty(&operators) == false) {
-                            while (*StackTop(&operators).symb != '(') {
-                                StackPush(&values, *StackPop(&operators).symb, SYMB);
-                                if (operators.top == NULL) {
-                                    break;
-                                }
-                            }
-                            StackPush(&operators, symbol, SYMB);
-                        } else {
-                            StackPush(&operators, symbol, SYMB);
-                        }
-                        break;
-
-                    case '*':
-                        if (StackIsEmpty(&operators) == false) {
-                            while (*StackTop(&operators).symb == '*' || *StackTop(&operators).symb == '/' || *StackTop(&operators).symb == '^') {
-                                StackPush(&values, *StackPop(&operators).symb, SYMB);
-                                if (operators.top == NULL) {
-                                    break;
-                                }
-                            }
-                            StackPush(&operators, symbol, SYMB);
-                        } else {
-                            StackPush(&operators, symbol, SYMB);
-                        }
-                        break;
-
-                    case '/':
-                        if (StackIsEmpty(&operators) == false) {
-                            while (*StackTop(&operators).symb == '*' || *StackTop(&operators).symb == '/' || *StackTop(&operators).symb == '^') {
-                                StackPush(&values, *StackPop(&operators).symb, SYMB);
-                                if (operators.top == NULL) {
-                                    break;
-                                }
-                            }
-                            StackPush(&operators, symbol, SYMB);
-                        } else {
-                            StackPush(&operators, symbol, SYMB);
-                        }
-                        break;
-
-                    case '^':
-                        if (StackIsEmpty(&operators) == false) {
-                            while (*StackTop(&operators).symb == '^') {
-                            StackPush(&values, *StackPop(&operators).symb, SYMB);
-                            if (operators.top == NULL) {
-                                break;
-                                }
-                            }
-                            StackPush(&operators, '^', SYMB);
-
-                        } else {
-                            StackPush(&operators, '^', SYMB);
-                        }
-                        break;
-
-                    default:
-                        break;
+                // пока топ стека опретаторов не равен ( и равен *, / или ^ и сам символ не равен им
+                while (!StackIsEmpty(&operators) && *StackTop(&operators).symb != '(' && 
+                       ((*StackTop(&operators).symb == '*' || *StackTop(&operators).symb == '/' || 
+                       *StackTop(&operators).symb == '^') || (symbol != '*' && symbol != '/' && symbol != '^'))) {
+                    // пушим этот топ в итоговый стек
+                    StackPush(&values, *StackPop(&operators).symb, SYMB);
                 }
+                // пушим символ в итоговый стек
+                StackPush(&operators, symbol, SYMB);
             } else if (symbol == '(') {
                 StackPush(&operators, symbol, SYMB);
             } else if (symbol == ')') {
@@ -196,8 +124,6 @@ void ReadExpr(){
                     }
                 StackPop(&operators);
                 }
-            } else {
-                StackPush(&values, symbol, VAR);
             }
         } 
     if (symbol == '\n') {
@@ -218,7 +144,7 @@ void ReadExpr(){
     printf("\ntree before:\n");
     TreePrint(&root, 0);
 
-    ReplaceFractionWithNegativeExponent(&root);
+    ChangeDivision(&root);
     printf("tree after:\n");
     TreePrint(&root, 0);
 

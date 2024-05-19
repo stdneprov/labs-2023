@@ -3,7 +3,7 @@
 #include <stdbool.h>
 
 typedef enum type {
-    VAR, NUM, SYMB
+    NUM, SYMB
 } type;
 
 typedef union variable {
