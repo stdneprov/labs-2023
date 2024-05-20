@@ -15,7 +15,8 @@ int main() {
         printf("3. delete node\n");
         printf("4. print list\n");
         printf("5. swap\n");
-        printf("6. exit\n");
+        printf("6. sort list\n");
+        printf("7. exit\n");
         scanf("%d", &choice);
 
         switch (choice) {
@@ -65,16 +66,25 @@ int main() {
             case 5:
                 if (!IsEmpty(head)) {
                     SwapIfGreater(head);
+                    printf("swapped\n");
                 } else {
                     printf("the list is empty\n");
                 }
                 break;
             case 6:
+                if (!IsEmpty(head)) {
+                    BubbleSort(&head);
+                    printf("the list has been sorted\n");
+                } else {
+                    printf("the list is empty\n");
+                }
+                break;
+            case 7:
                 break;
             default:
                 printf("choose again\n");
         }
-    } while (choice != 6);
+    } while (choice != 7);
 
     FreeList(&head);
 

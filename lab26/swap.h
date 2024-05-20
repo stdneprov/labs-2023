@@ -3,6 +3,7 @@
 
 #include "list.h"
 
-void SwapIfGreater(Node* head);
+int SwapIfGreater(Node* head);
+void BubbleSort(Node** head);
 
 #endif
