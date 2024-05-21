@@ -1,0 +1,17 @@
+{
+    "files.associations": {
+        "complex.h": "c",
+        "complex": "c",
+        "type_traits": "c",
+        "xtr1common": "c",
+        "xutility": "c",
+        "system_error": "c",
+        "stdio.h": "c",
+        "stdbool.h": "c",
+        "xlocale": "c",
+        "format": "c",
+        "initializer_list": "c",
+        "xstring": "c",
+        "slovar.h": "c"
+    }
+}
