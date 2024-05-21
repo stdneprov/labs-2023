@@ -14,7 +14,7 @@ void Swap(Table *table) {
 
 void Sort(Table *table) {
     while(table->next != NULL) {
-        if (creal(table->next->key) < creal(table->key)) {
+        if ((creal(table->next->key) * creal(table->next->key) + cimag(table->next->key) * cimag(table->next->key))  < (creal(table->key) * creal(table->key) + cimag(table->key) * cimag(table->key))) {
             Swap(table);
         }
         table = table->next;
