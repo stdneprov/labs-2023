@@ -1,0 +1,4 @@
+user1 offline 12 01 2005 100
+user2 online 15 01 2005 1001
+user3 offline 12 01 2015 10
+user3 offline 12 01 2015 12412412
