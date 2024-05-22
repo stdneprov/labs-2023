@@ -177,6 +177,9 @@ int ListSize(const List *list) {
 }
 
 void SwapTail(List *list) {
+    if (ListSize(list) == 1) {
+        return;
+    }
     Iterator it = GetNodeByIndex(list, ListSize(list) / 2);
     Iterator newLast = GetNodeByIndex(list, ListSize(list) / 2 - 1);
     Iterator last = GetLastNode(list);
