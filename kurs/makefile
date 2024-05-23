@@ -1,6 +1,5 @@
 CC = clang
-# CFLAGS = -std=gnu99 -pedantic -Wall -Wextra -Werror
-CFLAGS = -std=gnu99 -pedantic -Wall -Wextra -g
+CFLAGS = -std=gnu99 -pedantic -Wall -Wextra -Werror
 TARGET = main.out
 
 .PHONY: clean run build

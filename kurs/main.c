@@ -19,6 +19,7 @@ int main(void) {
     List *l = LCreate();
     char c;
     size_t a, b;
+    print_help();
     printf("> ");
     while (scanf("%c", &c) != EOF) {
         switch (c) {
