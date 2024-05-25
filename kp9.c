@@ -5,7 +5,7 @@
 #define MAX_RECORDS 100
 
 typedef struct Key {
-    int num;
+    long long int num;
     char lit;
 } Key;
 
@@ -28,7 +28,7 @@ void swap(Key* key1, Value* value1, Key* key2, Value* value2) {
     *value2 = bufv;
 }
 
-int keycmp(Key key1, Key key2) {
+long long int keycmp(Key key1, Key key2) {
     if (key1.num != key2.num) {
         return key1.num - key2.num;
     }
@@ -39,7 +39,7 @@ int keycmp(Key key1, Key key2) {
 
 void PrintTable(Key* keys, Value* values, int n) {
     for(int i = 0; i < n; i++) {
-        printf("%d %c %s\n", keys[i].num, keys[i].lit, values[i]);
+        printf("%lld %c %s\n", keys[i].num, keys[i].lit, values[i]);
     }
 }
 
@@ -97,7 +97,7 @@ int main(int argc, char* argv[]) {
     int i = 0;
     char c;
     printf("hello\n");
-    while (n <= MAX_RECORDS && fscanf(fp, "%d %c    ", &(keys[n].num), &(keys[n].lit)) == 2) {
+    while (n <= MAX_RECORDS && fscanf(fp, "%lld %c    ", &(keys[n].num), &(keys[n].lit)) == 2) {
         i = 0;
         c = 0;
         while (i < 100) {
@@ -120,13 +120,13 @@ int main(int argc, char* argv[]) {
 
     Key search_key;
     printf("Enter a key to search: ");
-    scanf("%d %c", &(search_key.num), &(search_key.lit));
+    scanf("%lld %c", &(search_key.num), &(search_key.lit));
 
     int index = binary_search(keys, values, 0, n - 1, search_key);
     if (index == -1)
         printf("Key not found\n");
     else
-        printf("Key found: %d %c, Value: %s\n", keys[index].num, keys[index].lit, values[index]);
+        printf("Key found: %lld %c, Value: %s\n", keys[index].num, keys[index].lit, values[index]);
 
     fclose(fp);
     return 0;
