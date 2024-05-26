@@ -43,6 +43,8 @@ void TreePrint(Node *root, int indent) {
     }
     if (root->type == NUM) {
         printf("%d\n", root->data.num);  
+    } else if (root->type == VAR) {
+        printf("%s\n", root->data.symb); 
     } else {
         printf("%c\n", *root->data.symb);
     }
@@ -58,3 +60,4 @@ void TreeFree(Node *root) {
     TreeFree(root->right);
     free(root);
 }
+

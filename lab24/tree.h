@@ -15,6 +15,7 @@ Node *CreateNode(variable value, type type);
 void TreePrint(Node *root, int indent);
 Node *FindNode(Node *root, variable value);
 Node *AddNode(Node *root, variable value, type type);
-void FreeTree(Node *root);
+void TreeFree(Node *root);
 
 #endif
+

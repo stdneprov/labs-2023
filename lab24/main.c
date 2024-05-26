@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <ctype.h>
+#include <string.h>
 #include "stack.h"
 #include "tree.h"
 #include <stdbool.h>
@@ -7,7 +9,13 @@
 void PrintResult(Node* root) {
     // печатаем лист
     if (root->left == NULL && root->right == NULL) {
-        printf("%d", root->data.num);
+        if (root->type == SYMB) {
+            printf("%c", *root->data.symb);
+        } else if (root->type == VAR) {
+            printf("%s", root->data.symb);
+        } else {
+            printf("%d", root->data.num);
+        }
         return;
     } 
     // печатаем скобки
@@ -18,7 +26,11 @@ void PrintResult(Node* root) {
     // печатаем внутри скобок
     if (root->type == SYMB) {
         printf("%c", *root->data.symb);
-    } 
+    } else if (root->type == VAR) {
+        printf("%s", root->data.symb);
+    } else {
+        printf("%d", root->data.num);
+    }
     if (root->right != NULL) {
         PrintResult(root->right);       
         printf(")");
@@ -87,9 +99,13 @@ void ReadExpr(){
     Stack operators = StackInit();
     Stack values = StackInit();
     char symbol = ' ';
+    int prevSymbol = 1;  // 1 oper, 0 num, -1 var
+    int ind = 0;  // отслеживает позицию в массиве var
+
     while (symbol != EOF && symbol != '\n'){
         if (symbol != ' ') {
-            if (IsOperator(symbol)) {
+            if (IsOperator(symbol) && prevSymbol != 1) {
+                prevSymbol = 1;
                 // пока топ стека опретаторов не равен ( и равен *, / или ^ и сам символ не равен им
                 while (!StackIsEmpty(&operators) && *StackTop(&operators).symb != '(' && 
                        ((*StackTop(&operators).symb == '*' || *StackTop(&operators).symb == '/' || 
@@ -106,33 +122,43 @@ void ReadExpr(){
                     StackPush(&values, *StackPop(&operators).symb, SYMB);
                 }
                 StackPop(&operators);
-            } else if (symbol >= '0' && symbol <= '9') {
-                int buf = 0;
-                while (1) {
-                    if (symbol == ' ' || symbol == '\n' || symbol == ')') {
-                        break;
+            } else {
+                // и прошлый и текущий - num
+                if (prevSymbol == 0 && isdigit(symbol)) {
+                    values.top->value.num = values.top->value.num * 10 + (symbol - '0');
+                    prevSymbol = 0;
+                // прошлый - oper    
+                } else if (prevSymbol == -1) {
+                    ind++;
+                    values.top->value.symb = realloc(values.top->value.symb, ind + 1);
+                    if (values.top->value.symb == NULL) {
+                        exit(-1);
                     }
-                    // делаем из чара инт
-                    buf = buf * 10 + (symbol - '0');
-                    symbol = getchar();
-                }
-                // и пушим его в итоговый стек
-                StackPush(&values, buf, NUM);
-                if (symbol == ')') {
-                    while (*StackTop(&operators).symb != '(') {
-                        StackPush(&values, *StackPop(&operators).symb, SYMB);
+                    // добавляем символ в массив var
+                    values.top->value.symb[ind - 1] = symbol;
+                    values.top->value.symb[ind] = '\0';
+                } else {
+                    if (isdigit(symbol)) {
+                        StackPush(&values, (symbol - '0'), NUM);
+                        prevSymbol = 0;
+                    } else {
+                        StackPush(&values, symbol, VAR);
+                        prevSymbol = -1;
+                        ind = 1;
+                        values.top->value.symb = realloc(values.top->value.symb, ind + 1);
+                        if (values.top->value.symb == NULL) {
+                            exit(-1);
+                        }
+                        values.top->value.symb[ind - 1] = symbol;
+                        values.top->value.symb[ind] = '\0';
                     }
-                StackPop(&operators);
                 }
             }
         } 
-    if (symbol == '\n') {
-        break;
-    }
     symbol = getchar();
     }
     while (operators.top != NULL) {
-        StackPush(&values, *operators.top->value.symb, SYMB);
+        StackPush(&values, *operators.top->value.symb, operators.top->type);
         StackPop(&operators);
     }
     printf("stack: ");
@@ -150,6 +176,8 @@ void ReadExpr(){
 
     printf("modified expression: ");
     PrintResult(&root);
+
+    TreeFree(&root);
 }
 
 int main() {

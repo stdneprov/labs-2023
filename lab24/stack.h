@@ -3,7 +3,7 @@
 #include <stdbool.h>
 
 typedef enum type {
-    NUM, SYMB
+    NUM, SYMB, VAR
 } type;
 
 typedef union variable {
@@ -28,6 +28,8 @@ variable StackPop(Stack *stk);
 variable StackTop(Stack *stk);
 bool StackIsEmpty(Stack *stk);
 void StackPrint(Stack *stk);
-void FreeStack(Stack *stk);
+void StackFree(Stack *stk);
 
 #endif
+
+
