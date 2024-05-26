@@ -1,0 +1,17 @@
+1.230000 look
+1.340000 file
+2.130000 green
+2.560000 replace
+2.780000 hello
+3.400000 aboba
+3.560000 fdfd
+4.570000 gold
+7.920000 kamaz
+8.800000 sims
+9.020000 poo
+12.340000 tennis
+12.500000 pool
+14.700000 mouse
+28.299999 elecricity
+34.669998 sharf
+45.340000 queue
