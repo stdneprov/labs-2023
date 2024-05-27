@@ -111,15 +111,15 @@ void TFree(Table *t) {
 void TReadFile(Table *t, FILE *fp) {
     t_key k;
     t_val v;
-    bool res = IFromFile(fp, &k, &v);
+    bool res = TReadRowFromFile(fp, &k, &v);
 
     while (res) {
         TInsert(t, k, v);
-        res = IFromFile(fp, &k, &v);
+        res = TReadRowFromFile(fp, &k, &v);
     }
 }
 
-bool IFromFile(FILE *fp, t_key *k, t_val *v) {
+bool TReadRowFromFile(FILE *fp, t_key *k, t_val *v) {
     bool done = false;
     char c = fgetc(fp);
     if (c == EOF)

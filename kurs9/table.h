@@ -22,15 +22,10 @@
 typedef char t_key[KEY_LEN + 1];
 typedef char t_val[MAX_LEN + 1];
 
-// typedef struct {
-//     t_key k;
-//     t_val v;
-// } Item;
-
 typedef struct {
     // Item **data;
-    t_key** keys;
-    t_val** vals;
+    t_key **keys;
+    t_val **vals;
     size_t size;
     size_t capacity;
     bool sorted;
@@ -45,6 +40,6 @@ t_val *TFind(Table *t, const t_key k);
 void TPrint(const Table *t);
 void TFree(Table *t);
 
-bool IFromFile(FILE *fp, t_key* k, t_val* v);
+bool TReadRowFromFile(FILE *fp, t_key *k, t_val *v);
 
 #endif
