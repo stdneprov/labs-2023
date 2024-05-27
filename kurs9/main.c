@@ -40,12 +40,12 @@ int main(int argc, char **argw) {
             continue;
         }
         key[read - 1] = 0;
-        Item *i = TFind(t, key);
-        if (!i) {
+        t_val *v = TFind(t, key);
+        if (!v) {
             printf("ERROR: key [%s] no found in table\n> ", key);
             continue;
         }
-        printf("%s:\t%s\n> ", i->k, i->v);
+        printf("%s:\t%s\n> ", key, *v);
     }
     TFree(t);
 }
