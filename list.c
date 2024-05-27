@@ -225,13 +225,12 @@ void ListPrint(const List* const list) {
 	printf("\n");
 }
 
-void* ListIteratorData(const ListIterator iterator) {
+double ListIteratorData(const ListIterator iterator) {
 	if ((iterator.current == NULL) || (iterator.list == NULL)) {
-		return NULL;
+		return 0;
 	}
 	double value_iter = (iterator.current)->value;
-	double *value_id = &value_iter;
-	return value_id;
+	return value_iter;
 }
 
 void ListIteratorIncrement(ListIterator* const iterator) {

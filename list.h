@@ -43,7 +43,7 @@ void ListRemoveAfter(List* const list, const ListIterator iterator);
 // Очищение списка (он становится таким же, как и при инициализации
 void ListClear(List* const list);
 
-// Унитожение списка (очищение и освобождение памяти)
+// Унитожение списка (его очищение + освобождение памяти)
 void ListDestroy(List** const list);
 
 // Итератор первого занятого элемента списка
@@ -55,8 +55,8 @@ ListIterator ListLast(const List* const list);
 // Печать всего списка
 void ListPrint(const List* const list);
 
-// Указатель на значение итератора
-void* ListIteratorData(const ListIterator iterator);
+// Значение итератора
+double ListIteratorData(const ListIterator iterator);
 
 // Сдвиг итератора вперёд
 void ListIteratorIncrement(ListIterator* const iterator);
@@ -67,6 +67,6 @@ void ListIteratorDecrement(ListIterator* const iterator);
 // Проверка итераторов на равенство
 bool ListIteratorEqual(const ListIterator lhs, const ListIterator rhs);
 
-// Нестандартное действие: добавить k экземпляров последнего элемента в начало списка  
+// Нестандартное действие вариант 10: добавить к экземпляров последнего элемента в начало списка  
 void CopyLastToFront(List* list, const int32_t k);
 
