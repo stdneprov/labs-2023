@@ -1,0 +1,21 @@
+#!/bin/bash
+
+length=$1
+char=$2
+
+for file in *; do
+    if [[ -f $file ]]; then
+        filename="${file%.*}"
+        extension="${file##*.}"
+        newfilename=$(printf "%-${length}s" "$filename" | tr ' ' $char)
+        
+        if [ $length -gt ${#filename} ]; then
+            newfile="$newfilename"
+        else
+            newfile="${newfilename:0:$length}.$extension"
+        fi
+        
+        mv "$file" "$newfile"
+        echo "Renamed $file to $newfile"
+    fi
+done
