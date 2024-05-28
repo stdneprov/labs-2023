@@ -57,6 +57,7 @@ int main(void) {
             LPrint(l);
             break;
         case 'q':
+            LFree(l);
             return 0;
             break;
         case 'h':
