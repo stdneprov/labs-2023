@@ -36,17 +36,12 @@ struct ListNode {
 };
 
 typedef struct {
-    ListNode *mem;
-    size_t head;
-    size_t size;
-    size_t capacity;
-    ANode *next_free;
+    ListNode *mem;    // where everything is stored
+    size_t head;      // index of first element
+    size_t size;      // number of elements stored
+    size_t capacity;  // current capacity
+    ANode *next_free; // pointer to next freed index in memory
 } List;
-
-struct List {
-    ListNode *head;
-    size_t len;
-};
 
 typedef struct {
     List *l;
