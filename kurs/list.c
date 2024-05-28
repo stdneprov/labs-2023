@@ -2,8 +2,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-ListNode *LNCreate(list_type v);
+size_t LNCreate(List *l, list_type v);
 
 List *LCreate(void) {
     List *l = malloc(sizeof(List));
@@ -11,41 +12,46 @@ List *LCreate(void) {
         fprintf(stderr, "ERROR: buy more rum!\n");
         exit(EXIT_FAILURE);
     }
-    l->head = NULL;
+    l->capacity = MIN_CAPACITY;
+    l->mem = malloc(l->capacity * sizeof(ListNode));
+    if (!l->mem) {
+        fprintf(stderr, "ERROR: buy more rum!\n");
+        exit(EXIT_FAILURE);
+    }
+    l->head = 0;
+    l->next_free = NULL;
     return l;
 }
 
-void LPrint(const List *l) {
+void LPrint(List *l) {
     Iterator it = IFirst(l);
     for (size_t i = 0; i < LLen(l); i++) {
-        printf("%lu ", IGet(&it));
+        printf("%lu ", IGet(l, &it));
         INext(&it);
     }
     printf("\n");
 }
 
 size_t LLen(const List *l) {
-    return l->len;
+    return l->size;
 }
 
 bool LIsEmpty(const List *l) {
-    return l->len == 0;
+    return l->size == 0;
 }
 
 void LPushBack(List *l, list_type v) {
     Iterator it = ILast(l);
-    IInsert(&it, v);
+    IInsert(l, &it, v);
     if (!l->head) {
         l->head = it.node;
     }
-    l->len++;
 }
 
 void LPushFront(List *l, list_type v) {
     Iterator it = ILast(l);
-    IInsert(&it, v);
+    IInsert(l, &it, v);
     l->head = it.node;
-    l->len++;
 }
 
 void LInsert(List *l, size_t i, list_type v) {
@@ -57,11 +63,10 @@ void LInsert(List *l, size_t i, list_type v) {
         exit(EXIT_FAILURE);
     }
     Iterator it = IAtPos(l, i);
-    IInsert(IPrev(&it), v);
+    IInsert(l, IPrev(&it), v);
     if (i == 0) {
         l->head = it.node;
     }
-    l->len++;
 }
 
 void LRemove(List *l, size_t i) {
@@ -73,30 +78,30 @@ void LRemove(List *l, size_t i) {
         exit(EXIT_FAILURE);
     }
     Iterator it = IAtPos(l, i);
-    IRemove(&it);
+    IRemove(l, &it);
     if (i == 0) {
         l->head = it.node;
     }
-    l->len--;
 }
 
 void LRemoveInRange(List *l, list_type bottom, list_type top) {
     Iterator it = IFirst(l);
     size_t len = LLen(l);
     for (size_t i = 0; i < len; i++) {
-        if (IGet(&it) >= bottom && IGet(&it) <= top) {
+        if (IGet(l, &it) >= bottom && IGet(l, &it) <= top) {
             if (it.node == l->head) {
-                l->head = l->head->next;
+                IRemove(l, &it);
+                l->head = it.node;
+            } else {
+                IRemove(l, &it);
             }
-            IRemove(&it);
-            l->len--;
         } else {
             INext(&it);
         }
     }
 }
 
-list_type LGet(const List *l, size_t i) {
+list_type LGet(List *l, size_t i) {
     if (i < 0 || i > LLen(l) - 1) {
         fprintf(stderr,
                 "ERROR: tried to access an element at index %lu in a list with "
@@ -104,7 +109,7 @@ list_type LGet(const List *l, size_t i) {
                 i, LLen(l));
         exit(EXIT_FAILURE);
     }
-    return IAtPos(l, i).node->value;
+    return l->mem[IAtPos(l, i).node].value;
 }
 void LSet(List *l, size_t i, list_type v) {
     if (i < 0 || i > LLen(l) - 1) {
@@ -114,38 +119,53 @@ void LSet(List *l, size_t i, list_type v) {
                 i, LLen(l));
         exit(EXIT_FAILURE);
     }
-    IAtPos(l, i).node->value = v;
+    l->mem[IAtPos(l, i).node].value = v;
 }
 
 void LFree(List *l) {
-    Iterator it = IFirst(l);
-    for (size_t i = 0; i < LLen(l); i++) {
-        IRemove(&it);
+    free(l->mem);
+    while (l->next_free) {
+        ANode *node = l->next_free;
+        l->next_free = node->next;
+        free(node);
     }
 }
 
-ListNode *LNCreate(list_type v) {
-    ListNode *ln = malloc(sizeof(ListNode));
-    if (ln == NULL) {
-        fprintf(stderr, "ERROR: buy more rum!\n");
-        exit(EXIT_FAILURE);
+size_t LNCreate(List *l, list_type v) {
+    if (l->size >= l->capacity - 1) { // first element - 0
+        l->capacity += MIN_CAPACITY;
+        l->mem = realloc(l->mem, l->capacity * sizeof(ListNode));
+        if (l->mem == NULL) {
+            fprintf(stderr, "ERROR: buy more rum!\n");
+            exit(EXIT_FAILURE);
+        }
     }
-    ln->next = NULL;
-    ln->prev = NULL;
-    ln->value = v;
-    return ln;
+    if (l->next_free) {
+        size_t res = l->next_free->node;
+        l->mem[res].value = v;
+        l->size++;
+
+        ANode *to_free = l->next_free;
+        l->next_free = l->next_free->next;
+        free(to_free);
+
+        return res;
+    }
+    l->size++;
+    l->mem[l->size].value = v;
+    return l->size;
 }
 
-Iterator IFirst(const List *l) {
-    Iterator it = {.node = l->head};
+Iterator IFirst(List *l) {
+    Iterator it = {.l = l, .node = l->head};
     return it;
 }
-Iterator ILast(const List *l) {
-    Iterator it = {.node = l->head};
+Iterator ILast(List *l) {
+    Iterator it = {.l = l, .node = l->head};
     return *IPrev(&it);
 }
 
-Iterator IAtPos(const List *l, size_t i) {
+Iterator IAtPos(List *l, size_t i) {
     Iterator it = IFirst(l);
     for (size_t j = 0; j < i; j++)
         INext(&it);
@@ -153,52 +173,63 @@ Iterator IAtPos(const List *l, size_t i) {
 }
 // return the next element of an iterator
 Iterator *INext(Iterator *it) {
-    if (it->node == NULL)
+    if (it->node == 0)
         return it;
-    it->node = it->node->next;
+    it->node = it->l->mem[it->node].next;
     return it;
 }
 
 // return the previous element of an iterator
 Iterator *IPrev(Iterator *it) {
-    if (it->node == NULL)
+    if (it->node == 0)
         return it;
-    it->node = it->node->prev;
+    it->node = it->l->mem[it->node].prev;
     return it;
 }
 
 // insert v as next element in the iterator and return it
-Iterator *IInsert(Iterator *it, list_type v) {
-    ListNode *ln = LNCreate(v);
-    if (it->node == NULL) {
+Iterator *IInsert(List *l, Iterator *it, list_type v) {
+    size_t ln = LNCreate(l, v);
+    if (it->node == 0) {
         it->node = ln;
-        ln->next = ln;
-        ln->prev = ln;
+        l->mem[ln].next = ln;
+        l->mem[ln].prev = ln;
         return it;
     }
-    ln->next = it->node->next;
-    it->node->next->prev = ln;
+    l->mem[ln].next = l->mem[it->node].next;
+    l->mem[l->mem[it->node].next].prev = ln;
 
-    ln->prev = it->node;
-    it->node->next = ln;
+    l->mem[ln].prev = it->node;
+    l->mem[it->node].next = ln;
     it->node = ln;
     return it;
 }
 
 // remove current element in the iterator and return the next one
-Iterator *IRemove(Iterator *it) {
-    if (it->node == NULL) {
+Iterator *IRemove(List *l, Iterator *it) {
+    if (it->node == 0) {
         return it;
     }
-    it->node->prev->next = it->node->next;
-    it->node->next->prev = it->node->prev;
-    ListNode *to_free = it->node;
+    l->mem[l->mem[it->node].prev].next = l->mem[it->node].next;
+    l->mem[l->mem[it->node].next].prev = l->mem[it->node].prev;
+
+    ANode *next = l->next_free;
+    l->next_free = malloc(sizeof(ANode));
+    if (!l->next_free) {
+        fprintf(stderr, "ERROR: buy more rum!\n");
+        exit(EXIT_FAILURE);
+    }
+    l->next_free->next = next;
+    l->next_free->node = it->node;
+    // size_t to_free = it->node;
     INext(it);
-    free(to_free);
+    l->size--;
+    if (l->size == 0)
+        it->node = 0;
     return it;
 }
 
 // get the value of the current
-list_type IGet(Iterator *it) {
-    return it->node->value;
+list_type IGet(List *l, Iterator *it) {
+    return l->mem[it->node].value;
 }

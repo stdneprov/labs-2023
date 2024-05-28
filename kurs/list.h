@@ -17,19 +17,30 @@
 
 */
 
+#define MIN_CAPACITY 32
+
 typedef struct ListNode ListNode;
 
 typedef size_t list_type;
 
+typedef struct ANode ANode;
+struct ANode {
+    size_t node;
+    ANode *next;
+};
+
 struct ListNode {
     size_t value;
-    ListNode *next;
-    ListNode *prev;
+    size_t next; // 0 - null pointer
+    size_t prev; // 0 - null pointer
 };
 
 typedef struct {
-    ListNode *head;
-    size_t len;
+    ListNode *mem;
+    size_t head;
+    size_t size;
+    size_t capacity;
+    ANode *next_free;
 } List;
 
 struct List {
@@ -38,7 +49,8 @@ struct List {
 };
 
 typedef struct {
-    ListNode *node;
+    List *l;
+    size_t node;
 } Iterator;
 
 List *LCreate(void);
@@ -49,18 +61,18 @@ void LPushFront(List *l, list_type v);
 void LInsert(List *l, size_t i, list_type v);
 void LRemove(List *l, size_t i);
 void LRemoveInRange(List *l, list_type bottom, list_type top);
-void LPrint(const List *l);
-list_type LGet(const List *l, size_t i);
+void LPrint(List *l);
+list_type LGet(List *l, size_t i);
 void LSet(List *l, size_t i, list_type v);
 void LFree(List *l);
 
-Iterator IFirst(const List *l);
-Iterator ILast(const List *l);
-Iterator IAtPos(const List *l, size_t i);
+Iterator IFirst(List *l);
+Iterator ILast(List *l);
+Iterator IAtPos(List *l, size_t i);
 Iterator *INext(Iterator *it);
 Iterator *IPrev(Iterator *it);
-Iterator *IInsert(Iterator *it, list_type v);
-Iterator *IRemove(Iterator *it);
-list_type IGet(Iterator *it);
+Iterator *IInsert(List *l, Iterator *it, list_type v);
+Iterator *IRemove(List *l, Iterator *it);
+list_type IGet(List *l, Iterator *it);
 
 #endif
