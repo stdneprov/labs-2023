@@ -116,7 +116,7 @@ Strings toString(char *poem, int *size) {
     *size = j;
     return s;
 }
-
+void Clean(Record *table) { free(table); }
 int main() {
     char poemdry[] = {"Two roads diverged in a yellow wood,\n"
                       "And sorry I could not travel both\n"
@@ -151,6 +151,6 @@ int main() {
     } else {
         printf("Record with key %c not found. \n", keyToFind);
     }
-
+    Clean(table, n);
     return 0;
 }
