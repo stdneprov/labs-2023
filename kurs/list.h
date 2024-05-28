@@ -19,21 +19,19 @@
 
 #define MIN_CAPACITY 32
 
-typedef struct ListNode ListNode;
-
-typedef size_t list_type;
-
 typedef struct ANode ANode;
 struct ANode {
     size_t node;
     ANode *next;
 };
 
-struct ListNode {
-    size_t value;
+typedef size_t list_type;
+
+typedef struct {
+    list_type value;
     size_t next; // 0 - null pointer
     size_t prev; // 0 - null pointer
-};
+} ListNode;
 
 typedef struct {
     ListNode *mem;    // where everything is stored
