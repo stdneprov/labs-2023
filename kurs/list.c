@@ -26,7 +26,7 @@ List *LCreate(void) {
 void LPrint(List *l) {
     Iterator it = IFirst(l);
     for (size_t i = 0; i < LLen(l); i++) {
-        printf("%lu ", IGet(l, &it));
+        printf("%lu ", IGet(&it));
         INext(&it);
     }
     printf("\n");
@@ -42,7 +42,7 @@ bool LIsEmpty(const List *l) {
 
 void LPushBack(List *l, list_type v) {
     Iterator it = ILast(l);
-    IInsert(l, &it, v);
+    IInsert(&it, v);
     if (!l->head) {
         l->head = it.node;
     }
@@ -50,7 +50,7 @@ void LPushBack(List *l, list_type v) {
 
 void LPushFront(List *l, list_type v) {
     Iterator it = ILast(l);
-    IInsert(l, &it, v);
+    IInsert(&it, v);
     l->head = it.node;
 }
 
@@ -63,7 +63,7 @@ void LInsert(List *l, size_t i, list_type v) {
         exit(EXIT_FAILURE);
     }
     Iterator it = IAtPos(l, i);
-    IInsert(l, IPrev(&it), v);
+    IInsert(IPrev(&it), v);
     if (i == 0) {
         l->head = it.node;
     }
@@ -78,7 +78,7 @@ void LRemove(List *l, size_t i) {
         exit(EXIT_FAILURE);
     }
     Iterator it = IAtPos(l, i);
-    IRemove(l, &it);
+    IRemove(&it);
     if (i == 0) {
         l->head = it.node;
     }
@@ -88,12 +88,12 @@ void LRemoveInRange(List *l, list_type bottom, list_type top) {
     Iterator it = IFirst(l);
     size_t len = LLen(l);
     for (size_t i = 0; i < len; i++) {
-        if (IGet(l, &it) >= bottom && IGet(l, &it) <= top) {
+        if (IGet(&it) >= bottom && IGet(&it) <= top) {
             if (it.node == l->head) {
-                IRemove(l, &it);
+                IRemove(&it);
                 l->head = it.node;
             } else {
-                IRemove(l, &it);
+                IRemove(&it);
             }
         } else {
             INext(&it);
@@ -188,7 +188,8 @@ Iterator *IPrev(Iterator *it) {
 }
 
 // insert v as next element in the iterator and return it
-Iterator *IInsert(List *l, Iterator *it, list_type v) {
+Iterator *IInsert(Iterator *it, list_type v) {
+    List *l = it->l;
     size_t ln = LNCreate(l, v);
     if (it->node == 0) {
         it->node = ln;
@@ -206,7 +207,8 @@ Iterator *IInsert(List *l, Iterator *it, list_type v) {
 }
 
 // remove current element in the iterator and return the next one
-Iterator *IRemove(List *l, Iterator *it) {
+Iterator *IRemove(Iterator *it) {
+    List *l = it->l;
     if (it->node == 0) {
         return it;
     }
@@ -230,6 +232,6 @@ Iterator *IRemove(List *l, Iterator *it) {
 }
 
 // get the value of the current
-list_type IGet(List *l, Iterator *it) {
-    return l->mem[it->node].value;
+list_type IGet(Iterator *it) {
+    return it->l->mem[it->node].value;
 }

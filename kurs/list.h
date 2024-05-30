@@ -64,8 +64,8 @@ Iterator ILast(List *l);
 Iterator IAtPos(List *l, size_t i);
 Iterator *INext(Iterator *it);
 Iterator *IPrev(Iterator *it);
-Iterator *IInsert(List *l, Iterator *it, list_type v);
-Iterator *IRemove(List *l, Iterator *it);
-list_type IGet(List *l, Iterator *it);
+Iterator *IInsert(Iterator *it, list_type v);
+Iterator *IRemove(Iterator *it);
+list_type IGet(Iterator *it);
 
 #endif
