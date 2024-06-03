@@ -67,7 +67,7 @@ bool IsEmpty(List **l) {
 T Delete(List **l, Iterator iter) {
     if (IsEmpty(l) || IsTerminator(iter)) {
         return -1;
-    } 
+    }
 
     T result = GetValue(iter);
 
@@ -106,12 +106,6 @@ void SetValue(Iterator iter, T value) {
     iter.node->value = value;
 }
 
-void Swp(T *a, T *b) {
-    T c = *a;
-    *a = *b;
-    *b = c;
-}
-
 int Count(List **l) {
     int k = 0;
     if (IsEmpty(l)) {
@@ -125,20 +119,6 @@ int Count(List **l) {
         k++;
     }
     return k;
-}
-
-void Swap(List **l, int k) {
-    if (!IsEmpty(l)) {
-        if (Count(l) >= 3) {
-            Iterator i = First(l);
-            int j = 0;
-            while (j != k) {
-                i = Next(i);
-                j++;
-            }
-            Swp(&Previous(i).node->value, &Next(i).node->value);
-        }
-    }
 }
 
 void Print(List **l) {
