@@ -56,7 +56,7 @@ int main() {
         if (strcmp(command, initList) == 0) {
             ListInit(&lst);
         } else if (strcmp(command, addList) == 0) {
-            Insert(&lst, num, Last(&lst));
+            InsertAfter(&lst, num, Last(&lst));
         } else if (strcmp(command, delLastValue) == 0) {
             Delete(&lst, Last(&lst));
         } else if (strcmp(command, delFirstValue) == 0) {
