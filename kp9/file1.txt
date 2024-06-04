@@ -1,0 +1,69 @@
+1 a    Bella: You're impossibly fast, and strong.
+2 b    Your skin is pale white and ice cold.
+3 c    Your eyes change color, and sometimes you speak like--like you're from a different time.
+4 d    You never eat or drink anything.
+5 e    You don't go out in the sunlight.
+6 f    ... How old are you?
+7 g    Edward: Seventeen.
+8 h    Bella: How long have you been seventeen?
+9 i    Edward: A while.
+10 j    Bella: I know what you are.
+11 k    Edward: Say it. Out loud. Say it!
+12 l    Bella: Vampire.
+13 m    Edward: Are you afraid?
+14 n    Bella: No.
+15 o    Edward: Then ask me the most basic question: what do we eat?
+16 p    Bella: You won't hurt me.
+17 q    (he takes her arm and leads her, walking fast) Where are we going?
+18 r    Edward: Up the mountain. Out of the cloud bank.
+19 s    You need to know what I look like in the sunlight.
+20 t    (They fly. Sort of.)
+21 u    Edward: This is why we don't show ourselves in the sunlight.
+22 v    People would know that we're different.
+23 w    This is what I am.
+24 x    (Edward walks into a sunbeam and he ... sparkles?)
+25 y    Bella: It's like diamonds. You're beautiful.
+26 z    Edward: Beautiful? This is the skin of a killer, Bella.
+27 a    I'm a killer.
+28 b    Bella: I don't believe that.
+29 c    Edward: It's because you believe a lie. A camouflage.
+30 d    I'm the world's most dangerous predator.
+31 e    Everything about me invites you in.
+32 f    My voice, my face, even my smell.
+33 g    As if I would need any of that.
+34 h    As if you could out run me.
+35 i    As if you could fight me off.
+36 j    (He shows off his powers.) I'm designed to kill.
+37 k    Bella: I don't care.
+38 l    Edward: I've killed people before.
+39 m    Bella: It doesn't matter.
+40 n    Edward: I wanted to kill you.
+41 o    I've never wanted a human's blood so much in my life.
+42 p    Bella: I trust you.
+43 q    Edward: Don't.
+44 r    Bella: I'm here. I trust you.
+45 s    Edward: My family, we're different than others of our kind.
+46 t    We only hunt animals.
+47 u    We've learned to control our thirst.
+48 v    It's you. Your scent.
+49 w    It's like a drug to me.
+50 x    Like my own personal brand of heroin.
+51 y    Bella: Why did you hate me so much when we met?
+52 z    Edward: I did. Only for making me want you so badly.
+53 a    I still don't know if I can control myself.
+54 b    Bella: I know you can.
+55 c    Edward: I can't read your mind.
+56 d    You have to tell me what you're thinking.
+57 e    Bella: Now I'm afraid.
+58 f    Edward: Good.
+59 g    Bella: I'm not afraid of you, I'm only afraid of losing you.
+60 h    I feel like you're going to disappear.
+61 i    Edward: You don't know how long I've waited for you.
+62 j    And so the lion fell in love with the lamb.
+63 k    Bella: What a stupid lamb.
+64 l    Edward: What a sick, masochistic lion.
+65 m    (They proceed to lie in a meadow and they boink! No, they stare at each other.)
+66 n    Bella: (voice over) About three things I was absolutely positive:
+67 o    first, Edward was a vampire.
+68 p    Second, there was a part of him--and I didn't know how dominant that part might be--that thirsted for my blood.
+68 q    And third, I was unconditionally and irrevocably in love with him.
