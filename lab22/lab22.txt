@@ -1,0 +1,93 @@
+\documentclass[12pt]{article}
+\usepackage{cmap}
+\usepackage[utf8x]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{setspace}
+
+\newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\}
+\onehalfspacing
+\begin{document}
+\begin{flushleft}
+\setlength{\parindent}{5pt}
+\textit{\indent{Лекция 6}}
+\section*{\textbf{Глава 3. Предел функции}}
+\end{flushleft}
+\setlength{\parindent}{10pt}
+\subsection*{\textbf{\indent{\large3.1. Определение предела функции по Гейне и Коши}}}
+\setlength{\parindent}{15pt}
+\indent\indentЗадана $f : E\rightarrow R, E \subset R$ и \textit{a} - предельная точка множества E.
+\newline\indent\textbf{Определение 3.1 (предела функции по Коши).} 
+\newline\indent{Число А называют \textit{пределом функции f} при \textit{x} стремящемся к \textit{a:}}
+\newline$ \lim_{x \to a} f(x) = A:$
+\[\forall\varepsilon > 0 \exists \delta(\varepsilon):\forall x\in E\symbol{92} a \quad 0 < |x - a| < \delta => |f(x) - A| < \varepsilon.\]
+\indent\textbf{Определение 3.2(предела функции по Гейне).}
+\[ \lim_{x \to a} f(x) = A: \forall \{x_n\}^\infty_{n=1},\: x_n \in E\symbol{92} a : x_n \xrightarrow[n \to \infty]{} a \Rightarrow f(x_n) \xrightarrow[n \to \infty]{} A. \]
+Обозначим $\mathring{U}(a)$ - проколотую окрестность точки $a: \mathring{U}(a) = U(a)\symbol{92} a$.
+\indent\textbf{Определение 3.3 $lim_{x \to a} f(x) = A:$} 
+\newline\centerline{$\forall V(A) \exists \mathring{U}(a) : \forall x \in \mathring{U}(a) => f(x) \in V(A)$ или $f(\mathring{U}(a)) \in V(A).$}
+\newline\indent\textbf{Замечание 3.1.}
+В самой точке \textit{a} функция, вообще говоря, может быть не определена.
+\newline\indent\textbf{Замечание 3.2.}
+Не существует $lim_{x \to a} f(x):$
+\[\forall A \; \exists \varepsilon > 0, \forall \delta \exists x \in E : 0 < |x-a| < \delta \wedge |f(x)-A| \geq \varepsilon.\]
+\indent\textbf{Пример 3.1.}
+\[
+f(x) = sgn x :=
+\left\{ 
+    \begin{array}{l}
+        1, x > 0; &
+        0, x = 0; &
+        -1, x < 0
+    \end{array} 
+\right.
+\]
+\newline\indent Покажем, что $\overline{\exists} lim_{x \to 0} sgn x = A:$
+\newline\centerline{$\forall A \: \exists \varepsilon = 1 \: \forall \delta \exists x \in E : 0 < |x| < \delta$ но $|f(x) - A| \geq 1.$}
+\newline\centerline{Если A<0, то при x>0 $|f(x)-A|=|1-A|>1.$}
+\newline\centerline{Если A>0, то при x<0 $|f(x)-A|=|-1-A|>1.$}
+\newline\centerline{Но, если E = R_+, то\exists $lim_{R_+ \ni x \to 0}$ sgn x = 1}
+\myparagraph{\textit{\centerline{\largeЭквивалентность определений по Гейне и Коши}}}
+\indent\textbf{Утверждение 3.1.}
+Определения предела по Гейне и Коши эквивалентны.
+\newline\indent\blacktriangleleft{1) Пусть в силу определения Коши $\exists lim_{x \to a} f(x) = A: $}
+\newline$\forall \varepsilon > 0 \exists \delta (\varepsilon) : 0 < |x-a| < \delta => |f(x)-A| < \varepsilon.$
+\newline\indent Возьмем произвольную последовательность
+\newline$\forall \{x_n\}^\infty_{n=1} \xrightarrow[n \to \infty]{} a \: x_n \neq a => \forall \delta > 0 \: \exists N(\delta) : \forall n > N |x_n-a| < \delta.$
+$=>|f(x_n) - A| < \varepsilon => f(x_n) \xrightarrow[n \to \infty]{} A$ и существует предел по Гейне.
+\newline\indent 2) Пусть по Гейне $lim_{x \to a} f(x) = A.$
+\newline\indent Предположим противное, что функция не имеет предела в силу определения Коши:
+\[ \lim_{x \to a} f(x) \neq A: \exists \varepsilon > 0 \: \forall \delta \exists x \in E:0 < |x - a| < \delta \wedge |f(x) - A| \geq \varepsilon.\]
+Пусть $\delta = \frac{1}{n} \: \exists x_n 0 < |x_n - a| < \frac{1}{n} \; |f(x_n) - A| \geq \varepsilon \Rightarrow$ не существует 
+\newline$ \lim_{x \to a} f(x_n) = A$ в смысле Гейне и мы пришли к противоречию. \blacktriangleright
+\myparagraph{\textbf{\centerline{\large3.2. Свойства предела функции}}}
+\textbf{\indentОпределение 3.4.}
+Будем говорить, что некоторое свойство выполняется \textit{финально} при $x \rightarrow a$, если существует проколотая окрестность точки $a$, в которой оно выполнено (например, функция финально ограничена, финально постоянная и т.д.). 
+\myparagraph{\textit{\centerline{\largeОбщие свойства предела}}}
+\textbf{\indentТеорема 3.1}
+\newline 1) Если функция финально постоянная при $x \rightarrow a$, то она имеет предел при $x \rightarrow a$.
+\newline 2) Если функция имеет предел: то она финально ограничена.
+\newline 3) Если функция имеет предел, то он единственный.
+\newline\indent Эти и последующие свойства непосредственно вытекают из определений по Гейне и соответствующих свойств пределов последовательности.
+\myparagraph{\textit{\centerline{\largeАрифметические свойства предела}}}
+\textbf{\indentТеорема 3.2.}
+Пусть $\exists \lim_{x \to a} f(x) = A$ и $\exists \lim_{x \to a} g(x) = B$, тогда:
+\newline$ 1. \quad\ \exists \lim_{x \to a} (f(x)+g(x)) = A+B; $
+\newline$ 2. \quad\ \exists \lim_{x \to a} (f(x) \times g(x)) = A \times B; $
+\newline$ 3. \quad\ \exists \lim_{x \to a} \frac{f(x)}{g(x)} = \frac{A}{B}$, если $B \neq 0.$
+\newline\textbf{\indentПример 3.2.}
+Условие существования пределов является обязательным, пусть
+\newline\centerline{$f(x) = \sin{\frac{1}{x}}, g(x) = x $, тогда $ \lim_{x \to 0} f(x) = 0$, а $\overline{\exists} \lim_{x \to 0} \sin{\frac{1}{x}}$.}
+\newline\centerline{При этом $\exists \lim_{x \to 0} \sin{(x \times \frac{1}{x})} \neq \lim_{x \to 0} x \times  lim_{x \to 0} \sin{\frac{1}{x}}$.}
+\myparagraph{\textit{\centerline{\largeСвойства предела, связанные с неравенствами}}}
+\textbf{\indentТеорема 3.3.}
+Пусть $\exists \lim_{x \to a} f(x) = A$ и $\exists \lim_{x \to a} g(x) = B$, тогда:
+\newline1) если $A > B \Rightarrow$ финально $f(x) > g(x)$;
+\newline2) если при $x \rightarrow a \: f(x) \leq h(x) \leq g(x), f(x) \rightarrow A, g(x) \rightarrow A \Rightarrow h(x) \rightarrow A$.
+\textbf{\indentСледствие 3.1}
+Если финально:
+\newline$f(x) < g(x) \Rightarrow A \leq B$;
+\newline$f(x) \leq g(x) \Rightarrow A \leq B$;
+\newline$f(x) < B \Rightarrow A \leq B$;
+\newline$f(x) \leq B \Rightarrow A \leq B$.
+\end{document}
