@@ -2,7 +2,8 @@
 #include "list.h"
 
 int main() {
-    Iterator list = CreateList();
+    List list = CreateList();
+    Iterator iter = Start(&list);
     int choice;
     float value;
 
@@ -20,18 +21,18 @@ int main() {
             case 1:
                 printf("enter value to add: ");
                 scanf("%f", &value);
-                Push(&list, value);
+                Push(&iter, value);
                 break;
             case 2:
                 printf("enter value to delete: ");
                 scanf("%f", &value);
-                DeleteNode(&list, value);
+                DeleteNode(&iter, value);
                 break;
             case 3:
-                PrintList(list);
+                PrintList(&list);
                 break;
             case 4:
-                printf("list length: %d\n", ListLength(list));
+                printf("list length: %d\n", ListLength(&list));
                 break;
             case 5:
                 printf("enter value to check: ");
@@ -45,22 +46,23 @@ int main() {
                     float afterValue;
                     printf("enter value after which to insert: ");
                     scanf("%f", &afterValue);
-                    Iterator it = {list.node};
+                    Iterator it = Start(&list);
+                    int found = 0;
                     do {
                         if (it.node->data == afterValue) {
-                            ClearListIfExists(&list, value);
                             InsertAfter(&it, value);
+                            found = 1;
                             break;
                         }
                         it = Next(it);
-                    } while (it.node != list.node);
-                    if (it.node == list.node && list.node->data != afterValue) {
+                    } while (it.node != list.head);
+                    if (!found) {
                         printf("value not found\n");
                     }
                 }
                 break;
             case 7:
-                FreeList(list);
+                FreeList(&list);
                 break;
             default:
                 printf("invalid choice\n");
