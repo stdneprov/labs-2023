@@ -4,9 +4,9 @@
 
 int main() {
     FILE* d = fopen("data.txt", "r");
-    FILE* k = fopen("keys.txt", "r");
-    if(!d || !k)
+    if (!d) {
         exit(-1);
+    }
     Table* table = CreateTable();
     if(!table) {
         Destroy(table);
@@ -14,9 +14,8 @@ int main() {
     }
 
     item nr;
-    while (fscanf(d, "%s", nr.val) > 0) {
-        float digits;
-        fscanf(k, "%f", &digits);
+    float digits;
+    while (fscanf(d, "%s %f", nr.val, &digits) == 2) {
         nr.val[strcspn(nr.val, "\n")] = 0;
         nr.key = digits;
         Add(table, nr);
@@ -25,7 +24,6 @@ int main() {
 
 
     fclose(d);
-    fclose(k);
     if(!table) {
         exit(-1);
     }
