@@ -1,9 +1,9 @@
-#include <stdio.h>      /* Standard Library of Input and Output */
+#include <stdio.h>
 #include "table.h"
 #include <string.h>
 
 void Hello() {
-    printf("Меню управления программой\n");
+    printf("--------Меню управления программой--------\n");
     printf("Добавить значение - введите push и в следующей строке 2 значения: key and value\n");
     printf("Отсортировать - введите sort\n");
     printf("Посмотреть таблицу - введите print\n");
@@ -25,7 +25,7 @@ void Find(Table *table, double a) {
         }
         table = table->next;
     }
-    printf("NE Naideno");
+    printf("Not found");
     return;
 }
 
@@ -33,11 +33,10 @@ void Menu() {
     Hello();
     Table tb = TableInit();
 
-    char inputUser[10] = "";
-
     while(!feof(stdin)) {
+        char inputUser[10] = "";
         fgets(inputUser, sizeof(char) * 10, stdin);
-           char inputUser[10] = "";     fflush(stdin);
+        fflush(stdin);
         if (strcmp(inputUser, "print\n") == 0) {
             if (TableIsEmpty(&tb)) {
                 printf("словарь не задан\n");
@@ -67,7 +66,7 @@ void Menu() {
             break;
         } else if (strcmp(inputUser, "find\n") == 0) {
             double a;
-            printf("vvedi:\n");
+            printf("Input:\n");
             scanf("%lf", &a);
             Find(&tb, a);
 

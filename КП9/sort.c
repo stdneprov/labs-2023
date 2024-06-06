@@ -1,4 +1,4 @@
-#include <stdio.h>      /* Standard Library of Input and Output */
+#include <stdio.h>
 #include "table.h"
 #include <string.h>
 

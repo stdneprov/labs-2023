@@ -11,10 +11,6 @@ Table TableInit() {
 }
 
 void TablePush(Table *table, double a, int value) {
-    if (value == 11037) {
-        printf("У нас не уважают такие числа, оно не будет записано");
-        exit(-1);
-    }
     if (table->size == 0) {
         table->next = NULL;
         table->key = a;
@@ -30,16 +26,13 @@ void TablePush(Table *table, double a, int value) {
         table->last->next = new;
         new->next = NULL;
         table->last = table->last->next;
-        //table->last = new;
     }
-    printf("dobavleno\n");
+    printf("Add complited\n");
     printf("key: %.2f\tvalue: %d\n", table->last->key, table->last->val);
     table->size++;
-    //printf("!!!%d!!!\n", table->size);
 }
 
 bool TableIsEmpty(Table *table) {
-    //printf(table->size);
     return (table->size) == 0;
 }
 
