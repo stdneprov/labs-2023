@@ -1,0 +1,16 @@
+zzz 5.2
+vvv 0
+russia 6
+ulrick 1.1
+jorno 2.2
+da 20
+net 3
+sad 4.3
+session 8
+jack 11
+crash 1
+bandicoot 52
+f 7.9
+o 9.9
+p 6.5
+x 5.6
