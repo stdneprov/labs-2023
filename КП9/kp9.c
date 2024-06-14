@@ -1,83 +1,128 @@
 #include <stdio.h>
-#include "table.h"
+#include <stdlib.h>
 #include <string.h>
 
-void Hello() {
-    printf("--------Меню управления программой--------\n");
-    printf("Добавить значение - введите push и в следующей строке 2 значения: key and value\n");
-    printf("Отсортировать - введите sort\n");
-    printf("Посмотреть таблицу - введите print\n");
-    printf("Узнать размер - введите size\n");
-    printf("Найти значение - введите find и в следующей строке key\n");
-    printf("Выйти - введите exit или ctrl+C\n");
-    printf("В случае неверной команды ничего не произойдет\n");
-}
+#define MAX 12
 
-void YourStep(Table *tb) {
-    TableSort(&tb);
-}
+// Структура для хранения ключа и связанных с ним данных
+typedef struct {
+    double key;
+    char data[100];
+} Key;
 
-void Find(Table *table, double a) {
-    while(table != NULL) {
-        if (table->key == a) {
-            printf("%d\n", table->val);
-            return;
-        }
-        table = table->next;
-    }
-    printf("Not found");
-    return;
-}
-
-void Menu() {
-    Hello();
-    Table tb = TableInit();
-
-    while(!feof(stdin)) {
-        char inputUser[10] = "";
-        fgets(inputUser, sizeof(char) * 10, stdin);
-        fflush(stdin);
-        if (strcmp(inputUser, "print\n") == 0) {
-            if (TableIsEmpty(&tb)) {
-                printf("словарь не задан\n");
-            } else {
-                //printf("Бинарное дерево\n");
-                TablePrint(&tb);
-                printf("\n");
-            }
-
-        } else if (strcmp(inputUser, "sort\n") == 0){
-            for (int i = 0; i < TableSize(&tb); i++) {
-                YourStep(&tb);
-
-            }
-            continue;
-        } else if (strcmp(inputUser, "push\n") == 0) {
-            double a;
-            int c;
-            scanf("%lf %d", &a, &c);
-            TablePush(&tb, a, c);
-            continue;
-        } else if (strcmp(inputUser, "size\n") == 0) {
-            printf("%d\n", TableSize(&tb));
-
-            continue;
-        } else if ((strcmp(inputUser, "exit\n") == 0)) {
-            break;
-        } else if (strcmp(inputUser, "find\n") == 0) {
-            double a;
-            printf("Input:\n");
-            scanf("%lf", &a);
-            Find(&tb, a);
-
-            continue;
+// Функция бинарного поиска
+int binary_search(Key table[], int n, double key) {
+    int left = 0;
+    int right = n - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (table[mid].key == key) {
+            return mid;
+        } else if (table[mid].key < key) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
         }
     }
-
+    return -1;
 }
 
+// Функция для вывода таблицы
+void print_table(Key table[], int n) {
+    printf("Table state:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%.2f %s\n", table[i].key, table[i].data);
+    }
+}
+
+// Вспомогательная функция для обмена элементов
+void swap(Key* a, Key* b) {
+    Key temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+// Функция разбиения массива для быстрой сортировки
+int partition(Key arr[], int low, int high) {
+    double pivot = arr[high].key;
+    int i = (low - 1);
+    for (int j = low; j <= high - 1; j++) {
+        if (arr[j].key <= pivot) {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+    swap(&arr[i + 1], &arr[high]);
+    return (i + 1);
+}
+
+// Нерекурсивная реализация быстрой сортировки Хоара
+void quicksort(Key arr[], int low, int high) {
+    // Инициализация стека
+    int stack[MAX];
+
+    int top = -1;
+    stack[++top] = low;
+    stack[++top] = high;
+
+    // Основной цикл пока стек не пуст
+    while (top >= 0) {
+        // Извлекаем high и low
+        high = stack[top--];
+        low = stack[top--];
+
+        // Разбиение массива и получение индекса опорного элемента
+        int p = partition(arr, low, high);
+
+        // Если в левом подмассиве больше 1 элемента, добавляем его в стек
+        if (p - 1 > low) {
+            stack[++top] = low;
+            stack[++top] = p - 1;
+        }
+
+        // Если в правом подмассиве больше 1 элемента, добавляем его в стек
+        if (p + 1 < high) {
+            stack[++top] = p + 1;
+            stack[++top] = high;
+        }
+    }
+}
 
 int main() {
-    Menu();
+    int n;
+    Key table[MAX];
+    FILE *fp = fopen("text.txt", "r");
+    if (fp == NULL) {
+        printf("Error opening file\n");
+        return 1;
+    }
+
+    n = 0;
+    // Считываем данные из файла в таблицу
+    while (fscanf(fp, "%lf %[^\n]", &table[n].key, table[n].data) != EOF && n < MAX) {
+        n++;
+        if (n >= MAX) 
+            break;
+    }
+    fclose(fp);
+
+    // Вывод таблицы
+    print_table(table, n);
+
+    // Сортировка таблицы с использованием быстрой сортировки и вывод после неё
+    quicksort(table, 0, n - 1);
+    printf("\nSorted table:\n");
+    print_table(table, n);
+
+    // Поиск ключа в отсортированной таблице
+    double search_key;
+    scanf("%lf", &search_key);
+    int index = binary_search(table, n, search_key);
+    if (index != -1) {
+        printf("Key %.2f found at index: %d\n", table[index].key, index);
+    } else {
+        printf("Key %.2f not found in the table\n", search_key);
+    }
+
     return 0;
 }
