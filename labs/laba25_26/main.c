@@ -65,7 +65,7 @@ int main() {
             }
         }
 
-        printf("Меню:\n1:Создать стэк\n2:Вывести стэк\n3:Добавить элемент в стэк\n4:Извлечь элемент из стэка\n5:Сортировка\n6:Слияние\n");
+        printf("Menu:\n1:Make stack\n2:Print stack\n3:Add element in stack\n4:Extract an item from the stack\n5:Sorting\n6:Merge\n");
         scanf("%d", &answer);
     }
 
