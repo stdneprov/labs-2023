@@ -3,11 +3,15 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef struct Table {
+#define MAX_ENTRIES 100
+
+typedef struct {
     int val;
     char key[10];  // Строковый ключ
-    struct Table *last;
-    struct Table *next;
+} Entry;
+
+typedef struct {
+    Entry entries[MAX_ENTRIES];
     int size;
 } Table;
 
@@ -17,40 +21,32 @@ bool TableIsEmpty(Table *table);
 void TablePrint(Table *table);
 void TableFree(Table *table);
 int TableSize(Table *table);
-void Swap(Table *a, Table *b);
-void ShellSort(Table *head);
+void Swap(Entry *a, Entry *b);
+void ShellSort(Table *table);
+int BinarySearch(Table *table, const char *key);
+void Find(Table *table, const char *key);
+void Hello();
+void Menu();
 
 Table TableInit() {
-    Table new;
-    new.size = 0;
-    new.last = NULL;
-    new.next = NULL;
-    return new;
+    Table table;
+    table.size = 0;
+    return table;
 }
 
 void TablePush(Table *table, const char* key, int value) {
     if (value == 11037) {
-        printf("У нас не уважают такие числа, оно не будет записано");
-        exit(-1);
+        printf("У нас не уважают такие числа, оно не будет записано\n");
+        return;
     }
-    if (table->size == 0) {
-        table->next = NULL;
-        strcpy(table->key, key);  // Копирование строки
-        table->val = value;
-        table->last = table;
-    } else {
-        Table* new = (Table *)malloc(sizeof(Table));
-        if (new == NULL) {
-            exit(-1);
-        }
-        strcpy(new->key, key);  // Копирование строки
-        new->val = value;
-        table->last->next = new;
-        new->next = NULL;
-        table->last = new;
+    if (table->size >= MAX_ENTRIES) {
+        printf("Достигнут максимальный размер таблицы\n");
+        return;
     }
+    strcpy(table->entries[table->size].key, key);
+    table->entries[table->size].val = value;
     printf("Добавлено\n");
-    printf("key: %s\tvalue: %d\n", table->last->key, table->last->val);
+    printf("key: %s\tvalue: %d\n", table->entries[table->size].key, table->entries[table->size].val);
     table->size++;
 }
 
@@ -59,18 +55,8 @@ bool TableIsEmpty(Table *table) {
 }
 
 void TablePrint(Table *table) {
-    Table *current = table;
-    while (current != NULL) {
-        printf("key: %s\tvalue: %d\n", current->key, current->val);
-        current = current->next;
-    }
-}
-
-void TableFree(Table *table) {
-    Table *next;
-    for (Table *i = table; i != NULL; i = next) {
-        next = i->next;
-        free(i);
+    for (int i = 0; i < table->size; i++) {
+        printf("key: %s\tvalue: %d\n", table->entries[i].key, table->entries[i].val);
     }
 }
 
@@ -78,51 +64,45 @@ int TableSize(Table *table) {
     return table->size;
 }
 
-void Swap(Table *a, Table *b) {
-    int temp_val = a->val;
-    char temp_key[10];
-    strcpy(temp_key, a->key);
-    a->val = b->val;
-    strcpy(a->key, b->key);
-    b->val = temp_val;
-    strcpy(b->key, temp_key);
-}
-
-void ShellSort(Table *head) {
-    if (head == NULL || head->next == NULL) {
-        return;
-    }
-
-    int n = TableSize(head);
+void ShellSort(Table *table) {
+    int n = table->size;
     for (int gap = n / 2; gap > 0; gap /= 2) {
-        for (Table *i = head; i != NULL; i = i->next) {
-            Table *j = i;
-            for (int k = 0; k < gap && j != NULL; k++) {
-                j = j->next;
+        for (int i = gap; i < n; i++) {
+            Entry temp = table->entries[i];
+            int j;
+            for (j = i; j >= gap && strcmp(table->entries[j - gap].key, temp.key) > 0; j -= gap) {
+                table->entries[j] = table->entries[j - gap];
             }
-            while (j != NULL) {
-                if (strcmp(i->key, j->key) > 0) {
-                    Swap(i, j);
-                }
-                j = j->next;
-                for (int k = 0; k < gap - 1 && j != NULL; k++) {
-                    j = j->next;
-                }
-            }
+            table->entries[j] = temp;
         }
     }
 }
 
-void Find(Table *table, const char *a) {
-    while (table != NULL) {
-        if (strcmp(table->key, a) == 0) {
-            printf("%d\n", table->val);
-            return;
+int BinarySearch(Table *table, const char *key) {
+    int left = 0;
+    int right = table->size - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        int cmp = strcmp(table->entries[mid].key, key);
+        if (cmp == 0) {
+            return mid;
         }
-        table = table->next;
+        if (cmp < 0) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
     }
-    printf("NE Naideno\n");
-    return;
+    return -1;
+}
+
+void Find(Table *table, const char *key) {
+    int index = BinarySearch(table, key);
+    if (index != -1) {
+        printf("%d\n", table->entries[index].val);
+    } else {
+        printf("Не найдено\n");
+    }
 }
 
 void Hello() {
@@ -141,14 +121,14 @@ void Menu() {
     Hello();
     Table tb = TableInit();
 
-    char inputUser[10] = "";
+    char inputUser[50] = "";
 
     while (!feof(stdin)) {
         fgets(inputUser, sizeof(inputUser), stdin);
         fflush(stdin);
         if (strcmp(inputUser, "print\n") == 0) {
             if (TableIsEmpty(&tb)) {
-                printf("словарь не задан\n");
+                printf("Таблица пуста\n");
             } else {
                 TablePrint(&tb);
                 printf("\n");
@@ -157,25 +137,25 @@ void Menu() {
             ShellSort(&tb);
             continue;
         } else if (strcmp(inputUser, "find\n") == 0) {
-            char key[100];
+            char key[10];
+            printf("Введите ключ: ");
             scanf("%s", key);
             Find(&tb, key);
             continue;
         } else if (strcmp(inputUser, "push\n") == 0) {
-            char key[100];
+            char key[10];
             int value;
+            printf("Введите ключ и значение: ");
             scanf("%s %d", key, &value);
             TablePush(&tb, key, value);
             continue;
         } else if (strcmp(inputUser, "size\n") == 0) {
-            printf("%d\n", TableSize(&tb));
+            printf("Размер таблицы: %d\n", TableSize(&tb));
             continue;
         } else if ((strcmp(inputUser, "exit\n") == 0)) {
             break;
         }
     }
-
-    TableFree(&tb);
 }
 
 int main() {
