@@ -2,7 +2,7 @@
 #define _STACK_H_
 
 #ifndef STACK_INIT_SIZE
-#define STACK_INIT_SIZE 0
+#define STACK_INIT_SIZE 4
 #endif
 
 #include <stdbool.h>

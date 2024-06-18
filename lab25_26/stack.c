@@ -5,9 +5,17 @@
 
 stack *stack_create(void) {
     stack *res = malloc(sizeof(stack));
-    res->ptr = 0;
+    if (res == NULL) {
+        printf("ERROR: not enough memory");
+        exit(EXIT_FAILURE);
+    }
+    res->ptr = malloc(STACK_INIT_SIZE * sizeof(STACK_T));
+    if (res->ptr == NULL) {
+        printf("ERROR: not enough memory");
+        exit(EXIT_FAILURE);
+    }
     res->size = 0;
-    res->capacity = 0;
+    res->capacity = STACK_INIT_SIZE;
     return res;
 }
 
@@ -27,14 +35,6 @@ void stack_print(const stack *s) {
 }
 
 void stack_push_back(stack *s, const STACK_T val) {
-    if (s->ptr == NULL) {
-        s->ptr = malloc(sizeof(STACK_T));
-        if (s->ptr == NULL) {
-            printf("ERROR: not enough memory");
-            exit(EXIT_FAILURE);
-        }
-        s->capacity = 1;
-    }
     if (s->size + 1 > s->capacity) {
         STACK_T *tmp = realloc(s->ptr, s->capacity * 2 * sizeof(STACK_T));
         if (tmp == NULL) {
