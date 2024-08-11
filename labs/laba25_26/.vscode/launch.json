@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Admin/labs-2023/labs/ЄхёЄ",
-      "program": "c:/Users/Admin/labs-2023/labs/ЄхёЄ/build/Debug/outDebug",
+      "cwd": "c:/Users/Admin/labs-2023/labs/laba25_26",
+      "program": "c:/Users/Admin/labs-2023/labs/laba25_26/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
