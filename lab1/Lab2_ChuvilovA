@@ -1,0 +1,227 @@
+aleksandrchuvilov@MacbookAir ~ % cd Desktop
+aleksandrchuvilov@MacbookAir Desktop % mkdir TestL 
+aleksandrchuvilov@MacbookAir Desktop % cd TestL
+aleksandrchuvilov@MacbookAir TestL % ls
+aleksandrchuvilov@MacbookAir TestL % who
+aleksandrchuvilov console  Sep  2 19:08 
+aleksandrchuvilov ttys000  Sep  3 11:48 
+aleksandrchuvilov@MacbookAir TestL % whoami
+aleksandrchuvilov
+aleksandrchuvilov@MacbookAir TestL % pwd
+/Users/aleksandrchuvilov/Desktop/TestL
+aleksandrchuvilov@MacbookAir TestL % touch testL.txt
+aleksandrchuvilov@MacbookAir TestL % ls 
+testL.txt
+aleksandrchuvilov@MacbookAir TestL % ls -l
+total 0
+-rw-r--r--  1 aleksandrchuvilov  staff  0  3 сен 11:55 testL.txt
+aleksandrchuvilov@MacbookAir TestL % ls -a
+.		..		testL.txt
+aleksandrchuvilov@MacbookAir TestL % cat > testL.txt
+It is test
+Testing        
+^C
+aleksandrchuvilov@MacbookAir TestL % cat testL.txt
+It is test
+Testing
+aleksandrchuvilov@MacbookAir TestL % touch testL2.txt
+aleksandrchuvilov@MacbookAir TestL % ls -l
+total 8
+-rw-r--r--  1 aleksandrchuvilov  staff  19  3 сен 11:59 testL.txt
+-rw-r--r--  1 aleksandrchuvilov  staff   0  3 сен 12:00 testL2.txt
+aleksandrchuvilov@MacbookAir TestL % cat testL.txt > testL2.txt
+aleksandrchuvilov@MacbookAir TestL % ls
+testL.txt	testL2.txt
+aleksandrchuvilov@MacbookAir TestL % cat testL2.txt
+It is test
+Testing
+aleksandrchuvilov@MacbookAir TestL % mkdir TestL2
+aleksandrchuvilov@MacbookAir TestL % ls
+TestL2		testL.txt	testL2.txt
+aleksandrchuvilov@MacbookAir TestL % ls -l
+total 16
+drwxr-xr-x@ 2 aleksandrchuvilov  staff  64  3 сен 12:06 TestL2
+-rw-r--r--  1 aleksandrchuvilov  staff  19  3 сен 11:59 testL.txt
+-rw-r--r--  1 aleksandrchuvilov  staff  19  3 сен 12:01 testL2.txt
+aleksandrchuvilov@MacbookAir TestL % cd testL2    
+aleksandrchuvilov@MacbookAir testL2 % pwd
+/Users/aleksandrchuvilov/Desktop/TestL/testL2
+aleksandrchuvilov@MacbookAir testL2 % cd ..
+aleksandrchuvilov@MacbookAir TestL % cp testL.txt /Users/aleksandrchuvilov/Desktop/TestL/testL2
+aleksandrchuvilov@MacbookAir TestL % ls -l
+total 16
+drwxr-xr-x@ 3 aleksandrchuvilov  staff  96  3 сен 12:06 TestL2
+-rw-r--r--  1 aleksandrchuvilov  staff  19  3 сен 11:59 testL.txt
+-rw-r--r--  1 aleksandrchuvilov  staff  19  3 сен 12:01 testL2.txt
+aleksandrchuvilov@MacbookAir TestL % cd TestL2.txt
+cd: not a directory: TestL2.txt
+aleksandrchuvilov@MacbookAir TestL % cd TestL2    
+aleksandrchuvilov@MacbookAir TestL2 % ls -l
+total 8
+-rw-r--r--  1 aleksandrchuvilov  staff  19  3 сен 12:09 testL.txt
+aleksandrchuvilov@MacbookAir TestL2 % cat testL.txt
+It is test
+Testing
+aleksandrchuvilov@MacbookAir TestL2 % cd ..
+aleksandrchuvilov@MacbookAir TestL % cp TestL /Users/aleksandrchuvilov/Desktop/TestL/testL2
+cp: TestL: No such file or directory
+aleksandrchuvilov@MacbookAir TestL % cp Test2 /Users/aleksandrchuvilov/Desktop/TestL/testL2
+cp: Test2: No such file or directory
+aleksandrchuvilov@MacbookAir TestL % cp TestL2 /Users/aleksandrchuvilov/Desktop/TestL/testL2
+cp: TestL2 is a directory (not copied).
+aleksandrchuvilov@MacbookAir TestL % cp TestL2 /Users/aleksandrchuvilov/Desktop
+aleksandrchuvilov@MacbookAir TestL % mkdir TestL3
+aleksandrchuvilov@MacbookAir TestL % ls
+TestL2		TestL3		testL.txt	testL2.txt
+aleksandrchuvilov@MacbookAir TestL % cp -r TestL2 /Users/aleksandrchuvilov/Desktop/TestL/TestL3 
+aleksandrchuvilov@MacbookAir TestL % cd TestL3
+aleksandrchuvilov@MacbookAir TestL3 % ls -l
+total 0
+drwxr-xr-x@ 4 aleksandrchuvilov  staff  128  3 сен 12:20 TestL2
+aleksandrchuvilov@MacbookAir TestL3 % cd TestL2
+aleksandrchuvilov@MacbookAir TestL2 % ls
+testL.txt
+aleksandrchuvilov@MacbookAir TestL2 % ls -al
+total 24
+drwxr-xr-x@ 4 aleksandrchuvilov  staff   128  3 сен 12:20 .
+drwxr-xr-x@ 4 aleksandrchuvilov  staff   128  3 сен 12:20 ..
+-rw-r--r--@ 1 aleksandrchuvilov  staff  6148  3 сен 12:20 .DS_Store
+-rw-r--r--  1 aleksandrchuvilov  staff    19  3 сен 12:20 testL.txt
+aleksandrchuvilov@MacbookAir TestL2 % cat testL.txt
+It is test
+Testing
+aleksandrchuvilov@MacbookAir TestL2 % rm testL.txt
+aleksandrchuvilov@MacbookAir TestL2 % ls
+aleksandrchuvilov@MacbookAir TestL2 % ls -al
+total 16
+drwxr-xr-x@ 3 aleksandrchuvilov  staff    96  3 сен 12:22 .
+drwxr-xr-x@ 4 aleksandrchuvilov  staff   128  3 сен 12:20 ..
+-rw-r--r--@ 1 aleksandrchuvilov  staff  6148  3 сен 12:20 .DS_Store
+aleksandrchuvilov@MacbookAir TestL2 % cd ..
+aleksandrchuvilov@MacbookAir TestL3 % ls
+TestL2
+aleksandrchuvilov@MacbookAir TestL3 % rm -r TestL2
+aleksandrchuvilov@MacbookAir TestL3 % ls -al
+total 16
+drwxr-xr-x@ 3 aleksandrchuvilov  staff    96  3 сен 12:20 .
+drwxr-xr-x@ 7 aleksandrchuvilov  staff   224  3 сен 12:20 ..
+-rw-r--r--@ 1 aleksandrchuvilov  staff  6148  3 сен 12:20 .DS_Store
+aleksandrchuvilov@MacbookAir TestL3 % cd ..
+aleksandrchuvilov@MacbookAir TestL % ls -l
+total 16
+drwxr-xr-x@ 4 aleksandrchuvilov  staff  128  3 сен 12:19 TestL2
+drwxr-xr-x@ 3 aleksandrchuvilov  staff   96  3 сен 12:23 TestL3
+-rw-r--r--  1 aleksandrchuvilov  staff   19  3 сен 11:59 testL.txt
+-rw-r--r--  1 aleksandrchuvilov  staff   19  3 сен 12:01 testL2.txt
+aleksandrchuvilov@MacbookAir TestL % rm TestL3
+rm: TestL3: is a directory
+aleksandrchuvilov@MacbookAir TestL % rm -r TestL3
+aleksandrchuvilov@MacbookAir TestL % ls -l
+total 16
+drwxr-xr-x@ 4 aleksandrchuvilov  staff  128  3 сен 12:19 TestL2
+-rw-r--r--  1 aleksandrchuvilov  staff   19  3 сен 11:59 testL.txt
+-rw-r--r--  1 aleksandrchuvilov  staff   19  3 сен 12:01 testL2.txt
+aleksandrchuvilov@MacbookAir TestL % mv TestL2 TestL2R
+aleksandrchuvilov@MacbookAir TestL % ls -l
+total 16
+drwxr-xr-x@ 4 aleksandrchuvilov  staff  128  3 сен 12:19 TestL2R
+-rw-r--r--  1 aleksandrchuvilov  staff   19  3 сен 11:59 testL.txt
+-rw-r--r--  1 aleksandrchuvilov  staff   19  3 сен 12:01 testL2.txt
+aleksandrchuvilov@MacbookAir TestL % mv testL2.txt /TestL2R
+mv: /TestL2R: Read-only file system
+aleksandrchuvilov@MacbookAir TestL % mv testL2.txt TestL2R/
+aleksandrchuvilov@MacbookAir TestL % ls -l
+total 8
+drwxr-xr-x@ 5 aleksandrchuvilov  staff  160  3 сен 12:27 TestL2R
+-rw-r--r--  1 aleksandrchuvilov  staff   19  3 сен 11:59 testL.txt
+aleksandrchuvilov@MacbookAir TestL % cd TestL2R
+aleksandrchuvilov@MacbookAir TestL2R % ls -l
+total 16
+-rw-r--r--  1 aleksandrchuvilov  staff  19  3 сен 12:09 testL.txt
+-rw-r--r--  1 aleksandrchuvilov  staff  19  3 сен 12:01 testL2.txt
+aleksandrchuvilov@MacbookAir TestL2R % cat testL2.txt
+It is test
+Testing
+aleksandrchuvilov@MacbookAir TestL2R % cd ..
+aleksandrchuvilov@MacbookAir TestL % ls
+TestL2R		testL.txt
+aleksandrchuvilov@MacbookAir TestL % rm -r TestL2R
+aleksandrchuvilov@MacbookAir TestL % ls
+testL.txt
+aleksandrchuvilov@MacbookAir TestL % ps
+  PID TTY           TIME CMD
+ 2526 ttys000    0:00.47 -zsh
+aleksandrchuvilov@MacbookAir TestL % cd ..
+aleksandrchuvilov@MacbookAir Desktop % grep -r "test" TestL
+TestL/testL.txt:It is test
+aleksandrchuvilov@MacbookAir Desktop % grep -lr "test" TestL
+TestL/testL.txt
+aleksandrchuvilov@MacbookAir Desktop % cd TestL
+aleksandrchuvilov@MacbookAir TestL % touch test2.txt test3.txt
+aleksandrchuvilov@MacbookAir TestL % ls -l
+total 8
+-rw-r--r--  1 aleksandrchuvilov  staff   0  3 сен 12:35 test2.txt
+-rw-r--r--  1 aleksandrchuvilov  staff   0  3 сен 12:35 test3.txt
+-rw-r--r--  1 aleksandrchuvilov  staff  19  3 сен 11:59 testL.txt
+aleksandrchuvilov@MacbookAir TestL % rm test2.txt test3.txt
+aleksandrchuvilov@MacbookAir TestL % ls
+testL.txt
+aleksandrchuvilov@MacbookAir TestL % cat >> testL.txt
+word
+secon word
+Mac
+^C
+aleksandrchuvilov@MacbookAir TestL % cat testL.txt
+It is test
+Testing
+word
+secon word
+Mac
+aleksandrchuvilov@MacbookAir TestL % sort -r testL.txt
+word
+secon word
+Testing
+Mac
+It is test
+aleksandrchuvilov@MacbookAir TestL % sort  testL.txt 
+It is test
+Mac
+Testing
+secon word
+word
+aleksandrchuvilov@MacbookAir TestL % cat >> testL.txt
+word
+Mac
+^C
+aleksandrchuvilov@MacbookAir TestL % cort -u testL.txt
+zsh: command not found: cort
+aleksandrchuvilov@MacbookAir TestL % sort -u testL.txt
+It is test
+Mac
+Testing
+secon word
+word
+aleksandrchuvilov@MacbookAir TestL % cat >> testL.txt 
+word
+Mac
+^C
+aleksandrchuvilov@MacbookAir TestL % cat testL.txt
+It is test
+Testing
+word
+secon word
+Mac
+word
+Mac
+word
+Mac
+aleksandrchuvilov@MacbookAir TestL % sort -u testL.txt
+It is test
+Mac
+Testing
+secon word
+word
+aleksandrchuvilov@MacbookAir TestL % ls -l
+total 8
+-rw-r--r--  1 aleksandrchuvilov  staff  57  3 сен 12:39 testL.txt
+aleksandrchuvilov@MacbookAir TestL % 
