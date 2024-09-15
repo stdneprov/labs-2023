@@ -1,0 +1,240 @@
+fastix@DESKTOP-5842T8J:~$  pwd
+/home/fastix
+fastix@DESKTOP-5842T8J:~$ ls
+fastix@DESKTOP-5842T8J:~$ mkdir lab02_logs
+fastix@DESKTOP-5842T8J:~$ cd lab02_logs
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+fastix@DESKTOP-5842T8J:~/lab02_logs$ mkdir lab02
+fastix@DESKTOP-5842T8J:~/lab02_logs$ touch lab02_log.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02  lab02_log.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs$ mv lab02_log.txt lab02.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02  lab02.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs$ cd lab02
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ ls
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ mkdir lab0202.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ mv lab0202.txt lab2.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ ls
+lab2.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ cd ..
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02  lab02.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs$ cd lab02
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ ls
+lab2.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ cd ..
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02  lab02.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs$ mkdir lab0202
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02  lab02.txt  lab0202
+fastix@DESKTOP-5842T8J:~/lab02_logs$ cp lab02.txt ~/lab02_logs/lab0202
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02  lab02.txt  lab0202
+fastix@DESKTOP-5842T8J:~/lab02_logs$ cd lab0202
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab0202$ ls
+lab02.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab0202$ rm lab02.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab0202$ ls
+fastix@DESKTOP-5842T8J:~/lab02_logs$ cd ../
+fastix@DESKTOP-5842T8J:~$ cd ~/lab02_logs/lab0202
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab0202$ cd ..
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02  lab02.txt  lab0202
+fastix@DESKTOP-5842T8J:~/lab02_logs$ mv lab02.txt lab020202.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02  lab0202  lab020202.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs$ mkdir testik
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02  lab0202  lab020202.txt  testik
+fastix@DESKTOP-5842T8J:~/lab02_logs$ cd test**
+fastix@DESKTOP-5842T8J:~/lab02_logs/testik$ cd ..
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02  lab0202  lab020202.txt  testik
+fastix@DESKTOP-5842T8J:~/lab02_logs$ rmdir testik
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02  lab0202  lab020202.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs$ rm lab020202.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02  lab0202
+fastix@DESKTOP-5842T8J:~/lab02_logs$ cd lab02
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ ls
+lab2.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ cat > lab2.txt
+bash: lab2.txt: Is a directory
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ touch lab2.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ ls
+lab2.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ rmdir lab2.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ touch lab2.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ ls
+lab2.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ cat > lab2.txt
+Всем привет, это снова я и это мой новый блог
+Сегодня мы делаем обзор на баш и работу с гитом
+Говорю хайегохо, пока не решу прервать этот процесс
+^Z
+[1]+  Stopped                 cat > lab2.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ cat lab2.txt
+Всем привет, это снова я и это мой новый бло�г
+Сегодня мы делаем обзор на баш и работу с гитом
+Говорю хай ег�егохо, пока не решу прервать этот процесс
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ who
+fastix   pts/1        2023-09-05 00:27
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ whoami
+fastix
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ ps
+    PID TTY          TIME CMD
+    355 pts/0    00:00:00 bash
+    531 pts/0    00:00:00 bash
+    631 pts/0    00:00:00 cat
+    635 pts/0    00:00:00 ps
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ ls -l
+total 4
+-rw-r--r-- 1 fastix fastix 269 Sep  5 01:48 lab2.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ cd ..
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls -l
+total 8
+drwxr-xr-x 2 fastix fastix 4096 Sep  5 01:47 lab02
+drwxr-xr-x 2 fastix fastix 4096 Sep  5 01:39 lab0202
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02  lab0202
+fastix@DESKTOP-5842T8J:~/lab02_logs$ cd lab02
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ ls
+lab2.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ cat lab2.txt > lab2_test.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ cat lab2_test.txt
+Всем привет, это снова я и это мой новый бло�г
+Сегодня мы делаем обзор на баш и работу с гитом
+Говорю хай ег�егохо, пока не решу прервать этот процесс
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ mv lab2_test.txt testik.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ cat testik.txt
+Всем привет, это снова я и это мой новый бло�г
+Сегодня мы делаем обзор на баш и работу с гитом
+Говорю хай ег�егохо, пока не решу прервать этот процесс
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ cat > testik.txt
+Добавляю сюда текста, чтобы был крутым
+А потом мы проделаем еще кучу процессов
+^Z
+[2]+  Stopped                 cat > testik.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ ls
+lab2.txt  testik.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ cat lab2.txt >> testik.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ cat testik.txt
+Добавляю сюда текста, чтобы был крутым
+ПоА потом мы проделаем еще кучу процессов
+Всем привет, это снова я и это мой новый бло�г
+Сегодня мы делаем обзор на баш и работу с гитом
+Говорю хай ег�егохо, пока не решу прервать этот процесс
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ cat lab2.txt
+Всем привет, это снова я и это мой новый бло�г
+Сегодня мы делаем обзор на баш и работу с гитом
+Говорю хай ег�егохо, пока не решу прервать этот процесс
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ cat testik.txt
+Добавляю сюда текста, чтобы был крутым
+ПоА потом мы проделаем еще кучу процессов
+Всем привет, это снова я и это мой новый бло�г
+Сегодня мы делаем обзор на баш и работу с гитом
+Говорю хай ег�егохо, пока не решу прервать этот процесс
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ ls
+lab2.txt  testik.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02$ cd ..
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02  lab0202
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02  lab0202
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02  lab0202
+fastix@DESKTOP-5842T8J:~/lab02_logs$ rm -r lab02
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab0202
+fastix@DESKTOP-5842T8J:~/lab02_logs$ cd lab0202
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab0202$ ls
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab0202$ touch lab02.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab0202$ ls
+lab02.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab0202$ mv lab02.txt ~/lab02_logs
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab0202$ ls
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab0202$ cd ..
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02.txt  lab0202
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ps > lab02.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs$ grep "Привет" lab02.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs$ grep "привет" lab02.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs$ cat lab02.txt
+    PID TTY          TIME CMD
+    355 pts/0    00:00:00 bash
+    531 pts/0    00:00:00 bash
+    631 pts/0    00:00:00 cat
+    644 pts/0    00:00:00 cat
+    706 pts/0    00:00:00 ps
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02.txt  lab0202
+fastix@DESKTOP-5842T8J:~/lab02_logs$ cat > lab02.txt
+Всем привет, мои дорогие подписчики
+^Z
+[3]+  Stopped                 cat > lab02.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs$ grep "привет" lab02.txt
+Всем привет, мои дорогие оподписчики
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02.txt  lab0202
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02.txt  lab0202
+fastix@DESKTOP-5842T8J:~/lab02_logs$ mkdir lab02_test
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02.txt  lab0202  lab02_test
+fastix@DESKTOP-5842T8J:~/lab02_logs$ cp -r lab0202 ~/lab02_logs/lab02_test
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02.txt  lab0202  lab02_test
+fastix@DESKTOP-5842T8J:~/lab02_logs$ cd lab02_test
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02_test$ ls
+lab0202
+fastix@DESKTOP-5842T8J:~/lab02_logs/lab02_test$ cd ..
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls | sort -r
+lab02_test
+lab0202
+lab02.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02.txt  lab0202  lab02_test
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls ~ -l
+total 4
+drwxr-xr-x 4 fastix fastix 4096 Sep  5 02:00 lab02_logs
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls -l ~
+total 4
+drwxr-xr-x 4 fastix fastix 4096 Sep  5 02:00 lab02_logs
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls ~
+lab02_logs
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ls
+lab02.txt  lab0202  lab02_test
+fastix@DESKTOP-5842T8J:~/lab02_logs$ touch lab02_testik.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs$ cat > lab02_testik.txt
+ТЕСТИМ ПО НОВОЙ
+^Z
+[4]+  Stopped                 cat > lab02_testik.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs$ cat lab02.txt
+Всем привет, мои дорогие оподписчики
+fastix@DESKTOP-5842T8J:~/lab02_logs$ cat lab02_testik.txt
+ТЕ�СТИМ ПО НОВОЙ
+fastix@DESKTOP-5842T8J:~/lab02_logs$ cat lab02.txt lab02_testik.txt
+Всем привет, мои дорогие оподписчики
+ТЕ�СТИМ ПО НОВОЙ
+fastix@DESKTOP-5842T8J:~/lab02_logs$ cat < lab02.txt > lab02_testik.txt
+fastix@DESKTOP-5842T8J:~/lab02_logs$ cat lab02.txt
+Всем привет, мои дорогие оподписчики
+fastix@DESKTOP-5842T8J:~/lab02_logs$ cat lab02_testik.txt
+Всем привет, мои дорогие оподписчики
+fastix@DESKTOP-5842T8J:~/lab02_logs$ ps
+    PID TTY          TIME CMD
+    355 pts/0    00:00:00 bash
+    531 pts/0    00:00:00 bash
+    631 pts/0    00:00:00 cat
+    644 pts/0    00:00:00 cat
+    711 pts/0    00:00:00 cat
+    733 pts/0    00:00:00 cat
+    740 pts/0    00:00:00 ps
+fastix@DESKTOP-5842T8J:~/lab02_logs$ cd ./
+fastix@DESKTOP-5842T8J:~/lab02_logs$ cd ..
+fastix@DESKTOP-5842T8J:~$ ls
+lab02_logs
+
