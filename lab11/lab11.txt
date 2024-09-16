@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int IsSeparator(char c) {
+    return (c == ' ') || (c == ',') || (c == '\n') || (c == '\t') || (c == EOF);
+}
+
+int main() {
+    int NewChr = 0;
+    long long count = 0;
+    while (1) {
+        int chr = getchar();
+        if (!IsSeparator(chr)) {
+            count += 1;
+            if (chr >= 'A' && chr <= 'Z') {
+                NewChr = (chr - 'A' + count + 3) % 26 + 'A';
+            } else if (chr >= 'a' && chr <= 'z') {
+                NewChr = (chr - 'a' + count + 3) % 26 + 'a';
+            } else {
+                NewChr = chr;
+            }
+        printf("%c", NewChr); 
+        } else {
+            count = 0;
+            if (chr != EOF) {
+                printf("%c", chr);
+            }
+        }
+        if (chr == EOF) {
+            break;
+        }
+    }
+    return 0;
+}
