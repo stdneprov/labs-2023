@@ -1,0 +1,117 @@
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+sofasol@ubuntu:~$ whoami
+sofasol
+sofasol@ubuntu:~$ who
+sofasol  tty2         2023-09-15 18:56 (tty2)
+sofasol@ubuntu:~$ ls
+Desktop    Downloads  Music     Public  sof        Videos
+Documents  lab2       Pictures  snap    Templates
+sofasol@ubuntu:~$ mkdir dir_1
+sofasol@ubuntu:~$ mkdir dir_2
+sofasol@ubuntu:~$ cd dir_1
+sofasol@ubuntu:~/dir_1$ pwd
+/home/sofasol/dir_1
+sofasol@ubuntu:~/dir_1$ ls
+sofasol@ubuntu:~/dir_1$ touch file1_1
+sofasol@ubuntu:~/dir_1$ cat >file1_1
+11111111
+1111111111
+666666
+super
+^C
+sofasol@ubuntu:~/dir_1$ ls
+file1_1
+sofasol@ubuntu:~/dir_1$ ls -l
+total 4
+-rw-rw-r-- 1 sofasol sofasol 33 Sep 15 19:05 file1_1
+sofasol@ubuntu:~/dir_1$ ls -a
+.  ..  file1_1
+sofasol@ubuntu:~/dir_1$ cat >>file1_1
+room
+ggggg          
+tree
+coffee
+^C
+sofasol@ubuntu:~/dir_1$ ls
+file1_1
+sofasol@ubuntu:~/dir_1$ touch file2_1
+sofasol@ubuntu:~/dir_1$ cp file1_1 file2_1
+sofasol@ubuntu:~/dir_1$ ls
+file1_1  file2_1
+sofasol@ubuntu:~/dir_1$ mv file1_1 file2_1
+sofasol@ubuntu:~/dir_1$ pwd
+/home/sofasol/dir_1
+sofasol@ubuntu:~/dir_1$ ps
+    PID TTY          TIME CMD
+   1954 pts/0    00:00:00 bash
+   2275 pts/0    00:00:00 ps
+sofasol@ubuntu:~/dir_1$ mv home/sofasol/dir_1 home/sofasol/dir_2
+mv: cannot stat 'home/sofasol/dir_1': No such file or directory
+sofasol@ubuntu:~/dir_1$ mv /home/sofasol/dir_1 /home/sofasol/dir_2
+sofasol@ubuntu:~/dir_1$ pwd
+/home/sofasol/dir_1
+sofasol@ubuntu:~/dir_1$ cd dir_2
+bash: cd: dir_2: No such file or directory
+sofasol@ubuntu:~/dir_1$ touch file2
+sofasol@ubuntu:~/dir_1$ cat >file2
+gehjfjhd
+lkjslkjfoi
+rhjejehrjh
+^C
+sofasol@ubuntu:~/dir_1$ ls
+file2  file2_1
+sofasol@ubuntu:~/dir_1$ grep -r
+Usage: grep [OPTION]... PATTERNS [FILE]...
+Try 'grep --help' for more information.
+sofasol@ubuntu:~/dir_1$ grep 'e'
+file2 
+file2
+oleg
+oleg
+gerhdjhsdk
+gerhdjhsdk
+^C
+sofasol@ubuntu:~/dir_1$ grep 'e' file2_1
+super
+tree
+coffee
+sofasol@ubuntu:~/dir_1$ grep -r 'e'
+file2_1:super
+file2_1:tree
+file2_1:coffee
+file2:gehjfjhd
+file2:rhjejehrjh
+sofasol@ubuntu:~/dir_1$ grep -c 'e' file2
+2
+sofasol@ubuntu:~/dir_1$ grep -v 'e' file2_1
+11111111
+1111111111
+666666
+room
+ggggg
+sofasol@ubuntu:~/dir_1$ ls
+file2  file2_1
+sofasol@ubuntu:~/dir_1$ rm file2
+sofasol@ubuntu:~/dir_1$ ls
+file2_1
+sofasol@ubuntu:~/dir_1$ rm -r dir_2
+rm: cannot remove 'dir_2': No such file or directory
+sofasol@ubuntu:~/dir_1$ cd dir_2
+bash: cd: dir_2: No such file or directory
+sofasol@ubuntu:~/dir_1$ pwd
+/home/sofasol/dir_1
+sofasol@ubuntu:~/dir_1$ cd /home/sofasol/dir_2
+sofasol@ubuntu:~/dir_2$ ls
+dir_1
+sofasol@ubuntu:~/dir_2$ pwd
+/home/sofasol/dir_2
+sofasol@ubuntu:~/dir_2$ rm -r dir_2
+rm: cannot remove 'dir_2': No such file or directory
+sofasol@ubuntu:~/dir_2$ rm -r /home/sofasol/dir_2
+sofasol@ubuntu:~/dir_2$ ls
+sofasol@ubuntu:~/dir_2$ ps
+    PID TTY          TIME CMD
+   1954 pts/0    00:00:00 bash
+  16132 pts/0    00:00:00 ps
