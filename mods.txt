@@ -1,0 +1,25 @@
+Optifine	sp614x	3.5	1000000
+Just Enough Items	mezz	4.8	500000
+Thaumcraft	Azanor	4.2	200000
+JourneyMap	Techbrew	4.6	700000
+Tinkers Construct	mDiyo	4.7	800000
+Optifine	sp614x	3.8	1000000
+Just Enough Items	mezz	4.5	500000
+Thaumcraft	Azanor	4.1	200000
+JourneyMap	Techbrew	4.3	700000
+Tinkers Construct	mDiyo	4.9	800000
+Optifine	sp614x	3.6	1000000
+Just Enough Items	mezz	4.4	500000
+Thaumcraft	Azanor	4.0	200000
+JourneyMap	Techbrew	4.7	700000
+Tinkers Construct	mDiyo	3.9	800000
+Optifine	sp614x	4.0	1000000
+Just Enough Items	mezz	4.3	500000
+Thaumcraft	Azanor	3.8	200000
+JourneyMap	Techbrew	3.9	700000
+Tinkers Construct	mDiyo	3.5	800000
+Optifine	sp614x	4.2	1000000
+Just Enough Items	mezz	4.6	500000
+Thaumcraft	Azanor	3.7	200000
+JourneyMap	Techbrew	3.6	700000
+Tinkers Construct	mDiyo	3.8	800000
