@@ -1,0 +1,147 @@
+vboxuser@Linux:~$ git clone https://github.com/FortuneHunter78/labs-2023
+Cloning into 'labs-2023'...
+remote: Enumerating objects: 61, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (5/5), done.
+remote: Total 61 (delta 4), reused 2 (delta 2), pack-reused 54
+Receiving objects: 100% (61/61), 21.29 KiB | 276.00 KiB/s, done.
+Resolving deltas: 100% (20/20), done.
+vboxuser@Linux:~$ cd labs-2023
+vboxuser@Linux:~/labs-2023$ pwd
+/home/vboxuser/labs-2023
+vboxuser@Linux:~/labs-2023$ git branch mylab2code
+vboxuser@Linux:~/labs-2023$ mkdir mylab2
+vboxuser@Linux:~/labs-2023$ cd mylab2
+vboxuser@Linux:~/labs-2023/mylab2$ pwd
+/home/vboxuser/labs-2023/mylab2
+vboxuser@Linux:~/labs-2023/mylab2$ ls
+vboxuser@Linux:~/labs-2023/mylab2$ mkdir testfolder
+vboxuser@Linux:~/labs-2023/mylab2$ ls
+testfolder
+vboxuser@Linux:~/labs-2023/mylab2$ touch file1
+vboxuser@Linux:~/labs-2023/mylab2$ ls
+file1  testfolder
+vboxuser@Linux:~/labs-2023/mylab2$ rm file1
+vboxuser@Linux:~/labs-2023/mylab2$ ls
+testfolder
+vboxuser@Linux:~/labs-2023/mylab2$ rm -r testfolder
+vboxuser@Linux:~/labs-2023/mylab2$ ls
+vboxuser@Linux:~/labs-2023/mylab2$ mkdir folder1
+vboxuser@Linux:~/labs-2023/mylab2$ ls
+folder1
+vboxuser@Linux:~/labs-2023/mylab2$ cd folder1
+vboxuser@Linux:~/labs-2023/mylab2/folder1$ pwd
+/home/vboxuser/labs-2023/mylab2/folder1
+vboxuser@Linux:~/labs-2023/mylab2/folder1$ touch testfile1
+vboxuser@Linux:~/labs-2023/mylab2/folder1$ ls
+testfile1
+vboxuser@Linux:~/labs-2023/mylab2/folder1$ mkdir testdirectory
+vboxuser@Linux:~/labs-2023/mylab2/folder1$ ls
+testdirectory  testfile1
+vboxuser@Linux:~/labs-2023/mylab2/folder1$ mv testdirectory ~/labs-2023/mylab2
+vboxuser@Linux:~/labs-2023/mylab2/folder1$ mv testfile1 ~/labs-2023/mylab2
+vboxuser@Linux:~/labs-2023/mylab2/folder1$ ls
+vboxuser@Linux:~/labs-2023/mylab2/folder1$ cd ~/labs-2023/mylab2
+vboxuser@Linux:~/labs-2023/mylab2$ ls
+folder1  testdirectory  testfile1
+vboxuser@Linux:~/labs-2023/mylab2$ pwd
+/home/vboxuser/labs-2023/mylab2
+vboxuser@Linux:~/labs-2023/mylab2$ cp -r testdirectory ~/labs-2023/mylab2/folder1
+vboxuser@Linux:~/labs-2023/mylab2$ cp testfile1 ~/labs-2023/mylab2/folder1
+vboxuser@Linux:~/labs-2023/mylab2$ ls
+folder1  testdirectory  testfile1
+vboxuser@Linux:~/labs-2023/mylab2$ cd folder1
+vboxuser@Linux:~/labs-2023/mylab2/folder1$ pwd
+/home/vboxuser/labs-2023/mylab2/folder1
+vboxuser@Linux:~/labs-2023/mylab2/folder1$ ls
+testdirectory  testfile1
+vboxuser@Linux:~/labs-2023/mylab2/folder1$ cd testdirectory
+vboxuser@Linux:~/labs-2023/mylab2/folder1/testdirectory$ pwd
+/home/vboxuser/labs-2023/mylab2/folder1/testdirectory
+vboxuser@Linux:~/labs-2023/mylab2/folder1/testdirectory$ touch file1
+vboxuser@Linux:~/labs-2023/mylab2/folder1/testdirectory$ touch file2
+vboxuser@Linux:~/labs-2023/mylab2/folder1/testdirectory$ ls
+file1  file2
+vboxuser@Linux:~/labs-2023/mylab2/folder1/testdirectory$ cat > file1
+Hello
+^C
+vboxuser@Linux:~/labs-2023/mylab2/folder1/testdirectory$ cat > file2
+World!
+^C
+vboxuser@Linux:~/labs-2023/mylab2/folder1/testdirectory$ cat file1
+Hello
+vboxuser@Linux:~/labs-2023/mylab2/folder1/testdirectory$ cat file2
+World!
+vboxuser@Linux:~/labs-2023/mylab2/folder1/testdirectory$ cat file1 file2
+Hello
+World!
+vboxuser@Linux:~/labs-2023/mylab2/folder1/testdirectory$ cat file1 > file2
+vboxuser@Linux:~/labs-2023/mylab2/folder1/testdirectory$ cat file2
+Hello
+vboxuser@Linux:~/labs-2023/mylab2/folder1/testdirectory$ grep -lr "test" ~/labs-2023
+/home/vboxuser/labs-2023/lab2-example.txt
+/home/vboxuser/labs-2023/.git/packed-refs
+/home/vboxuser/labs-2023/.git/hooks/pre-receive.sample
+/home/vboxuser/labs-2023/.git/hooks/applypatch-msg.sample
+/home/vboxuser/labs-2023/.git/hooks/pre-commit.sample
+/home/vboxuser/labs-2023/.git/hooks/pre-push.sample
+/home/vboxuser/labs-2023/.git/hooks/pre-rebase.sample
+/home/vboxuser/labs-2023/.git/hooks/commit-msg.sample
+/home/vboxuser/labs-2023/.git/hooks/prepare-commit-msg.sample
+/home/vboxuser/labs-2023/.git/hooks/pre-applypatch.sample
+/home/vboxuser/labs-2023/.git/hooks/pre-merge-commit.sample
+/home/vboxuser/labs-2023/lab2.txt
+vboxuser@Linux:~/labs-2023/mylab2/folder1/testdirectory$ grep -r "test" ~/labs-2023
+/home/vboxuser/labs-2023/lab2-example.txt:stdneprov@MacBook-Pro-Steve lab2-example % mkdir test-dir
+/home/vboxuser/labs-2023/lab2-example.txt:test-dir
+/home/vboxuser/labs-2023/lab2-example.txt:stdneprov@MacBook-Pro-Steve lab2-example % touch test-file
+/home/vboxuser/labs-2023/lab2-example.txt:test-dir	test-file
+/home/vboxuser/labs-2023/lab2-example.txt:stdneprov@MacBook-Pro-Steve lab2-example % touch test-file1 test-file2
+/home/vboxuser/labs-2023/lab2-example.txt:test-dir	test-file	test-file1	test-file2
+/home/vboxuser/labs-2023/lab2-example.txt:stdneprov@MacBook-Pro-Steve lab2-example % cat > test-file3
+/home/vboxuser/labs-2023/lab2-example.txt:test-dir	test-file	test-file1	test-file2	test-file3
+/home/vboxuser/labs-2023/lab2-example.txt:stdneprov@MacBook-Pro-Steve lab2-example % cat test-file3
+/home/vboxuser/labs-2023/lab2-example.txt:stdneprov@MacBook-Pro-Steve lab2-example % cat test-file1
+/home/vboxuser/labs-2023/lab2-example.txt:stdneprov@MacBook-Pro-Steve lab2-example % cat test-file2
+/home/vboxuser/labs-2023/lab2-example.txt:stdneprov@MacBook-Pro-Steve lab2-example % cat test-file 
+/home/vboxuser/labs-2023/.git/packed-refs:cac9cd2ee048bd98e1fea63dc6509b7f0997e442 refs/remotes/origin/test
+/home/vboxuser/labs-2023/.git/hooks/pre-receive.sample:if test -n "$GIT_PUSH_OPTION_COUNT"
+/home/vboxuser/labs-2023/.git/hooks/pre-receive.sample:	while test "$i" -lt "$GIT_PUSH_OPTION_COUNT"
+/home/vboxuser/labs-2023/.git/hooks/applypatch-msg.sample:test -x "$commitmsg" && exec "$commitmsg" ${1+"$@"}
+/home/vboxuser/labs-2023/.git/hooks/pre-commit.sample:	test $(git diff --cached --name-only --diff-filter=A -z $against |
+/home/vboxuser/labs-2023/.git/hooks/pre-push.sample:	if test "$local_oid" = "$zero"
+/home/vboxuser/labs-2023/.git/hooks/pre-push.sample:		if test "$remote_oid" = "$zero"
+/home/vboxuser/labs-2023/.git/hooks/pre-push.sample:		if test -n "$commit"
+/home/vboxuser/labs-2023/.git/hooks/pre-rebase.sample:if test "$#" = 2
+/home/vboxuser/labs-2023/.git/hooks/pre-rebase.sample:if test -z "$not_in_master"
+/home/vboxuser/labs-2023/.git/hooks/pre-rebase.sample:if test "$only_next_1" = "$only_next_2"
+/home/vboxuser/labs-2023/.git/hooks/pre-rebase.sample:	if test -z "$not_in_topic"
+/home/vboxuser/labs-2023/.git/hooks/pre-rebase.sample: * Whenever you need to test or publish your changes to topic
+/home/vboxuser/labs-2023/.git/hooks/commit-msg.sample:test "" = "$(grep '^Signed-off-by: ' "$1" |
+/home/vboxuser/labs-2023/.git/hooks/prepare-commit-msg.sample:# if test -z "$COMMIT_SOURCE"
+/home/vboxuser/labs-2023/.git/hooks/pre-applypatch.sample:test -x "$precommit" && exec "$precommit" ${1+"$@"}
+/home/vboxuser/labs-2023/.git/hooks/pre-merge-commit.sample:test -x "$GIT_DIR/hooks/pre-commit" &&
+/home/vboxuser/labs-2023/lab2.txt:	ls | grep -E "^test-file[1-9]+" - выведет название всех документов, которые начинаются test-file а дальше содержат только цифры.
+vboxuser@Linux:~/labs-2023/mylab2/folder1/testdirectory$ cat > file3
+Danger
+Hook
+Test
+Folder
+MAI
+AR
+^C
+vboxuser@Linux:~/labs-2023/mylab2/folder1/testdirectory$ sort file3
+AR
+Danger
+Folder
+Hook
+MAI
+Test
+vboxuser@Linux:~/labs-2023/mylab2/folder1/testdirectory$ ps
+    PID TTY          TIME CMD
+  13477 pts/0    00:00:00 bash
+  13620 pts/0    00:00:00 ps
+vboxuser@Linux:~/labs-2023/mylab2/folder1/testdirectory$ who
+vboxuser tty2         2023-09-07 17:52 (tty2)
+vboxuser@Linux:~/labs-2023/mylab2/folder1/testdirectory$ whoami
+vboxuser
