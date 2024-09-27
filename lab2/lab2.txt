@@ -1,0 +1,213 @@
+nastya@nastya-VirtualBox:~$ pwd
+/home/nastya
+nastya@nastya-VirtualBox:~$ ls
+Desktop  Documents  Downloads  labs-2023  Music  Pictures  Public  snap  Templates  Videos
+nastya@nastya-VirtualBox:~$ ls -la
+total 100
+drwxr-x--- 19 nastya nastya 4096 сен  2 16:06 .
+drwxr-xr-x  3 root   root   4096 сен  1 22:25 ..
+-rw-------  1 nastya nastya  892 сен  4 00:22 .bash_history
+-rw-r--r--  1 nastya nastya  220 сен  1 22:25 .bash_logout
+-rw-r--r--  1 nastya nastya 3771 сен  1 22:25 .bashrc
+drwx------ 13 nastya nastya 4096 сен  1 23:45 .cache
+drwx------ 18 nastya nastya 4096 сен  2 00:34 .config
+drwxr-xr-x  2 nastya nastya 4096 сен  2 19:09 Desktop
+drwxr-xr-x  2 nastya nastya 4096 сен  1 22:39 Documents
+drwxr-xr-x  2 nastya nastya 4096 сен  1 23:28 Downloads
+-rw-rw-r--  1 nastya nastya   53 сен  2 16:06 .gitconfig
+drwx------  3 nastya nastya 4096 сен  2 00:02 .gnome
+drwx------  2 nastya nastya 4096 сен  1 23:59 .gnupg
+drwxrwxr-x  4 nastya nastya 4096 сен  2 15:24 labs-2023
+drwx------  3 nastya nastya 4096 сен  1 22:39 .local
+drwxr-xr-x  2 nastya nastya 4096 сен  1 22:39 Music
+-rw-r--r--  1 nastya nastya  357 сен  2 00:21 .pam_environment
+drwxr-xr-x  2 nastya nastya 4096 сен  1 22:39 Pictures
+drwx------  3 nastya nastya 4096 сен  1 23:31 .pki
+-rw-r--r--  1 nastya nastya  807 сен  1 22:25 .profile
+drwxr-xr-x  2 nastya nastya 4096 сен  1 22:39 Public
+drwx------  6 nastya nastya 4096 сен  4 00:20 snap
+drwx------  2 nastya nastya 4096 сен  1 23:59 .ssh
+-rw-r--r--  1 nastya nastya    0 сен  1 23:22 .sudo_as_admin_successful
+drwxr-xr-x  2 nastya nastya 4096 сен  1 22:39 Templates
+drwxr-xr-x  2 nastya nastya 4096 сен  1 22:39 Videos
+nastya@nastya-VirtualBox:~$ mkdir lab2
+nastya@nastya-VirtualBox:~$ ls
+Desktop  Documents  Downloads  lab2  labs-2023  Music  Pictures  Public  snap  Templates  Videos
+nastya@nastya-VirtualBox:~$ cd lab2
+nastya@nastya-VirtualBox:~/lab2$ pwd
+/home/nastya/lab2
+nastya@nastya-VirtualBox:~/lab2$ touch test.txt
+nastya@nastya-VirtualBox:~/lab2$ ls
+test.txt
+nastya@nastya-VirtualBox:~/lab2$ cat > test.txt
+i love mai
+mai is good
+hellooooooo
+mai <3  
+nastya@nastya-VirtualBox:~/lab2$ cat test.txt
+i love mai
+mai is good
+hellooooooo
+mai <3
+nastya@nastya-VirtualBox:~/lab2$ cd ..
+nastya@nastya-VirtualBox:~$ pwd
+/home/nastya
+nastya@nastya-VirtualBox:~$ mkdir lab2cpy
+nastya@nastya-VirtualBox:~$ ls
+Desktop  Documents  Downloads  lab2  lab2cpy  labs-2023  Music  Pictures  Public  snap  Templates  Videos
+nastya@nastya-VirtualBox:~$ cd lab2cpy
+nastya@nastya-VirtualBox:~/lab2cpy$ pwd
+/home/nastya/lab2cpy
+nastya@nastya-VirtualBox:~/lab2cpy$ touch test2cpy.txt
+nastya@nastya-VirtualBox:~/lab2cpy$ ls
+test2cpy.txt
+nastya@nastya-VirtualBox:~/lab2cpy$ mv test2cpy.txt testcpy.txt
+nastya@nastya-VirtualBox:~/lab2cpy$ ls
+testcpy.txt
+nastya@nastya-VirtualBox:~/lab2cpy$ cp ~/lab2/test.txt testcpy.txt
+nastya@nastya-VirtualBox:~/lab2cpy$ cat testcpy.txt
+i love mai
+mai is good
+hellooooooo
+mai <3
+nastya@nastya-VirtualBox:~/lab2cpy$ cd ..
+nastya@nastya-VirtualBox:~$ ls
+Desktop  Documents  Downloads  lab2  lab2cpy  labs-2023  Music  Pictures  Public  snap  Templates  Videos
+nastya@nastya-VirtualBox:~$ rm -rf lab2cpy
+nastya@nastya-VirtualBox:~$ ls
+Desktop  Documents  Downloads  lab2  labs-2023  Music  Pictures  Public  snap  Templates  Videos
+nastya@nastya-VirtualBox:~$ mkdir lab2cpy2
+nastya@nastya-VirtualBox:~$ ls
+Desktop  Documents  Downloads  lab2  lab2cpy2  labs-2023  Music  Pictures  Public  snap  Templates  Videos
+nastya@nastya-VirtualBox:~$ cd lab2cpy2
+nastya@nastya-VirtualBox:~/lab2cpy2$ pwd
+/home/nastya/lab2cpy2
+nastya@nastya-VirtualBox:~/lab2cpy2$ ls
+nastya@nastya-VirtualBox:~/lab2cpy2$ cd ..
+nastya@nastya-VirtualBox:~$ cp -r lab2 lab2cpy2
+nastya@nastya-VirtualBox:~$ cd lab2cpy2
+nastya@nastya-VirtualBox:~/lab2cpy2$ pwd
+/home/nastya/lab2cpy2
+nastya@nastya-VirtualBox:~/lab2cpy2$ ls
+lab2
+nastya@nastya-VirtualBox:~/lab2cpy2$ cd lab2
+nastya@nastya-VirtualBox:~/lab2cpy2/lab2$ pwd
+/home/nastya/lab2cpy2/lab2
+nastya@nastya-VirtualBox:~/lab2cpy2/lab2$ ls
+test.txt
+nastya@nastya-VirtualBox:~/lab2cpy2/lab2$ cat test.txt
+i love mai
+mai is good
+hellooooooo
+mai <3
+nastya@nastya-VirtualBox:~/lab2cpy2/lab2$ touch mai.txt
+nastya@nastya-VirtualBox:~/lab2cpy2/lab2$ ls
+mai.txt  test.txt
+nastya@nastya-VirtualBox:~/lab2cpy2/lab2$ cat > mai.txt
+маи это лучшие люди страны
+nastya@nastya-VirtualBox:~/lab2cpy2/lab2$ cat mai.txt
+маи это лучшие люди страны
+nastya@nastya-VirtualBox:~/lab2cpy2/lab2$ mv mai.txt /home/nastya/lab2
+nastya@nastya-VirtualBox:~/lab2cpy2/lab2$ cd ~/lab2
+nastya@nastya-VirtualBox:~/lab2$ ls
+mai.txt  test.txt
+nastya@nastya-VirtualBox:~/lab2$ cat mai.txt
+маи это лучшие люди страны
+nastya@nastya-VirtualBox:~/lab2$ cat mai.txt >> test.txt
+nastya@nastya-VirtualBox:~/lab2$ cat test.txt
+i love mai
+mai is good
+hellooooooo
+mai <3
+маи это лучшие люди страны
+nastya@nastya-VirtualBox:~/lab2$ cat mai.txt
+маи это лучшие люди страны
+nastya@nastya-VirtualBox:~/lab2$ cp mai.txt maicpy.txt
+nastya@nastya-VirtualBox:~/lab2$ ls
+maicpy.txt  mai.txt  test.txt
+nastya@nastya-VirtualBox:~/lab2$ cat maicpy.txt
+маи это лучшие люди страны
+nastya@nastya-VirtualBox:~/lab2$ cat test.txt > maicpy.txt
+nastya@nastya-VirtualBox:~/lab2$ cat maicpy.txt
+i love mai
+mai is good
+hellooooooo
+mai <3
+маи это лучшие люди страны
+nastya@nastya-VirtualBox:~/lab2$ cat > mai.txt < test.txt
+nastya@nastya-VirtualBox:~/lab2$ cat mai.txt
+i love mai
+mai is good
+hellooooooo
+mai <3
+маи это лучшие люди страны
+nastya@nastya-VirtualBox:~/lab2$ rm -rf test.txt maicpy.txt
+nastya@nastya-VirtualBox:~/lab2$ ls
+mai.txt
+nastya@nastya-VirtualBox:~/lab2$ cd ~
+nastya@nastya-VirtualBox:~$ who
+nastya   tty2         2023-09-06 22:25 (tty2)
+nastya@nastya-VirtualBox:~$ whoami
+nastya
+nastya@nastya-VirtualBox:~$ man ps
+nastya@nastya-VirtualBox:~$ ps
+    PID TTY          TIME CMD
+   2011 pts/0    00:00:00 bash
+   3656 pts/0    00:00:00 ps
+nastya@nastya-VirtualBox:~$ ls
+Desktop  Documents  Downloads  lab2  lab2cpy2  labs-2023  Music  Pictures  Public  snap  Templates  Videos
+nastya@nastya-VirtualBox:~$ ls | sort -r
+Videos
+Templates
+snap
+Public
+Pictures
+Music
+labs-2023
+lab2cpy2
+lab2
+Downloads
+Documents
+Desktop
+nastya@nastya-VirtualBox:~$ grep -r "mai" lab2
+lab2/mai.txt:i love mai
+lab2/mai.txt:mai is good
+lab2/mai.txt:mai <3
+nastya@nastya-VirtualBox:~$ grep -r "маи" lab2
+lab2/mai.txt:маи это лучшие люди страны
+lab2/mai.txt
+nastya@nastya-VirtualBox:~$ cd lab2
+nastya@nastya-VirtualBox:~/lab2$ pwd
+/home/nastya/lab2
+nastya@nastya-VirtualBox:~/lab2$ grep -c "mai" mai.txt
+3
+nastya@nastya-VirtualBox:~/lab2$ cat mai.txt
+i love mai
+mai is good
+hellooooooo
+mai <3
+маи это лучшие люди страны
+nastya@nastya-VirtualBox:~/lab2$ grep -c "маи" mai.txt
+1
+nastya@nastya-VirtualBox:~/lab2$ ls
+mai.txt
+nastya@nastya-VirtualBox:~/lab2$ touch a.txt
+nastya@nastya-VirtualBox:~/lab2$ ls
+a.txt  mai.txt
+nastya@nastya-VirtualBox:~/lab2$ cd ..
+nastya@nastya-VirtualBox:~$ rm -v /home/nastya/lab2/*
+removed '/home/nastya/lab2/a.txt'
+removed '/home/nastya/lab2/mai.txt'
+nastya@nastya-VirtualBox:~$ cd lab2
+nastya@nastya-VirtualBox:~/lab2$ pwd
+/home/nastya/lab2
+nastya@nastya-VirtualBox:~/lab2$ ls
+nastya@nastya-VirtualBox:~/lab2$ cd ~
+nastya@nastya-VirtualBox:~$ pwd
+/home/nastya
+nastya@nastya-VirtualBox:~$ cat ./lab2cpy2/lab2/test.txt
+i love mai
+mai is good
+hellooooooo
+mai <3
+nastya@nastya-VirtualBox:~$  
