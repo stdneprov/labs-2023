@@ -1,0 +1,93 @@
+zggff@zggff-utm:~$ pwd
+/home/zggff
+zggff@zggff-utm:~$ who
+zggff    tty2         2023-09-03 16:44 (tty2)
+zggff    pts/2        2023-09-03 17:25
+zggff@zggff-utm:~/lab2$ ps
+    PID TTY          TIME CMD
+   2183 pts/0    00:00:00 bash
+   2464 pts/0    00:00:00 ps
+zggff@zggff-utm:~$ whoami
+zggff
+zggff@zggff-utm:~$ mkdir lab2
+zggff@zggff-utm:~$ cd lab2/
+zggff@zggff-utm:~/lab2$ pwd
+/home/zggff/lab2
+zggff@zggff-utm:~/lab2$ ls
+zggff@zggff-utm:~/lab2$ ls -a
+.  ..
+zggff@zggff-utm:~/lab2$ cat > script.sh
+echo "Hello, World!"   
+zggff@zggff-utm:~/lab2$ ls
+script.sh
+zggff@zggff-utm:~/lab2$ ./script.sh
+bash: ./script.sh: Permission denied
+zggff@zggff-utm:~/lab2$ ls -l
+total 4
+-rw-rw-r-- 1 zggff zggff 21 сен  3 17:13 script.sh
+zggff@zggff-utm:~/lab2$ chmod u+x script.sh 
+zggff@zggff-utm:~/lab2$ ls -l
+total 4
+-rwxrw-r-- 1 zggff zggff 21 сен  3 17:13 script.sh
+zggff@zggff-utm:~/lab2$ ./script.sh 
+Hello, World!
+zggff@zggff-utm:~/lab2$ cat ./script.sh 
+echo "Hello, World!"
+zggff@zggff-utm:~/lab2$ cp script.sh new_script.sh
+zggff@zggff-utm:~/lab2$ ls -l
+total 8
+-rwxrw-r-- 1 zggff zggff 21 сен  3 17:15 new_script.sh
+-rwxrw-r-- 1 zggff zggff 21 сен  3 17:13 script.sh
+zggff@zggff-utm:~/lab2$ cat >> new_script.sh 
+echo "Addition"
+zggff@zggff-utm:~/lab2$ cat new_script.sh 
+echo "Hello, World!"
+echo "Addition"
+zggff@zggff-utm:~/lab2$ ./new_script.sh 
+Hello, World!
+Addition
+zggff@zggff-utm:~/lab2$ mkdir scripts
+zggff@zggff-utm:~/lab2$ mv script.sh new_script.sh scripts/
+zggff@zggff-utm:~/lab2$ ls
+scripts
+zggff@zggff-utm:~/lab2$ ls scripts/
+new_script.sh  script.sh
+zggff@zggff-utm:~/lab2$ mv scripts/script.sh scripts/old_script.sh
+zggff@zggff-utm:~/lab2$ ls scripts/
+new_script.sh  old_script.sh
+zggff@zggff-utm:~/lab2$ touch t1.txt t2.txt
+zggff@zggff-utm:~/lab2$ ls 
+scripts  t1.txt  t2.txt
+zggff@zggff-utm:~/lab2$ cat > t1.txt
+Hello, World
+zggff@zggff-utm:~/lab2$ cat > t2.txt
+Goodbye, World
+zggff@zggff-utm:~/lab2$ cat > t_combined.txt < t1.txt
+zggff@zggff-utm:~/lab2$ cat t_combined.txt 
+Hello, World
+zggff@zggff-utm:~/lab2$ cat t2.txt >> t_combined.txt 
+zggff@zggff-utm:~/lab2$ cat t_combined.txt 
+Hello, World
+Goodbye, World
+zggff@zggff-utm:~/lab2$ ls -l | grep -E "*.txt"
+-rw-rw-r-- 1 zggff zggff   13 сен  3 17:18 t1.txt
+-rw-rw-r-- 1 zggff zggff   15 сен  3 17:18 t2.txt
+-rw-rw-r-- 1 zggff zggff   28 сен  3 17:22 t_combined.txt
+zggff@zggff-utm:~/lab2$ grep -r "Hello" .
+./t_combined.txt:Hello, World
+./scripts/script.sh:echo "Hello, World!"
+./scripts/new_script.sh:echo "Hello, World!"
+./t1.txt:Hello, World
+zggff@zggff-utm:~/lab2$ grep -c "World" t_combined.txt 
+2
+zggff@zggff-utm:~/lab2$ rm t_combined.txt
+zggff@zggff-utm:~/lab2$ ls
+scripts  t1.txt  t2.txt
+zggff@zggff-utm:~/lab2$ rm -r scripts/
+zggff@zggff-utm:~/lab2$ ls
+t1.txt  t2.txt
+zggff@zggff-utm:~/lab2$ rm *
+zggff@zggff-utm:~/lab2$ ls
+zggff@zggff-utm:~/lab2$ cd ..
+zggff@zggff-utm:~$ rmdir lab2/
+zggff@zggff-utm:~$
