@@ -96,7 +96,7 @@ int main() {
     printList(myList);
 
     // Удалить последние 3 элемента
-    removeLastKElements(&myList, 0);
+    removeLastKElements(&myList, 3);
     printf("List after removing last 3 elements:\n");
     printList(myList);
 
