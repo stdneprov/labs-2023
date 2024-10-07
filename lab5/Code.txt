@@ -1,0 +1,660 @@
+00, ,<,search_space
+
+search_space,I,<,found_I
+search_space,V,<,found_V
+search_space,X,<,found_X
+search_space,L,<,found_L
+search_space,C,<,found_C
+search_space,D,<,found_D
+search_space,M,<,found_M
+
+found_I, ,<,found_n1
+found_n1,I,=,found_II
+found_n1,V,=,found_VI
+found_n1,X,=,found_XI
+found_n1,L,=,found_LI
+found_n1,C,=,found_CI
+found_n1,D,=,found_DI
+found_n1,M,=,found_MI
+
+found_V, ,<,found_n2
+found_n2,I,=,found_IV
+found_n2,V,=,found_VV
+found_n2,X,=,found_XV
+found_n2,L,=,found_LV
+found_n2,C,=,found_CV
+found_n2,D,=,found_DV
+found_n2,M,=,found_MV
+
+
+found_X, ,<,found_n3
+found_n3,I,=,found_IX
+found_n3,V,=,found_VX
+found_n3,X,=,found_XX
+found_n3,L,=,found_LX
+found_n3,C,=,found_CX
+found_n3,D,=,found_DX
+found_n3,M,=,found_MX
+
+found_L, ,<,found_n4
+found_n4,I,=,found_IL
+found_n4,V,=,found_VL
+found_n4,X,=,found_XL
+found_n4,L,=,found_LL
+found_n4,C,=,found_CL
+found_n4,D,=,found_DL
+found_n4,M,=,found_ML
+
+
+found_C, ,<,found_n5
+found_n5,I,=,found_IC
+found_n5,V,=,found_VC
+found_n5,X,=,found_XC
+found_n5,L,=,found_LC
+found_n5,C,=,found_CC
+found_n5,D,=,found_DC
+found_n5,M,=,found_MC
+
+
+found_D, ,<,found_n6
+found_n6,I,=,found_ID
+found_n6,V,=,found_VD
+found_n6,X,=,found_XD
+found_n6,L,=,found_LD
+found_n6,C,=,found_CD
+found_n6,D,=,found_DD
+found_n6,M,=,found_MD
+
+
+found_M, ,<,found_n7
+found_n7,I,=,found_IM
+found_n7,V,=,found_VM
+found_n7,X,=,found_XM
+found_n7,L,=,found_LM
+found_n7,C,=,found_CM
+found_n7,D,=,found_DM
+found_n7,M,=,found_MM
+
+
+found_II,I,>,found_II
+found_II, ,>,finish_II
+finish_II,I,>,finish_II
+finish_II, ,>,finish_II2
+finish_II2, ,I,finish_II2
+finish_II2,I,>,finish_II3
+finish_II3, ,#,finish#
+
+found_VI,V,>,found_VI
+found_VI, ,>,finish_VI
+finish_VI,I,>,finish_VI
+finish_VI, ,>,finish_VI2
+finish_VI2, ,V,finish_VI2
+finish_VI2,V,>,finish_VI3
+finish_VI3, ,#,finish#
+
+
+found_XI,X,>,found_XI
+found_XI, ,>,finish_XI
+finish_XI,I,>,finish_XI
+finish_XI, ,>,finish_XI2
+finish_XI2, ,X,finish_XI2
+finish_XI2,X,>,finish_XI3
+finish_XI3, ,#,finish#
+
+
+found_LI,L,>,found_LI
+found_LI, ,>,finish_LI
+finish_LI,I,>,finish_LI
+finish_LI, ,>,finish_LI2
+finish_LI2, ,L,finish_LI2
+finish_LI2,L,>,finish_LI3
+finish_LI3, ,#,finish#
+
+
+found_CI,C,>,found_CI
+found_CI, ,>,finish_CI
+finish_CI,I,>,finish_CI
+finish_CI, ,>,finish_CI2
+finish_CI2, ,C,finish_CI2
+finish_CI2,C,>,finish_CI3
+finish_CI3, ,#,finish#
+
+
+found_DI,D,>,found_DI
+found_DI, ,>,finish_DI
+finish_DI,I,>,finish_DI
+finish_DI, ,>,finish_DI2
+finish_DI2, ,D,finish_DI2
+finish_DI2,D,>,finish_DI3
+finish_DI3, ,#,finish#
+
+
+found_MI,M,>,found_MI
+found_MI, ,>,finish_MI
+finish_MI,I,>,finish_MI
+finish_MI, ,>,finish_MI2
+finish_MI2, ,M,finish_MI2
+finish_MI2,M,>,finish_MI3
+finish_MI3, ,#,finish#
+
+
+found_IV,I,>,found_IV
+found_IV, ,>,finish_IV
+finish_IV,V,>,finish_IV
+finish_IV, ,>,finish_IV2
+finish_IV2, ,V,finish_IV3
+finish_IV3,V,>,finish_IV3
+finish_IV3, ,#,finish#
+
+
+found_IX,I,>,found_IX
+found_IX, ,>,finish_IX
+finish_IX,X,>,finish_IX
+finish_IX, ,>,finish_IX2
+finish_IX2, ,X,finish_IX2
+finish_IX2,X,>,finish_IX3
+finish_IX3, ,#,finish#
+
+
+found_IL,I,>,found_IL
+found_IL, ,>,finish_IL
+finish_IL,L,>,finish_IL
+finish_IL, ,>,finish_IL2
+finish_IL2, ,L,finish_IL2
+finish_IL2,L,>,finish_IL3
+finish_IL3, ,#,finish#
+
+
+found_IC,I,>,found_IC
+found_IC, ,>,finish_IC
+finish_IC,C,>,finish_IC
+finish_IC, ,>,finish_IC2
+finish_IC2, ,C,finish_IC2
+finish_IC2,C,>,finish_IC3
+finish_IC3, ,#,finish#
+
+
+found_ID,I,>,found_ID
+found_ID, ,>,finish_ID
+finish_ID,D,>,finish_ID
+finish_ID, ,>,finish_ID2
+finish_ID2, ,D,finish_ID2
+finish_ID2,D,>,finish_ID3
+finish_ID3, ,#,finish#
+
+
+found_IM,I,>,found_IM
+found_IM, ,>,finish_IM
+finish_IM,M,>,finish_IM
+finish_IM, ,>,finish_IM2
+finish_IM2, ,M,finish_IM2
+finish_IM2,M,>,finish_IM3
+finish_IM3, ,#,finish#
+
+
+
+found_VV,V,>,found_VV
+found_VV, ,>,finish_VV
+finish_VV,V,>,finish_VV
+finish_VV, ,>,answer25
+
+
+found_XV,X,>,found_XV
+found_XV, ,>,finish_XV
+finish_XV,V,>,finish_XV
+finish_XV, ,>,answer50
+
+
+found_LV,L,>,found_LV
+found_LV, ,>,finish_LV
+finish_LV,V,>,finish_LV
+finish_LV, ,>,answer250
+
+
+found_CV,C,>,found_CV
+found_CV, ,>,finish_CV
+finish_CV,V,>,finish_CV
+finish_CV, ,>,answer500
+
+
+found_DV,D,>,found_DV
+found_DV, ,>,finish_DV
+finish_DV,V,>,finish_DV
+finish_DV, ,>,answer2500
+
+
+found_MV,M,>,found_MV
+found_MV, ,>,finish_MV
+finish_MV,V,>,finish_MV
+finish_MV, ,>,answer_5k
+
+
+found_XX,X,>,found_XX
+found_XX, ,>,finish_XX
+finish_XX,X,>,finish_XX
+finish_XX, ,>,answer100
+
+
+found_VX,V,>,found_VX
+found_VX, ,>,finish_VX
+finish_VX,X,>,finish_VX
+finish_VX, ,>,answer50
+
+
+found_LX,L,>,found_LX
+found_LX, ,>,finish_LX
+finish_LX,X,>,finish_LX
+finish_LX, ,>,answer500
+
+
+found_CX,C,>,found_CX
+found_CX, ,>,finish_CX
+finish_CX,X,>,finish_CX
+finish_CX, ,>,answer_1k
+
+
+found_DX,D,>,found_DX
+found_DX, ,>,finish_DX
+finish_DX,X,>,finish_DX
+finish_DX, ,>,answer_5k
+
+
+found_MX,M,>,found_MX
+found_MX, ,>,finish_MX
+finish_MX,X,>,finish_MX
+finish_MX, ,>,answer_10k
+
+
+found_LL,L,>,found_LL
+found_LL, ,>,finish_LL
+finish_LL,L,>,finish_LL
+finish_LL, ,>,answer2500
+
+
+found_VL,V,>,found_VL
+found_VL, ,>,finish_VL
+finish_VL,L,>,finish_VL
+finish_VL, ,>,answer250
+
+
+found_XL,X,>,found_XL
+found_XL, ,>,finish_XL
+finish_XL,L,>,finish_XL
+finish_XL, ,>,answer500
+
+
+found_CL,C,>,found_CL
+found_CL, ,>,finish_CL
+finish_CL,L,>,finish_CL
+finish_CL, ,>,answer_5k
+
+
+found_DL,D,>,found_DL
+found_DL, ,>,finish_DL
+finish_DL,L,>,finish_DL
+finish_DL, ,>,answer_25k
+
+
+found_ML,M,>,found_ML
+found_ML, ,>,finish_ML
+finish_ML,L,>,finish_ML
+finish_ML, ,>,answer_50k
+
+
+found_CC,C,>,found_CC
+found_CC, ,>,finish_CC
+finish_CC,C,>,finish_CC
+finish_CC, ,>,answer_10k
+
+
+found_VC,V,>,found_VC
+found_VC, ,>,finish_VC
+finish_VC,C,>,finish_VC
+finish_VC, ,>,answer500
+
+
+found_XC,X,>,found_XC
+found_XC, ,>,finish_XC
+finish_XC,C,>,finish_XC
+finish_XC, ,>,answer_1k
+
+
+found_LC,L,>,found_LC
+found_LC, ,>,finish_LC
+finish_LC,C,>,finish_LC
+finish_LC, ,>,answer_5k
+
+
+found_DC,D,>,found_DC
+found_DC, ,>,finish_DC
+finish_DC,C,>,finish_DC
+finish_DC, ,>,answer_50k
+
+
+found_MC,M,>,found_MC
+found_MC, ,>,finish_MC
+finish_MC,C,>,finish_MC
+finish_MC, ,>,answer_100k
+
+
+found_DD,D,>,found_DD
+found_DD, ,>,finish_DD
+finish_DD,D,>,finish_DD
+finish_DD, ,>,answer_250k
+
+
+found_VD,V,>,found_VD
+found_VD, ,>,finish_VD
+finish_VD,D,>,finish_VD
+finish_VD, ,>,answer2500
+
+
+found_XD,X,>,found_XD
+found_XD, ,>,finish_XD
+finish_XD,D,>,finish_XD
+finish_XD, ,>,answer_5k
+
+found_LD,L,>,found_LD
+found_LD, ,>,finish_LD
+finish_LD,D,>,finish_LD
+finish_LD, ,>,answer_25k
+
+
+found_CD,C,>,found_CD
+found_CD, ,>,finish_CD
+finish_CD,D,>,finish_CD
+finish_CD, ,>,answer_50k
+
+
+found_MD,M,>,found_MD
+found_MD, ,>,finish_MD
+finish_MD,D,>,finish_MD
+finish_MD, ,>,answer_500k
+
+
+found_DM,D,>,found_DM
+found_DM, ,>,finish_DM
+finish_DM,M,>,finish_DM
+finish_DM, ,>,answer_500k
+
+
+found_VM,V,>,found_VM
+found_VM, ,>,finish_VM
+finish_VM,M,>,finish_VM
+finish_VM, ,>,answer_5k
+
+
+found_XM,X,>,found_XM
+found_XM, ,>,finish_XM
+finish_XM,M,>,finish_XM
+finish_XM, ,>,answer_10k
+
+
+found_LM,L,>,found_LM
+found_LM, ,>,finish_LM
+finish_LM,M,>,finish_LM
+finish_LM, ,>,answer_50k
+
+
+found_CM,C,>,found_CM
+found_CM, ,>,finish_CM
+finish_CM,M,>,finish_CM
+finish_CM, ,>,answer_100k
+
+
+found_MM,M,>,found_MM
+found_MM, ,>,finish_MM
+finish_MM,M,>,finish_MM
+finish_MM, ,>,answer_1m
+
+answer_250k, ,M,answer_250k
+answer_250k,M,>,answer_250k1
+answer_250k1, ,M,answer_250k1
+answer_250k1,M,>,answer_250k2
+answer_250k2, ,M,answer_250k2
+answer_250k2,M,>,answer_250k3
+answer_250k3, ,M,answer_250k3
+answer_250k3,M,>,answer_250k4
+answer_250k4, ,M,answer_250k4
+answer_250k4,M,>,answer_250k5
+answer_250k5, ,M,answer_250k5
+answer_250k5,M,>,answer_250k6
+answer_250k6, ,M,answer_250k6
+answer_250k6,M,>,answer_250k7
+answer_250k7, ,M,answer_250k7
+answer_250k7,M,>,answer_250k8
+answer_250k8, ,M,answer_250k8
+answer_250k8,M,>,answer_250k9
+answer_250k9, ,M,answer_250k10
+answer_250k10,M,>,answer250k10
+answer250k10, ,*,answer250k11
+answer250k11,*,>,answer250k12
+answer250k12, ,2,answer250k12
+answer250k12,2,>,answer250k13
+answer250k13, ,5,answer250k13
+answer250k13,5,>,answer250k14
+answer250k14, ,#,finish#
+
+answer_1m, ,M,answer_1m
+answer_1m,M,>,answer_1m1
+answer_1m1, ,M,answer_1m1
+answer_1m1,M,>,answer_1m2
+answer_1m2, ,M,answer_1m2
+answer_1m2,M,>,answer_1m3
+answer_1m3, ,M,answer_1m3
+answer_1m3,M,>,answer_1m4
+answer_1m4, ,M,answer_1m4
+answer_1m4,M,>,answer_1m5
+answer_1m5, ,M,answer_1m5
+answer_1m5,M,>,answer_1m6
+answer_1m6, ,M,answer_1m6
+answer_1m6,M,>,answer_1m7
+answer_1m7, ,M,answer_1m7
+answer_1m7,M,>,answer_1m8
+answer_1m8, ,M,answer_1m8
+answer_1m8,M,>,answer_1m9
+answer_1m9, ,M,answer_1m10
+answer_1m10,M,>,answer1m10
+answer1m10, ,*,answer1m11
+answer1m11,*,>,answer1m12
+answer1m12, ,1,answer1m12
+answer1m12,1,>,answer1m13
+answer1m13, ,0,answer1m13
+answer1m13,0,>,answer_1m14
+answer_1m14, ,0,answer_1m14
+answer_1m14,0,>,answer_1m15
+answer_1m15, ,#,finish#
+
+answer_25k, ,M,answer_25k
+answer_25k,M,>,answer_25k1
+answer_25k1, ,M,answer_25k1
+answer_25k1,M,>,answer_25k2
+answer_25k2, ,M,answer_25k2
+answer_25k2,M,>,answer_25k3
+answer_25k3, ,M,answer_25k3
+answer_25k3,M,>,answer_25k4
+answer_25k4, ,M,answer_25k4
+answer_25k4,M,>,answer_25k5
+answer_25k5, ,M,answer_25k5
+answer_25k5,M,>,answer_25k6
+answer_25k6, ,M,answer_25k6
+answer_25k6,M,>,answer_25k7
+answer_25k7, ,M,answer_25k7
+answer_25k7,M,>,answer_25k8
+answer_25k8, ,M,answer_25k8
+answer_25k8,M,>,answer_25k9
+answer_25k9, ,M,answer_25k9
+answer_25k9,M,>,answer25k10
+answer25k10, ,*,answer25k10
+answer25k10,*,>,answer25k11
+answer25k11, ,5,answer25k11
+answer25k11,5,>,answer25k12
+answer25k12, ,#,finish#
+
+answer_50k, ,M,answer_50k
+answer_50k,M,>,answer_50k1
+answer_50k1, ,M,answer_50k1
+answer_50k1,M,>,answer_50k2
+answer_50k2, ,M,answer_50k2
+answer_50k2,M,>,answer_50k3
+answer_50k3, ,M,answer_50k3
+answer_50k3,M,>,answer_50k4
+answer_50k4, ,M,answer_50k4
+answer_50k4,M,>,answer_50k5
+answer_50k5, ,M,answer_50k5
+answer_50k5,M,>,answer_50k6
+answer_50k6, ,M,answer_50k6
+answer_50k6,M,>,answer_50k7
+answer_50k7, ,M,answer_50k7
+answer_50k7,M,>,answer_50k8
+answer_50k8, ,M,answer_50k8
+answer_50k8,M,>,answer_50k9
+answer_50k9, ,M,answer_50k9
+answer_50k9,M,>,answer50k10
+answer50k10, ,*,answer50k10
+answer50k10,*,>,answer50k11
+answer50k11, ,5,answer50k11
+answer50k11,5,>,answer50k12
+answer50k12, ,#,finish#
+
+answer_5k, ,M,answer_5k
+answer_5k,M,>,answer_5k1
+answer_5k1, ,M,answer_5k1
+answer_5k1,M,>,answer_5k2
+answer_5k2, ,M,answer_5k2
+answer_5k2,M,>,answer_5k3
+answer_5k3, ,M,answer_5k3
+answer_5k3,M,>,answer_5k4
+answer_5k4, ,M,answer_5k4
+answer_5k4,M,>,answer_5k5
+answer_5k5, ,#,finish#
+
+answer_1k, ,M,answer_1k2
+answer_1k2,M,>,answer_1k3
+answer_1k3, ,#,finish#
+
+answer2500, ,M,answer2500
+answer2500,M,>,answer25001
+answer25001, ,M,answer25001
+answer25001,M,>,answer25002
+answer25002, ,D,answer25002
+answer25002,D,>,answer25003
+answer25003, ,#,finish#
+
+answer_500k, ,M,answer_500k
+answer_500k,M,>,answer_500k1
+answer_500k1, ,M,answer_500k1
+answer_500k1,M,>,answer_500k2
+answer_500k2, ,M,answer_500k2
+
+answer_500k2,M,>,answer_500k3
+answer_500k3, ,M,answer_500k3
+answer_500k3,M,>,answer_500k4
+answer_500k4, ,M,answer_500k4
+answer_500k4,M,>,answer_500k5
+answer_500k5, ,M,answer_500k5
+answer_500k5,M,>,answer_500k6
+answer_500k6, ,M,answer_500k6
+answer_500k6,M,>,answer_500k7
+answer_500k7, ,M,answer_500k7
+answer_500k7,M,>,answer_500k8
+answer_500k8, ,M,answer_500k8
+answer_500k8,M,>,answer_500k9
+answer_500k9, ,M,answer_500k9
+answer_500k9,M,>,answer500k10
+answer500k10, ,*,answer500k10
+answer500k10,*,>,answer500k11
+answer500k11, ,5,answer500k11
+answer500k11,5,>,answer500k12
+answer500k12, ,0,answer500k12
+answer500k12,0,>,answer500k13
+answer500k13, ,#,finish#
+
+answer_10k, ,M,answer_10k
+answer_10k,M,>,answer_10k1
+answer_10k1, ,M,answer_10k1
+answer_10k1,M,>,answer_10k2
+answer_10k2, ,M,answer_10k2
+answer_10k2,M,>,answer_10k3
+answer_10k3, ,M,answer_10k3
+answer_10k3,M,>,answer_10k4
+answer_10k4, ,M,answer_10k4
+answer_10k4,M,>,answer_10k5
+answer_10k5, ,M,answer_10k5
+answer_10k5,M,>,answer_10k6
+answer_10k6, ,M,answer_10k6
+answer_10k6,M,>,answer_10k7
+answer_10k7, ,M,answer_10k7
+answer_10k7,M,>,answer_10k8
+answer_10k8, ,M,answer_10k8
+answer_10k8,M,>,answer_10k9
+answer_10k9, ,M,answer_10k9
+answer_10k9,M,>,answer10k10
+answer10k10, ,#,finish#
+
+
+answer_100k, ,M,answer_100k
+answer_100k,M,>,answer_100k1
+answer_100k1, ,M,answer_100k1
+answer_100k1,M,>,answer_100k2
+answer_100k2, ,M,answer_100k2
+answer_100k2,M,>,answer_100k3
+answer_100k3, ,M,answer_100k3
+answer_100k3,M,>,answer_100k4
+answer_100k4, ,M,answer_100k4
+answer_100k4,M,>,answer_100k5
+answer_100k5, ,M,answer_100k5
+answer_100k5,M,>,answer_100k6
+answer_100k6, ,M,answer_100k6
+answer_100k6,M,>,answer_100k7
+answer_100k7, ,M,answer_100k7
+answer_100k7,M,>,answer_100k8
+answer_100k8, ,M,answer_100k8
+answer_100k8,M,>,answer_100k9
+answer_100k9, ,M,answer_100k9
+answer_100k9,M,>,answer100k10
+answer100k10, ,*,answer100k10
+answer100k10,*,>,answer100k11
+answer100k11, ,1,answer100k11
+answer100k11,1,>,answer100k12
+answer100k12, ,0,answer100k12
+answer100k12,0,>,answer100k13
+answer100k13, ,#,finish#
+
+answer500, ,D,answer500
+answer500,D,>,answer5001
+answer5001, ,#,finish#
+
+answer250, ,C,answer250
+answer250,C,>,answer2501
+answer2501, ,C,answer2501
+answer2501,C,>,answer2502
+answer2502, ,L,answer2502
+answer2502,L,>,answer2503
+answer2503, ,#,finish#
+
+answer100, ,C,answer1001
+answer1001,C,>,answer1001
+answer1001, ,#,finish#
+
+answer50, ,L,answer50
+answer50,L,>,answer501
+answer501, ,#,finish#
+
+answer25, ,X,answer25
+answer25,X,>,answer251
+answer251, ,X,answer251
+answer251,X,>,answer252
+answer252, ,V,answer252
+answer252,V,>,answer253
+answer253, ,#,finish#
+
+answer10, ,X,answer10
+answer10,X,>,answer101
+answer101, ,#,finish#
+
+answer5, ,V,answer5
+answer5,V,>,answer51
+answer51, ,#,finish#
+finish#, ,#,finish#
+
